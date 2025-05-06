@@ -1,0 +1,78 @@
+name: Playwright Tests
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Restore Playwright browsers cache
+        id: pw-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-pw-1 # bump "1" when Playwright major changes
+          restore-keys: |
+            ${{ runner.os }}-pw-
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
+      - name: Save Playwright browsers cache
+        if: steps.pw-restore.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ steps.pw-restore.outputs.cache-primary-key }}
+
+      # ── Next.js build cache ─────────────────────────────────────────────
+      - name: Restore Next.js build cache
+        id: next-restore
+        uses: actions/cache/restore@v4
+        with:
+          path: .next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-
+
+      - name: Build Next.js app
+        env:
+          NODE_ENV: "production"
+        run: npm run build
+
+      - name: Save Next.js build cache
+        if: steps.next-restore.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: .next/cache
+          key: ${{ steps.next-restore.outputs.cache-primary-key }}
+
+      # ── Tests ───────────────────────────────────────────────────────────
+      - name: Run Playwright tests
+        run: npm run test
+        env:
+          NODE_ENV: "production"
+
+      # ── Upload HTML report (optional) ───────────────────────────────────
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30

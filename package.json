@@ -1,0 +1,46 @@
+{
+  "name": "serbyte-ppc",
+  "version": "0.1.0",
+  "private": true,
+ 
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --fix",
+    "type-check": "tsc --noEmit",
+    "prepare": "husky",
+    "format": "prettier --write .",
+    "clean": "rm -rf .next",
+    "reset": "npm run clean && rm -rf node_modules && rm -rf package-lock.json && npm install",
+    "test": "playwright test",
+    "test:ui": "playwright test -a-ui"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "motion": "^12.9.4",
+    "next": "^15.1.6",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-intersection-observer": "^9.16.0"
+  },
+  "devDependencies": {
+    "schema-dts": "^1.1.5",
+    "@eslint/eslintrc": "^3.3.1",
+    "@next/bundle-analyzer": "^15.3.1",
+    "@playwright/test": "^1.52.0",
+    "@tailwindcss/postcss": "^4.1.4",
+    "@types/node": "^22.15.1",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "eslint": "^9.25.1",
+    "eslint-config-next": "^15.3.1",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-prettier": "^5.2.6",
+    "husky": "^9.1.7",
+    "prettier": "^3.5.3",
+    "tailwindcss": "^4.1.4",
+    "typescript": "^5.8.3"
+  }
+}
