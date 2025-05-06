@@ -33,11 +33,11 @@ export function AnimatedCard({
 
   const { scrollYProgress } = useScroll({
     offset: isMobile
-      ? ["20% end", "start start"] // on mobile, complete animation earlier
-      : ["25% end", "start start"], // desktop = normal
+      ? ["15% end", "start start"] // on mobile, complete animation earlier
+      : ["20% end", "start start"], // desktop = normal
   })
 
-  const progress = useSpring(scrollYProgress, { stiffness: 220, damping: 60 })
+  const progress = useSpring(scrollYProgress, { stiffness: 220, damping: 90 })
 
   const finalX = offset?.x + (offset?.dx ?? 0)
   const finalY = offset?.y + (offset?.dy ?? 0)

@@ -43,10 +43,7 @@ export const LogoMarquee = ({ avatars = true }: { avatars?: boolean }) => {
         )}
 
         {/* right: marquee */}
-        <AnimatedElement
-          element="div"
-          duration={0.8}
-          delay={0.2}
+        <div
           style={
             {
               "--width": "200px", // Set card width
@@ -56,14 +53,14 @@ export const LogoMarquee = ({ avatars = true }: { avatars?: boolean }) => {
           }
           className="slider"
         >
-          <div className="list h-full">
+          <div className="list">
             {[...LOGOS].map((src, i) => (
               <div style={{ "--position": i + 1, "--speed": "20s" } as React.CSSProperties} className="item" key={i}>
-                <Image src={src} alt="" className="h-15 w-auto max-w-48 min-w-48 object-contain opacity-70 grayscale transition" />
+                <Image src={src} alt="Logo Marquee Brand Icon" className="h-15 w-48 max-w-48 min-w-48 object-contain opacity-70 grayscale transition" />
               </div>
             ))}
           </div>
-        </AnimatedElement>
+        </div>
       </div>
     </section>
   )

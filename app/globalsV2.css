@@ -16,7 +16,7 @@ button {
   @apply text-sm hover:cursor-pointer;
 }
 strong {
-  @apply text-slate-900;
+  @apply font-semibold text-slate-900;
 }
 /* globals.css */
 .border-box {
@@ -65,7 +65,7 @@ strong {
     @apply xs:text-5xl text-4xl leading-[1.1] font-medium tracking-tight text-slate-900 sm:text-6xl lg:text-7xl;
   }
   .h2-display {
-    @apply text-4xl leading-9 font-thin tracking-tighter text-slate-900 md:text-5xl md:leading-12 md:font-normal lg:text-6xl;
+    @apply text-4xl leading-9 font-light tracking-tighter text-slate-900 md:text-5xl md:leading-12 md:font-normal lg:text-6xl;
   }
   .h3-display {
     @apply text-2xl leading-8 font-medium tracking-tight text-slate-700 md:text-3xl;
@@ -92,6 +92,9 @@ strong {
   }
   .flex-half {
     flex: 0.5 0 0px;
+  }
+  .flex-center {
+    @apply flex items-center justify-center;
   }
 
   .inside-container {
@@ -216,6 +219,7 @@ strong {
   .list {
     z-index: 1;
     display: flex;
+    justify-content: space-between;
     width: 100%;
     gap: 40px;
     min-width: calc(var(--width) * var(--quantity));
@@ -237,7 +241,7 @@ strong {
       transform: translateX(0);
     }
     to {
-      transform: translateX(calc(-100vw - var(--width)));
+      transform: translateX(calc(var(--width) * var(--quantity) * -1.2));
     }
   }
 
@@ -277,6 +281,10 @@ strong {
   .check-icon {
     @apply h-5 w-5 flex-shrink-0 rounded-full p-0.5;
   }
+  .large-brand-text {
+    font-size: clamp(90px, 20vw, 240px);
+    line-height: 1.1;
+  }
 }
 
 @keyframes wordCycle {
@@ -313,10 +321,24 @@ strong {
   }
 }
 
+.word-container {
+  height: var(--word-height, 40px);
+}
+@media (max-width: 1028px) {
+  .word-container {
+    height: var(--word-height-mobile);
+  }
+}
 .word {
   height: var(--word-height, 40px);
   position: absolute;
   white-space: nowrap;
+}
+
+@media (max-width: 1028px) {
+  .word {
+    height: var(--word-height-mobile, 30px);
+  }
 }
 
 .word:nth-child(1) {

@@ -102,7 +102,7 @@ const child = {
 
 export const PricingSection: React.FC = () => {
   return (
-    <section className="inside-container">
+    <section className="inside-container" id="pricing">
       <div className="flex flex-col gap-6 md:flex-row md:gap-12">
         <h2 className="h2-display flex-full">
           Simple pricing. <br />
@@ -157,9 +157,10 @@ export const PricingSection: React.FC = () => {
         <motion.div
           initial="hidden"
           whileInView="show"
-          viewport={{ once: false, margin: "-200px" }}
+          // TODO figure out margin
+          viewport={{ once: true, margin: "-100px" }}
           variants={{
-            hidden: {},
+            hidden: { opacity: 1, y: 0 },
             show: {
               transition: {
                 staggerChildren: 0.25,

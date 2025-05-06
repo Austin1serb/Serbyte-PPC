@@ -97,7 +97,7 @@ export function PricingCard({ plan, tagline, price, description, features, accen
         {/* Price */}
         <div>
           <p className={clsx("text-xs tracking-wide uppercase", accent === "black" ? "text-gray-400" : "text-slate-500")}>Starting at</p>
-          <p className={clsx("text-3xl font-bold", c.priceText)}>{price}</p>
+          <p className={clsx("text-3xl font-semibold", c.priceText)}>{price}</p>
         </div>
       </header>
 

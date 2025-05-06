@@ -13,7 +13,7 @@ export const Projects: React.FC = () => {
 
       <ProjectsGrid />
 
-      <Link href="/projects" className="group flex items-center justify-center gap-2">
+      <Link href="/ " className="group flex items-center justify-center gap-2">
         <span className="body-display-xl underline-hover">View Featured Projects</span>
         <svg
           stroke="currentColor"

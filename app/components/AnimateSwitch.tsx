@@ -2,6 +2,7 @@
 
 import { ReactNode } from "react"
 import { useIsMobile } from "../hooks/useIsMobile"
+import { useReducedMotion } from "motion/react"
 
 interface AnimateSwitchProps {
   animate: ReactNode
@@ -14,6 +15,7 @@ interface AnimateSwitchProps {
  */
 export function AnimateSwitch({ animate, static: staticVersion, breakpoint = 768 }: AnimateSwitchProps) {
   const isMobile = useIsMobile(breakpoint)
+  const prefersReducedMotion = useReducedMotion()
 
-  return <>{!isMobile ? animate : staticVersion}</>
+  return <>{!isMobile && !prefersReducedMotion ? animate : staticVersion}</>
 }
