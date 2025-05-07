@@ -10,16 +10,16 @@ import { FAQSection } from "./components/FAQ/FAQSection"
 const WebDesignPage: React.FC = () => {
   return (
     <main>
-      {/* <HeroV2 />
+      <HeroV2 />
       <LogoMarquee />
       <Projects />
-      <LargeReview /> */}
+      <LargeReview />
       <ServicesSectionV2 />
-      {/* <AboutSectionV2 />
+      <AboutSectionV2 />
       <PricingSection />
       <LogoMarquee avatars={false} />
       <ReviewSectionV2 />
-      <FAQSection /> */}
+      <FAQSection />
     </main>
   )
 }
