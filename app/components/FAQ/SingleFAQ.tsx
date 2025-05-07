@@ -6,7 +6,10 @@ export const SingleFAQ = ({ question, answer, index }: { question: string; answe
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div className="flex flex-col overflow-hidden rounded-2xl border border-gray-300 text-sm hover:cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
+    <div
+      className="flex flex-col overflow-hidden rounded-2xl border border-gray-300 text-sm hover:cursor-pointer relative bg-white"
+      onClick={() => setIsOpen(!isOpen)}
+    >
       {/* header */}
       <div className="flex items-center justify-between gap-4 px-4 py-3">
         <motion.div

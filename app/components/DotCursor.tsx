@@ -1,83 +1,90 @@
 "use client"
+
 import clsx from "clsx"
-import { AnimatePresence, motion, useMotionValue, useSpring } from "framer-motion"
-import { useLayoutEffect, useRef, useState } from "react"
+import { frame, motion, useSpring, AnimatePresence } from "motion/react"
+import { useEffect, useRef, useState } from "react"
 
 const WIDTH = 20
 const HEIGHT = 20
+const springConfig = { stiffness: 400, damping: 50, restDelta: 0.001 }
 
-export const DotCursor = () => {
-  const [text, setText] = useState("")
-  const hovered = useRef(false)
-  const [whileHover, setWhileHover] = useState(false)
+export function DotCursor() {
+  const ref = useRef<HTMLDivElement>(null)
 
-  const springConfig = { stiffness: 400, damping: 50 }
-
-  const x = useMotionValue(300)
-  const y = useMotionValue(300)
-  const springX = useSpring(x, springConfig)
-  const springY = useSpring(y, springConfig)
-
+  // pointer position + size springs
+  const x = useSpring(0, springConfig)
+  const y = useSpring(0, springConfig)
   const width = useSpring(WIDTH, springConfig)
   const height = useSpring(HEIGHT, springConfig)
 
-  useLayoutEffect(() => {
-    const move = (e: MouseEvent) => {
-      x.set(e.clientX)
-      y.set(e.clientY)
+  const [label, setLabel] = useState("")
+  const [hovering, setHovering] = useState(false)
+
+  useEffect(() => {
+    /* -------- pointer follow -------- */
+    const handlePointerMove = ({ clientX, clientY }: MouseEvent) => {
+      frame.read(() => {
+        x.set(clientX)
+        y.set(clientY)
+      })
     }
+    window.addEventListener("pointermove", handlePointerMove)
 
-    const targets = document.querySelectorAll(".hover-target")
+    /* -------- hover targets -------- */
+    const targets = document.querySelectorAll<HTMLElement>(".hover-target")
 
-    const enter = (e: Event) => {
+    const onEnter = (e: Event) => {
       const target = e.currentTarget as HTMLElement
-      hovered.current = true
-      setText(target.getAttribute("data-text") || "")
-      width.set(80)
-      height.set(30)
-      setWhileHover(true)
+      setLabel(target.getAttribute("data-text") ?? "")
+      frame.read(() => {
+        width.set(80)
+        height.set(30)
+      })
+      setHovering(true)
     }
 
-    const leave = () => {
-      hovered.current = false
-      setText("")
-      width.set(WIDTH)
-      height.set(HEIGHT)
-      setWhileHover(false)
+    const onLeave = () => {
+      setLabel("")
+      frame.read(() => {
+        width.set(WIDTH)
+        height.set(HEIGHT)
+      })
+      setHovering(false)
     }
 
-    window.addEventListener("mousemove", move)
     targets.forEach((el) => {
-      el.addEventListener("mouseenter", enter)
-      el.addEventListener("mouseleave", leave)
+      el.addEventListener("mouseenter", onEnter)
+      el.addEventListener("mouseleave", onLeave)
     })
 
     return () => {
-      window.removeEventListener("mousemove", move)
+      window.removeEventListener("pointermove", handlePointerMove)
       targets.forEach((el) => {
-        el.removeEventListener("mouseenter", enter)
-        el.removeEventListener("mouseleave", leave)
+        el.removeEventListener("mouseenter", onEnter)
+        el.removeEventListener("mouseleave", onLeave)
       })
     }
-  }, [x, y])
+  }, [])
 
   return (
     <motion.div
-      style={{ x: springX, y: springY, width, height }}
+      ref={ref}
+      style={{ x, y, width, height }}
       className={clsx(
-        "backdrop-blur-[1px] pointer-events-none fixed top-0 left-0 z-[60] flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white p-1 text-center text-xs font-bold text-clip mix-blend-difference",
-        whileHover ? "backdrop-blur-[2px]" : ""
+        "pointer-events-none fixed top-0 left-0 z-[60] flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white p-1 text-xs font-bold mix-blend-difference",
+        hovering ? "backdrop-blur-[2px]" : "backdrop-blur-[1px]"
       )}
     >
       <AnimatePresence>
-        {text && (
+        {label && (
           <motion.span
+            key={label}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { opacity: { duration: 0.3, delay: 0.2 } } }}
             exit={{ opacity: 0 }}
             className="text-nowrap"
           >
-            {text}
+            {label}
           </motion.span>
         )}
       </AnimatePresence>

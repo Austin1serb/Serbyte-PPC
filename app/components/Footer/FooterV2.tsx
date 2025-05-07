@@ -5,16 +5,18 @@ const words: ExactlyFourWords = ["build", "create", "design", "convert"]
 
 export const FooterV2: React.FC = () => {
   return (
-    <footer className="relative bg-black">
-      <div className="z-20 mx-auto flex w-full max-w-6xl flex-col gap-12 px-5.5 pt-8 pb-40 text-white md:gap-16 md:px-11 md:pt-12 lg:pb-54">
+    <footer className="relative bg-black z-4">
+      <div className="bg-noise opacity-10!" />
+
+      <div className=" mx-auto flex w-full max-w-6xl flex-col gap-12 px-5.5 pt-8 pb-40 text-white md:gap-16 md:px-11 md:pt-12 lg:pb-54">
         <div className="flex flex-col gap-12">
           <h2 className="h2-display text-5xl leading-16 text-white lg:text-6xl">
             Let&apos;s&nbsp;
-            <TextSlider words={words} height={54} mobileHeight={48} />
+            <TextSlider words={words} height={54} mobileHeight={50} />
             <br />
             <span className="text-[#828282]">incredible work together.</span>
           </h2>
-          <ul className="flex flex-col justify-between border-b border-[#828282] pb-6 md:flex-row md:items-center">
+          <ul className="flex flex-col justify-between border-b border-white/30 pb-6 md:flex-row md:items-center">
             <li className="flex flex-col gap-2">
               <span className="text-[#828282]">Email</span>
               <Link href="mailto:owner@serbyte.net">owner@serbyte.net</Link>

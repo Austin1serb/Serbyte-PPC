@@ -12,6 +12,10 @@
   --font-switzer: var(--font-switzer);
 }
 
+:root {
+  --gradient: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+}
+
 button {
   @apply text-sm hover:cursor-pointer;
 }
@@ -20,10 +24,20 @@ strong {
 }
 /* globals.css */
 .border-box {
-  @apply pointer-events-none absolute inset-0 z-10 mx-3.5 max-w-6xl border-x border-gray-200 md:mx-5 lg:mx-8;
+  @apply pointer-events-none absolute inset-0 z-3 max-w-6xl border-x border-gray-200 mx-3.5 md:mx-5 lg:mx-8;
+}
+.bg-noise {
+  background-image: url("/assets/framer-noise.png");
+  background-size: 128px;
+  background-repeat: repeat;
+  /* animation: noiseAnimation 1000s infinite; */
+  @apply absolute inset-0 opacity-4 z-0 max-w-6xl mx-3.5 md:mx-5 lg:mx-8;
 }
 @media (min-width: 1208px) {
   .border-box {
+    @apply mx-auto;
+  }
+  .bg-noise {
     @apply mx-auto;
   }
 }
@@ -111,7 +125,7 @@ strong {
   }
 
   .bubble-hover {
-    @apply low:inline-block relative isolate overflow-hidden rounded-full;
+    @apply inline-block relative overflow-hidden rounded-full;
   }
   .bubble-hover::before {
     @apply pointer-events-none absolute inset-0 z-[-1] -translate-x-full rounded-full opacity-0 blur-[1px] transition-all duration-300 will-change-transform content-[''];
@@ -284,6 +298,18 @@ strong {
   .large-brand-text {
     font-size: clamp(90px, 20vw, 240px);
     line-height: 1.1;
+  }
+  @media (max-width: 768px) {
+    .large-brand-text {
+      font-size: clamp(80px, 22vw, 160px);
+      line-height: 1.4;
+    }
+  }
+  @media (max-width: 480px) {
+    .large-brand-text {
+      font-size: clamp(90px, 20vw, 120px);
+      line-height: 200%;
+    }
   }
 }
 

@@ -5,7 +5,7 @@ import { CalIcon } from "../../icons/Cal.icon"
 
 export const NotSureCard: React.FC = () => {
   return (
-    <div className="bottom-shadow flex flex-col gap-8 rounded-2xl border border-gray-300 p-8">
+    <div className="bottom-shadow flex flex-col gap-8 rounded-2xl border border-gray-300 p-8 relative bg-white">
       <div className="flex flex-col gap-6">
         <Image src={profilePhoto} height={64} width={64} alt="Austin Serb" className="custom-shadow aspect-square rounded-full object-cover" />
         <h3 className="h3-display font-normal text-nowrap">

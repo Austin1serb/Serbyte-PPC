@@ -1,5 +1,3 @@
-"use client"
-
 interface BottomBlurOverlayProps {
   layers?: number // How many blur layers (default 8)
   height?: string // Height of the blur area (default "20vh")
@@ -19,7 +17,7 @@ export const BottomBlurOverlay: React.FC<BottomBlurOverlayProps> = ({ layers = 8
   const blurs = blursStrengths[strength - 1]
 
   return (
-    <div className={`pointer-events-none fixed inset-0 z-50 overflow-hidden ${className}`}>
+    <div className={`pointer-events-none fixed inset-0 z-5 overflow-hidden ${className}`}>
       {Array.from({ length: layers }).map((_, i) => {
         const blur = blurs[i] || blurs[blurs.length - 1]
 

@@ -8,6 +8,7 @@ import clsx from "clsx"
 import { useMotionValueEvent } from "motion/react"
 import { useScroll } from "motion/react"
 import { isClient } from "../utils/isClient"
+import { Icon } from "./Icon"
 
 export const TopBarV2: React.FC = () => {
   const [scrollDirection, setScrollDirection] = useState("up")
@@ -26,15 +27,15 @@ export const TopBarV2: React.FC = () => {
   ]
 
   return (
-    <nav className="font-switzer fixed top-5 z-50 flex w-full justify-center text-base md:text-sm">
+    <nav className="font-switzer fixed top-5 z-5 flex w-full justify-center text-base md:text-sm">
       {/* Wrapper that grows/shrinks on mobile */}
-      <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white/40 shadow-sm backdrop-blur-sm">
+      <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white/50 shadow-sm backdrop-blur-sm">
         <div className="relative flex flex-col">
           {/* Top Row (always visible) */}
           <div className="flex items-center gap-4 px-4 py-3 md:gap-8 md:py-2.5">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 font-medium">
-              <Image src={serbyteLogo} alt="Serbyte Development" width={24} height={24} className="rounded drop-shadow-md" />
+              <Icon name="serbyte" height={24} width={24} className="rounded drop-shadow-md" />
               Serbyte Development
             </Link>
 

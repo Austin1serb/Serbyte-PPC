@@ -8,6 +8,7 @@ import localFont from "next/font/local"
 import "./globalsV2.css"
 import { Metadata } from "next"
 import { SITE_SLUGS } from "@/config/siteConfig"
+import { TopBarV2 } from "./components/TopBarV2"
 
 const switzer = localFont({
   src: "./fonts/Switzer-Variable.woff2",
@@ -28,36 +29,19 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
-      <body>
-        <main className={`${switzer.variable} font-switzer relative overflow-hidden bg-white subpixel-antialiased`}>
-          <AnimateSwitch
-            animate={
-              <>
-                <DotCursor />
-                <SplashCursor />
-              </>
-            }
-            static={null}
-          />
+      <body className="relative bg-white">
+        <AnimateSwitch animate={<DotCursor />} static={null} />
+        <SplashCursor />
+        <div className="bg-noise" />
+
+        <div className={`${switzer.variable} font-switzer overflow-hidden subpixel-antialiased`}>
+          <div className="border-box" />
+          <BottomBlurOverlay />
+          <TopBarV2 />
           {children}
 
-          <div className="border-box">
-            <BottomBlurOverlay />
-            <div
-              style={{
-                width: "100%",
-                height: "100%",
-                backgroundSize: 128,
-                backgroundRepeat: "repeat",
-                backgroundImage: 'url("https://framerusercontent.com/images/rR6HYXBrMmX4cRpXfXUOvpvpB0.png")',
-                opacity: "0.06",
-                borderRadius: 0,
-                position: "relative",
-              }}
-            />
-          </div>
           <FooterV2 />
-        </main>
+        </div>
       </body>
     </html>
   )

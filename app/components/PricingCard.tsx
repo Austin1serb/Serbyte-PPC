@@ -1,5 +1,4 @@
 import clsx from "clsx"
-import Image, { StaticImageData } from "next/image"
 import { Icon } from "./Icon"
 import { AnimatedInViewProps } from "./AnimatedInView"
 import * as motion from "motion/react-client"
@@ -15,7 +14,7 @@ export interface PricingCardProps extends Partial<AnimatedInViewProps<"article">
   accent?: Accent
 
   ctaLabel?: string
-  icon: StaticImageData
+  icon: string
 }
 
 /* -------------------------------------------------------------------------- */
@@ -82,7 +81,7 @@ export function PricingCard({ plan, tagline, price, description, features, accen
         {/* tagline + icon row */}
         <div className="flex items-center gap-4 md:gap-2.5">
           <div className={clsx("flex-center aspect-square max-h-16 min-h-13 max-w-16 min-w-13 rounded-xl border border-slate-400 text-lg", c.iconBg)}>
-            <Image src={icon} alt={plan} width={48} height={48} className="h-3/5 w-3/5 object-contain saturate-150" />
+            <Icon name={icon} height={40} width={40} className="p-1" />
           </div>
 
           <div className="flex flex-col gap-1 py-2">
@@ -97,7 +96,7 @@ export function PricingCard({ plan, tagline, price, description, features, accen
         {/* Price */}
         <div>
           <p className={clsx("text-xs tracking-wide uppercase", accent === "black" ? "text-gray-400" : "text-slate-500")}>Starting at</p>
-          <p className={clsx("text-3xl font-semibold", c.priceText)}>{price}</p>
+          <p className={clsx("text-3xl font-medium", c.priceText)}>{price}</p>
         </div>
       </header>
 

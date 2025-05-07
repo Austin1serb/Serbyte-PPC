@@ -40,7 +40,7 @@ export function ProjectsGrid({ className }: { className?: string }) {
 
   return (
     <section id="projects" className={clsx("relative", className)}>
-      <div className="relative z-1 grid grid-cols-1 grid-rows-1 gap-4 md:grid-cols-2 md:grid-rows-2 lg:gap-10">
+      <div className="relative z-4 grid grid-cols-1 grid-rows-1 gap-4 md:grid-cols-2 md:grid-rows-2 lg:gap-10">
         <AnimatedCard
           key={"Entitled"}
           src={entitledPreview}
@@ -70,9 +70,6 @@ export function ProjectsGrid({ className }: { className?: string }) {
           color="#024EFC"
         />
       </div>
-
-      {/* subtle background ellipse */}
-      <div className="pointer-events-none absolute inset-0 z-0 w-full bg-radial from-indigo-100 via-transparent to-transparent blur-3xl lg:block"></div>
     </section>
   )
 }
