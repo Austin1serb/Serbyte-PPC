@@ -1,6 +1,4 @@
-"use client"
-
-import { motion } from "motion/react"
+import * as m from "motion/react-m"
 import Image from "next/image"
 import profilePhoto from "@/public/assets/founder.jpg"
 
@@ -40,19 +38,14 @@ const avatar = {
 
 export function AnimatedAvatars() {
   return (
-    <motion.div className="flex items-center gap-4 whitespace-nowrap" initial="hidden" animate="visible" variants={container}>
+    <m.div className="flex items-center gap-4 whitespace-nowrap" initial="hidden" animate="visible" variants={container}>
       <div className="flex flex-row-reverse -space-x-3 space-x-reverse">
         {MEDALS.map((src, i) => (
-          <motion.div
-            key={i}
-            className="relative inline-block h-8 w-8 overflow-hidden rounded-full ring-3 ring-white"
-            animate={{ zIndex: -i }}
-            variants={avatar}
-          >
+          <m.div key={i} className="relative inline-block h-8 w-8 overflow-hidden rounded-full ring-3 ring-white" animate={{ zIndex: -i }} variants={avatar}>
             <Image src={src} alt="Reviewer avatar" width={40} height={40} className="h-full w-full object-cover" sizes="40px" />
-          </motion.div>
+          </m.div>
         ))}
       </div>
-    </motion.div>
+    </m.div>
   )
 }

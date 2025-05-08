@@ -1,10 +1,10 @@
 "use client"
 
-import { motion } from "motion/react"
 import { useInView } from "react-intersection-observer"
 import { ElementType } from "react"
 import { useReducedMotion } from "motion/react"
 import clsx from "clsx"
+import * as m from "motion/react-m"
 
 interface Props<T extends ElementType> {
   text: string
@@ -55,7 +55,7 @@ export const AnimatedText = <T extends ElementType>({ text, element, once = fals
   }
 
   // Motion-wrapped tag (e.g. motion.h2, motion.span, etc.)
-  const MotionTag = motion[element as keyof typeof motion] as ElementType
+  const MotionTag = m[element as keyof typeof m] as ElementType
 
   return (
     <MotionTag
@@ -69,9 +69,9 @@ export const AnimatedText = <T extends ElementType>({ text, element, once = fals
       animate={inView ? "visible" : "hidden"}
     >
       {text.split("").map((char, i) => (
-        <motion.span key={i} variants={letter} aria-hidden="true">
+        <m.span key={i} variants={letter} aria-hidden="true">
           {char === " " ? "\u00A0" : char}
-        </motion.span>
+        </m.span>
       ))}
     </MotionTag>
   )

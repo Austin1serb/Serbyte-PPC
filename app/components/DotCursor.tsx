@@ -1,8 +1,8 @@
 "use client"
-
 import clsx from "clsx"
-import { frame, motion, useSpring, AnimatePresence } from "motion/react"
+import { frame, useSpring, AnimatePresence } from "motion/react"
 import { useEffect, useRef, useState } from "react"
+import * as m from "motion/react-m"
 
 const WIDTH = 20
 const HEIGHT = 20
@@ -67,17 +67,17 @@ export function DotCursor() {
   }, [])
 
   return (
-    <motion.div
+    <m.div
       ref={ref}
       style={{ x, y, width, height }}
       className={clsx(
-        "pointer-events-none fixed top-0 left-0 z-[60] flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white p-1 text-xs font-bold mix-blend-difference",
+        "pointer-events-none fixed top-0 left-0 z-[60] flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white p-1 text-xs font-semibold mix-blend-difference",
         hovering ? "backdrop-blur-[2px]" : "backdrop-blur-[1px]"
       )}
     >
       <AnimatePresence>
         {label && (
-          <motion.span
+          <m.span
             key={label}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { opacity: { duration: 0.3, delay: 0.2 } } }}
@@ -85,9 +85,9 @@ export function DotCursor() {
             className="text-nowrap"
           >
             {label}
-          </motion.span>
+          </m.span>
         )}
       </AnimatePresence>
-    </motion.div>
+    </m.div>
   )
 }

@@ -1,15 +1,13 @@
 @import "tailwindcss";
 
-@custom-variant low (:where(&));
-
 @theme inline {
-  /* --font-nike: var(--font-nike-futura), "Arial Black", "Arial", sans-serif;
-  --font-helvetica: var(--font-helvetica-now), sans-serif, "Helvetica", "Arial"; */
   --animate-marquee: marquee 20s linear infinite;
   --animate-rotate: rotate-left-right 10s ease-in-out infinite;
   --animate-wordCycle: wordCycle 8s linear infinite;
   --breakpoint-xs: 460px;
   --font-switzer: var(--font-switzer);
+  --color-gray-500: #828282;
+  --color-gray-200: #dedede;
 }
 
 :root {
@@ -31,7 +29,7 @@ strong {
   background-size: 128px;
   background-repeat: repeat;
   /* animation: noiseAnimation 1000s infinite; */
-  @apply absolute inset-0 opacity-4 z-0 max-w-6xl mx-3.5 md:mx-5 lg:mx-8;
+  @apply absolute inset-0 opacity-4 z-0 max-w-6xl mx-3.5 md:mx-5 lg:mx-8 pointer-events-none;
 }
 @media (min-width: 1208px) {
   .border-box {
@@ -48,7 +46,7 @@ strong {
   25%,
   100% {
     transform: translateY(0px);
-    background-color: #898989;
+    background-color: #aaaaaa;
   }
 
   /* mid-bounce apex and overshoot */
@@ -58,7 +56,7 @@ strong {
   }
   18% {
     transform: translateY(1px);
-    background-color: #898989;
+    background-color: #aaaaaa;
   }
 
   /* after 25 % the dot sits still until the loop ends */
@@ -78,8 +76,35 @@ strong {
   .h1-display {
     @apply xs:text-5xl text-4xl leading-[1.1] font-medium tracking-tight text-slate-900 sm:text-6xl lg:text-7xl;
   }
+  h2-display {
+    font-size: var(--text-4xl);
+    line-height: var(--tw-leading, var(--text-4xl--line-height));
+    --tw-leading: calc(var(--spacing) * 9);
+    line-height: calc(var(--spacing) * 9);
+    --tw-font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-light);
+    --tw-tracking: var(--tracking-tighter);
+    letter-spacing: var(--tracking-tighter);
+    color: var(--color-slate-900);
+  }
+  @media (min-width: 48rem) {
+    .h2-display {
+      font-size: var(--text-5xl);
+      line-height: var(--tw-leading, var(--text-5xl--line-height));
+      --tw-leading: calc(var(--spacing) * 12);
+      line-height: calc(var(--spacing) * 12);
+      --tw-font-weight: var(--font-weight-normal);
+      font-weight: var(--font-weight-normal);
+    }
+  }
+  @media (min-width: 64rem) {
+    .h2-display {
+      font-size: var(--text-6xl);
+      line-height: var(--tw-leading, var(--text-6xl--line-height));
+    }
+  }
   .h2-display {
-    @apply text-4xl leading-9 font-light tracking-tighter text-slate-900 md:text-5xl md:leading-12 md:font-normal lg:text-6xl;
+    @apply text-4xl leading-9 tracking-tighter text-slate-900 md:text-5xl md:leading-12 lg:text-6xl;
   }
   .h3-display {
     @apply text-2xl leading-8 font-medium tracking-tight text-slate-700 md:text-3xl;
@@ -94,8 +119,17 @@ strong {
   .body-display-xl {
     @apply text-xl leading-6 tracking-tight text-slate-700 md:text-2xl;
   }
+  .link-display {
+    @apply text-sm hover:text-gray-500 transition-colors duration-200;
+  }
   .underline-hover {
-    @apply relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-black after:opacity-50 after:transition-transform after:content-[''];
+    @apply relative;
+    &::after {
+      @apply absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-black opacity-50 transition-transform content-[''];
+    }
+    &:hover {
+      @apply after:scale-x-100;
+    }
   }
 
   .flex-1-5 {
@@ -115,9 +149,6 @@ strong {
     @apply mx-auto flex w-full max-w-6xl flex-col gap-12 px-5.5 py-12 md:gap-16 md:px-11 md:py-24 lg:py-32;
   }
 
-  .underline-hover:hover {
-    @apply after:scale-x-100;
-  }
   .bounce {
     animation: customBounce 2s cubic-bezier(0.8, 0.5, 0.2, 1.4) infinite;
     @apply h-1.5 w-1.5 rounded-full bg-black;
@@ -126,21 +157,25 @@ strong {
 
   .bubble-hover {
     @apply inline-block relative overflow-hidden rounded-full;
-  }
-  .bubble-hover::before {
-    @apply pointer-events-none absolute inset-0 z-[-1] -translate-x-full rounded-full opacity-0 blur-[1px] transition-all duration-300 will-change-transform content-[''];
-    background-size: 200% 200%;
-    background-position: 100% 100%;
-    background-image: var(--gradient);
-  }
-  .bubble-hover.active::before {
-    @apply translate-x-0 opacity-70;
-    animation: fill-from-left 5s ease-out infinite;
-  }
+    &::before {
+      @apply pointer-events-none absolute inset-0 z-[-1] -translate-x-full rounded-full opacity-0 blur-[1px] transition-all duration-300 will-change-transform content-[''];
+      background-size: 200% 200%;
+      background-position: 100% 100%;
+      background-image: var(--gradient);
+    }
 
-  .bubble-hover:hover::before {
-    @apply translate-x-0 opacity-30;
-    animation: fill-from-left 5s ease-out infinite;
+    &:hover {
+      &::before {
+        @apply translate-x-0 opacity-30;
+        animation: fill-from-left 5s ease-out infinite;
+      }
+    }
+    &.active {
+      &::before {
+        @apply translate-x-0 opacity-70;
+        animation: fill-from-left 5s ease-out infinite;
+      }
+    }
   }
 
   blockquote::before {
@@ -188,6 +223,9 @@ strong {
 }
 
 @layer utilities {
+  .footer-link {
+    @apply flex items-center justify-center rounded-full bg-gray-100 p-1 w-8 h-8 hover:-translate-y-0.5 transition-all duration-200 hover:bg-white hover:*:scale-105 *:duration-200;
+  }
   .bottom-shadow {
     box-shadow:
       0 0.5971439051427296px 0.5971439051427296px -0.9375px #00000012,
@@ -305,7 +343,7 @@ strong {
       line-height: 1.4;
     }
   }
-  @media (max-width: 480px) {
+  @media (max-width: 540px) {
     .large-brand-text {
       font-size: clamp(90px, 20vw, 120px);
       line-height: 200%;
@@ -339,18 +377,19 @@ strong {
     transform: translateY(0%);
   }
   /* word is off screen - faded out with blur. text is not waiting 40px above the element waiting to start the animation again */
-  40%,
+  45%,
   100% {
     filter: blur(5px);
     opacity: 0;
-    transform: translateY(-var(--word-height, 40px));
+
+    transform: translateY(calc(-1 * var(--word-height, 40px)));
   }
 }
 
 .word-container {
   height: var(--word-height, 40px);
 }
-@media (max-width: 1028px) {
+@media (max-width: 768px) {
   .word-container {
     height: var(--word-height-mobile);
   }
@@ -361,7 +400,7 @@ strong {
   white-space: nowrap;
 }
 
-@media (max-width: 1028px) {
+@media (max-width: 768px) {
   .word {
     height: var(--word-height-mobile, 30px);
   }

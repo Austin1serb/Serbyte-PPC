@@ -4,18 +4,17 @@ import SplashCursor from "./components/SplashCursor"
 import { BottomBlurOverlay } from "./ui/BlurBottomOverlay"
 import { FooterV2 } from "./components/Footer/FooterV2"
 import localFont from "next/font/local"
-
 import "./globalsV2.css"
 import { Metadata } from "next"
 import { SITE_SLUGS } from "@/config/siteConfig"
 import { TopBarV2 } from "./components/TopBarV2"
-
+import { LazyMotion, domAnimation } from "motion/react"
 const switzer = localFont({
   src: "./fonts/Switzer-Variable.woff2",
   variable: "--font-switzer",
   display: "swap",
   style: "normal",
-  weight: "100 200 300 400 500 600 700 800 900",
+  weight: "300 400 500 600 700",
 })
 
 export const metadata: Metadata = {
@@ -30,18 +29,20 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body className="relative bg-white">
-        <AnimateSwitch animate={<DotCursor />} static={null} />
-        <SplashCursor />
-        <div className="bg-noise" />
+        <LazyMotion strict features={domAnimation}>
+          <AnimateSwitch animate={<DotCursor />} static={null} />
+          <SplashCursor />
+          <div className="bg-noise" />
 
-        <div className={`${switzer.variable} font-switzer overflow-hidden subpixel-antialiased`}>
-          <div className="border-box" />
-          <BottomBlurOverlay />
-          <TopBarV2 />
-          {children}
+          <div className={`${switzer.variable} font-switzer overflow-hidden subpixel-antialiased`}>
+            <div className="border-box" />
+            <BottomBlurOverlay />
+            <TopBarV2 />
+            {children}
 
-          <FooterV2 />
-        </div>
+            <FooterV2 />
+          </div>
+        </LazyMotion>
       </body>
     </html>
   )

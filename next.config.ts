@@ -1,6 +1,7 @@
 import type { NextConfig } from "next"
+import withBundleAnalyzer from "@next/bundle-analyzer"
 
-// const withAnalyzer = withBundleAnalyzer({ enabled: process.env.ANALYZE === "true" })
+const withAnalyzer = withBundleAnalyzer({ enabled: process.env.ANALYZE === "true" })
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
@@ -15,14 +16,4 @@ const nextConfig: NextConfig = {
   },
 }
 
-export default nextConfig
-
-// MDX
-// const withMDX = createMDX({
-//   extension: /\.mdx?$/,
-//   options: {
-//     remarkPlugins: [remarkGfm],
-//   },
-// })
-
-// export default withMDX(nextConfig)
+export default withAnalyzer(nextConfig)

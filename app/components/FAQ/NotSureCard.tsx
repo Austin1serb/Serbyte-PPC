@@ -1,5 +1,5 @@
 import Image from "next/image"
-import profilePhoto from "../../images/profile.jpg"
+import profilePhoto from "../../images/profile.webp"
 import { Icon } from "../Icon"
 import { CalIcon } from "../../icons/Cal.icon"
 

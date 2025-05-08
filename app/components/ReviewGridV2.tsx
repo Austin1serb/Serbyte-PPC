@@ -3,7 +3,7 @@ import { useIsMobile } from "../hooks/useIsMobile"
 import { ReviewCard } from "./ReviewCard"
 import profilePhoto from "@/public/assets/founder.jpg"
 import { useRef } from "react"
-import * as motion from "motion/react-client"
+import * as m from "motion/react-m"
 
 /* data ------------------------------------------------------------------ */
 
@@ -57,7 +57,7 @@ export function ReviewGridV2() {
     <section id="review-grid" className="relative">
       {/* viewport - visible window, acts as drag constraint */}
       <div ref={viewportRef} className="overflow-hidden pb-2">
-        <motion.ul
+        <m.ul
           drag={isMobile ? "x" : false}
           dragConstraints={viewportRef} /* 👈 automatic limit */
           dragMomentum
@@ -68,7 +68,7 @@ export function ReviewGridV2() {
           {CARDS.map((card, i) => (
             <ReviewCard {...card} key={i} className="w-72 flex-shrink-0 md:w-auto" />
           ))}
-        </motion.ul>
+        </m.ul>
       </div>
     </section>
   )

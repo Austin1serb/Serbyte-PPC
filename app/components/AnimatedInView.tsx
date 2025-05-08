@@ -1,7 +1,6 @@
-"use client"
-
-import { motion, MotionProps } from "motion/react"
+import { MotionProps } from "motion/react"
 import { ElementType, ReactNode } from "react"
+import * as m from "motion/react-m"
 
 export interface AnimatedInViewProps<T extends ElementType> extends MotionProps {
   element: T
@@ -33,7 +32,7 @@ export const AnimatedInView: React.FC<AnimatedInViewProps<ElementType>> = ({
   stagger,
   ...rest
 }) => {
-  const MotionTag = motion[element as keyof typeof motion] as ElementType
+  const MotionTag = m[element as keyof typeof m] as ElementType
 
   const directions = {
     left: { x: -offsetPx },

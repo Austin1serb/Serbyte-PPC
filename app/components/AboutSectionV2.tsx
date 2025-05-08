@@ -1,7 +1,7 @@
 import Image from "next/image"
 import clsx from "clsx"
-import profilePhoto from "../images/profile.jpg"
-import signature from "../images/signature.png"
+import profilePhoto from "../images/profile.webp"
+import signature from "../images/signature.webp"
 
 export const AboutSectionV2 = ({ className = "" }: { className?: string }) => {
   return (
@@ -19,7 +19,7 @@ export const AboutSectionV2 = ({ className = "" }: { className?: string }) => {
           <div className="flex-full flex flex-col gap-6">
             {/* portrait + overlay icons */}
 
-            <Image src={profilePhoto} alt="Austin Serb" className="custom-shadow aspect-[4/4.5] rounded-2xl object-cover" />
+            <Image src={profilePhoto} alt="Austin Serb" className="custom-shadow aspect-[4/4.5] rounded-2xl object-cover saturate-125" />
 
             {/* name + role */}
             <div>

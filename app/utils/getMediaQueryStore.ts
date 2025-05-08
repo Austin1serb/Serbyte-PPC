@@ -32,7 +32,6 @@ export function getMediaQueryStore(breakpoint: number): MediaQueryStore {
   }
 
   const update = () => {
-    console.log("update: ", mqList.matches)
     store.isMatch = mqList.matches
     store.subscribers.forEach((cb) => cb())
   }

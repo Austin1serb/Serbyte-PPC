@@ -1,8 +1,8 @@
 import clsx from "clsx"
 import { Icon } from "./Icon"
 import { AnimatedInViewProps } from "./AnimatedInView"
-import * as motion from "motion/react-client"
-
+import * as m from "motion/react-m"
+import { Variants } from "motion/react"
 type Accent = "white" | "slate" | "black"
 
 export interface PricingCardProps extends Partial<AnimatedInViewProps<"article">> {
@@ -12,9 +12,9 @@ export interface PricingCardProps extends Partial<AnimatedInViewProps<"article">
   description: string
   features: string[]
   accent?: Accent
-
   ctaLabel?: string
   icon: string
+  variants?: Variants
 }
 
 /* -------------------------------------------------------------------------- */
@@ -62,16 +62,12 @@ const palette: Record<
   },
 }
 
-/* -------------------------------------------------------------------------- */
-/*                                COMPONENT                                   */
-/* -------------------------------------------------------------------------- */
-
-export function PricingCard({ plan, tagline, price, description, features, accent = "slate", ctaLabel = "Get started", icon, ...rest }: PricingCardProps) {
+export function PricingCard({ plan, tagline, price, description, features, accent = "slate", ctaLabel = "Get started", icon, variants }: PricingCardProps) {
   const c = palette[accent]
 
   return (
-    <motion.article
-      {...rest}
+    <m.article
+      variants={variants}
       className={clsx("flex-full flex max-w-sm min-w-2xs flex-col gap-4 rounded-3xl border border-slate-400 p-8 shadow-lg md:gap-6", c.cardBg, c.cardText)}
     >
       {/* ------------------------------------------------------------------ */}
@@ -124,6 +120,6 @@ export function PricingCard({ plan, tagline, price, description, features, accen
       >
         {ctaLabel}
       </button>
-    </motion.article>
+    </m.article>
   )
 }

@@ -3,7 +3,7 @@ import { useScroll, useTransform, useSpring } from "motion/react"
 import { StaticImageData } from "next/image"
 import { useIsMobile } from "../hooks/useIsMobile"
 import { Card } from "./Card"
-import * as motion from "motion/react-client"
+import * as m from "motion/react-m"
 export type HeroOffset = {
   x: number
   y: number
@@ -50,7 +50,7 @@ export function AnimatedCard({
 
   return (
     <div data-grid-id={gridId}>
-      <motion.div
+      <m.div
         initial={{ opacity: 0, x: 0, y: 0, scale: 1, rotate: 0 }}
         animate={{ opacity: 1, transition: { opacity: { delay: 0.35 } } }}
         style={{ x, y, scale, rotate, willChange: "transform, opacity" }}
@@ -58,7 +58,7 @@ export function AnimatedCard({
         data-text="View Project"
       >
         <Card src={src} alt={alt} index={index} color={color} />
-      </motion.div>
+      </m.div>
     </div>
   )
 }

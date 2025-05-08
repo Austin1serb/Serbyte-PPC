@@ -1,12 +1,34 @@
 import { HeroV2 } from "./components/HeroV2"
 import { LogoMarquee } from "./components/LogoMarquee"
 import { Projects } from "./components/Projects"
-import { LargeReview } from "./components/LargeReview"
-import { ServicesSectionV2 } from "./components/ServicesSectionV2"
-import { AboutSectionV2 } from "./components/AboutSectionV2"
-import { PricingSection } from "./components/PricingSection"
-import { ReviewSectionV2 } from "./components/ReviewSectionV2"
-import { FAQSection } from "./components/FAQ/FAQSection"
+
+// Dynamic import These
+import dynamic from "next/dynamic"
+
+const LargeReview = dynamic(() => import("./components/LargeReview").then((mod) => mod.LargeReview), {
+  ssr: true,
+})
+
+const ServicesSectionV2 = dynamic(() => import("./components/ServicesSectionV2").then((mod) => mod.ServicesSectionV2), {
+  ssr: true,
+})
+
+const AboutSectionV2 = dynamic(() => import("./components/AboutSectionV2").then((mod) => mod.AboutSectionV2), {
+  ssr: true,
+})
+
+const PricingSection = dynamic(() => import("./components/PricingSection").then((mod) => mod.PricingSection), {
+  ssr: true,
+})
+
+const ReviewSectionV2 = dynamic(() => import("./components/ReviewSectionV2").then((mod) => mod.ReviewSectionV2), {
+  ssr: true,
+})
+
+const FAQSection = dynamic(() => import("./components/FAQ/FAQSection").then((mod) => mod.FAQSection), {
+  ssr: true,
+})
+
 const WebDesignPage: React.FC = () => {
   return (
     <main>

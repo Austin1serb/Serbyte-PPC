@@ -1,11 +1,12 @@
 import Image from "next/image"
-import automedicsLogo from "../images/automedics-full.png"
-import bespokeLogo from "../images/bespoke-full.png"
-import iaoLogo from "../images/iao-full.png"
-import entitledLogo from "../images/entitled-full.png"
-import herbaLogo from "../images/herba-full.png"
+import automedicsLogo from "../images/automedics-full.webp"
+import bespokeLogo from "../images/bespoke-full.webp"
+import iaoLogo from "../images/iao-full.webp"
+import entitledLogo from "../images/entitled-full.webp"
+import herbaLogo from "../images/herba-full.webp"
 import { AnimatedAvatars } from "./AnimatedAvatars"
 import { AnimatedElement } from "./AnimatedElement"
+import clsx from "clsx"
 
 const LOGOS = [automedicsLogo, bespokeLogo, herbaLogo, iaoLogo, entitledLogo]
 
@@ -37,7 +38,7 @@ export const LogoMarquee = ({ avatars = true }: { avatars?: boolean }) => {
             </AnimatedElement>
           </div>
         ) : (
-          <p className="body-display-lg whitespace-nowrap">
+          <p className={clsx("body-display-lg whitespace-nowrap", { "max-md:text-center max-md:w-full": !avatars })}>
             Trusted by <strong>many</strong>
           </p>
         )}

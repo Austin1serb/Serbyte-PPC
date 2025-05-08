@@ -2,7 +2,7 @@ import { PricingCard } from "./PricingCard"
 import { ActivityDot } from "./ActivityDot"
 import { FinancingCard } from "./FinancingCard"
 import { Icon } from "./Icon"
-import * as motion from "motion/react-client"
+import * as m from "motion/react-m"
 
 const listItems = [
   {
@@ -95,7 +95,7 @@ export const PricingSection: React.FC = () => {
           </div>
         </div>
         <h3 className="h3-display w-full text-center my-8 border-b border-gray-200 pb-4">Packages</h3>
-        <motion.div
+        <m.div
           initial="hidden"
           whileInView="show"
           // TODO figure out margin
@@ -158,7 +158,7 @@ export const PricingSection: React.FC = () => {
             accent="black"
             variants={child}
           />
-        </motion.div>
+        </m.div>
       </div>
     </section>
   )
