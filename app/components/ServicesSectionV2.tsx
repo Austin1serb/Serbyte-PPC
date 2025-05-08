@@ -1,6 +1,7 @@
 // import Image from "next/image"
 import clsx from "clsx"
 import { Icon } from "./Icon"
+import { H2, Text } from "../ui/Elements"
 
 const tech = [
   { name: "Figma", src: "figma" },
@@ -27,18 +28,20 @@ export const ServicesSectionV2: React.FC = ({ className = "" }: { className?: st
   return (
     <section id="services" className={clsx("inside-container items-start justify-center bg-white md:flex-row md:items-center", className)}>
       {/*  LEFT COLUMN  */}
-      <div className="flex-1-5 flex flex-col gap-16">
-        <h2 className="h2-display">
+      <div className="[flex:1.5_0_0px] flex flex-col gap-16">
+        <H2>
           <span className="text-slate-700">Services that</span>
           <br />
           <span className="text-nowrap">
             supercharge <span className="text-slate-500">your</span> <br /> business.
           </span>
-        </h2>
+        </H2>
 
         {/* Tech Stack */}
         <div>
-          <p className="body-display mb-4">My tech stack</p>
+          <Text size="sm" className="mb-4">
+            My tech stack
+          </Text>
 
           <ul className="flex flex-wrap gap-8">
             {tech.map(({ name, src }) => (
@@ -57,13 +60,15 @@ export const ServicesSectionV2: React.FC = ({ className = "" }: { className?: st
       </div>
 
       {/*  RIGHT COLUMN  */}
-      <ul className="flex-full grid grid-cols-2 gap-12 md:grid-cols-1">
+      <ul className="[flex:1_0_0px] grid grid-cols-2 gap-12 md:grid-cols-1">
         {services.map(({ name, src }) => (
           <li key={name} className="flex items-center gap-3">
             <span className="flex h-10 w-10 items-center justify-center rounded-full bg-black shadow-md">
               <Icon name={src} width={25} height={30} className="object-contain invert" />
             </span>
-            <span className="body-display-lg">{name}</span>
+            <Text as="span" size="sm">
+              {name}
+            </Text>
           </li>
         ))}
       </ul>

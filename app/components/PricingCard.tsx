@@ -17,14 +17,10 @@ export interface PricingCardProps extends Partial<AnimatedInViewProps<"article">
   variants?: Variants
 }
 
-/* -------------------------------------------------------------------------- */
-/*                         PALETTE / UTILITY MAPPINGS                         */
-/* -------------------------------------------------------------------------- */
-
 const palette: Record<
   Accent,
   {
-    cardBg: string
+    cardBg?: string
     cardText: string
     iconBg: string
     priceText: string
@@ -34,7 +30,6 @@ const palette: Record<
   }
 > = {
   white: {
-    cardBg: "bg-gradient-to-tr from-white to-slate-50",
     cardText: "text-slate-900",
     iconBg: "bg-slate-200",
     priceText: "text-slate-900",
@@ -43,7 +38,6 @@ const palette: Record<
     btnText: "text-white",
   },
   slate: {
-    cardBg: "bg-gradient-to-tr from-slate-50 to-slate-200",
     cardText: "text-slate-900",
     iconBg: "bg-white",
     priceText: "text-slate-900",
@@ -52,7 +46,6 @@ const palette: Record<
     btnText: "text-white",
   },
   black: {
-    cardBg: "bg-gradient-to-tr from-slate-700 to-slate-900",
     cardText: "text-white",
     iconBg: "bg-slate-700",
     priceText: "text-white",
@@ -68,15 +61,17 @@ export function PricingCard({ plan, tagline, price, description, features, accen
   return (
     <m.article
       variants={variants}
-      className={clsx("flex-full flex max-w-sm min-w-2xs flex-col gap-4 rounded-3xl border border-slate-400 p-8 shadow-lg md:gap-6", c.cardBg, c.cardText)}
+      className={clsx("[flex:1_0_0px] flex max-w-sm min-w-2xs flex-col gap-4 rounded-3xl border border-slate-400 p-8 shadow-lg md:gap-6", c.cardBg, c.cardText)}
     >
-      {/* ------------------------------------------------------------------ */}
-      {/* Header                                                            */}
-      {/* ------------------------------------------------------------------ */}
       <header className="flex flex-col gap-3 md:gap-4 lg:gap-5">
         {/* tagline + icon row */}
         <div className="flex items-center gap-4 md:gap-2.5">
-          <div className={clsx("flex-center aspect-square max-h-16 min-h-13 max-w-16 min-w-13 rounded-xl border border-slate-400 text-lg", c.iconBg)}>
+          <div
+            className={clsx(
+              "flex items-center justify-center aspect-square max-h-16 min-h-13 max-w-16 min-w-13 rounded-xl border border-slate-400 text-lg",
+              c.iconBg
+            )}
+          >
             <Icon name={icon} height={40} width={40} className="p-1" />
           </div>
 
@@ -96,27 +91,25 @@ export function PricingCard({ plan, tagline, price, description, features, accen
         </div>
       </header>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* Feature list                                                      */}
-      {/* ------------------------------------------------------------------ */}
       <section className="flex flex-col gap-3">
         <p className="text-sm font-semibold">What&apos;s included</p>
         <ul className="flex flex-col gap-2">
           {features.map((f) => (
             <li key={f} className="flex items-start gap-2 text-sm text-nowrap">
-              <Icon name="check" className={clsx("check-icon bg-slate-500/70", c.checkText)} />
+              <Icon name="check" className={clsx("check-icon", c.checkText)} />
               <span>{f}</span>
             </li>
           ))}
         </ul>
       </section>
 
-      {/* ------------------------------------------------------------------ */}
-      {/* CTA                                                               */}
-      {/* ------------------------------------------------------------------ */}
       <button
         type="button"
-        className={clsx("bubble-hover button-shadow mt-auto rounded-full px-6 py-3 text-sm font-medium transition hover:translate-y-0.5", c.btnBg, c.btnText)}
+        className={clsx(
+          "bubble-hover button-shadow hover:cursor-pointer mt-auto rounded-full px-6 py-3 text-sm font-medium transition hover:translate-y-0.5",
+          c.btnBg,
+          c.btnText
+        )}
       >
         {ctaLabel}
       </button>

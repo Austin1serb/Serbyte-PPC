@@ -2,6 +2,7 @@ import Link from "next/link"
 import { ExactlyFourWords, TextSlider } from "./TextSlider"
 import { Socials } from "../Socials"
 import { SITE_NAP } from "@/config/siteConfig"
+import { H2 } from "@/app/ui/Elements"
 
 const words: ExactlyFourWords = ["build", "create", "design", "convert"]
 
@@ -31,26 +32,26 @@ const socialLinks = [
 export const FooterV2: React.FC = () => {
   return (
     <footer className="relative bg-black z-4">
-      <div className="bg-noise opacity-10!" />
+      <div className="bg-noise opacity-10 bg-repeat absolute inset-0 z-0 max-w-6xl mx-3.5 md:mx-5 lg:mx-8 pointer-events-none" />
 
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5.5 sm:pb-40 pb-32 text-white md:gap-16 md:px-11 pt-12 md:pt-16 lg:pb-54">
         <div className="flex flex-col gap-8 md:gap-12">
-          <h2 className="h2-display text-5xl leading-12 md:leading-14 text-white md:text-6xl">
+          <H2 className="text-5xl leading-12 md:leading-14 text-white md:text-6xl">
             Lets&nbsp;
             <TextSlider words={words} height={50} mobileHeight={41} />
             <br />
             <span className="text-gray-500">incredible work together.</span>
-          </h2>
+          </H2>
           <ul className="flex flex-col justify-between border-b border-gray-500 pb-6 md:flex-row md:items-center md:gap-8 gap-5.5 text-sm">
             <li className="flex flex-col gap-1 md:gap-2">
               <span className="text-gray-500">Email</span>
-              <Link href="mailto:owner@serbyte.net" className="link-display">
+              <Link href="mailto:owner@serbyte.net" className="text-sm hover:text-gray-500 transition-colors duration-200">
                 owner@serbyte.net
               </Link>
             </li>
             <li className="flex flex-col gap-1 md:gap-2">
               <span className="text-gray-500">Call or Text</span>
-              <Link href="tel:+12086164308" className="link-display">
+              <Link href="tel:+12086164308" className="text-sm hover:text-gray-500 transition-colors duration-200">
                 +1 (208) 616-4308
               </Link>
             </li>
@@ -66,10 +67,10 @@ export const FooterV2: React.FC = () => {
               <span className="text-[#b8b8b8]">Based in </span> Seattle, Washington, USA
             </h3>
             <div className="flex gap-4">
-              <Link href="/terms-of-service" className="link-display">
+              <Link href="/terms-of-service" className="text-sm hover:text-gray-500 transition-colors duration-200">
                 Terms of Service
               </Link>
-              <Link href="/privacy-policy" className="link-display">
+              <Link href="/privacy-policy" className="text-sm hover:text-gray-500 transition-colors duration-200">
                 Privacy Policy
               </Link>
             </div>

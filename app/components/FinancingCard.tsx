@@ -1,5 +1,6 @@
 import Image from "next/image"
 import lightningIcon from "../images/lightning.png"
+import { Typography } from "../ui/Elements"
 
 export function FinancingCard() {
   return (
@@ -11,10 +12,10 @@ export function FinancingCard() {
         </div>
 
         {/* Text */}
-        <div className="body-display-lg mt-auto">
+        <Typography as="article" size="lg" className="mt-auto">
           <h3 className="leading-tight text-slate-400">Financing available for</h3>
           <h3 className="leading-tight text-white">brands who move fast.</h3>
-        </div>
+        </Typography>
 
         {/* Lightning Icon */}
         <div className="absolute -top-2 -right-12 aspect-square w-72 rotate-25 overflow-visible @sm:w-80 @md:-right-8">

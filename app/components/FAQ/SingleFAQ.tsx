@@ -25,7 +25,12 @@ export const SingleFAQ = ({ question, answer, index }: { question: string; answe
         </m.div>
 
         {/* toggle */}
-        <button aria-label={isOpen ? "Close" : "Open"} type="button" className="relative flex h-5 w-5 items-center justify-center" title="Toggle answer">
+        <button
+          aria-label={isOpen ? "Close" : "Open"}
+          type="button"
+          className="relative flex h-5 w-5 items-center justify-center text-sm hover:cursor-pointer"
+          title="Toggle answer"
+        >
           <div className="absolute h-0.5 w-2.5 rounded-full bg-black" />
           <m.div
             initial={false}

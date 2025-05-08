@@ -7,6 +7,7 @@ import herbaLogo from "../images/herba-full.webp"
 import { AnimatedAvatars } from "./AnimatedAvatars"
 import { AnimatedElement } from "./AnimatedElement"
 import clsx from "clsx"
+import { Text } from "../ui/Elements"
 
 const LOGOS = [automedicsLogo, bespokeLogo, herbaLogo, iaoLogo, entitledLogo]
 
@@ -38,9 +39,9 @@ export const LogoMarquee = ({ avatars = true }: { avatars?: boolean }) => {
             </AnimatedElement>
           </div>
         ) : (
-          <p className={clsx("body-display-lg whitespace-nowrap", { "max-md:text-center max-md:w-full": !avatars })}>
-            Trusted by <strong>many</strong>
-          </p>
+          <Text size="lg" className={clsx("whitespace-nowrap", { "max-md:text-center max-md:w-full": !avatars })}>
+            Trusted by <strong className="font-semibold text-slate-900">many</strong>
+          </Text>
         )}
 
         {/* right: marquee */}

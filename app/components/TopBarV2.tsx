@@ -73,7 +73,10 @@ export const TopBarV2: React.FC = () => {
               onClick={() => {
                 if (isClient && window?.innerWidth <= 768) setOpen((prev) => !prev)
               }}
-              className={clsx("group right-3 h-6 w-6 duration-200 md:absolute", scrollDirection === "up" ? "md:opacity-0" : "opacity-100 delay-400")}
+              className={clsx(
+                "group right-3 h-6 w-6 duration-200 md:absolute text-sm hover:cursor-pointer",
+                scrollDirection === "up" ? "md:opacity-0" : "opacity-100 delay-400"
+              )}
             >
               <DotMenuIcon open={open} />
             </button>

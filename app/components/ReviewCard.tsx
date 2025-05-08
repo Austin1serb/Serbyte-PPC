@@ -1,6 +1,7 @@
 import { StaticImageData } from "next/image"
 import { ClientInfoCard } from "./ClientInfoCard"
 import clsx from "clsx"
+import { Text } from "../ui/Elements"
 
 export type ReviewCard = {
   img: StaticImageData
@@ -28,7 +29,7 @@ export const ReviewCard: React.FC<ReviewCard> = ({ img, name, title, review, cla
           </div>
           <span className="relative after:absolute after:-top-2 after:right-0 after:text-7xl after:text-slate-500 after:content-['”']" />
         </div>
-        <p className="body-display">{review}</p>
+        <Text size="sm">{review}</Text>
       </div>
 
       <ClientInfoCard img={img} name={name} title={title} />

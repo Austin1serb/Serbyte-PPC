@@ -3,6 +3,7 @@ import { ActivityDot } from "./ActivityDot"
 import { FinancingCard } from "./FinancingCard"
 import { Icon } from "./Icon"
 import * as m from "motion/react-m"
+import { H2, H3, Text, Typography } from "../ui/Elements"
 
 const listItems = [
   {
@@ -44,57 +45,60 @@ export const PricingSection: React.FC = () => {
   return (
     <section className="inside-container bg-white" id="pricing">
       <div className="flex flex-col gap-6 md:flex-row md:gap-12">
-        <h2 className="h2-display flex-full">
+        <H2 className="[flex:1_0_0px]">
           Simple pricing. <br />
           <span className="text-slate-500">Standout designs.</span>
-        </h2>
-        <p className="body-display-lg flex-half max-w-md">
-          <strong>Clear costs, no hidden fees.</strong> Select from monthly subscriptions or individual project rates.{" "}
-        </p>
+        </H2>
+        <Typography as="div" size="lg" className="[flex:0.5_0_0px] max-w-md">
+          <strong className="font-semibold text-slate-900">Clear costs, no hidden fees.</strong> Select from monthly subscriptions or individual project rates.
+        </Typography>
       </div>
 
       <ul className="flex flex-col justify-between gap-12 sm:flex-row lg:gap-16">
         {listItems.map((item) => (
-          <li key={item.title} className="body-display flex max-w-3xs flex-col gap-2">
+          <Typography key={item.title} as="li" size="sm" className="flex max-w-3xs flex-col gap-2">
             <h3 className="flex items-center gap-1 font-medium text-black">
               <span className="text-slate-500">{item.icon}</span> {item.title}
             </h3>
             <p>{item.description}</p>
-          </li>
+          </Typography>
         ))}
       </ul>
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-2 md:flex-row">
-          <div className="flex-full relative flex flex-col justify-end gap-6 rounded-xl bg-white p-6 md:max-w-md md:p-8">
+          <div className="[flex:1_0_0px] relative flex flex-col justify-end gap-6 rounded-xl bg-white p-6 md:max-w-md md:p-8">
             <FinancingCard />
             <span className="inline-flex items-center gap-2 self-start rounded-full border border-gray-100 bg-white px-3 py-2 text-xs font-medium shadow-lg">
               <ActivityDot /> 1 spot left for {month}
             </span>
-            <h3 className="h3-display text-black">Get Started Today</h3>
-            <p className="body-display">Full-service web design & development, SEO, and marketing.</p>
+            <H3 className="text-black">Get Started Today</H3>
+            <Text size="lg">Full-service web design & development, SEO, and marketing.</Text>
           </div>
 
-          <div className="flex-1-5 flex flex-col gap-6 rounded-xl bg-white p-6 md:p-8 relative">
+          <div className="[flex:1.5_0_0px] flex flex-col gap-6 rounded-xl bg-white p-6 md:p-8 relative">
             <div className="flex flex-col gap-4">
-              <h3 className="h3-display text-black">Unlimited Design</h3>
-              <p className="body-display">One flat monthly rate for unlimited design requests. Ideal for ongoing design requirements.</p>
+              <H3 className="text-black">Unlimited Design</H3>
+              <Text size="sm">One flat monthly rate for unlimited design requests. Ideal for ongoing design requirements.</Text>
             </div>
             <hr className="border-gray-200" />
-            <h3 className="h3-display text-black">Included in all plans</h3>
+            <H3 className="text-black">Included in all plans</H3>
             <ul className="grid grid-cols-2 gap-x-2 gap-y-4 text-sm leading-4 font-medium">
               {features.map((feature, index) => (
                 <li key={feature + index} className="flex items-center gap-1">
-                  <Icon name="check" className="check-icon text-slate-500" />
+                  <Icon name="check" className="check-icon" />
                   {feature}
                 </li>
               ))}
             </ul>
-            <button type="button" className="bubble-hover button-shadow mt-6 w-fit rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition">
+            <button
+              type="button"
+              className="bubble-hover button-shadow mt-6 w-fit rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition hover:cursor-pointer"
+            >
               Book a Discovery Call
             </button>
           </div>
         </div>
-        <h3 className="h3-display w-full text-center my-8 border-b border-gray-200 pb-4">Packages</h3>
+        <H3 className="w-full text-center my-8 border-b border-gray-200 pb-4">Packages</H3>
         <m.div
           initial="hidden"
           whileInView="show"
