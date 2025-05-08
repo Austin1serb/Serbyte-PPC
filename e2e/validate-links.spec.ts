@@ -1,9 +1,9 @@
 import { ALL_PAGES, SITE_CONFIG } from "@/config/siteConfig"
 import { test, expect, type Page } from "@playwright/test"
 
-const SKIP_LINK_VALIDATION = "true"
+const SKIP_LINK_VALIDATION = false
 
-if (SKIP_LINK_VALIDATION === "true") {
+if (SKIP_LINK_VALIDATION) {
   console.warn("Skipping link validation")
   test.skip()
 }

@@ -15,7 +15,7 @@ export const H2: React.FC<HeadingProps<"h2">> = ({ children, ...rest }) => {
 
 export const H3: React.FC<HeadingProps<"h3">> = ({ children, ...rest }) => {
   return (
-    <h3 {...rest} className={clsx("text-2xl leading-8 font-medium tracking-tight text-slate-700 md:text-3xl", rest.className)}>
+    <h3 {...rest} className={clsx("text-2xl leading-8 font-medium tracking-tight text-slate-800 md:text-3xl", rest.className)}>
       {children}
     </h3>
   )
@@ -36,7 +36,7 @@ export function Text({ as: Component = "p", size = "base", className = "", ...pr
     xl: "text-xl leading-6 md:text-2xl",
   }
 
-  return <Component {...props} className={`${sizeClasses[size]} text-slate-700 tracking-tight ${className}`} />
+  return <Component {...props} className={`${sizeClasses[size]} text-slate-800 tracking-tight ${className}`} />
 }
 
 interface TypographyProps extends React.HTMLAttributes<HTMLElement> {

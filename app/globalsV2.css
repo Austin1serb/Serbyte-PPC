@@ -4,7 +4,8 @@
   --animate-marquee: marquee 20s linear infinite;
   --animate-rotate: rotate-left-right 10s ease-in-out infinite;
   --animate-wordCycle: wordCycle 8s linear infinite;
-  --breakpoint-xs: 460px;
+  --breakpoint-xs: 30rem;
+  --breakpoint-custom: 75.5rem;
   --font-switzer: var(--font-switzer);
   --color-gray-500: #828282;
   --color-gray-200: #dedede;
@@ -177,8 +178,6 @@
       box-shadow 0.3s ease-in-out,
       translate 0.3s ease-in-out;
   }
-
-  /* LogoMarquee */
 
   .slider {
     width: 100%;

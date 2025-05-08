@@ -4,6 +4,7 @@ import { FinancingCard } from "./FinancingCard"
 import { Icon } from "./Icon"
 import * as m from "motion/react-m"
 import { H2, H3, Text, Typography } from "../ui/Elements"
+import { CalIcon } from "../icons/Cal.icon"
 
 const listItems = [
   {
@@ -85,17 +86,20 @@ export const PricingSection: React.FC = () => {
             <ul className="grid grid-cols-2 gap-x-2 gap-y-4 text-sm leading-4 font-medium">
               {features.map((feature, index) => (
                 <li key={feature + index} className="flex items-center gap-1">
-                  <Icon name="check" className="check-icon" />
+                  <Icon name="check" className="check-icon text-white" />
                   {feature}
                 </li>
               ))}
             </ul>
-            <button
-              type="button"
-              className="bubble-hover button-shadow mt-6 w-fit rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition hover:cursor-pointer"
-            >
-              Book a Discovery Call
-            </button>
+            <div className="flex items-center gap-6 mt-6">
+              <button
+                type="button"
+                className="bubble-hover button-shadow  w-fit rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition hover:cursor-pointer"
+              >
+                Book a Discovery Call
+              </button>
+              <CalIcon className="w-20 h-20 text-gray-500" />
+            </div>
           </div>
         </div>
         <H3 className="w-full text-center my-8 border-b border-gray-200 pb-4">Packages</H3>

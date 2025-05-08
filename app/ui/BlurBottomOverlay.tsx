@@ -33,7 +33,7 @@ export const BottomBlurOverlay: React.FC<BottomBlurOverlayProps> = ({ layers = 8
               position: "absolute",
               left: 0,
               right: 0,
-              bottom: 0,
+              bottom: -2,
               height: height,
               zIndex: i + 1,
               backdropFilter: `blur(${blur}px)`,

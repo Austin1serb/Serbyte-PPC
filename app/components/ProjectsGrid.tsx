@@ -16,13 +16,13 @@ export function ProjectsGrid({ className }: { className?: string }) {
   const isMobile = useIsMobile()
 
   const OFFSET_TUNING: Record<string, Partial<HeroOffset>> = {
-    iao: { rot: 10, s: isMobile ? 0.31 : 0.82, dx: isMobile ? -90 : -20, dy: 25 },
+    iao: { rot: 10, s: isMobile ? 0.31 : 0.82, dx: isMobile ? -90 : -20, dy: -10 },
 
-    entitled: { rot: -12, s: isMobile ? 0.36 : 0.8, dx: isMobile ? -90 : 0, dy: -5 },
+    entitled: { rot: -12, s: isMobile ? 0.36 : 0.8, dx: isMobile ? -90 : 0, dy: -20 },
 
-    automedics: { rot: 4, s: isMobile ? 0.33 : 0.81, dx: isMobile ? -90 : 0, dy: 0 },
+    automedics: { rot: 4, s: isMobile ? 0.33 : 0.81, dx: isMobile ? -90 : 0, dy: -15 },
 
-    bespoke: { rot: -5, s: isMobile ? 0.39 : 0.78, dx: isMobile ? -90 : 0, dy: 0 },
+    bespoke: { rot: -5, s: isMobile ? 0.39 : 0.78, dx: isMobile ? -90 : 0, dy: -15 },
   }
 
   const offsets = Object.fromEntries(

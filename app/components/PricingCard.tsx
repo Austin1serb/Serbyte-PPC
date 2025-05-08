@@ -30,6 +30,7 @@ const palette: Record<
   }
 > = {
   white: {
+    cardBg: "bg-gradient-to-tr from-white to-slate-50",
     cardText: "text-slate-900",
     iconBg: "bg-slate-200",
     priceText: "text-slate-900",
@@ -38,6 +39,7 @@ const palette: Record<
     btnText: "text-white",
   },
   slate: {
+    cardBg: "bg-gradient-to-tr from-slate-50 to-slate-200",
     cardText: "text-slate-900",
     iconBg: "bg-white",
     priceText: "text-slate-900",
@@ -46,10 +48,11 @@ const palette: Record<
     btnText: "text-white",
   },
   black: {
+    cardBg: "bg-gradient-to-tr from-slate-700 to-slate-900",
     cardText: "text-white",
     iconBg: "bg-slate-700",
     priceText: "text-white",
-    checkText: "text-white",
+    checkText: "text-slate-900",
     btnBg: "bg-white",
     btnText: "text-slate-800",
   },
@@ -61,7 +64,11 @@ export function PricingCard({ plan, tagline, price, description, features, accen
   return (
     <m.article
       variants={variants}
-      className={clsx("[flex:1_0_0px] flex max-w-sm min-w-2xs flex-col gap-4 rounded-3xl border border-slate-400 p-8 shadow-lg md:gap-6", c.cardBg, c.cardText)}
+      className={clsx(
+        "[flex:1_0_0px] flex max-w-sm min-w-2xs flex-col gap-4 rounded-3xl border border-slate-400 p-8 shadow-lg md:gap-6 ",
+        c.cardBg,
+        c.cardText
+      )}
     >
       <header className="flex flex-col gap-3 md:gap-4 lg:gap-5">
         {/* tagline + icon row */}

@@ -39,7 +39,7 @@ export const ServicesSectionV2: React.FC = ({ className = "" }: { className?: st
 
         {/* Tech Stack */}
         <div>
-          <Text size="sm" className="mb-4">
+          <Text size="base" className="mb-4">
             My tech stack
           </Text>
 
@@ -63,7 +63,7 @@ export const ServicesSectionV2: React.FC = ({ className = "" }: { className?: st
       <ul className="[flex:1_0_0px] grid grid-cols-2 gap-12 md:grid-cols-1">
         {services.map(({ name, src }) => (
           <li key={name} className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-black shadow-md">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-black shadow-md aspect-square">
               <Icon name={src} width={25} height={30} className="object-contain invert" />
             </span>
             <Text as="span" size="sm">

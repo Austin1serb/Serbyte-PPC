@@ -8,6 +8,7 @@ import { Metadata } from "next"
 import { SITE_SLUGS } from "@/config/siteConfig"
 import { TopBarV2 } from "./components/TopBarV2"
 import { LazyMotion, domAnimation } from "motion/react"
+import SplashCursor from "./components/SplashCursor"
 const switzer = localFont({
   src: "./fonts/Switzer-Variable.woff2",
   variable: "--font-switzer",
@@ -30,15 +31,14 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <body className="relative bg-white">
         <LazyMotion strict features={domAnimation}>
           <AnimateSwitch animate={<DotCursor />} static={null} />
-          {/* <SplashCursor /> */}
-          <div className="bg-noise [1208px]:mx-auto absolute inset-0 opacity-4 z-0 max-w-6xl mx-3.5 md:mx-5 lg:mx-8 pointer-events-none bg-repeat" />
+          <SplashCursor />
+          <div className="bg-noise absolute inset-0 opacity-4 z-0 max-w-6xl mx-3.5 md:mx-5 lg:mx-8 pointer-events-none bg-repeat custom:mx-auto" />
 
           <div className={`${switzer.variable} font-switzer overflow-hidden subpixel-antialiased`}>
-            <div className="pointer-events-none absolute inset-0 z-3 max-w-6xl border-x border-gray-200 mx-3.5 md:mx-5 lg:mx-8 [1208px]:mx-auto" />
+            <div className="pointer-events-none absolute inset-0 z-3 max-w-6xl border-x border-gray-200 mx-3.5 md:mx-5 lg:mx-8 custom:mx-auto" />
             <BottomBlurOverlay />
             <TopBarV2 />
             {children}
-
             <FooterV2 />
           </div>
         </LazyMotion>
