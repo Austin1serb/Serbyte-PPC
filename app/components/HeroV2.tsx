@@ -15,7 +15,7 @@ export const HeroV2 = () => {
             <ActivityDot /> Available for April &apos;25
           </AnimatedElement>
 
-          <h1 className="xs:text-5xl text-4xl leading-[1.1] font-medium tracking-tight text-slate-900 sm:text-6xl lg:text-7xl relative z-50">
+          <h1 className="xs:text-5xl text-4xl leading-[1.1] font-medium tracking-tight text-slate-900 sm:text-6xl lg:text-7xl relative z-5">
             <AnimatedElement element="span" offsetPx={20} delay={0.1} fadeDirection="left" className="inline-block">
               Design
             </AnimatedElement>{" "}

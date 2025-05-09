@@ -1,9 +1,7 @@
 "use client"
-import serbyteLogo from "@/public/serbyte-logo.png"
 import Link from "next/link"
 import { useState } from "react"
 import DotMenuIcon from "./DotMenuIcon"
-import Image from "next/image"
 import clsx from "clsx"
 import { useMotionValueEvent } from "motion/react"
 import { useScroll } from "motion/react"
@@ -27,7 +25,7 @@ export const TopBarV2: React.FC = () => {
   ]
 
   return (
-    <nav className="font-switzer fixed top-5 z-5 flex w-full justify-center text-base md:text-sm">
+    <nav className="font-switzer fixed top-5 z-10 flex w-full justify-center text-base md:text-sm">
       {/* Wrapper that grows/shrinks on mobile */}
       <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white/50 shadow-sm backdrop-blur-sm">
         <div className="relative flex flex-col">

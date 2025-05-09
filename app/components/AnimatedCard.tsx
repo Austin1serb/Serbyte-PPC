@@ -32,9 +32,7 @@ export function AnimatedCard({
   const isMobile = useIsMobile()
 
   const { scrollYProgress } = useScroll({
-    offset: isMobile
-      ? ["15% end", "start start"] // on mobile, complete animation earlier
-      : ["20% end", "start start"], // desktop = normal
+    offset: isMobile ? ["13% end", "start start"] : ["20% end", "start start"],
   })
 
   const progress = useSpring(scrollYProgress, { stiffness: 220, damping: 90 })
