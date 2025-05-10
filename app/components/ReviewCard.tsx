@@ -18,7 +18,7 @@ export const ReviewCard: React.FC<ReviewCard> = ({ img, name, title, review, cla
         className
       )}
     >
-      <div className="relative flex flex-col gap-3 md:gap-4">
+      <div className="relative flex flex-col gap-5 md:gap-4">
         <div className="flex justify-between">
           <div className="flex items-center gap-0.5">
             {Array.from({ length: 5 }).map((_, i) => (

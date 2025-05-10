@@ -1,14 +1,5 @@
-"use client"
-import { useIsMobile } from "../hooks/useIsMobile"
 import { ReviewCard } from "./ReviewCard"
 import profilePhoto from "@/public/assets/founder.jpg"
-import { useRef } from "react"
-import * as m from "motion/react-m"
-import { LazyMotion } from "motion/react"
-
-const loadDomMax = () => import("motion/react").then((m) => m.domMax)
-
-/* data ------------------------------------------------------------------ */
 
 const CARDS: ReviewCard[] = [
   {
@@ -48,33 +39,18 @@ const CARDS: ReviewCard[] = [
     review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
   },
 ] as const
-const STRIP_W = 1800 // 6 × 288 + 5 × 12
 
 export function ReviewGridV2() {
-  const isMobile = useIsMobile(768)
-
-  /* constraint element --------------------------------------------------- */
-  const viewportRef = useRef<HTMLDivElement>(null)
-
   return (
-    <LazyMotion features={loadDomMax}>
-      <section id="review-grid" className="relative">
-        {/* viewport - visible window, acts as drag constraint */}
-        <div ref={viewportRef} className="overflow-hidden pb-2">
-          <m.ul
-            drag={isMobile ? "x" : false}
-            dragConstraints={viewportRef} /* 👈 automatic limit */
-            dragMomentum
-            whileDrag={{ cursor: "grabbing" }}
-            style={{ touchAction: "pan-y", cursor: isMobile ? "grab" : "auto", width: isMobile ? STRIP_W : "100%" }}
-            className={isMobile ? `flex gap-3` : "grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-10 lg:grid-cols-3"}
-          >
-            {CARDS.map((card, i) => (
-              <ReviewCard {...card} key={i} className="w-72 flex-shrink-0 md:w-auto" />
-            ))}
-          </m.ul>
-        </div>
-      </section>
-    </LazyMotion>
+    <section id="review-grid" className="relative z-5">
+      {/* viewport - visible window, acts as drag constraint */}{" "}
+      <ul
+        className={"flex gap-3 px-5.5 md:grid grid-cols-1 sm:gap-6 md:grid-cols-2 md:gap-10 lg:grid-cols-3 max-md:overflow-x-auto [scrollbar-width:none] pb-2"}
+      >
+        {CARDS.map((card, i) => (
+          <ReviewCard {...card} key={i} className="w-72 flex-shrink-0 md:w-auto" />
+        ))}
+      </ul>
+    </section>
   )
 }

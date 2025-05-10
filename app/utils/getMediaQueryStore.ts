@@ -40,8 +40,6 @@ export function getMediaQueryStore(breakpoint: number): MediaQueryStore {
   // for Safari < 14
   else if (mqList.addListener) mqList.addListener(update)
 
-  if (store.subscribers.size === 0) mqList.removeEventListener?.("change", update)
-
   mediaQueryStores[breakpoint] = store
   return store
 }

@@ -1,25 +1,20 @@
-"use client"
-
-import { useInView } from "react-intersection-observer"
 import { ElementType } from "react"
-import { useReducedMotion } from "motion/react"
 import clsx from "clsx"
 import * as m from "motion/react-m"
 
 interface Props<T extends ElementType> {
   text: string
-  element?: T
+  element: T
   once?: boolean
   className?: string
-  threshold?: number
-  offsetPx?: number
+  margin?: number
 }
 
 const container = {
   hidden: {},
   visible: {
     transition: {
-      staggerChildren: 0.02,
+      staggerChildren: 0.03,
     },
   },
 }
@@ -27,7 +22,7 @@ const container = {
 const letter = {
   hidden: {
     opacity: 0,
-    y: "0.25em",
+    y: 20,
     filter: "blur(4px)",
   },
   visible: {
@@ -37,42 +32,26 @@ const letter = {
   },
 }
 
-export const AnimatedText = <T extends ElementType>({ text, element, once = false, className = "", threshold = 0.5, offsetPx = 0, ...rest }: Props<T>) => {
-  const prefersReducedMotion = useReducedMotion()
-  const { ref, inView } = useInView({
-    threshold,
-    rootMargin: `0px 0px -${offsetPx}px 0px`,
-    triggerOnce: once,
-  })
-
-  if (prefersReducedMotion) {
-    const StaticTag = element as ElementType
-    return (
-      <StaticTag ref={ref} className={className} aria-label={text} {...rest}>
-        {text}
-      </StaticTag>
-    )
-  }
-
+export const AnimatedText = <T extends ElementType>({ text, element, once = false, className = "", margin = 0, ...rest }: Props<T>) => {
   // Motion-wrapped tag (e.g. motion.h2, motion.span, etc.)
-  const MotionTag = m[element as keyof typeof m] as ElementType
+  // const MotionTag = m[element as keyof typeof m] as ElementType
 
   return (
-    <MotionTag
-      ref={ref}
-      className={clsx(className, "**:mr-[-0.01em]")}
+    <m.h2
+      {...rest}
+      className={clsx(className)}
       aria-label={text}
       role="heading"
-      {...rest}
       variants={container}
       initial="hidden"
-      animate={inView ? "visible" : "hidden"}
+      whileInView="visible"
+      viewport={{ once, margin: `0px 0px -${margin}px 0px` }}
     >
       {text.split("").map((char, i) => (
-        <m.span key={i} variants={letter} aria-hidden="true">
+        <m.span key={i} variants={letter} aria-hidden="true" className="inline-block">
           {char === " " ? "\u00A0" : char}
         </m.span>
       ))}
-    </MotionTag>
+    </m.h2>
   )
 }

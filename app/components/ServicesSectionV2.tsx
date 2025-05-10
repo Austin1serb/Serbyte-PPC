@@ -39,7 +39,7 @@ export const ServicesSectionV2: React.FC = ({ className = "" }: { className?: st
 
         {/* Tech Stack */}
         <div>
-          <Text size="base" className="mb-4">
+          <Text size="base" className="mb-8">
             My tech stack
           </Text>
 
@@ -47,11 +47,18 @@ export const ServicesSectionV2: React.FC = ({ className = "" }: { className?: st
             {tech.map(({ name, src }) => (
               <li key={name}>
                 <div className="group relative">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-gray-200 bg-white/90 shadow-sm backdrop-blur">
+                  <input placeholder={name} type="radio" className="hidden peer" id={name} />
+
+                  <label
+                    htmlFor={name}
+                    className="flex h-14 w-14 items-center justify-center rounded-xl border border-gray-200 bg-white/90 shadow-sm backdrop-blur"
+                  >
                     <Icon name={src} width={30} height={30} className="object-contain" />
-                  </div>
+                  </label>
                   {/* optional tooltip */}
-                  <span className="absolute -top-0 left-1/2 -translate-x-1/2 text-xs opacity-0 transition group-hover:opacity-100">{name}</span>
+                  <span className="absolute -top-7 left-1/2 -translate-x-1/2 text-xs opacity-0 transition-opacity duration-300 group-hover:opacity-100 bg-black text-white rounded-full px-2 py-1 peer-checked:opacity-100">
+                    {name}
+                  </span>
                 </div>
               </li>
             ))}

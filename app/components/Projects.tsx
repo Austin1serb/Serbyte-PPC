@@ -12,7 +12,7 @@ export const Projects: React.FC = () => {
         <AnimatedText
           element="h2"
           text="Latest Projects"
-          offsetPx={200}
+          margin={200}
           className="text-4xl leading-9 tracking-tighter md:text-5xl md:leading-12 lg:text-6xl inline-block whitespace-nowrap text-white"
         />
       </div>

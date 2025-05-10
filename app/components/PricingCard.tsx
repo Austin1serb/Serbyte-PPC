@@ -103,7 +103,7 @@ export function PricingCard({ plan, tagline, price, description, features, accen
         <ul className="flex flex-col gap-2">
           {features.map((f) => (
             <li key={f} className="flex items-start gap-2 text-sm text-nowrap">
-              <Icon name="check" className={clsx("check-icon", c.checkText)} />
+              <Icon name="check" height={20} width={20} className={clsx("check-icon", c.checkText)} />
               <span>{f}</span>
             </li>
           ))}

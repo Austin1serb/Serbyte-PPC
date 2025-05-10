@@ -12,8 +12,10 @@ export const TopBarV2: React.FC = () => {
   const [scrollDirection, setScrollDirection] = useState("up")
   const [open, setOpen] = useState(false)
   const { scrollY } = useScroll()
+  const isDesktop = typeof window !== "undefined" && window.innerWidth >= 768
 
   useMotionValueEvent(scrollY, "change", (current) => {
+    if (!isDesktop) return
     const diff = current - (scrollY.getPrevious() ?? 0)
     setScrollDirection(diff > 0 ? "down" : "up")
   })

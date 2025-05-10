@@ -32,7 +32,7 @@ export function AnimatedCard({
   const isMobile = useIsMobile()
 
   const { scrollYProgress } = useScroll({
-    offset: isMobile ? ["13% end", "start start"] : ["20% end", "start start"],
+    offset: isMobile ? ["13% end", "start start"] : ["18% end", "start start"],
   })
 
   const progress = useSpring(scrollYProgress, { stiffness: 220, damping: 90 })
@@ -52,7 +52,7 @@ export function AnimatedCard({
         initial={{ opacity: 0, x: 0, y: 0, scale: 1, rotate: 0 }}
         animate={{ opacity: 1, transition: { opacity: { delay: 0.35 } } }}
         style={{ x, y, scale, rotate, willChange: "transform, opacity" }}
-        className="hover-target group relative rounded-2xl"
+        className="hover-target group relative rounded-2xl w-full h-full"
         data-text="View Project"
       >
         <Card src={src} alt={alt} index={index} color={color} />

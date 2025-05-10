@@ -1,5 +1,4 @@
 import { AnimateSwitch } from "./components/AnimateSwitch"
-import { DotCursor } from "./components/DotCursor"
 import { BottomBlurOverlay } from "./ui/BlurBottomOverlay"
 import { FooterV2 } from "./components/Footer/FooterV2"
 import localFont from "next/font/local"
@@ -9,6 +8,9 @@ import { SITE_SLUGS } from "@/config/siteConfig"
 import { TopBarV2 } from "./components/TopBarV2"
 import { LazyMotion, domAnimation } from "motion/react"
 import SplashCursor from "./components/SplashCursor"
+import ComponentRouter from "./components/DesktopCursor"
+import { DotCursor } from "./components/DotCursor"
+import DesktopCursor from "./components/DesktopCursor"
 const switzer = localFont({
   src: "./fonts/Switzer-Variable.woff2",
   variable: "--font-switzer",
@@ -30,7 +32,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang="en">
       <body className="relative bg-white">
         <LazyMotion strict features={domAnimation}>
-          <AnimateSwitch animate={<DotCursor />} static={null} />
+          <DesktopCursor />
           <SplashCursor />
           <div className="bg-noise absolute inset-0 opacity-4 z-0 max-w-6xl mx-3.5 md:mx-5 lg:mx-8 pointer-events-none bg-repeat custom:mx-auto" />
 
