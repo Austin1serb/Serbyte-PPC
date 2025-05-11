@@ -11,12 +11,14 @@ import SplashCursor from "./components/SplashCursor"
 import ComponentRouter from "./components/DesktopCursor"
 import { DotCursor } from "./components/DotCursor"
 import DesktopCursor from "./components/DesktopCursor"
+
 const switzer = localFont({
   src: "./fonts/Switzer-Variable.woff2",
   variable: "--font-switzer",
   display: "swap",
   style: "normal",
   weight: "300 400 500 600 700",
+  fallback: ["helvetica", "sans-serif"],
 })
 
 export const metadata: Metadata = {

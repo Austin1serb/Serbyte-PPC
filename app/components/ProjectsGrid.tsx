@@ -40,7 +40,7 @@ export function ProjectsGrid({ className }: { className?: string }) {
 
   return (
     <section id="projects" className={clsx("relative", className)}>
-      <div className="relative z-4 grid grid-cols-1 grid-rows-1 gap-4 md:grid-cols-2 md:grid-rows-2 lg:gap-10">
+      <div className="relative z-4 grid grid-cols-1 grid-rows-1 gap-4 md:grid-cols-2 md:grid-rows-2 ">
         <AnimatedCard
           key={"Entitled"}
           src={entitledPreview}
@@ -49,8 +49,18 @@ export function ProjectsGrid({ className }: { className?: string }) {
           index={3}
           data-grid-id="entitled"
           color="#000000"
+          type="Event Management"
         />
-        <AnimatedCard key={"IAO"} src={iaoPreview} alt={"IAO Preview"} offset={offsets?.["iao"]} index={2} data-grid-id="iao" color="#13739C" />
+        <AnimatedCard
+          key={"IAO"}
+          src={iaoPreview}
+          alt={"IAO Preview"}
+          offset={offsets?.["iao"]}
+          index={2}
+          data-grid-id="iao"
+          color="#13739C"
+          type="Private Security"
+        />
         <AnimatedCard
           key={"Automedics"}
           src={automedicsPreview}
@@ -59,6 +69,7 @@ export function ProjectsGrid({ className }: { className?: string }) {
           index={1}
           data-grid-id="automedics"
           color="#DA961A"
+          type="Automotive Repair"
         />
         <AnimatedCard
           key={"Bespoke"}
@@ -68,6 +79,7 @@ export function ProjectsGrid({ className }: { className?: string }) {
           index={0}
           data-grid-id="bespoke"
           color="#024EFC"
+          type="Automotive Styling"
         />
       </div>
     </section>

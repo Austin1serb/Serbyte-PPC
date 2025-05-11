@@ -1,12 +1,12 @@
 import Link from "next/link"
-import { ExactlyFourWords, TextSlider } from "./TextSlider"
+import { TextSlider } from "./TextSlider"
 import { Socials } from "../Socials"
 import { SITE_NAP } from "@/config/siteConfig"
 import { H2 } from "@/app/ui/Elements"
 
-const words: ExactlyFourWords = ["build", "create", "design", "convert"]
+const words: [string, string, string, string] = ["build", "create", "design", "make"]
 
-const socialLinks = [
+export const socialLinks = [
   {
     href: SITE_NAP.profiles.linkedIn,
     icon: "linkedin",

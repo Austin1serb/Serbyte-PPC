@@ -27,9 +27,11 @@ export const ReviewCard: React.FC<ReviewCard> = ({ img, name, title, review, cla
               </span>
             ))}
           </div>
-          <span className="relative after:absolute after:-top-2 after:right-0 after:text-7xl after:text-slate-500 after:content-['”']" />
+          <span className="relative after:absolute after:-top-2 after:right-0 after:text-7xl after:text-slate-500 after:content-['&rdquo;']" />
         </div>
-        <Text size="sm">{review}</Text>
+        <Text size="sm" className="font-light">
+          &ldquo;{review}&rdquo;
+        </Text>
       </div>
 
       <ClientInfoCard img={img} name={name} title={title} />

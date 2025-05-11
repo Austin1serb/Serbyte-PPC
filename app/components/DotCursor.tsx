@@ -35,6 +35,7 @@ export function DotCursor() {
 
     const onEnter = (e: Event) => {
       const target = e.currentTarget as HTMLElement
+      if (target.getAttribute("data-text") === null) return
       setLabel(target.getAttribute("data-text") ?? "")
       frame.read(() => {
         width.set(80)

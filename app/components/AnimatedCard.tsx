@@ -1,9 +1,11 @@
 "use client"
-import { useScroll, useTransform, useSpring } from "motion/react"
+import { useScroll, useTransform, useSpring, useMotionValueEvent } from "motion/react"
 import { StaticImageData } from "next/image"
 import { useIsMobile } from "../hooks/useIsMobile"
 import { Card } from "./Card"
 import * as m from "motion/react-m"
+import { useState } from "react"
+import clsx from "clsx"
 export type HeroOffset = {
   x: number
   y: number
@@ -12,6 +14,7 @@ export type HeroOffset = {
   dx?: number // fine-tune X
   dy?: number // fine-tune Y
   color?: string
+  type?: string
 }
 
 export function AnimatedCard({
@@ -20,6 +23,7 @@ export function AnimatedCard({
   offset,
   index,
   color,
+  type,
   "data-grid-id": gridId,
 }: {
   src: StaticImageData
@@ -28,6 +32,7 @@ export function AnimatedCard({
   index: number
   color: string
   "data-grid-id": string
+  type?: string
 }) {
   const isMobile = useIsMobile()
 
@@ -46,16 +51,24 @@ export function AnimatedCard({
   const scale = useTransform(progress, [0, 1], [1, finalScale])
   const rotate = useTransform(progress, [0, 1], [0, offset?.rot ?? 0])
 
+  const [reveal, setReveal] = useState(false)
+
+  // flip when we cross 50 %
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    if (v >= 0.6 && !reveal) setReveal(true)
+    else if (v < 0.6 && reveal) setReveal(false)
+  })
+
   return (
     <div data-grid-id={gridId}>
       <m.div
         initial={{ opacity: 0, x: 0, y: 0, scale: 1, rotate: 0 }}
         animate={{ opacity: 1, transition: { opacity: { delay: 0.35 } } }}
         style={{ x, y, scale, rotate, willChange: "transform, opacity" }}
-        className="hover-target group relative rounded-2xl w-full h-full"
-        data-text="View Project"
+        className={clsx("group relative rounded-2xl w-full h-full", reveal && "[&_span]:opacity-0 hover-target")}
+        // data-text={!reveal ? "View Project" : null}
       >
-        <Card src={src} alt={alt} index={index} color={color} />
+        <Card src={src} alt={alt} color={color} type={type} />
       </m.div>
     </div>
   )

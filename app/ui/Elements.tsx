@@ -7,7 +7,7 @@ type HeadingProps<T extends keyof JSX.IntrinsicElements> = React.ComponentPropsW
 
 export const H2: React.FC<HeadingProps<"h2">> = ({ children, ...rest }) => {
   return (
-    <h2 {...rest} className={clsx("text-4xl leading-9 tracking-tighter text-slate-900 md:text-5xl md:leading-12 lg:text-6xl", rest.className)}>
+    <h2 {...rest} className={clsx("text-4xl md:leading-13 tracking-tighter text-slate-900 md:text-5xl lg:leading-15 lg:text-6xl", rest.className)}>
       {children}
     </h2>
   )
@@ -36,7 +36,7 @@ export function Text({ as: Component = "p", size = "base", className = "", ...pr
     xl: "text-xl leading-6 md:text-2xl",
   }
 
-  return <Component {...props} className={`${sizeClasses[size]} text-slate-800 tracking-tight ${className}`} />
+  return <Component {...props} className={`${sizeClasses[size]} text-slate-600 tracking-tight ${className}`} />
 }
 
 interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
@@ -51,5 +51,5 @@ export function Typography({ as: Component = "article", size = "base", className
     lg: "text-lg leading-6 md:text-xl",
     xl: "text-xl leading-6 md:text-2xl",
   }
-  return <Component {...props} className={`${sizeClasses[size]} ${className}`} />
+  return <Component {...props} className={`text-slate-600 ${sizeClasses[size]} ${className}`} />
 }

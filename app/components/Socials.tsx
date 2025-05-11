@@ -1,8 +1,7 @@
 import * as m from "motion/react-m"
-
 import Link from "next/link"
 import { Icon } from "./Icon"
-
+import clsx from "clsx"
 const container = {
   hidden: {
     x: -12,
@@ -35,14 +34,26 @@ const linkLogo = {
   },
 }
 
-export const Socials: React.FC<{ socialLinks: { href: string; icon: string }[] }> = ({ socialLinks }) => {
+export const Socials: React.FC<{
+  socialLinks: { href: string; icon: string }[]
+  className?: string
+  iconClassName?: string
+}> = ({ socialLinks, className, iconClassName }) => {
   return (
-    <div className="flex gap-2">
+    <m.div
+      className={clsx("flex gap-2", className)}
+      variants={container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+    >
       {socialLinks.map((link) => (
-        <Link rel="noopener noreferrer" target="_blank" key={link.href} className="footer-link" href={link.href}>
-          <Icon name={link.icon} height={15} width={15} />
-        </Link>
+        <m.div variants={linkLogo} key={link.href}>
+          <Link rel="noopener noreferrer" target="_blank" className={clsx("footer-link", iconClassName)} href={link.href}>
+            <Icon name={link.icon} height={15} width={15} />
+          </Link>
+        </m.div>
       ))}
-    </div>
+    </m.div>
   )
 }

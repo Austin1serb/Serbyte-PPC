@@ -1,10 +1,9 @@
-import { ElementType } from "react"
 import clsx from "clsx"
 import * as m from "motion/react-m"
 
-interface Props<T extends ElementType> {
+interface Props {
   text: string
-  element: T
+
   once?: boolean
   className?: string
   margin?: number
@@ -32,10 +31,7 @@ const letter = {
   },
 }
 
-export const AnimatedText = <T extends ElementType>({ text, element, once = false, className = "", margin = 0, ...rest }: Props<T>) => {
-  // Motion-wrapped tag (e.g. motion.h2, motion.span, etc.)
-  // const MotionTag = m[element as keyof typeof m] as ElementType
-
+export const AnimatedText = ({ text, once = false, className = "", margin = 0, ...rest }: Props) => {
   return (
     <m.h2
       {...rest}

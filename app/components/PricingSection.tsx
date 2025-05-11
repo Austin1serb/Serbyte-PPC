@@ -3,8 +3,9 @@ import { ActivityDot } from "./ActivityDot"
 import { FinancingCard } from "./FinancingCard"
 import { Icon } from "./Icon"
 import * as m from "motion/react-m"
-import { H2, H3, Text, Typography } from "../ui/Elements"
+import { H3, Text, Typography } from "../ui/Elements"
 import { CalIcon } from "../icons/Cal.icon"
+import { AnimatedH2 } from "./AnimatedH2"
 
 const listItems = [
   {
@@ -45,11 +46,11 @@ const child = {
 export const PricingSection: React.FC = () => {
   return (
     <section className="inside-container bg-white" id="pricing">
-      <div className="flex flex-col gap-6 md:flex-row md:gap-12">
-        <H2 className="[flex:1_0_0px]">
+      <div className="flex flex-col gap-6 md:flex-row md:gap-12 md:items-center">
+        <AnimatedH2 className="[flex:1_0_0px]">
           Simple pricing. <br />
           <span className="text-slate-500">Standout designs.</span>
-        </H2>
+        </AnimatedH2>
         <Typography as="div" size="lg" className="[flex:0.5_0_0px] max-w-md">
           <strong className="font-semibold text-slate-900">Clear costs, no hidden fees.</strong> Select from monthly subscriptions or individual project rates.
         </Typography>
@@ -59,9 +60,9 @@ export const PricingSection: React.FC = () => {
         {listItems.map((item) => (
           <Typography key={item.title} as="li" size="sm" className="flex max-w-3xs flex-col gap-2">
             <h3 className="flex items-center gap-1 font-medium text-black">
-              <span className="text-slate-500">{item.icon}</span> {item.title}
+              <span>{item.icon}</span> {item.title}
             </h3>
-            <p>{item.description}</p>
+            <p className="text-slate-700">{item.description}</p>
           </Typography>
         ))}
       </ul>
@@ -86,7 +87,7 @@ export const PricingSection: React.FC = () => {
             <ul className="grid grid-cols-2 gap-x-2 gap-y-4 text-sm leading-4 font-medium">
               {features.map((feature, index) => (
                 <li key={feature + index} className="flex items-center gap-1">
-                  <Icon name="check" className="check-icon text-white" />
+                  <Icon name="check" className="w-5 h-5 text-slate-500" />
                   {feature}
                 </li>
               ))}

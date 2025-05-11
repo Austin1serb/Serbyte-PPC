@@ -171,12 +171,10 @@
       0px 9.8px 9.8px -3px rgba(0, 0, 0, 0.25),
       0px 25px 25px -3.75px rgba(0, 0, 0, 0.11),
       0px 0px 0px 1px rgb(130, 130, 130);
+    transition: all 0.3s ease-in-out;
   }
   .button-shadow:hover {
     box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0);
-    transition:
-      box-shadow 0.3s ease-in-out,
-      translate 0.3s ease-in-out;
   }
 
   .slider {
@@ -239,8 +237,9 @@
   }
 
   .card-image::after {
-    @apply absolute inset-0 z-10 rounded-2xl opacity-100 duration-200 content-[''];
-    background: linear-gradient(to top, var(--color-gradient), #000 10%, transparent 30%);
+    @apply absolute inset-0 z-4 rounded-2xl duration-200 content-[''];
+    background: linear-gradient(to top, var(--color-gradient), #00000056 25%, transparent 50%);
+    filter: blur(5px);
   }
 
   .check-icon {

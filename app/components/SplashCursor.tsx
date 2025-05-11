@@ -1221,9 +1221,5 @@ export default function SplashCursor({
     TRANSPARENT,
   ])
 
-  return (
-    <div className="pointer-events-none fixed top-0 left-0 z-50 h-full w-full opacity-20">
-      <canvas ref={canvasRef} id="fluid" className="block h-screen w-screen"></canvas>
-    </div>
-  )
+  return <canvas ref={canvasRef} id="fluid" className="pointer-events-none fixed top-0 left-0 z-50 h-full w-full opacity-20" />
 }

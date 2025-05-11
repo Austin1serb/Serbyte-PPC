@@ -10,7 +10,6 @@ export const Projects: React.FC = () => {
       {/* overlay heading */}
       <div className="pointer-events-none relative z-5 mix-blend-exclusion ">
         <AnimatedText
-          element="h2"
           text="Latest Projects"
           margin={200}
           className="text-4xl leading-9 tracking-tighter md:text-5xl md:leading-12 lg:text-6xl inline-block whitespace-nowrap text-white"

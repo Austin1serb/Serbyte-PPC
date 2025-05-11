@@ -7,7 +7,7 @@ export const FAQSection: React.FC = () => {
       <H2>
         Your questions <br /> <span className="text-slate-500">answered.</span>
       </H2>
-      <div className="flex flex-col gap-4 md:flex-row">
+      <div className="flex flex-col gap-4 lg:flex-row">
         <FAQTable />
         <NotSureCard />
       </div>

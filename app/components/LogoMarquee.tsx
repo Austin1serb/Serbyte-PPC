@@ -20,28 +20,21 @@ export const LogoMarquee = ({ avatars = true }: { avatars?: boolean }) => {
         {avatars ? (
           <div className="flex items-center gap-4 whitespace-nowrap">
             <AnimatedAvatars />
-            <AnimatedElement
-              element="div"
-              fadeDirection="right"
-              offsetPx={20}
-              duration={0.4}
-              delay={0.15}
-              className="flex flex-col text-sm font-medium text-slate-800"
-            >
-              <div className="flex items-center gap-0.5">
+            <AnimatedElement element="div" fadeDirection="right" offsetPx={20} duration={0.4} delay={0.15} className="flex flex-col">
+              <div className="flex items-center gap-0.5 text-base text-gray-600">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <span key={i} className="text-base text-gray-600">
-                    ★
-                  </span>
+                  <span key={i}>★</span>
                 ))}
               </div>
-              <span>99+ Happy clients</span>
+              <span className="text-sm font-medium text-slate-900">99+ Happy clients</span>
             </AnimatedElement>
           </div>
         ) : (
-          <Text size="lg" className={clsx("whitespace-nowrap", { "max-md:text-center max-md:w-full": !avatars })}>
-            Trusted by <strong className="font-semibold text-slate-900">many</strong>
-          </Text>
+          <AnimatedElement element="div" fadeDirection="right" offsetPx={20} duration={0.4} delay={0.15} className="max-md:w-full">
+            <Text size="lg" className={clsx("whitespace-nowrap", { "max-md:text-center max-md:w-full": !avatars })}>
+              Trusted by <strong className="font-semibold text-slate-900">many</strong>
+            </Text>
+          </AnimatedElement>
         )}
 
         {/* right: marquee */}
@@ -55,13 +48,13 @@ export const LogoMarquee = ({ avatars = true }: { avatars?: boolean }) => {
           }
           className="slider"
         >
-          <div className="list">
+          <AnimatedElement element="div" className="list">
             {[...LOGOS].map((src, i) => (
               <div style={{ "--position": i + 1, "--speed": "20s" } as React.CSSProperties} className="item" key={i}>
                 <Image src={src} alt="Logo Marquee Brand Icon" className="h-15 w-48 max-w-48 min-w-48 object-contain opacity-70 grayscale transition" />
               </div>
             ))}
-          </div>
+          </AnimatedElement>
         </div>
       </div>
     </section>

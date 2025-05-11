@@ -35,7 +35,7 @@ export const TopBarV2: React.FC = () => {
           <div className="flex items-center gap-4 px-4 py-3 md:gap-8 md:py-2.5">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 font-medium">
-              <Icon name="serbyte" height={24} width={24} className="rounded drop-shadow-md" />
+              <Icon name="serbyte" height={24} width={24} className="rounded shadow-md" />
               Serbyte Development
             </Link>
 
