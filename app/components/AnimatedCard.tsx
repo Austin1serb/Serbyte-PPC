@@ -21,7 +21,6 @@ export function AnimatedCard({
   src,
   alt,
   offset,
-  index,
   color,
   type,
   "data-grid-id": gridId,
@@ -29,7 +28,6 @@ export function AnimatedCard({
   src: StaticImageData
   alt: string
   offset: HeroOffset
-  index: number
   color: string
   "data-grid-id": string
   type?: string
@@ -65,7 +63,7 @@ export function AnimatedCard({
         initial={{ opacity: 0, x: 0, y: 0, scale: 1, rotate: 0 }}
         animate={{ opacity: 1, transition: { opacity: { delay: 0.35 } } }}
         style={{ x, y, scale, rotate, willChange: "transform, opacity" }}
-        className={clsx("group relative rounded-2xl w-full h-full", reveal && "[&_span]:opacity-0 hover-target")}
+        className={clsx("group relative h-full w-full rounded-2xl", reveal && "hover-target [&_span]:opacity-0")}
         // data-text={!reveal ? "View Project" : null}
       >
         <Card src={src} alt={alt} color={color} type={type} />

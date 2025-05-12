@@ -69,7 +69,7 @@ export const CallToActionButton = () => {
         </div>
 
         {/* + You entrance */}
-        <m.div variants={youVariants} className={clsx("items-center gap-1 hidden md:flex")}>
+        <m.div variants={youVariants} className={clsx("hidden items-center gap-1 md:flex")}>
           <span className="text-xl">+</span>
           <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-sm font-semibold text-black ring-1 ring-black/50">You</span>
         </m.div>

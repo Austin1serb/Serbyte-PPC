@@ -31,7 +31,7 @@ export const LogoMarquee = ({ avatars = true }: { avatars?: boolean }) => {
           </div>
         ) : (
           <AnimatedElement element="div" fadeDirection="right" offsetPx={20} duration={0.4} delay={0.15} className="max-md:w-full">
-            <Text size="lg" className={clsx("whitespace-nowrap", { "max-md:text-center max-md:w-full": !avatars })}>
+            <Text size="lg" className={clsx("whitespace-nowrap", { "max-md:w-full max-md:text-center": !avatars })}>
               Trusted by <strong className="font-semibold text-slate-900">many</strong>
             </Text>
           </AnimatedElement>

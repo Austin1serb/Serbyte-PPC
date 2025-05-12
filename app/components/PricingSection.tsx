@@ -3,7 +3,7 @@ import { ActivityDot } from "./ActivityDot"
 import { FinancingCard } from "./FinancingCard"
 import { Icon } from "./Icon"
 import * as m from "motion/react-m"
-import { H3, Text, Typography } from "../ui/Elements"
+import { H2, H3, Text, Typography } from "../ui/Elements"
 import { CalIcon } from "../icons/Cal.icon"
 import { AnimatedH2 } from "./AnimatedH2"
 
@@ -46,12 +46,12 @@ const child = {
 export const PricingSection: React.FC = () => {
   return (
     <section className="inside-container bg-white" id="pricing">
-      <div className="flex flex-col gap-6 md:flex-row md:gap-12 md:items-center">
+      <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-12">
         <AnimatedH2 className="[flex:1_0_0px]">
           Simple pricing. <br />
           <span className="text-slate-500">Standout designs.</span>
         </AnimatedH2>
-        <Typography as="div" size="lg" className="[flex:0.5_0_0px] max-w-md">
+        <Typography as="div" size="lg" className="max-w-md [flex:0.5_0_0px]">
           <strong className="font-semibold text-slate-900">Clear costs, no hidden fees.</strong> Select from monthly subscriptions or individual project rates.
         </Typography>
       </div>
@@ -68,42 +68,42 @@ export const PricingSection: React.FC = () => {
       </ul>
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-2 md:flex-row">
-          <div className="[flex:1_0_0px] relative flex flex-col justify-end gap-6 rounded-xl bg-white p-6 md:max-w-md md:p-8">
+          <div className="relative flex [flex:1_0_0px] flex-col justify-end gap-6 rounded-xl bg-white p-6 md:max-w-md md:p-8">
             <FinancingCard />
             <span className="inline-flex items-center gap-2 self-start rounded-full border border-gray-100 bg-white px-3 py-2 text-xs font-medium shadow-lg">
               <ActivityDot /> 1 spot left for {month}
             </span>
-            <H3 className="text-black">Get Started Today</H3>
-            <Text size="lg">Full-service web design & development, SEO, and marketing.</Text>
+            <H3>Get Started Today</H3>
+            <Text size="sm">Full-service web design & development, SEO, and marketing.</Text>
           </div>
 
-          <div className="[flex:1.5_0_0px] flex flex-col gap-6 rounded-xl bg-white p-6 md:p-8 relative">
+          <div className="relative flex [flex:1.5_0_0px] flex-col gap-6 rounded-xl bg-white p-6 md:p-8">
             <div className="flex flex-col gap-4">
-              <H3 className="text-black">Unlimited Design</H3>
+              <H3>Unlimited Design</H3>
               <Text size="sm">One flat monthly rate for unlimited design requests. Ideal for ongoing design requirements.</Text>
             </div>
             <hr className="border-gray-200" />
-            <H3 className="text-black">Included in all plans</H3>
+            <H3>Included in all plans</H3>
             <ul className="grid grid-cols-2 gap-x-2 gap-y-4 text-sm leading-4 font-medium">
               {features.map((feature, index) => (
                 <li key={feature + index} className="flex items-center gap-1">
-                  <Icon name="check" className="w-5 h-5 text-slate-500" />
+                  <Icon name="check" className="h-5 w-5 text-slate-500" />
                   {feature}
                 </li>
               ))}
             </ul>
-            <div className="flex items-center gap-6 mt-6">
+            <div className="mt-6 flex items-center gap-6">
               <button
                 type="button"
-                className="bubble-hover button-shadow  w-fit rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition hover:cursor-pointer"
+                className="bubble-hover button-shadow w-fit rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition hover:cursor-pointer"
               >
                 Book a Discovery Call
               </button>
-              <CalIcon className="w-20 h-20 text-gray-500" />
+              <CalIcon className="h-20 w-20 text-gray-500" />
             </div>
           </div>
         </div>
-        <H3 className="w-full text-center my-8 border-b border-gray-200 pb-4">Packages</H3>
+        <H2 className="my-8 w-full border-b border-gray-200 pb-4 text-center">Packages</H2>
         <m.div
           initial="hidden"
           whileInView="show"
@@ -118,7 +118,7 @@ export const PricingSection: React.FC = () => {
               },
             },
           }}
-          className="flex flex-row flex-wrap items-end justify-center gap-8 relative"
+          className="relative flex flex-row flex-wrap items-end justify-center gap-8"
         >
           <PricingCard
             plan="Essentials"

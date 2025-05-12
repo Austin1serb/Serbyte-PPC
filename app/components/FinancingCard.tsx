@@ -8,7 +8,7 @@ export function FinancingCard() {
       <div className="animate-rotate button-shadow @container relative flex h-1/2 min-h-[220px] w-full max-w-sm flex-col justify-between overflow-hidden rounded-3xl bg-black p-6 backdrop-blur-sm">
         {/* Badge */}
         <div>
-          <span className="button-shadow inline-block rounded-full bg-white px-4 py-2 text-xs font-semibold text-black">Start for as little as $199</span>
+          <span className="button-shadow inline-block rounded-full bg-white px-4 py-2 text-xs font-medium text-black">Start for as little as $199</span>
         </div>
 
         {/* Text */}

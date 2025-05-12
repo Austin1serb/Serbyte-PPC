@@ -64,18 +64,14 @@ export function PricingCard({ plan, tagline, price, description, features, accen
   return (
     <m.article
       variants={variants}
-      className={clsx(
-        "[flex:1_0_0px] flex max-w-sm min-w-2xs flex-col gap-4 rounded-3xl border border-slate-400 p-8 shadow-lg md:gap-6 ",
-        c.cardBg,
-        c.cardText
-      )}
+      className={clsx("flex max-w-sm min-w-2xs [flex:1_0_0px] flex-col gap-4 rounded-3xl border border-slate-400 p-8 shadow-lg md:gap-6", c.cardBg, c.cardText)}
     >
       <header className="flex flex-col gap-3 md:gap-4 lg:gap-5">
         {/* tagline + icon row */}
         <div className="flex items-center gap-4 md:gap-2.5">
           <div
             className={clsx(
-              "flex items-center justify-center aspect-square max-h-16 min-h-13 max-w-16 min-w-13 rounded-xl border border-slate-400 text-lg",
+              "flex aspect-square max-h-16 min-h-13 max-w-16 min-w-13 items-center justify-center rounded-xl border border-slate-400 text-lg",
               c.iconBg
             )}
           >
@@ -83,13 +79,13 @@ export function PricingCard({ plan, tagline, price, description, features, accen
           </div>
 
           <div className="flex flex-col gap-1 py-2">
-            {tagline && <p className={clsx("min-w-38 text-sm leading-none font-light tracking-tight", accent === "black" && "text-gray-300")}>{tagline}</p>}
+            <p className={clsx("min-w-38 text-sm leading-none tracking-tight", accent === "black" && "text-gray-300")}>{tagline}</p>
             <h3 className="text-md font-semibold tracking-wide">{plan}</h3>
           </div>
         </div>
 
         {/* Description */}
-        <p className={clsx("line-clamp-3 text-sm leading-relaxed font-light", accent === "black" ? "text-gray-300" : "text-slate-600")}>{description}</p>
+        <p className={clsx("line-clamp-3 text-sm leading-relaxed", accent === "black" ? "text-gray-300" : "text-slate-600")}>{description}</p>
 
         {/* Price */}
         <div>
@@ -113,7 +109,7 @@ export function PricingCard({ plan, tagline, price, description, features, accen
       <button
         type="button"
         className={clsx(
-          "bubble-hover button-shadow hover:cursor-pointer mt-auto rounded-full px-6 py-3 text-sm font-medium transition hover:translate-y-0.5",
+          "bubble-hover button-shadow mt-auto rounded-full px-6 py-3 text-sm font-medium transition hover:translate-y-0.5 hover:cursor-pointer",
           c.btnBg,
           c.btnText
         )}

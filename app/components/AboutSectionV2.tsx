@@ -17,10 +17,10 @@ export const AboutSectionV2 = ({ className = "" }: { className?: string }) => {
           <br />
           that solve real problems.
         </AnimatedH2>
-        <div className="flex md:flex-row flex-col-reverse gap-12 md:gap-16">
+        <div className="flex flex-col-reverse gap-12 md:flex-row md:gap-16">
           {/* ---------------- left column ---------------- */}
 
-          <div className="[flex:1_0_0px] flex flex-col gap-6">
+          <div className="flex [flex:1_0_0px] flex-col gap-6">
             {/* portrait + overlay icons */}
 
             <ImageReveal src={profilePhoto} alt="Austin Serb" className="custom-shadow aspect-[4/4.5]" />

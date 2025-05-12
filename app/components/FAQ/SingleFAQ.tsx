@@ -7,7 +7,7 @@ export const SingleFAQ = ({ question, answer, index }: { question: string; answe
 
   return (
     <div
-      className="flex flex-col overflow-hidden rounded-2xl border border-gray-300 text-sm hover:cursor-pointer relative bg-white"
+      className="relative flex flex-col overflow-hidden rounded-2xl border border-gray-300 bg-white text-sm hover:cursor-pointer"
       onClick={() => setIsOpen(!isOpen)}
     >
       {/* header */}
@@ -18,7 +18,7 @@ export const SingleFAQ = ({ question, answer, index }: { question: string; answe
           transition={{ duration: 0.2, ease: "easeOut" }}
           className="flex items-center gap-4 overflow-hidden will-change-transform"
         >
-          <m.span initial={false} animate={{ opacity: isOpen ? 0 : 1 }} transition={{ duration: 0.2 }}>
+          <m.span initial={false} animate={{ opacity: isOpen ? 0 : 1 }} transition={{ duration: 0.2 }} className="text-slate-500">
             0{index + 1}
           </m.span>
           <h3 className="font-medium">{question}</h3>

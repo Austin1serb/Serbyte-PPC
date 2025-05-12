@@ -15,7 +15,7 @@ export const HeroV2 = () => {
             <ActivityDot /> Available for April &apos;25
           </AnimatedElement>
 
-          <h1 className="xs:text-5xl text-4xl leading-[1.1] font-medium tracking-tight text-slate-900 sm:text-6xl lg:text-7xl relative z-5">
+          <h1 className="xs:text-5xl relative z-5 text-4xl leading-[1.1] font-medium tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
             <AnimatedElement element="span" offsetPx={20} delay={0.1} fadeDirection="left" className="inline-block">
               Design
             </AnimatedElement>{" "}
@@ -31,7 +31,7 @@ export const HeroV2 = () => {
             </AnimatedElement>
           </h1>
 
-          <AnimatedElement element="p" delay={1} className="text-sm leading-tight tracking-tight text-slate-700 md:text-base max-w-xs md:max-w-sm">
+          <AnimatedElement element="p" delay={1} className="max-w-xs text-sm leading-tight tracking-tight text-slate-700 md:max-w-sm md:text-base">
             <strong className="font-semibold text-slate-900">Strategic design that drives growth, not just looks good.</strong> I create everything your brand
             needs to attract customers and turn them into sales.
           </AnimatedElement>

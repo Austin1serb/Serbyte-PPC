@@ -36,10 +36,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <LazyMotion strict features={domAnimation}>
           <DesktopCursor />
           <SplashCursor />
-          <div className="bg-noise absolute inset-0 opacity-4 z-0 max-w-6xl mx-3.5 md:mx-5 lg:mx-8 pointer-events-none bg-repeat custom:mx-auto" />
+          <div className="bg-noise custom:mx-auto pointer-events-none absolute inset-0 z-0 mx-3.5 max-w-6xl bg-repeat opacity-4 md:mx-5 lg:mx-8" />
 
           <div className={`${switzer.variable} font-switzer overflow-hidden subpixel-antialiased`}>
-            <div className="pointer-events-none absolute inset-0 z-3 max-w-6xl border-x border-gray-200 mx-3.5 md:mx-5 lg:mx-8 custom:mx-auto" />
+            <div className="custom:mx-auto pointer-events-none absolute inset-0 z-3 mx-3.5 max-w-6xl border-x border-gray-200 md:mx-5 lg:mx-8" />
             <BottomBlurOverlay />
             <TopBarV2 />
             {children}

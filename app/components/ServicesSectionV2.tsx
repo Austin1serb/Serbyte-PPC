@@ -5,13 +5,13 @@ import { AnimatedH2 } from "./AnimatedH2"
 import * as m from "motion/react-m"
 
 const tech = [
-  { name: "Figma", src: "figma" },
-  { name: "Express", src: "express" },
-  { name: "TypeScript", src: "typescript" },
   { name: "React", src: "react" },
-  { name: "MongoDB", src: "mongodb" },
   { name: "Next", src: "next" },
+  { name: "TypeScript", src: "typescript" },
+  { name: "Express", src: "express" },
   { name: "OpenAI", src: "openai" },
+  { name: "MongoDB", src: "mongodb" },
+  { name: "Figma", src: "figma" },
   { name: "Motion", src: "motion" },
 ]
 
@@ -63,7 +63,7 @@ export const ServicesSectionV2: React.FC = ({ className = "" }: { className?: st
   return (
     <section id="services" className={clsx("inside-container items-start justify-center bg-white md:flex-row md:items-center", className)}>
       {/*  LEFT COLUMN  */}
-      <div className="[flex:1.5_0_0px] flex flex-col gap-16">
+      <div className="flex [flex:1.5_0_0px] flex-col gap-16">
         <AnimatedH2>
           <span className="text-slate-700">Services </span>that
           <br />
@@ -88,16 +88,16 @@ export const ServicesSectionV2: React.FC = ({ className = "" }: { className?: st
             {tech.map(({ name, src }) => (
               <m.li key={name} variants={element}>
                 <div className="group relative">
-                  <input placeholder={name} type="checkbox" className="hidden peer" id={name} />
+                  <input placeholder={name} type="checkbox" className="peer hidden" id={name} />
 
                   <label
                     htmlFor={name}
-                    className="flex h-13 w-13 items-center justify-center rounded-xl border border-gray-200 bg-white button-shadow hover:translate-y-0.5 peer-checked:translate-y-0.5 peer-checked:shadow-none"
+                    className="button-shadow flex h-13 w-13 items-center justify-center rounded-xl border border-gray-200 bg-white peer-checked:translate-y-0.5 peer-checked:shadow-none hover:translate-y-0.5"
                   >
                     <Icon name={src} width={30} height={30} className="object-contain" />
                   </label>
                   {/* optional tooltip */}
-                  <span className="absolute -top-7 left-1/2 -translate-x-1/2 text-xs opacity-0 transition duration-300 group-hover:opacity-100 bg-black text-white rounded-full px-2 py-1 peer-checked:opacity-100 delay-100">
+                  <span className="absolute -top-7 left-1/2 -translate-x-1/2 rounded-full bg-black px-2 py-1 text-xs text-white opacity-0 transition delay-100 duration-300 group-hover:opacity-100 peer-checked:opacity-100">
                     {name}
                   </span>
                 </div>
@@ -113,11 +113,11 @@ export const ServicesSectionV2: React.FC = ({ className = "" }: { className?: st
         whileInView="visible"
         viewport={{ once: true, amount: 0.8 }}
         variants={container}
-        className="[flex:1_0_0px] grid grid-cols-2 gap-12 md:grid-cols-1"
+        className="grid [flex:1_0_0px] grid-cols-2 gap-12 md:grid-cols-1"
       >
         {services.map(({ name, src }) => (
           <m.li key={name} variants={element2} className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-black button-shadow aspect-square ">
+            <span className="button-shadow flex aspect-square h-10 w-10 items-center justify-center rounded-full bg-black">
               <Icon name={src} width={25} height={30} className="object-contain invert" />
             </span>
             <Text as="span" size="sm">

@@ -2,16 +2,12 @@
 import { readFile } from "node:fs/promises"
 import { globby } from "globby"
 
-const files = await globby([
-  "**/*.{js,jsx,ts,tsx,html,mdx}",
-  "!**/node_modules/**",
-  "!**/.next/**"
-], { gitignore: true })
+const files = await globby(["**/*.{js,jsx,ts,tsx,html,mdx}", "!**/node_modules/**", "!**/.next/**"], { gitignore: true })
 
 const counts = new Map()
 
 const CLASS_RE = /class(?:Name)?\s*=\s*{?["'`]|clsx\(([^)]*)/g
-const TOKEN_RE = /[A-Za-z0-9-:[\]/.%]+/g   // tailwind utility chars
+const TOKEN_RE = /[A-Za-z0-9-:[\]/.%]+/g // tailwind utility chars
 
 for (const file of files) {
   let text = await readFile(file, "utf8")
@@ -22,16 +18,12 @@ for (const file of files) {
     const start = match.index + match[0].length
     // crude find the matching quote/bracket/backtick
     const quote = text[start - 1]
-    const end = quote === "("
-      ? text.indexOf(")", start)
-      : text.indexOf(quote, start)
+    const end = quote === "(" ? text.indexOf(")", start) : text.indexOf(quote, start)
     const chunk = text.slice(start, end)
 
     // tokenise & count
     const tokens = chunk.match(TOKEN_RE) || []
-    tokens.forEach((cls) =>
-      counts.set(cls, (counts.get(cls) ?? 0) + 1)
-    )
+    tokens.forEach((cls) => counts.set(cls, (counts.get(cls) ?? 0) + 1))
   }
 }
 

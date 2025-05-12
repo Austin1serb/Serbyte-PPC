@@ -28,15 +28,15 @@ export default function ImageReveal({ className = "", ...img }: ImageRevealProps
         whileInView={{ x: 0 }}
         transition={{ duration: 0.5, delay: 0.3, type: "spring", bounce: 0 }}
         style={{ transformOrigin: "right" }}
-        className="absolute inset-0 "
+        className="absolute inset-0"
         viewport={{ once: true, margin: "0px 0px -200px 0px" }}
       >
-        <Socials socialLinks={socialLinks} className="absolute bottom-4 right-4 z-5" iconClassName="opacity-85 hover:opacity-100" />
+        <Socials socialLinks={socialLinks} className="absolute right-4 bottom-4 z-5" iconClassName="md:opacity-85 hover:opacity-100" />
         <Image
           {...img}
           fill
           alt="Austin Serb Profile Photo"
-          className={`object-cover saturate-125 rounded-2xl `}
+          className={`rounded-2xl object-cover saturate-125`}
           sizes="(max-width: 560px) 300px, (max-width: 768px) 500px, 50vw"
         />
       </m.div>

@@ -74,7 +74,7 @@ export const TopBarV2: React.FC = () => {
                 if (isClient && window?.innerWidth <= 768) setOpen((prev) => !prev)
               }}
               className={clsx(
-                "group right-3 h-6 w-6 duration-200 md:absolute text-sm hover:cursor-pointer",
+                "group right-3 h-6 w-6 text-sm duration-200 hover:cursor-pointer md:absolute",
                 scrollDirection === "up" ? "md:opacity-0" : "opacity-100 delay-400"
               )}
             >

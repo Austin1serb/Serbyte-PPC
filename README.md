@@ -4,27 +4,26 @@
 
 ### 1. Initialize the Next.js Project
 
-
 📂 next.js-starter/
 │── 📂 .vscode
-│   └── settings.json  
+│ └── settings.json  
 │── 📂 app
-│   │── 📂 privacy-policy
-│   │   │── PrivacyPolicy.tsx
-│   │   └── page.tsx
-│   │── 📂 terms-of-service
-│   │   │── Terms.tsx
-│   │   └── page.tsx
-│   │── 📂 contact
-│   │   └── page.tsx
-│   │── favicon.ico
-│   │── globals.css
-│   │── layout.tsx
-│   │── page.tsx
-│   │── robots.ts
-│   │── sitemap.ts
+│ │── 📂 privacy-policy
+│ │ │── PrivacyPolicy.tsx
+│ │ └── page.tsx
+│ │── 📂 terms-of-service
+│ │ │── Terms.tsx
+│ │ └── page.tsx
+│ │── 📂 contact
+│ │ └── page.tsx
+│ │── favicon.ico
+│ │── globals.css
+│ │── layout.tsx
+│ │── page.tsx
+│ │── robots.ts
+│ │── sitemap.ts
 │── 📂 config
-│   └── site.ts // Company information will be used in Metadata & Terms and Policy pages
+│ └── site.ts // Company information will be used in Metadata & Terms and Policy pages
 │── 📂 public
 │── .env
 │── .prettierignore
@@ -37,4 +36,7 @@
 │── package.json
 │── postcss.config.mjs
 └── tsconfig.json
+
+```
+
 ```

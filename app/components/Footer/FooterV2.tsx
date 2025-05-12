@@ -31,27 +31,27 @@ export const socialLinks = [
 
 export const FooterV2: React.FC = () => {
   return (
-    <footer className="relative bg-black z-4">
-      <div className="bg-noise opacity-10 bg-repeat absolute inset-0 z-0 max-w-6xl mx-3.5 md:mx-5 lg:mx-8 pointer-events-none" />
+    <footer className="relative z-4 bg-black">
+      <div className="bg-noise pointer-events-none absolute inset-0 z-0 mx-3.5 max-w-6xl bg-repeat opacity-10 md:mx-5 lg:mx-8" />
 
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5.5 sm:pb-40 pb-32 text-white md:gap-16 md:px-11 pt-12 md:pt-16 lg:pb-54">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-5.5 pt-12 pb-32 text-white sm:pb-40 md:gap-16 md:px-11 md:pt-16 lg:pb-54">
         <div className="flex flex-col gap-8 md:gap-12">
-          <H2 className="text-5xl leading-12 md:leading-14 text-white md:text-6xl">
+          <H2 className="text-5xl leading-12 text-white md:text-6xl md:leading-14">
             Lets&nbsp;
             <TextSlider words={words} height={50} mobileHeight={41} />
             <br />
             <span className="text-gray-500">incredible work together.</span>
           </H2>
-          <ul className="flex flex-col justify-between border-b border-gray-500 pb-6 md:flex-row md:items-center md:gap-8 gap-5.5 text-sm">
+          <ul className="flex flex-col justify-between gap-5.5 border-b border-gray-500 pb-6 text-sm md:flex-row md:items-center md:gap-8">
             <li className="flex flex-col gap-1 md:gap-2">
               <span className="text-gray-500">Email</span>
-              <Link href="mailto:owner@serbyte.net" className="text-sm hover:text-gray-500 transition-colors duration-200">
+              <Link href="mailto:owner@serbyte.net" className="w-fit text-sm transition-colors duration-200 hover:text-gray-500">
                 owner@serbyte.net
               </Link>
             </li>
             <li className="flex flex-col gap-1 md:gap-2">
               <span className="text-gray-500">Call or Text</span>
-              <Link href="tel:+12086164308" className="text-sm hover:text-gray-500 transition-colors duration-200">
+              <Link href="tel:+12086164308" className="w-fit text-sm transition-colors duration-200 hover:text-gray-500">
                 +1 (208) 616-4308
               </Link>
             </li>
@@ -61,16 +61,16 @@ export const FooterV2: React.FC = () => {
             </li>
           </ul>
         </div>
-        <div className="flex flex-col-reverse justify-between gap-2 text-xs md:flex-row text-nowrap">
-          <div className="flex gap-5.5 items-center max-sm:flex-wrap">
+        <div className="flex flex-col-reverse justify-between gap-2 text-xs text-nowrap md:flex-row">
+          <div className="flex items-center gap-5.5 max-sm:flex-wrap">
             <h3>
               <span className="text-[#b8b8b8]">Based in </span> Seattle, Washington, USA
             </h3>
             <div className="flex gap-4">
-              <Link href="/terms-of-service" className="text-sm hover:text-gray-500 transition-colors duration-200">
+              <Link href="/terms-of-service" className="text-sm transition-colors duration-200 hover:text-gray-500">
                 Terms of Service
               </Link>
-              <Link href="/privacy-policy" className="text-sm hover:text-gray-500 transition-colors duration-200">
+              <Link href="/privacy-policy" className="text-sm transition-colors duration-200 hover:text-gray-500">
                 Privacy Policy
               </Link>
             </div>
