@@ -29,7 +29,7 @@ export const TopBarV2: React.FC = () => {
   return (
     <nav className="font-switzer fixed top-5 z-10 flex w-full justify-center text-base md:text-sm">
       {/* Wrapper that grows/shrinks on mobile */}
-      <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white/50 shadow-sm backdrop-blur-sm">
+      <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white/50 backdrop-blur-sm">
         <div className="relative flex flex-col">
           {/* Top Row (always visible) */}
           <div className="flex items-center gap-4 px-4 py-3 md:gap-8 md:py-2.5">

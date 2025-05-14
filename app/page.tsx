@@ -1,9 +1,12 @@
 import { HeroV2 } from "./components/HeroV2"
-import { LogoMarquee } from "./components/LogoMarquee"
 import { Projects } from "./components/Projects"
 
 // Dynamic import These
 import dynamic from "next/dynamic"
+
+const LogoMarquee = dynamic(() => import("./components/LogoMarquee").then((mod) => mod.LogoMarquee), {
+  ssr: true,
+})
 
 const LargeReview = dynamic(() => import("./components/LargeReview").then((mod) => mod.LargeReview), {
   ssr: true,
@@ -33,13 +36,11 @@ const WebDesignPage: React.FC = () => {
   return (
     <main>
       <HeroV2 />
-      <LogoMarquee />
       <Projects />
       <LargeReview />
       <ServicesSectionV2 />
       <AboutSectionV2 />
       <PricingSection />
-      <LogoMarquee avatars={false} />
       <ReviewSectionV2 />
       <FAQSection />
     </main>

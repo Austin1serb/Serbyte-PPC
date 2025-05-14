@@ -6,32 +6,29 @@ export const HeroV2 = () => {
   return (
     <section className="mx-auto max-w-6xl pt-32">
       <div className="inside relative flex gap-8 px-5.5 pb-12 md:px-11 md:pb-24">
-        <div className="flex max-w-lg flex-col gap-8">
+        <div className="flex max-w-lg flex-col gap-8 md:min-w-sm">
           <AnimatedElement
             element="span"
-            delay={1}
+            delay={0.6}
             className="inline-flex items-center gap-2 self-start rounded-full border border-gray-100 bg-white px-3 py-2 text-xs font-medium shadow-lg"
           >
             <ActivityDot /> Available for April &apos;25
           </AnimatedElement>
 
-          <h1 className="xs:text-5xl relative z-5 text-4xl leading-[1.1] font-medium tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
-            <AnimatedElement element="span" offsetPx={20} delay={0.1} fadeDirection="left" className="inline-block">
+          <h1 className="xs:text-5xl relative z-5 text-4xl leading-[1] font-medium tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
+            <AnimatedElement element="span" offsetPx={20} fadeDirection="left" className="inline-block">
               Design
             </AnimatedElement>{" "}
-            <AnimatedElement element="span" offsetPx={40} delay={0.4} fadeDirection="top" className="inline-block">
+            <AnimatedElement element="span" offsetPx={40} delay={0.2} fadeDirection="top" className="inline-block">
               that
             </AnimatedElement>
             <br />
-            <AnimatedElement element="span" delay={0.6} offsetPx={20} fadeDirection="left" className="inline-block text-slate-700">
-              delivers
-            </AnimatedElement>{" "}
-            <AnimatedElement element="span" delay={0.7} offsetPx={40} fadeDirection="left" className="inline-block text-slate-500">
-              results.
+            <AnimatedElement element="span" delay={0.4} offsetPx={20} fadeDirection="left" className="inline-block text-slate-700">
+              delivers results.
             </AnimatedElement>
           </h1>
 
-          <AnimatedElement element="p" delay={1} className="max-w-xs text-sm leading-tight tracking-tight text-slate-700 md:max-w-sm md:text-base">
+          <AnimatedElement element="p" delay={0.6} className="max-w-xs text-sm leading-tight tracking-tight text-slate-700 md:max-w-sm md:pr-4 md:text-base">
             <strong className="font-semibold text-slate-900">Strategic design that drives growth, not just looks good.</strong> I create everything your brand
             needs to attract customers and turn them into sales.
           </AnimatedElement>

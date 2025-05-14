@@ -7,7 +7,7 @@ export const Card = ({ src, alt, color, type = "" }: { src: StaticImageData; alt
     <>
       <span
         className={clsx(
-          "card-image absolute inset-0 overflow-hidden rounded-2xl opacity-90 transition-opacity duration-500 will-change-transform group-hover:after:opacity-0"
+          "card-image absolute inset-0 overflow-hidden rounded-3xl opacity-90 transition-opacity duration-500 will-change-transform group-hover:after:opacity-0"
         )}
         data-text="View Project"
         style={{ "--color-gradient": color } as React.CSSProperties}
@@ -19,7 +19,16 @@ export const Card = ({ src, alt, color, type = "" }: { src: StaticImageData; alt
           <Icon name="arrow-right" className="h-4 w-4" />
         </span>
       </span>
-      <Image className="h-full w-full rounded-xl object-cover" src={src} alt={alt} width={640} height={420} priority sizes="(max-width: 768px) 90vw, 33vw" />
+      <Image
+        placeholder="blur"
+        className="h-full w-full rounded-3xl object-cover"
+        src={src}
+        alt={alt}
+        width={640}
+        height={420}
+        priority
+        sizes="(max-width: 768px) 90vw, 33vw"
+      />
     </>
   )
 }

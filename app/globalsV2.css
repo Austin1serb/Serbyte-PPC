@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+*:not(:has(border-none)) {
+  border: 1px dotted red;
+}
+
+iframe div .review-text {
+  display: none !important;
+}
+
+.snap-container {
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+.snap-child {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
 @theme inline {
   --animate-marquee: marquee 20s linear infinite;
   --animate-rotate: rotate-left-right 10s ease-in-out infinite;
@@ -75,7 +93,7 @@
   }
 
   .bubble-hover {
-    @apply relative inline-block overflow-hidden rounded-full;
+    @apply relative inline-block overflow-hidden rounded-full text-nowrap;
     &::before {
       @apply pointer-events-none absolute inset-0 z-[-1] -translate-x-full rounded-full opacity-0 blur-[1px] transition-all duration-300 will-change-transform content-[''];
       background-size: 200% 200%;
@@ -85,7 +103,7 @@
 
     &:hover {
       &::before {
-        @apply translate-x-0 opacity-30;
+        @apply translate-x-0 opacity-30!;
         animation: fill-from-left 5s ease-out infinite;
       }
     }
@@ -173,7 +191,7 @@
       0px 0px 0px 1px rgb(130, 130, 130);
     transition: all 0.3s ease-in-out;
   }
-  .button-shadow:hover {
+  .button-shadow:hover:active {
     box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0);
   }
 

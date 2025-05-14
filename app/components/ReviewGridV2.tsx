@@ -1,6 +1,6 @@
 import { ReviewCard } from "./ReviewCard"
 import profilePhoto from "@/public/assets/founder.jpg"
-
+import * as m from "motion/react-m"
 const CARDS: ReviewCard[] = [
   {
     img: profilePhoto,
@@ -40,17 +40,43 @@ const CARDS: ReviewCard[] = [
   },
 ] as const
 
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+}
+const element = {
+  hidden: {
+    opacity: 0,
+    x: -40,
+    filter: "blur(4px)",
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    filter: "blur(0px)",
+  },
+}
+
 export function ReviewGridV2() {
   return (
     <section id="review-grid" className="relative z-5">
-      {/* viewport - visible window, acts as drag constraint */}{" "}
-      <ul
-        className={"flex grid-cols-1 gap-3 px-5.5 pb-2 [scrollbar-width:none] max-md:overflow-x-auto sm:gap-6 md:grid md:grid-cols-2 md:gap-10 lg:grid-cols-3"}
+      <m.ul
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "0px 0px -200px 0px" }}
+        variants={container}
+        className={
+          "flex grid-cols-1 gap-3 px-5.5 pb-2 [scrollbar-width:none] max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory max-md:scroll-smooth sm:gap-6 md:grid md:grid-cols-2 md:gap-10 lg:grid-cols-3"
+        }
       >
         {CARDS.map((card, i) => (
-          <ReviewCard {...card} key={i} className="w-72 flex-shrink-0 md:w-auto" />
+          <ReviewCard {...card} key={i} className="w-72 flex-shrink-0 md:w-auto max-md:snap-center" variants={element} />
         ))}
-      </ul>
+      </m.ul>
     </section>
   )
 }

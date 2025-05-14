@@ -20,7 +20,7 @@ const listItems = [
   },
   {
     title: "Build & Launch",
-    description: "Once you choose your package, I design and develop your project — typically delivering everything within one month.",
+    description: "Once you choose your package, I design and develop your project - typically delivering everything within one month.",
     icon: <Icon name="rocket" height={18} width={18} strokeWidth={2.5} />,
   },
 ]
@@ -37,7 +37,15 @@ const features = [
   "Own your data",
   "No contract required",
 ]
-
+const parent = {
+  hidden: { opacity: 1, y: 0 },
+  show: {
+    transition: {
+      staggerChildren: 0.25,
+      delayChildren: 0.15,
+    },
+  },
+}
 const child = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, type: "spring", stiffness: 100, damping: 10 } },
@@ -56,16 +64,25 @@ export const PricingSection: React.FC = () => {
         </Typography>
       </div>
 
-      <ul className="flex flex-col justify-between gap-12 sm:flex-row lg:gap-16">
-        {listItems.map((item) => (
-          <Typography key={item.title} as="li" size="sm" className="flex max-w-3xs flex-col gap-2">
-            <h3 className="flex items-center gap-1 font-medium text-black">
-              <span>{item.icon}</span> {item.title}
-            </h3>
-            <p className="text-slate-700">{item.description}</p>
-          </Typography>
+      <m.ul
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={parent}
+        className="flex flex-col items-center justify-between gap-12 sm:flex-row lg:gap-16"
+      >
+        {listItems.map((item, i) => (
+          <m.div key={item.title} variants={child}>
+            <Typography as="li" size="sm" className="relative flex max-w-3xs flex-col gap-2">
+              <h3 className="flex items-center gap-1 font-medium text-black">
+                <span>{item.icon}</span> {item.title}
+              </h3>
+              <p className="text-slate-700">{item.description}</p>
+              <span className="absolute top-1/2 -right-16 -translate-x-1/2 -translate-y-1/2 text-9xl font-medium text-black opacity-10">{i + 1}</span>
+            </Typography>
+          </m.div>
         ))}
-      </ul>
+      </m.ul>
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-2 md:flex-row">
           <div className="relative flex [flex:1_0_0px] flex-col justify-end gap-6 rounded-xl bg-white p-6 md:max-w-md md:p-8">
@@ -109,15 +126,7 @@ export const PricingSection: React.FC = () => {
           whileInView="show"
           // TODO figure out margin
           viewport={{ once: true, margin: "-100px" }}
-          variants={{
-            hidden: { opacity: 1, y: 0 },
-            show: {
-              transition: {
-                staggerChildren: 0.25,
-                delayChildren: 0.15,
-              },
-            },
-          }}
+          variants={parent}
           className="relative flex flex-row flex-wrap items-end justify-center gap-8"
         >
           <PricingCard

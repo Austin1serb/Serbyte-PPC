@@ -51,7 +51,13 @@ export const LogoMarquee = ({ avatars = true }: { avatars?: boolean }) => {
           <AnimatedElement element="div" className="list">
             {[...LOGOS].map((src, i) => (
               <div style={{ "--position": i + 1, "--speed": "20s" } as React.CSSProperties} className="item" key={i}>
-                <Image src={src} alt="Logo Marquee Brand Icon" className="h-15 w-48 max-w-48 min-w-48 object-contain opacity-70 grayscale transition" />
+                <Image
+                  src={src}
+                  alt="Logo Marquee Brand Icon"
+                  className="h-15 w-48 max-w-48 min-w-48 object-contain opacity-70 grayscale transition"
+                  sizes="100px"
+                  unoptimized
+                />
               </div>
             ))}
           </AnimatedElement>

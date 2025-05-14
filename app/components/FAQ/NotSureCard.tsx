@@ -4,9 +4,15 @@ import { Icon } from "../Icon"
 import { CalIcon } from "../../icons/Cal.icon"
 import { H3 } from "@/app/ui/Elements"
 import clsx from "clsx"
+import * as m from "motion/react-m"
+
 export const NotSureCard: React.FC<{ className?: string }> = ({ className }) => {
   return (
-    <div
+    <m.div
+      initial={{ opacity: 0, x: -40 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ type: "spring", stiffness: 100, damping: 10 }}
+      viewport={{ once: true, amount: 0.8 }}
       className={clsx(
         "bottom-shadow relative flex flex-col gap-8 rounded-2xl border border-gray-300 bg-white p-8 max-lg:text-center lg:h-fit lg:w-fit",
         className
@@ -31,6 +37,6 @@ export const NotSureCard: React.FC<{ className?: string }> = ({ className }) => 
 
         <CalIcon className="h-auto w-20 text-gray-500" />
       </div>
-    </div>
+    </m.div>
   )
 }

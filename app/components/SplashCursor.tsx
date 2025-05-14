@@ -58,7 +58,7 @@ function pointerPrototype(): Pointer {
 
 export default function SplashCursor({
   SIM_RESOLUTION = 128,
-  DYE_RESOLUTION = 720,
+  DYE_RESOLUTION = 256,
   CAPTURE_RESOLUTION = 512,
   DENSITY_DISSIPATION = 3,
   VELOCITY_DISSIPATION = 1.5,
@@ -67,7 +67,7 @@ export default function SplashCursor({
   CURL = 3,
   SPLAT_RADIUS = 0.1,
   SPLAT_FORCE = 6000,
-  SHADING = true,
+  SHADING = false,
   COLOR_UPDATE_SPEED = 10,
   BACK_COLOR = { r: 0, g: 0, b: 0 },
   TRANSPARENT = true,

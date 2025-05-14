@@ -28,7 +28,7 @@ function wrap(node: React.ReactNode) {
 
   if (isValidElement(node)) {
     const { children, ...rest } = node.props as { children: React.ReactNode; [key: string]: unknown }
-    // Don't wrap <br/> — leave as is
+    // Don't wrap <br/> - leave as is
     if (node.type === "br") return node
     return (
       <m.span variants={child} {...rest}>

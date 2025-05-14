@@ -5,9 +5,9 @@ import bespokePreview from "@/app/images/bespoke-preview-v2.webp"
 import automedicsPreview from "@/app/images/automedics-preview-v2.webp"
 import entitledPreview from "@/app/images/entitled-preview-v2.webp"
 import clsx from "clsx"
-
 import { useOffset } from "../hooks/useOffset"
 import { useIsMobile } from "../hooks/useIsMobile"
+import { useMemo } from "react"
 
 const ids = ["automedics", "entitled", "iao", "bespoke"]
 
@@ -16,27 +16,32 @@ export function ProjectsGrid({ className }: { className?: string }) {
   const isMobile = useIsMobile()
 
   const OFFSET_TUNING: Record<string, Partial<HeroOffset>> = {
-    iao: { rot: 10, s: isMobile ? 0.31 : 0.82, dx: isMobile ? -90 : -20, dy: -10 },
+    entitled: { rot: 4, s: isMobile ? 0.3 : 0.7, dx: isMobile ? -230 : -30, dy: -40 },
 
-    entitled: { rot: -12, s: isMobile ? 0.36 : 0.8, dx: isMobile ? -90 : 0, dy: -20 },
+    iao: { rot: -5, s: isMobile ? 0.3 : 0.7, dx: isMobile ? -200 : -90, dy: -40 },
 
-    automedics: { rot: 4, s: isMobile ? 0.33 : 0.81, dx: isMobile ? -90 : 0, dy: -15 },
+    automedics: { rot: 5, s: isMobile ? 0.3 : 0.7, dx: isMobile ? -210 : -45, dy: -25 },
 
-    bespoke: { rot: -5, s: isMobile ? 0.39 : 0.78, dx: isMobile ? -90 : 0, dy: -15 },
+    bespoke: { rot: 10, s: isMobile ? 0.35 : 0.7, dx: isMobile ? -210 : -50, dy: -40 },
   }
 
-  const offsets = Object.fromEntries(
-    Object.entries(rawOffsets).map(([id, base]) => [
-      id,
-      {
-        ...OFFSET_TUNING[id],
-        x: (base?.x ?? 0) + (OFFSET_TUNING[id]?.dx ?? 0),
-        y: (base?.y ?? 0) + (OFFSET_TUNING[id]?.dy ?? 0),
-        // rot: OFFSET_TUNING[id]?.rot ?? 0,
-        // s: OFFSET_TUNING[id]?.s ?? 0,
-      },
-    ])
-  )
+  const offsets = useMemo(() => {
+    return Object.fromEntries(
+      ids.map((id) => {
+        const base = rawOffsets[id] ?? { x: 0, y: 0 }
+        const t = OFFSET_TUNING[id]
+        return [
+          id,
+          {
+            x: base.x! + t.dx!,
+            y: base.y! + t.dy!,
+            rot: t.rot!,
+            s: t.s ?? 1,
+          },
+        ]
+      })
+    )
+  }, [rawOffsets, isMobile])
 
   return (
     <section id="projects" className={clsx("relative", className)}>
@@ -49,8 +54,18 @@ export function ProjectsGrid({ className }: { className?: string }) {
           data-grid-id="entitled"
           color="#000000"
           type="Event Management"
+          isMobile={isMobile}
         />
-        <AnimatedCard key={"IAO"} src={iaoPreview} alt={"IAO Preview"} offset={offsets?.["iao"]} data-grid-id="iao" color="#13739C" type="Private Security" />
+        <AnimatedCard
+          key={"IAO"}
+          src={iaoPreview}
+          alt={"IAO Preview"}
+          offset={offsets?.["iao"]}
+          data-grid-id="iao"
+          color="#13739C"
+          type="Private Security"
+          isMobile={isMobile}
+        />
         <AnimatedCard
           key="Automedics"
           src={automedicsPreview}
@@ -59,6 +74,7 @@ export function ProjectsGrid({ className }: { className?: string }) {
           data-grid-id="automedics"
           color="#DA961A"
           type="Automotive Repair"
+          isMobile={isMobile}
         />
         <AnimatedCard
           key="Bespoke"
@@ -68,6 +84,7 @@ export function ProjectsGrid({ className }: { className?: string }) {
           data-grid-id="bespoke"
           color="#024EFC"
           type="Automotive Styling"
+          isMobile={isMobile}
         />
       </div>
     </section>

@@ -7,13 +7,15 @@ export const CallToActionButton = () => {
   const buttonVariants = {
     initial: {
       opacity: 0,
-      filter: `blur(8px)`,
+      filter: `blur(5px)`,
+      scale: 0.8,
     },
     animate: {
       opacity: 1,
       filter: "blur(0px)",
+      scale: 1,
       transition: {
-        delay: 1,
+        delay: 0.7,
       },
     },
     hover: {

@@ -1,10 +1,17 @@
 import Image from "next/image"
 import lightningIcon from "../images/lightning.png"
 import { Typography } from "../ui/Elements"
+import * as m from "motion/react-m"
 
 export function FinancingCard() {
   return (
-    <div className="pointer-events-none inset-0 md:absolute">
+    <m.div
+      initial={{ opacity: 0, scale: 0.3, rotate: -20 }}
+      whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+      transition={{ type: "spring", stiffness: 150, damping: 10 }}
+      viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+      className="pointer-events-none inset-0 z-1 md:absolute"
+    >
       <div className="animate-rotate button-shadow @container relative flex h-1/2 min-h-[220px] w-full max-w-sm flex-col justify-between overflow-hidden rounded-3xl bg-black p-6 backdrop-blur-sm">
         {/* Badge */}
         <div>
@@ -32,6 +39,6 @@ export function FinancingCard() {
           />
         </div>
       </div>
-    </div>
+    </m.div>
   )
 }

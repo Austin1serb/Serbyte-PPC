@@ -34,6 +34,15 @@ const container = {
   },
 }
 
+const container2 = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.9,
+    },
+  },
+}
 const element = {
   hidden: {
     opacity: 0,
@@ -57,6 +66,12 @@ const element2 = {
     opacity: 1,
     scale: 1,
     filter: "blur(0px)",
+    transition: {
+      duration: 0.2,
+      type: "spring",
+      stiffness: 100,
+      damping: 10,
+    },
   },
 }
 export const ServicesSectionV2: React.FC = ({ className = "" }: { className?: string }) => {
@@ -112,7 +127,7 @@ export const ServicesSectionV2: React.FC = ({ className = "" }: { className?: st
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.8 }}
-        variants={container}
+        variants={container2}
         className="grid [flex:1_0_0px] grid-cols-2 gap-12 md:grid-cols-1"
       >
         {services.map(({ name, src }) => (

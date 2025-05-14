@@ -17,6 +17,7 @@
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.5.0",
     "clsx": "^2.1.1",
     "motion": "^12.10.5",
     "next": "^15.3.2",

@@ -2,17 +2,20 @@ import { StaticImageData } from "next/image"
 import { ClientInfoCard } from "./ClientInfoCard"
 import clsx from "clsx"
 import { Text } from "../ui/Elements"
-
+import { Variants } from "motion/react"
+import * as m from "motion/react-m"
 export type ReviewCard = {
   img: StaticImageData
   name: string
   title: string
   review: string
   className?: string
+  variants?: Variants
 }
-export const ReviewCard: React.FC<ReviewCard> = ({ img, name, title, review, className }) => {
+export const ReviewCard: React.FC<ReviewCard> = ({ img, name, title, review, className, variants }) => {
   return (
-    <li
+    <m.li
+      variants={variants}
       className={clsx(
         "relative flex aspect-[4/3] flex-shrink-0 snap-center flex-col items-start justify-between rounded-2xl border border-gray-200 bg-white p-6 shadow-md shadow-gray-200",
         className
@@ -31,6 +34,6 @@ export const ReviewCard: React.FC<ReviewCard> = ({ img, name, title, review, cla
       </div>
 
       <ClientInfoCard img={img} name={name} title={title} />
-    </li>
+    </m.li>
   )
 }

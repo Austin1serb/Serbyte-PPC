@@ -17,7 +17,16 @@ export const BottomBlurOverlay: React.FC<BottomBlurOverlayProps> = ({ layers = 8
   const blurs = blursStrengths[strength - 1]
 
   return (
-    <div className={`pointer-events-none fixed inset-0 z-5 overflow-hidden ${className}`}>
+    <div
+      className={`blur-overlay ${className}`}
+      style={{
+        pointerEvents: "none",
+        position: "fixed",
+        inset: 0,
+        zIndex: 5,
+        overflow: "hidden",
+      }}
+    >
       {Array.from({ length: layers }).map((_, i) => {
         const blur = blurs[i] || blurs[blurs.length - 1]
 

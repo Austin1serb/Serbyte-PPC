@@ -4,13 +4,14 @@ import { FooterV2 } from "./components/Footer/FooterV2"
 import localFont from "next/font/local"
 import "./globalsV2.css"
 import { Metadata } from "next"
-import { SITE_SLUGS } from "@/config/siteConfig"
+import { SITE_CONFIG, SITE_SLUGS } from "@/config/siteConfig"
 import { TopBarV2 } from "./components/TopBarV2"
 import { LazyMotion, domAnimation } from "motion/react"
 import SplashCursor from "./components/SplashCursor"
 import ComponentRouter from "./components/DesktopCursor"
 import { DotCursor } from "./components/DotCursor"
 import DesktopCursor from "./components/DesktopCursor"
+import { Analytics } from "@vercel/analytics/next"
 
 const switzer = localFont({
   src: "./fonts/Switzer-Variable.woff2",
@@ -19,13 +20,14 @@ const switzer = localFont({
   style: "normal",
   weight: "300 400 500 600 700",
   fallback: ["helvetica", "sans-serif"],
+  preload: true,
 })
 
 export const metadata: Metadata = {
   title: "Serbyte",
   description: "Serbyte",
   alternates: {
-    canonical: SITE_SLUGS.home,
+    canonical: SITE_CONFIG.url + SITE_SLUGS.home,
   },
 }
 
@@ -34,18 +36,21 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <html lang="en">
       <body className="relative bg-white">
         <LazyMotion strict features={domAnimation}>
-          <DesktopCursor />
-          <SplashCursor />
-          <div className="bg-noise custom:mx-auto pointer-events-none absolute inset-0 z-0 mx-3.5 max-w-6xl bg-repeat opacity-4 md:mx-5 lg:mx-8" />
+          {/* <DesktopCursor />
+          <SplashCursor /> */}
 
-          <div className={`${switzer.variable} font-switzer overflow-hidden subpixel-antialiased`}>
+          {/* <div className="bg-noise custom:mx-auto pointer-events-none absolute inset-0 z-0 mx-3.5 max-w-6xl bg-repeat opacity-4 md:mx-5 lg:mx-8" />
+           */}
+
+          <div className={`${switzer.variable} font-switzer overflow- subpixel-antialiased`}>
             <div className="custom:mx-auto pointer-events-none absolute inset-0 z-3 mx-3.5 max-w-6xl border-x border-gray-200 md:mx-5 lg:mx-8" />
-            <BottomBlurOverlay />
+            {/* <BottomBlurOverlay /> */}
             <TopBarV2 />
             {children}
-            <FooterV2 />
+            {/* <FooterV2 /> */}
           </div>
         </LazyMotion>
+        {/* {<Analytics />} */}
       </body>
     </html>
   )
