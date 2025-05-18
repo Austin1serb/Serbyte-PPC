@@ -11,20 +11,19 @@ const BespokePage: React.FC = () => {
     offset: ["start start", "20% start"],
   })
   const ref = useRef<HTMLDivElement>(null)
-  const scale = useTransform(scrollYProgress, [0, 0.5], [0.7, 1])
-  const translateY = useTransform(scrollYProgress, [0, 0.5], ["10%", "14%"])
+  const scale = useTransform(scrollYProgress, [0.166, 0.5], [1, 0.6])
+  const translateY = useTransform(scrollYProgress, [0, 0.5], ["-5%", "24%"])
 
   return (
-    <main className="inside-container relative items-center">
-      {/* <div className="h-80"></div> */}
+    <main className="relative items-center">
       <m.div ref={ref} style={{ scale, translateY, transformOrigin: "50% 0" }} className="flex h-full w-full">
         {/* <Image src={BespokeTintPpf} alt="Bespoke Tint PPF" className="w-full rounded-xl shadow-xl" quality={10} /> */}
 
         <iframe
           onClick={(e) => e.preventDefault()}
-          src="https://www.bespokeauto.org/"
+          src="/bespoke-hero.html"
           title="Iframe Example"
-          className="w-full h-[7500px] rounded-xl shadow-xl"
+          className="w-full h-[2000px] rounded-xl shadow-xl min-w-[375px]"
         />
       </m.div>
 
