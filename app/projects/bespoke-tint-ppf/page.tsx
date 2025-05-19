@@ -17,7 +17,7 @@ const BespokePage: React.FC = () => {
   return (
     <main className="relative items-center">
       <m.div ref={ref} style={{ scale, translateY, transformOrigin: "50% 0" }} className="flex h-full w-full">
-        <Image src={BespokeTintPpf} alt="Bespoke Tint PPF" className="w-full rounded-xl shadow-xl" quality={10} />
+        {/* <Image src={BespokeTintPpf} alt="Bespoke Tint PPF" className="w-full rounded-xl shadow-xl" quality={10} /> */}
 
         {/* <iframe
           onClick={(e) => e.preventDefault()}
