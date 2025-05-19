@@ -19,12 +19,12 @@ const BespokePage: React.FC = () => {
       <m.div ref={ref} style={{ scale, translateY, transformOrigin: "50% 0" }} className="flex h-full w-full">
         {/* <Image src={BespokeTintPpf} alt="Bespoke Tint PPF" className="w-full rounded-xl shadow-xl" quality={10} /> */}
 
-        <iframe
+        {/* <iframe
           onClick={(e) => e.preventDefault()}
           src="/bespoke-hero.html"
           title="Iframe Example"
           className="w-full h-[2000px] rounded-xl shadow-xl min-w-[375px]"
-        />
+        /> */}
       </m.div>
 
       {/* Content after the scroll experience */}
