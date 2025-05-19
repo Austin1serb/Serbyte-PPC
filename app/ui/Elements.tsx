@@ -5,6 +5,17 @@ type HeadingProps<T extends keyof JSX.IntrinsicElements> = React.ComponentPropsW
   children: React.ReactNode
 }
 
+export const H1: React.FC<HeadingProps<"h1">> = ({ children, ...rest }) => {
+  return (
+    <h1
+      {...rest}
+      className={clsx("xs:text-5xl relative z-5 text-4xl leading-[1] font-medium tracking-tight text-slate-900 sm:text-6xl lg:text-7xl", rest.className)}
+    >
+      {children}
+    </h1>
+  )
+}
+
 export const H2: React.FC<HeadingProps<"h2">> = ({ children, ...rest }) => {
   return (
     <h2 {...rest} className={clsx("text-4xl tracking-tighter text-slate-900 md:text-5xl md:leading-11 lg:text-6xl lg:leading-15", rest.className)}>
