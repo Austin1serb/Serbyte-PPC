@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-*:not(:has(border-none)) {
+/* *:not(:has(border-none)) {
   border: 1px dotted red;
-}
+} */
 
 iframe div .review-text {
   display: none !important;
