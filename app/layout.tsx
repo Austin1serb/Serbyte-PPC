@@ -12,6 +12,7 @@ import ComponentRouter from "./components/DesktopCursor"
 import { DotCursor } from "./components/DotCursor"
 import DesktopCursor from "./components/DesktopCursor"
 import { Analytics } from "@vercel/analytics/next"
+import { ViewTransitions } from "./hooks/useTransitionRouter"
 
 const switzer = localFont({
   src: "./fonts/Switzer-Variable.woff2",
@@ -33,26 +34,28 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <html lang="en">
-      <body className="relative bg-white">
-        <LazyMotion strict features={domAnimation}>
-          <DesktopCursor />
-          {/* <SplashCursor /> */}
+    <ViewTransitions>
+      <html lang="en">
+        <body className="relative bg-white">
+          <LazyMotion strict features={domAnimation}>
+            <DesktopCursor />
+            {/* <SplashCursor /> */}
 
-          {/* <div className="bg-noise custom:mx-auto pointer-events-none absolute inset-0 z-0 mx-3.5 max-w-6xl bg-repeat opacity-4 md:mx-5 lg:mx-8" />
-           */}
+            {/* <div className="bg-noise custom:mx-auto pointer-events-none absolute inset-0 z-0 mx-3.5 max-w-6xl bg-repeat opacity-4 md:mx-5 lg:mx-8" />
+             */}
 
-          <div className={`${switzer.variable} font-switzer overflow- subpixel-antialiased`}>
-            <div className="custom:mx-auto pointer-events-none absolute inset-0 z-3 mx-3.5 max-w-6xl border-x border-gray-200 md:mx-5 lg:mx-8" />
-            {/* <BottomBlurOverlay /> */}
-            <TopBarV2 />
-            {children}
-            {/* <FooterV2 /> */}
-          </div>
-        </LazyMotion>
-        {/* {<Analytics />} */}
-      </body>
-    </html>
+            <div className={`${switzer.variable} font-switzer overflow- subpixel-antialiased`}>
+              <div className="custom:mx-auto pointer-events-none absolute inset-0 z-3 mx-3.5 max-w-6xl border-x border-gray-200 md:mx-5 lg:mx-8" />
+              {/* <BottomBlurOverlay /> */}
+              <TopBarV2 />
+              {children}
+              {/* <FooterV2 /> */}
+            </div>
+          </LazyMotion>
+          {/* {<Analytics />} */}
+        </body>
+      </html>
+    </ViewTransitions>
   )
 }
 export default RootLayout

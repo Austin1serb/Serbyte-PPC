@@ -3,6 +3,8 @@ import withBundleAnalyzer from "@next/bundle-analyzer"
 
 const withAnalyzer = withBundleAnalyzer({ enabled: process.env.ANALYZE === "true" })
 const nextConfig: NextConfig = {
+  experimental: { viewTransition: true },
+
   /* config options here */
   images: {
     remotePatterns: [

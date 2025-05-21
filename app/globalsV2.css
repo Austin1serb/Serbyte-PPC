@@ -351,3 +351,32 @@ iframe div .review-text {
   animation-delay: 6s;
   opacity: 0;
 }
+
+/* leaving snapshot: wipe upward + darken */
+::view-transition-old(root) {
+  animation: 0.5s cubic-bezier(0.83, 0, 0.17, 1) oldUp forwards;
+  will-change: filter;
+}
+/* entering snapshot: reveal from bottom */
+::view-transition-new(root) {
+  animation: 0.5s cubic-bezier(0.83, 0, 0.17, 1) newReveal forwards;
+}
+
+@keyframes oldUp {
+  from {
+    filter: blur(0px) brightness(1);
+    transform: translateY(0px);
+  }
+  to {
+    filter: blur(10px) brightness(0.5);
+    transform: translateY(-40px);
+  }
+}
+@keyframes newReveal {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}

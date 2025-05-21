@@ -50,7 +50,7 @@ export function ProjectsGrid({ className }: { className?: string }) {
           key={"Entitled"}
           src={entitledPreview}
           alt={"Entitled Preview"}
-          offset={offsets?.["entitled"]}
+          offset={offsets["entitled"]}
           data-grid-id="entitled"
           color="#000000"
           type="Event Management"
@@ -60,7 +60,7 @@ export function ProjectsGrid({ className }: { className?: string }) {
           key={"IAO"}
           src={iaoPreview}
           alt={"IAO Preview"}
-          offset={offsets?.["iao"]}
+          offset={offsets["iao"]}
           data-grid-id="iao"
           color="#13739C"
           type="Private Security"
@@ -70,7 +70,7 @@ export function ProjectsGrid({ className }: { className?: string }) {
           key="Automedics"
           src={automedicsPreview}
           alt={"Automedics Preview"}
-          offset={offsets?.["automedics"]}
+          offset={offsets["automedics"]}
           data-grid-id="automedics"
           color="#DA961A"
           type="Automotive Repair"
@@ -80,7 +80,7 @@ export function ProjectsGrid({ className }: { className?: string }) {
           key="Bespoke"
           src={bespokePreview}
           alt={"Bespoke Preview"}
-          offset={offsets?.["bespoke"]}
+          offset={offsets["bespoke"]}
           data-grid-id="bespoke"
           color="#024EFC"
           type="Automotive Styling"

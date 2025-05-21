@@ -1,5 +1,4 @@
 "use client"
-import Link from "next/link"
 import { useState } from "react"
 import DotMenuIcon from "./DotMenuIcon"
 import clsx from "clsx"
@@ -7,6 +6,7 @@ import { useMotionValueEvent } from "motion/react"
 import { useScroll } from "motion/react"
 import { isClient } from "../utils/isClient"
 import { Icon } from "./Icon"
+import { Link } from "../utils/Link"
 
 export const TopBarV2: React.FC = () => {
   const [scrollDirection, setScrollDirection] = useState("up")

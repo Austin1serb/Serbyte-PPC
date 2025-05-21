@@ -24,8 +24,8 @@ export function DotCursor() {
     /* -------- pointer follow -------- */
     const handlePointerMove = ({ clientX, clientY }: MouseEvent) => {
       frame.read(() => {
-        console.log("clientX", clientX)
-        console.log("clientY", clientY)
+        // console.log("clientX", clientX)
+        // console.log("clientY", clientY)
         x.set(clientX)
         y.set(clientY)
       })

@@ -3,8 +3,9 @@ import { useScroll, useTransform, useSpring, useMotionValueEvent } from "motion/
 import { StaticImageData } from "next/image"
 import { Card } from "./Card"
 import * as m from "motion/react-m"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import clsx from "clsx"
+import { Link } from "../utils/Link"
 
 export type HeroOffset = {
   x: number
@@ -32,6 +33,7 @@ export function AnimatedCard({
   type: string
   isMobile: boolean
 }) {
+  // TODO pass scroll progress to the parent and reveal
   const { scrollYProgress } = useScroll({
     offset: isMobile ? ["13% end", "start start"] : ["18% end", "start start"],
   })
@@ -51,8 +53,12 @@ export function AnimatedCard({
     else if (v < 0.6 && reveal) setReveal(false)
   })
 
+  useEffect(() => {
+    console.log("reveal: ", offset.x)
+  }, [offset])
+
   return (
-    <div data-grid-id={gridId}>
+    <Link href={`/projects/${gridId}`} data-grid-id={gridId}>
       <m.div
         // initial={{ opacity: 0, x: 0, y: 0, scale: 1, rotate: 0 }}
         // animate={{ opacity: 1, transition: { opacity: { delay: 0.35 } } }}
@@ -62,6 +68,6 @@ export function AnimatedCard({
       >
         <Card src={src} alt={alt} color={color} type={type} />
       </m.div>
-    </div>
+    </Link>
   )
 }
