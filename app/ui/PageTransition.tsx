@@ -8,7 +8,6 @@ export default function PageTransition({ children }: { children: React.ReactNode
 
   return (
     <AnimatePresence mode="wait">
-      {/* KEY = route → triggers exit/enter */}
       <m.div
         key={pathname}
         className="fixed inset-0 z-50" // full-viewport layer
