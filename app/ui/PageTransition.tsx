@@ -1,6 +1,7 @@
 "use client"
 import { usePathname } from "next/navigation"
-import { AnimatePresence, motion as m } from "framer-motion"
+import { AnimatePresence } from "motion/react"
+import * as m from "motion/react-m"
 
 export default function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
