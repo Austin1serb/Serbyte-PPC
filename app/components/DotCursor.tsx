@@ -24,8 +24,6 @@ export function DotCursor() {
     /* -------- pointer follow -------- */
     const handlePointerMove = ({ clientX, clientY }: MouseEvent) => {
       frame.read(() => {
-        // console.log("clientX", clientX)
-        // console.log("clientY", clientY)
         x.set(clientX)
         y.set(clientY)
       })
@@ -74,7 +72,7 @@ export function DotCursor() {
       ref={ref}
       style={{ x, y, width, height }}
       className={clsx(
-        "pointer-events-none fixed top-0 left-0 z-[60] flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white p-1 text-xs font-semibold mix-blend-difference cursor-none",
+        "pointer-events-none fixed top-0 left-0 z-[60] flex -translate-x-1/2 -translate-y-1/2 cursor-none items-center justify-center rounded-full bg-white p-1 text-xs font-semibold mix-blend-difference",
         hovering ? "backdrop-blur-[2px]" : "backdrop-blur-[1px]"
       )}
     >

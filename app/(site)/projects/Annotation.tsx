@@ -7,7 +7,7 @@ type Rect = { x: number; y: number; w: number; h: number }
 export interface AnnotationData {
   id: string
   rect: Rect
-  text: string
+  text?: string
   start: number
   end: number
   className?: string
@@ -30,20 +30,23 @@ export const Annotation = ({ data: a, progress }: Props) => {
         top: `${a.rect.y}%`,
         width: `${a.rect.w}%`,
         height: `${a.rect.h}%`,
+        filter: "none",
       }}
       className="pointer-events-none absolute"
     >
-      <div className="absolute inset-0 blur-2xl bg-white/75" />
+      <div className="absolute inset-0 bg-white/75 blur-2xl" />
 
-      <div className="absolute inset-0 border-2! border-yellow-500! border-solid!" />
-      <m.div
-        className={clsx(
-          "absolute left-1/2 -top-9 ml-3 whitespace-nowrap rounded-lg rounded-bl-none bg-neutral-900 px-3 py-2 text-xs text-white shadow-lg",
-          a.className
-        )}
-      >
-        {a.text}
-      </m.div>
+      <div className="absolute inset-0 border-3! border-solid! border-yellow-500!" />
+      {a.text && (
+        <m.div
+          className={clsx(
+            "absolute -bottom-11 -left-2 ml-3 rounded-2xl rounded-tl-none bg-white px-3 py-2 text-sm whitespace-nowrap text-black shadow-lg",
+            a.className
+          )}
+        >
+          {a.text}
+        </m.div>
+      )}
     </m.div>
   )
 }

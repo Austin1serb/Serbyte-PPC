@@ -34,8 +34,9 @@ const FAQSection = dynamic(() => import("../components/FAQ/FAQSection").then((mo
 
 const WebDesignPage: React.FC = () => {
   return (
-    <main>
+    <main className="overflow-hidden">
       <HeroV2 />
+      <LogoMarquee />
       <Projects />
       <LargeReview />
       <ServicesSectionV2 />

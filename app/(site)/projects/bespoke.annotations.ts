@@ -6,18 +6,35 @@ import { AnnotationData } from "./Annotation"
  */
 export const bespokeAnnotations: AnnotationData[] = [
   {
-    id: "hero",
-    rect: { x: 7.5, y: 0, w: 85, h: 12 },
-    text: "Navigation Bar",
+    id: "call-to-action",
+    rect: { x: 78.8, y: 4, w: 12.45, h: 6 },
+    text: "Clear Calls to Action",
     start: 0.15,
-    end: 0.18,
-    className: "translate-x-40",
+    end: 0.19,
+    className: "",
+  },
+  {
+    id: "call-to-action-2",
+    rect: { x: 40, y: 48.56, w: 17.8, h: 6.6 },
+    text: "Clear Calls to Action",
+    start: 0.15,
+    end: 0.19,
+    className: "translate-x-40 -translate-y-26 rounded-full rounded-tl-full! rounded-bl-none!",
   },
   {
     id: "social-proof",
-    rect: { x: 53, y: 0, w: 39, h: 6 },
-    text: "Contact Info",
+    rect: { x: 20.5, y: 32.5, w: 27, h: 6.5 },
+    text: "Social Proof",
     start: 0.25,
     end: 0.28,
+    className: "translate-x-40 brightness-100",
+  },
+  {
+    id: "key-words",
+    rect: { x: 20.5, y: 37.5, w: 36, h: 10.5 },
+    text: "Target Key Words",
+    start: 0.35,
+    end: 0.37,
+    className: "translate-x-40 brightness-100",
   },
 ] as const

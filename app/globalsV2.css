@@ -4,10 +4,6 @@
   border: 1px dotted red;
 } */
 
-iframe div .review-text {
-  display: none !important;
-}
-
 .snap-container {
   scroll-snap-type: y mandatory;
   height: 100vh;
