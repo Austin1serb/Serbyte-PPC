@@ -27,14 +27,14 @@ export const TopBarV2: React.FC = () => {
   ]
 
   return (
-    <nav className="font-switzer fixed top-5 z-10 flex w-full justify-center text-base md:text-sm">
+    <nav className="font-switzer fixed top-5 z-10 flex w-fit left-1/2 -translate-x-1/2 justify-center text-base md:text-sm">
       {/* Wrapper that grows/shrinks on mobile */}
       <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white/50 backdrop-blur-sm">
         <div className="relative flex flex-col">
           {/* Top Row (always visible) */}
           <div className="flex items-center gap-4 px-4 py-3 md:gap-8 md:py-2.5">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 font-medium">
+            <Link href="/" className="flex items-center gap-2 font-medium text-nowrap">
               <Icon name="serbyte" height={24} width={24} className="rounded shadow-md" />
               Serbyte Development
             </Link>

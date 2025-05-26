@@ -3,6 +3,7 @@ import clsx from "clsx"
 import { frame, useSpring, AnimatePresence } from "motion/react"
 import { useEffect, useRef, useState } from "react"
 import * as m from "motion/react-m"
+import Image from "next/image"
 
 const WIDTH = 20
 const HEIGHT = 20

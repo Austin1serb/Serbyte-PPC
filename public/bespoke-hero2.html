@@ -8272,3 +8272,13 @@
       <h2 class=body-display>We specialize in automotive window tinting, vinyl wraps, ceramic coatings, paint protection
         film (PPF), and clear bra protection — trusted by drivers across Bellevue and the Greater Seattle area.</h2>
     </header>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        document.body.addEventListener('click', function (e) {
+          if (e.target.tagName === 'A') {
+            e.preventDefault();
+          }
+        });
+      });
+    </script>

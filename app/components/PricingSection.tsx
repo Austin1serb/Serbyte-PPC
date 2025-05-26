@@ -112,7 +112,7 @@ export const PricingSection: React.FC = () => {
             <div className="mt-6 flex items-center gap-6">
               <button
                 type="button"
-                className="bubble-hover button-shadow w-fit rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition hover:cursor-pointer"
+                className="bubble-hover button-shadow w-fit rounded-full bg-black px-6 py-3 text-sm font-medium text-white hover:translate-y-0.5 hover:shadow-none"
               >
                 Book a Discovery Call
               </button>

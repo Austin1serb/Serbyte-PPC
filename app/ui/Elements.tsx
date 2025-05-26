@@ -3,14 +3,17 @@ import { JSX } from "react"
 
 type HeadingProps<T extends keyof JSX.IntrinsicElements> = React.ComponentPropsWithoutRef<T> & {
   children: React.ReactNode
+  variant?: "large" | "medium"
 }
 
-export const H1: React.FC<HeadingProps<"h1">> = ({ children, ...rest }) => {
+export const H1: React.FC<HeadingProps<"h1">> = ({ children, variant = "large", ...rest }) => {
+  const variants = {
+    large: "xs:text-5xl relative z-5 text-4xl leading-[1] font-medium tracking-tight text-slate-900 sm:text-6xl lg:text-7xl",
+    medium: "sm:text-3xl relative z-5 text-3xl leading-[1.1] font-normal tracking-tight text-slate-900 sm:text-4xl lg:text-5xl",
+  }
+
   return (
-    <h1
-      {...rest}
-      className={clsx("xs:text-5xl relative z-5 text-4xl leading-[1] font-medium tracking-tight text-slate-900 sm:text-6xl lg:text-7xl", rest.className)}
-    >
+    <h1 {...rest} className={clsx(variants[variant], rest.className)}>
       {children}
     </h1>
   )
@@ -52,15 +55,16 @@ export function Text({ as: Component = "p", size = "base", className = "", ...pr
 
 interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   as?: HTMLElementTag
-  size?: "sm" | "base" | "lg" | "xl"
+  size?: "xs" | "sm" | "base" | "lg" | "xl"
 }
 
-export function Typography({ as: Component = "article", size = "base", className = "", ...props }: TypographyProps) {
+export function Typography({ as: Component = "article", size = "base", ...props }: TypographyProps) {
   const sizeClasses = {
+    xs: "text-sm leading-tight",
     sm: "text-sm leading-tight md:text-base",
     base: "text-base leading-tight md:text-lg",
     lg: "text-lg leading-6 md:text-xl",
     xl: "text-xl leading-6 md:text-2xl",
   }
-  return <Component {...props} className={`text-slate-600 ${sizeClasses[size]} ${className}`} />
+  return <Component {...props} className={`text-slate-600 ${sizeClasses[size]} ${props.className}`} />
 }

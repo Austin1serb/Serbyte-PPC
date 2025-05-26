@@ -14,15 +14,16 @@ const ids = ["automedics", "entitled", "iao", "bespoke"]
 export function ProjectsGrid({ className }: { className?: string }) {
   const rawOffsets = useOffset(ids)
   const isMobile = useIsMobile()
+  const responsiveScale = isMobile ? 0.3 : 0.7
 
   const OFFSET_TUNING: Record<string, Partial<HeroOffset>> = {
-    entitled: { rot: 4, s: isMobile ? 0.3 : 0.7, dx: isMobile ? -230 : -30, dy: -40 },
+    entitled: { rot: 9, s: responsiveScale, dx: isMobile ? -200 : -30, dy: isMobile ? -120 : -40 },
 
-    iao: { rot: -5, s: isMobile ? 0.3 : 0.7, dx: isMobile ? -200 : -90, dy: -40 },
+    iao: { rot: -5, s: responsiveScale, dx: isMobile ? -210 : -60, dy: isMobile ? -130 : -40 },
 
-    automedics: { rot: 5, s: isMobile ? 0.3 : 0.7, dx: isMobile ? -210 : -45, dy: -25 },
+    automedics: { rot: 5, s: responsiveScale, dx: isMobile ? -205 : -45, dy: isMobile ? -130 : -25 },
 
-    bespoke: { rot: 10, s: isMobile ? 0.35 : 0.7, dx: isMobile ? -210 : -50, dy: -40 },
+    bespoke: { rot: 12, s: responsiveScale, dx: isMobile ? -210 : -50, dy: isMobile ? -110 : -10 },
   }
 
   const offsets = useMemo(() => {

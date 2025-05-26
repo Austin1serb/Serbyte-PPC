@@ -5,7 +5,7 @@ import { CallToActionButton } from "./CallToActionButton"
 export const HeroV2 = () => {
   return (
     <section className="mx-auto max-w-6xl pt-32">
-      <div className="inside relative flex gap-8 px-5.5 pb-12 md:px-11 md:pb-24">
+      <div className="inside relative flex [flex:1.5_0_0px] px-5.5 pb-12 md:px-11 md:pb-24">
         <div className="flex max-w-lg flex-col gap-8 md:min-w-sm">
           <AnimatedElement
             element="span"
@@ -36,7 +36,7 @@ export const HeroV2 = () => {
           <CallToActionButton />
         </div>
         {/* Don't remove this span */}
-        <span data-stack-target-id />
+        <span data-stack-target-id className="xs:ml-[8%] mt-20 ml-[4%] [flex:1_0_0px] sm:mt-10 sm:ml-0 md:ml-[8%]" />
 
         {/* subtle background ellipse */}
         <div className="pointer-events-none absolute inset-y-0 left-1/3 -z-1 hidden w-full bg-radial from-indigo-100 via-transparent to-transparent blur-3xl md:block" />

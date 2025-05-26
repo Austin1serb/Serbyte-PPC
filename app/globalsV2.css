@@ -4,6 +4,10 @@
   border: 1px dotted red;
 } */
 
+html {
+  scroll-behavior: smooth;
+}
+
 .snap-container {
   scroll-snap-type: y mandatory;
   height: 100vh;
@@ -80,6 +84,9 @@
 
   .inside-container {
     @apply mx-auto flex w-full max-w-6xl flex-col gap-12 px-5.5 py-12 md:gap-16 md:px-11 md:py-24 lg:py-32;
+  }
+  .inside-container-projects {
+    @apply mx-auto flex w-full max-w-6xl flex-col gap-12 md:gap-16 px-5.5 md:px-11 pt-32 lg:pt-36 pb-12 lg:pb-16;
   }
 
   .bounce {
