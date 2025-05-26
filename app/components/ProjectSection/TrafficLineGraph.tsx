@@ -26,6 +26,7 @@ export default function ChartDemo() {
         { date: "2025-05-24", value: 130 },
       ],
     }),
+
     []
   )
 
