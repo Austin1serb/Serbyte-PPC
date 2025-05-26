@@ -41,7 +41,7 @@ const ProjectDisplay: React.FC = () => {
             className="relative z-5 max-h-[800px] w-full shadow-xl rounded-xl bo rder border-gray-200"
           />
           <div className="pointer-events-none max-w-[1632px] absolute left-[-255px] top-[-204px] aspect-[1.39393939] w-[1472px] bg-[#111111] lg:-left-60 lg:top-[-162px] lg:w-[100vw] md:left-[-26.705%] md:top-[-36.921%] md:w-[153.409%]">
-            <video src="/videos/glow.mp4" autoPlay loop muted playsInline className="h-auto w-full max-w-none invert " />
+            <video src="/videos/glow.mp4" autoPlay loop muted playsInline className="h-auto w-full max-w-none" />
           </div>
         </div>
       </section>
