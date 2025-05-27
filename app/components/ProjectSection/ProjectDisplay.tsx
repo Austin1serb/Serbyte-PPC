@@ -50,6 +50,7 @@ const ProjectDisplay: React.FC = () => {
           dataSource="Measured over a 90 day period"
         />
       </section>
+      <section className="inside-container-projects h-96"></section>
     </main>
   )
 }

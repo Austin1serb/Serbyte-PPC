@@ -45,7 +45,7 @@ export const RadialProgressRing: React.FC<RadialProgressRingProps> = ({ percenta
 
         {/* Gradient Definition */}
         <defs>
-          <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient id="gradient">
             <stop offset="50%" stopColor="#0f172b" />
             <stop offset="100%" stopColor="#62748e" />
           </linearGradient>
@@ -55,8 +55,7 @@ export const RadialProgressRing: React.FC<RadialProgressRingProps> = ({ percenta
       {/* Center Content */}
 
       <m.div
-        viewport={{ once: true }}
-        initial={{ opacity: 0, scale: 0.7 }}
+        initial={{ opacity: 0, scale: 1.7 }}
         whileInView={{ opacity: 1, scale: 1 }}
         transition={{
           duration: 0.8,
