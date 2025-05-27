@@ -1,5 +1,5 @@
 "use client"
-import { useRef, useCallback, memo } from "react"
+import { useRef, useCallback, memo, useState } from "react"
 import * as motion from "motion/react-m"
 import { useMotionValue, useSpring, useTransform } from "motion/react"
 
@@ -21,6 +21,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
   ({ before, after, initialPosition = 50, springConfig = { stiffness: 400, damping: 30 }, ariaLabel = "Before and after comparison slider" }) => {
     const containerRef = useRef<HTMLDivElement>(null)
     const isDragging = useRef(false)
+    const [isDraggingState, setIsDraggingState] = useState(false)
 
     // Single spring motion value - everything derives from this
     const sliderPosition = useMotionValue(initialPosition)
@@ -66,15 +67,18 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
 
     const handleTouchStart = useCallback(() => {
       isDragging.current = true
+      setIsDraggingState(true)
     }, [])
 
     const handleMouseDown = useCallback((e: React.MouseEvent) => {
       e.preventDefault()
       isDragging.current = true
+      setIsDraggingState(true)
     }, [])
 
     const handleEnd = useCallback(() => {
       isDragging.current = false
+      setIsDraggingState(false)
     }, [])
 
     // Keyboard support
@@ -121,6 +125,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
           onTouchEnd={handleEnd}
           role="img"
           aria-label={ariaLabel}
+          style={{ cursor: isDraggingState ? "grabbing" : "grab" }}
         >
           {before}
 
