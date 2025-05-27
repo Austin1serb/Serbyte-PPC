@@ -14,6 +14,7 @@ export const AnalyticCard: React.FC<AnalyticCardProps> = ({ title, description, 
   return (
     <div className="w-full mx-auto p-6 border border-gray-200 rounded-xl h-[500px] max-w-md relative flex flex-col justify-between hover:shadow-lg transition-all duration-300">
       {/* Title */}
+
       <div className="text-center mb-8">
         <H3 className="mb-2">{title}</H3>
         {percentageIncrease && (
