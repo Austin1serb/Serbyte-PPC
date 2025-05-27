@@ -48,6 +48,7 @@ const ProjectDisplay: React.FC = () => {
   return (
     <main className="overflow-x-hidden">
       <ProjectHero {...bespoke.hero} />
+
       <BeforeAfterSection />
       <section className="inside-container-projects grid lg:grid-cols-3 grid-cols-1">
         <AnalyticCard
@@ -57,7 +58,6 @@ const ProjectDisplay: React.FC = () => {
           chart={<TrafficBarChart />}
           dataSource="Based on 30 day traffic average"
         />
-
         <AnalyticCard
           title="Conversion Rate"
           percentageIncrease={45}

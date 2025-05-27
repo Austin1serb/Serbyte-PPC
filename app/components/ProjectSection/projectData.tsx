@@ -1,7 +1,6 @@
-import { MetricsSectionProps } from "./MetricsSection"
 import { ProjectHeroProps } from "./ProjectHero"
 
-export const bespoke: { hero: ProjectHeroProps; metrics: MetricsSectionProps } = {
+export const bespoke: { hero: ProjectHeroProps } = {
   hero: {
     title: "Growing Bespoke Tint & PPF to $1m+ in Revenue",
     client: "Bespoke Tint & PPF",
@@ -16,12 +15,5 @@ export const bespoke: { hero: ProjectHeroProps; metrics: MetricsSectionProps } =
     ),
     categories: ["SEO", "Web Design", "Web Development", "Photography"],
     link: "https://www.bespokeauto.org/",
-  },
-  metrics: {
-    trafficSeries: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
-    conversionBefore: 0.1,
-    conversionAfter: 0.2,
-    revenueBefore: 100000,
-    revenueAfter: 200000,
   },
 }

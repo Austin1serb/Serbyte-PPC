@@ -18,7 +18,7 @@ interface BeforeAfterProps {
 }
 
 export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
-  ({ before, after, initialPosition = 50, springConfig = { stiffness: 400, damping: 30 }, ariaLabel = "Before and after comparison slider" }) => {
+  ({ before, after, initialPosition = 50, springConfig = { stiffness: 200, damping: 20 }, ariaLabel = "Before and after comparison slider" }) => {
     const containerRef = useRef<HTMLDivElement>(null)
     const isDragging = useRef(false)
     const [isDraggingState, setIsDraggingState] = useState(false)
@@ -114,18 +114,17 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
     )
 
     return (
-      <>
+      <div className="relative">
         <div
           ref={containerRef}
           className="relative w-full min-h-[860px] max-h-[860px] shadow-xl rounded-xl border border-gray-200 select-none touch-none"
           onMouseMove={handleMouseMove}
           onMouseUp={handleEnd}
-          onMouseLeave={handleEnd}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleEnd}
           role="img"
           aria-label={ariaLabel}
-          style={{ cursor: isDraggingState ? "grabbing" : "grab" }}
+          style={{ cursor: isDraggingState ? "grabbing" : "" }}
         >
           {before}
 
@@ -135,7 +134,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
 
           {/* Slider */}
           <motion.div
-            className="absolute top-0 bottom-0 w-80 bg-transparent flex items-center justify-center z-5"
+            className="absolute top-0 bottom-0 bg-transparent flex items-center justify-center z-5"
             style={{ left: sliderLeft, transform: "translateX(-50%)" }}
           >
             <div className="h-full w-0.5 bg-white shadow-lg">
@@ -190,7 +189,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
             </div>
           </motion.div>
         </div>
-      </>
+      </div>
     )
   }
 )
