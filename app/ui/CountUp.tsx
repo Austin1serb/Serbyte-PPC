@@ -1,3 +1,4 @@
+"use client"
 import { useMotionValue, useTransform, animate } from "motion/react"
 import * as motion from "motion/react-m"
 

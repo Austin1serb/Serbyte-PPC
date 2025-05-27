@@ -12,7 +12,7 @@ interface AnalyticCardProps {
 
 export const AnalyticCard: React.FC<AnalyticCardProps> = ({ title, description, percentageIncrease, chart, dataSource }) => {
   return (
-    <div className="w-full mx-auto p-6 border border-gray-200 rounded-xl h-[500px] max-w-md relative flex flex-col justify-between hover:shadow-lg transition-all duration-300">
+    <div className="flex-1 p-6 border border-gray-200 rounded-xl h-[500px] min-w-[300px] max-w-md relative flex flex-col justify-between hover:shadow-lg transition-all duration-300">
       {/* Title */}
 
       <div className="text-center mb-8">
