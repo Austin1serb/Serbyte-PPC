@@ -9,7 +9,7 @@ export const LineChart: React.FC = () => {
     { x: 180, y: 180 }, // Launch 1 (30 * 3)
     { x: 270, y: 165 }, // Launch 2 (55 * 3)
     { x: 360, y: 144 }, // Post-launch 1 (48 * 3)
-    { x: 440, y: 60 }, // Post-launch 2 (20 * 3)
+    { x: 440, y: 70 }, // Post-launch 2 (20 * 3)
   ]
 
   // Create path for line

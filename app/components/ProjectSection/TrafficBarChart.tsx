@@ -5,23 +5,22 @@ interface TrafficData {
   value: number
   color: string
 }
+const data: TrafficData[] = [
+  {
+    label: "Pre-Launch",
+    value: 150,
+    color: "bg-gradient-to-br from-slate-600 to-slate-900",
+  },
+  {
+    label: "Post-Launch",
+    value: 1450,
+    color: "bg-gradient-to-br from-slate-500 to-slate-900",
+  },
+]
+
+const maxValue = Math.max(...data.map((d) => d.value))
 
 export const TrafficBarChart: React.FC = () => {
-  const data: TrafficData[] = [
-    {
-      label: "Pre-Launch",
-      value: 150,
-      color: "bg-gradient-to-br from-slate-600 to-slate-900",
-    },
-    {
-      label: "Post-Launch",
-      value: 1450,
-      color: "bg-gradient-to-br from-slate-500 to-slate-900",
-    },
-  ]
-
-  const maxValue = Math.max(...data.map((d) => d.value))
-
   return (
     <div className="relative h-fit w-full flex items-end justify-between gap-10 rounded-lg px-8 pb-10">
       {data.map((item, index) => {
