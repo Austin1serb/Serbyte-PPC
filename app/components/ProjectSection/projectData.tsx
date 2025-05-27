@@ -15,7 +15,7 @@ export const bespoke: { hero: ProjectHeroProps; metrics: MetricsSectionProps } =
       </>
     ),
     categories: ["SEO", "Web Design", "Web Development", "Photography"],
-    link: "https://www.bspoketint.com",
+    link: "https://www.bespokeauto.org/",
   },
   metrics: {
     trafficSeries: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],

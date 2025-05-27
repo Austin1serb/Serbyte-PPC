@@ -60,6 +60,7 @@ interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
 
 export function Typography({ as: Component = "article", size = "base", ...props }: TypographyProps) {
   const sizeClasses = {
+    xxs: "text-xs leading-tight",
     xs: "text-sm leading-tight",
     sm: "text-sm leading-tight md:text-base",
     base: "text-base leading-tight md:text-lg",

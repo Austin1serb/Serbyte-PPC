@@ -37,7 +37,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <ViewTransitions>
       <html lang="en">
         <body className="relative bg-white">
-          <LazyMotion strict features={domAnimation}>
+          <LazyMotion features={domAnimation}>
             {/* <DesktopCursor />
             <SplashCursor /> */}
 
