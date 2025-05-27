@@ -44,11 +44,9 @@ export default function CountUp({
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }
-
     const formattedNumber = Intl.NumberFormat("en-US", options).format(Number(latest.toFixed(0)))
     return separator ? formattedNumber.replace(/,/g, separator) : formattedNumber
   })
-
   return (
     <motion.span
       className={className}
