@@ -7,7 +7,7 @@ import entitledPreview from "@/app/images/entitled-preview-v2.webp"
 import clsx from "clsx"
 import { useOffset } from "../hooks/useOffset"
 import { useIsMobile } from "../hooks/useIsMobile"
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react"
+import { useMemo, useState } from "react"
 import { useMotionValueEvent, useScroll, useSpring } from "motion/react"
 
 const ids = ["automedics", "entitled", "iao", "bespoke"]

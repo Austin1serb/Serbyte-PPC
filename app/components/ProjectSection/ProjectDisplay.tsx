@@ -3,6 +3,9 @@ import { ProjectHero } from "./ProjectHero"
 import { BeforeAfterSection } from "./BeforeAfterSection"
 import { ResultsSection } from "./ResultsSection"
 import { ApproachSection } from "./ApproachSection"
+import { LargeReview } from "../LargeReview"
+import { MoreProjectsSection } from "./MoreProjectsSection"
+import { LikeWhatYouSeeCard } from "./LikeWhatYouSeeCard"
 
 const ProjectDisplay: React.FC = () => {
   return (
@@ -11,7 +14,9 @@ const ProjectDisplay: React.FC = () => {
       <BeforeAfterSection />
       <ResultsSection />
       <ApproachSection />
-      <div className="h-90"></div>
+      <LargeReview />
+      <MoreProjectsSection />
+      <LikeWhatYouSeeCard />
     </main>
   )
 }

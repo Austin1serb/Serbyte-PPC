@@ -35,7 +35,11 @@ export const phases: Phase[] = [
       "Incorporated angular elements instead of traditional straight lines",
     ],
     icon: "/assets/design-black.webp",
-    feature: <Image src="/assets/image.png" alt="Competitor Analysis" fill className="object-contain" />,
+    feature: (
+      <div className="absolute inset-0 h-full w-full bg-white">
+        <Image src="/assets/brand-images.jpg" alt="Competitor Analysis" fill className="object-contain py-5" />
+      </div>
+    ),
   },
   {
     id: 2,
