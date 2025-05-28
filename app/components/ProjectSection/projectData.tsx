@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { TintSimulator } from "../BespokeTint/TintSimulator"
 import { Phase } from "./ApproachSection"
 import { ProjectHeroProps } from "./ProjectHero"
@@ -34,7 +35,7 @@ export const phases: Phase[] = [
       "Incorporated angular elements instead of traditional straight lines",
     ],
     icon: "/assets/design-black.webp",
-    feature: "",
+    feature: <Image src="/assets/image.png" alt="Competitor Analysis" fill className="object-contain" />,
   },
   {
     id: 2,
@@ -50,7 +51,15 @@ export const phases: Phase[] = [
       "Created visual hierarchy to guide user attention",
     ],
     icon: "/assets/assets-black.webp",
-    feature: "",
+    feature: (
+      <video className="hero-section absolute inset-0 h-full w-full object-cover saturate-200" muted loop preload="metadata" autoPlay playsInline>
+        <source src="/videos/clip-450.mp4" type="video/mp4" media="(max-width: 450px)" />
+        <source src="/videos/clip-600.mp4" type="video/mp4" media="(max-width: 600px) and (min-width: 451px)" />
+        <source src="/videos/clip-1200.mp4" type="video/mp4" media="(min-width: 601px) and (max-width: 1023px)" />
+        <source src="/videos/clip.mp4" type="video/mp4" media="(min-width: 1024px)" />
+        Your browser does not support the video tag.
+      </video>
+    ),
   },
   {
     id: 3,
@@ -65,7 +74,7 @@ export const phases: Phase[] = [
       "Implemented technical SEO best practices",
     ],
     icon: "/assets/search-black.webp",
-    feature: "",
+    feature: <Image src="/assets/competitor-analysis.png" alt="Competitor Analysis" fill className="object-contain" />,
   },
   {
     id: 4,
@@ -81,7 +90,7 @@ export const phases: Phase[] = [
       "Established the business as the local authority on tinting",
     ],
     icon: "/assets/notepad-black.webp",
-    feature: "",
+    feature: <Image src="/assets/washington-vehicle-tint-law-illustration.webp" alt="Tint Law Article" fill className="object-contain" />,
   },
   {
     id: 5,
