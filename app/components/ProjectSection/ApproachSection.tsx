@@ -15,8 +15,7 @@ export interface Phase {
   description: string
   details: string[]
   icon: string
-  color: string
-  bgGradient: string
+  feature: React.ReactNode
 }
 
 export const ApproachSection: React.FC = () => {
@@ -106,35 +105,26 @@ export const ApproachSection: React.FC = () => {
           </AnimatePresence>
 
           {/* Right: Interactive Visual */}
-          <div className="relative w-full h-full min-h-[300px]">
-            <TiltedWrapper
-              containerHeight="100%"
-              contentHeight="100%"
-              contentWidth="100%"
-              scaleOnHover={1.05}
-              rotateAmplitude={8}
-              className="w-full "
-              contentClassName="w-full shadow-xl"
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activePhase + 1}
+              initial={{ opacity: 0, x: -20, scaleX: 0.5 }}
+              animate={{ opacity: 1, x: 0, scaleX: 1 }}
+              exit={{ opacity: 0, x: 20, scaleX: 0.5 }}
+              transition={{ duration: 0.3 }}
+              className="relative w-full h-full min-h-[300px]"
             >
-              <motion.div
-                key={activePhase}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4 }}
-                className={`w-full h-full ${currentPhase.bgGradient} rounded-2xl p-8 flex flex-col justify-center items-center text-center relative overflow-hidden border`}
+              <TiltedWrapper
+                height="100%"
+                width="100%"
+                scaleOnHover={1.05}
+                rotateAmplitude={8}
+                className="w-full h-full border border-gray-200 [box-shadow:var(--button-shadow)]"
               >
-                {/* Background Pattern */}
-                <div className="absolute inset-0 border border-gray-200">
-                  <div className="absolute top-4 right-4 w-32 h-32 border-2 rounded-full flex items-center justify-center">
-                    <Image src={currentPhase.icon} alt={currentPhase.title} width={50} height={50} />
-                  </div>
-                </div>
-
-                <H3 className="text-2xl font-bold text-slate-900 mb-4">Phase {currentPhase.id}</H3>
-                <Text className="text-lg text-slate-700 max-w-sm">{currentPhase.subtitle}</Text>
-              </motion.div>
-            </TiltedWrapper>
-          </div>
+                {currentPhase.feature}
+              </TiltedWrapper>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>

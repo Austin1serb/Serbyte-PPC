@@ -1,3 +1,4 @@
+import { TintSimulator } from "../BespokeTint/TintSimulator"
 import { Phase } from "./ApproachSection"
 import { ProjectHeroProps } from "./ProjectHero"
 
@@ -33,8 +34,7 @@ export const phases: Phase[] = [
       "Incorporated angular elements instead of traditional straight lines",
     ],
     icon: "/assets/design-black.webp",
-    color: "from-purple-500 to-pink-500",
-    bgGradient: "bg-gradient-to-br from-purple-50 to-pink-50",
+    feature: "",
   },
   {
     id: 2,
@@ -50,8 +50,7 @@ export const phases: Phase[] = [
       "Created visual hierarchy to guide user attention",
     ],
     icon: "/assets/assets-black.webp",
-    color: "from-blue-500 to-cyan-500",
-    bgGradient: "bg-gradient-to-br from-blue-50 to-cyan-50",
+    feature: "",
   },
   {
     id: 3,
@@ -66,8 +65,7 @@ export const phases: Phase[] = [
       "Implemented technical SEO best practices",
     ],
     icon: "/assets/search-black.webp",
-    color: "from-green-500 to-emerald-500",
-    bgGradient: "bg-gradient-to-br from-green-50 to-emerald-50",
+    feature: "",
   },
   {
     id: 4,
@@ -83,8 +81,7 @@ export const phases: Phase[] = [
       "Established the business as the local authority on tinting",
     ],
     icon: "/assets/notepad-black.webp",
-    color: "from-orange-500 to-red-500",
-    bgGradient: "bg-gradient-to-br from-orange-50 to-red-50",
+    feature: "",
   },
   {
     id: 5,
@@ -99,7 +96,6 @@ export const phases: Phase[] = [
       "Unique differentiator from competitors",
     ],
     icon: "/assets/tool-black.webp",
-    color: "from-indigo-500 to-purple-500",
-    bgGradient: "bg-gradient-to-br from-indigo-50 to-purple-50",
+    feature: <TintSimulator className="w-full h-full" />,
   },
 ]

@@ -1,5 +1,4 @@
 "use client"
-
 import type { SpringOptions } from "motion/react"
 import { useRef, useCallback, useEffect } from "react"
 import { motion, useMotionValue, useSpring } from "motion/react"
@@ -7,19 +6,12 @@ import { useRAFstate } from "../hooks/useRAFstate"
 
 interface TiltedWrapperProps {
   children: React.ReactNode
-  containerHeight?: React.CSSProperties["height"]
-  containerWidth?: React.CSSProperties["width"]
-  contentHeight?: React.CSSProperties["height"]
-  contentWidth?: React.CSSProperties["width"]
+  height?: React.CSSProperties["height"]
+  width?: React.CSSProperties["width"]
   scaleOnHover?: number
   rotateAmplitude?: number
-  showMobileWarning?: boolean
-  showTooltip?: boolean
-  tooltipText?: string
-  overlayContent?: React.ReactNode
-  displayOverlayContent?: boolean
+
   className?: string
-  contentClassName?: string
   borderRadius?: string
 }
 
@@ -39,19 +31,11 @@ interface MousePosition {
 
 export default function TiltedWrapper({
   children,
-  containerHeight = "300px",
-  containerWidth = "100%",
-  contentHeight = "300px",
-  contentWidth = "300px",
+  height = "100%",
+  width = "100%",
   scaleOnHover = 1.1,
   rotateAmplitude = 14,
-  showMobileWarning = true,
-  showTooltip = false,
-  tooltipText = "Hover tooltip",
-  overlayContent = null,
-  displayOverlayContent = false,
   className = "",
-  contentClassName = "",
   borderRadius = "15px",
 }: TiltedWrapperProps) {
   const ref = useRef<HTMLElement>(null)
@@ -72,7 +56,7 @@ export default function TiltedWrapper({
   const rotateX = useSpring(useMotionValue(0), springValues)
   const rotateY = useSpring(useMotionValue(0), springValues)
   const scale = useSpring(1, springValues)
-  const opacity = useSpring(0)
+  const [opacity, setOpacity] = useRAFstate(0)
   const rotateFigcaption = useSpring(0, {
     stiffness: 350,
     damping: 30,
@@ -124,11 +108,10 @@ export default function TiltedWrapper({
 
   const handleMouseEnter = useCallback(() => {
     scale.set(scaleOnHover)
-    if (showTooltip) opacity.set(1)
-  }, [scale, scaleOnHover, showTooltip, opacity])
+  }, [scale, scaleOnHover, setOpacity])
 
   const handleMouseLeave = useCallback(() => {
-    opacity.set(0)
+    setOpacity(0)
     scale.set(1)
     rotateX.set(0)
     rotateY.set(0)
@@ -147,24 +130,18 @@ export default function TiltedWrapper({
   return (
     <figure
       ref={ref}
-      className={`relative w-full h-full [perspective:800px] flex flex-col items-center justify-center ${className}`}
+      className={`relative w-full h-full [perspective:800px] flex flex-col items-center justify-center `}
       style={{
-        height: containerHeight,
-        width: containerWidth,
+        height,
+        width,
       }}
       onMouseMove={handleMouse}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {showMobileWarning && (
-        <div className="absolute top-4 text-center text-sm block sm:hidden z-10">This effect is not optimized for mobile. Check on desktop.</div>
-      )}
-
       <motion.div
-        className={`relative [transform-style:preserve-3d] ${contentClassName}`}
+        className={`relative h-full w-full [transform-style:preserve-3d] ${className}`}
         style={{
-          width: contentWidth,
-          height: contentHeight,
           rotateX,
           rotateY,
           scale,
@@ -172,39 +149,14 @@ export default function TiltedWrapper({
         }}
       >
         <div
-          className="absolute top-0 left-0 w-full h-full will-change-transform [transform:translateZ(0)] overflow-hidden"
+          className="absolute top-0 left-0 w-full h-full will-change-transform [transform:translateZ(0)] overflow-hidden sm:p-5 p-2.5"
           style={{
             borderRadius,
           }}
         >
           {children}
         </div>
-
-        {displayOverlayContent && overlayContent && (
-          <motion.div
-            className="absolute top-0 left-0 z-[2] will-change-transform [transform:translateZ(30px)]"
-            style={{
-              borderRadius,
-            }}
-          >
-            {overlayContent}
-          </motion.div>
-        )}
       </motion.div>
-
-      {showTooltip && tooltipText && (
-        <motion.figcaption
-          className="pointer-events-none absolute left-0 top-0 rounded-[4px] bg-white px-[10px] py-[4px] text-[10px] text-[#2d2d2d] opacity-0 z-[3] hidden sm:block"
-          style={{
-            x,
-            y,
-            opacity,
-            rotate: rotateFigcaption,
-          }}
-        >
-          {tooltipText}
-        </motion.figcaption>
-      )}
     </figure>
   )
 }
