@@ -11,6 +11,7 @@ const ProjectDisplay: React.FC = () => {
       <BeforeAfterSection />
       <ResultsSection />
       <ApproachSection />
+      <div className="h-90"></div>
     </main>
   )
 }

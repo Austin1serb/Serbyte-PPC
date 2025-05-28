@@ -4,9 +4,9 @@ import DotMenuIcon from "./DotMenuIcon"
 import clsx from "clsx"
 import { useMotionValueEvent } from "motion/react"
 import { useScroll } from "motion/react"
-import { isClient } from "../utils/isClient"
 import { Icon } from "./Icon"
 import { Link } from "../utils/Link"
+import { env } from "../utils/env"
 
 export const TopBarV2: React.FC = () => {
   const [scrollDirection, setScrollDirection] = useState("up")
@@ -68,10 +68,10 @@ export const TopBarV2: React.FC = () => {
               type="button"
               aria-label="Toggle navigation"
               onMouseEnter={() => {
-                if (isClient && window?.innerWidth > 768) setScrollDirection("up")
+                if (!env.isServer && window?.innerWidth > 768) setScrollDirection("up")
               }}
               onClick={() => {
-                if (isClient && window?.innerWidth <= 768) setOpen((prev) => !prev)
+                if (!env.isServer && window?.innerWidth <= 768) setOpen((prev) => !prev)
               }}
               className={clsx(
                 "group right-3 h-6 w-6 text-sm duration-200 hover:cursor-pointer md:absolute",

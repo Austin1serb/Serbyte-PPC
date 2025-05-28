@@ -19,13 +19,7 @@ export const LineChart: React.FC = () => {
   const fillPath = `${linePath} L 440 450 L 10 450 Z`
 
   return (
-    <m.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8, delay: 0.2 }}
-      className="bg-white rounded-lg"
-    >
+    <m.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
       <svg width="450" height="340" viewBox="0 100 450 300" className="w-full">
         <defs>
           {/* Gradient for fill under line */}

@@ -21,54 +21,47 @@ export interface Phase {
 
 export const ApproachSection: React.FC = () => {
   const [activePhase, setActivePhase] = useState<number>(1)
-  const [hoveredPhase, setHoveredPhase] = useState<number | null>(null)
-
   const currentPhase = phases.find((phase) => phase.id === activePhase) || phases[0]
 
   return (
-    <section className="py-20 bg-gradient-to-b from-slate-50 to-white">
+    <section className="border-y border-gray-200">
       <div className="inside-container-projects">
         <HeaderText title="The Approach." titleHighlight="See how we did it." />
 
         {/* Phase Navigation - Tab Style */}
-        <div className="relative mb-16">
-          {/* Tab Container with Clip Path Background */}
-          <div className="relative rounded-2xl p-2">
-            {/* Animated Background for Active Tab */}
-            <motion.div
-              className="absolute top-2 bottom-2 bg-gradient-to-br from-slate-700 to-slate-900 rounded-xl [box-shadow:var(--button-shadow)]"
-              animate={{
-                left: `${((activePhase - 1) / phases.length) * 100}%`,
-                width: `${100 / phases.length}%`,
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-                damping: 30,
-              }}
-              layoutId="activeTabBackground"
-            />
+        <div className="relative rounded-2xl md:p-2">
+          {/* Animated Background for Active Tab */}
+          <motion.div
+            className="absolute inset-2 bg-gradient-to-br from-slate-500 to-slate-900 rounded-xl [box-shadow:var(--button-shadow)]"
+            animate={{
+              left: `${((activePhase - 1) / phases.length) * 100}%`,
+              width: `${100 / phases.length}%`,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 300,
+              damping: 30,
+            }}
+            layoutId="activeTabBackground"
+          />
 
-            {/* Tab Buttons */}
-            <div className="relative grid grid-cols-5 gap-2">
-              {phases.map((phase) => (
-                <motion.button
-                  key={phase.id}
-                  onClick={() => setActivePhase(phase.id)}
-                  onHoverStart={() => setHoveredPhase(phase.id)}
-                  onHoverEnd={() => setHoveredPhase(null)}
-                  className={`relative p-4 rounded-xl transition-all duration-300 text-center group z-10 ${
-                    activePhase === phase.id ? "text-slate-200" : "text-slate-600 hover:text-slate-800"
-                  }`}
-                >
-                  <div className="flex flex-col items-center">
-                    <Image src={phase.icon} alt={phase.title} width={50} height={50} />
-                    <span className="text-xs font-semibold mb-1">Phase {phase.id}</span>
-                    <span className="text-xs leading-tight opacity-75">{phase.title}</span>
-                  </div>
-                </motion.button>
-              ))}
-            </div>
+          {/* Tab Buttons */}
+          <div className="relative grid grid-cols-5 gap-2">
+            {phases.map((phase) => (
+              <motion.button
+                key={phase.id}
+                onClick={() => setActivePhase(phase.id)}
+                className={`relative p-4 rounded-xl transition-all duration-300 text-center group z-10 ${
+                  activePhase === phase.id ? "text-slate-200" : "text-slate-600 hover:text-slate-800"
+                }`}
+              >
+                <div className="flex flex-col items-center">
+                  <Image src={phase.icon} alt={phase.title} width={50} height={50} />
+                  <span className="text-xs font-semibold mb-1">Phase {phase.id}</span>
+                  <span className="text-xs leading-tight opacity-75">{phase.title}</span>
+                </div>
+              </motion.button>
+            ))}
           </div>
         </div>
 
@@ -113,15 +106,15 @@ export const ApproachSection: React.FC = () => {
           </AnimatePresence>
 
           {/* Right: Interactive Visual */}
-          <div className="relative">
+          <div className="relative w-full h-full min-h-[300px]">
             <TiltedWrapper
-              containerHeight="500px"
-              contentHeight="450px"
+              containerHeight="100%"
+              contentHeight="100%"
               contentWidth="100%"
               scaleOnHover={1.05}
               rotateAmplitude={8}
-              className="w-full"
-              contentClassName="w-full"
+              className="w-full "
+              contentClassName="w-full shadow-xl"
             >
               <motion.div
                 key={activePhase}
@@ -131,11 +124,12 @@ export const ApproachSection: React.FC = () => {
                 className={`w-full h-full ${currentPhase.bgGradient} rounded-2xl p-8 flex flex-col justify-center items-center text-center relative overflow-hidden border`}
               >
                 {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-10 border">
-                  <div className="absolute top-4 right-4 w-32 h-32 border-2 border-current rounded-full" />
+                <div className="absolute inset-0 border border-gray-200">
+                  <div className="absolute top-4 right-4 w-32 h-32 border-2 rounded-full flex items-center justify-center">
+                    <Image src={currentPhase.icon} alt={currentPhase.title} width={50} height={50} />
+                  </div>
                 </div>
 
-                <Image src={currentPhase.icon} alt={currentPhase.title} width={100} height={100} className="text-8xl mb-6" />
                 <H3 className="text-2xl font-bold text-slate-900 mb-4">Phase {currentPhase.id}</H3>
                 <Text className="text-lg text-slate-700 max-w-sm">{currentPhase.subtitle}</Text>
               </motion.div>

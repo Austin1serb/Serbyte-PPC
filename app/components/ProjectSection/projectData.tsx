@@ -21,7 +21,7 @@ export const bespoke: { hero: ProjectHeroProps } = {
 export const phases: Phase[] = [
   {
     id: 1,
-    title: "Design System & Rebel Aesthetic",
+    title: "Design System",
     subtitle: "Beautiful High-Converting Design",
     description:
       "Created a stunning design system that showcases amazing reviews while maintaining a slightly rebellious edge through strategic use of clip paths and angular elements.",
@@ -82,7 +82,7 @@ export const phases: Phase[] = [
       "Created evergreen content that drives consistent traffic",
       "Established the business as the local authority on tinting",
     ],
-    icon: "/assets/image.png",
+    icon: "/assets/notepad-black.webp",
     color: "from-orange-500 to-red-500",
     bgGradient: "bg-gradient-to-br from-orange-50 to-red-50",
   },

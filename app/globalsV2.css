@@ -27,6 +27,7 @@ html {
   --font-switzer: var(--font-switzer);
   --color-gray-500: #828282;
   --color-gray-200: #dedede;
+  --border-style: 1px solid #fff;
 }
 
 :root {

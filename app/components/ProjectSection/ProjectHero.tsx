@@ -34,7 +34,7 @@ export const ProjectHero: React.FC<ProjectHeroProps> = ({ title, client, year, d
         <p className="font-medium">Scope of Work</p>
         <ul className="flex flex-wrap gap-2 text-xs font-medium text-slate-800">
           {categories.map((item) => (
-            <li key={item} className="border border-gray-200 w-fit rounded-full bg-white px-4 py-1.5">
+            <li key={item} className="border border-gray-200 w-fit rounded-full bg-white px-4 py-1.5 z-0">
               {item}
             </li>
           ))}

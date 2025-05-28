@@ -1,8 +1,7 @@
-"use client"
-import { useLayoutEffect, useReducer, useRef } from "react"
-import { isClient } from "../utils/isClient"
+import { useReducer, useRef } from "react"
 import { HeroOffset } from "../components/AnimatedCard"
 import { debounce } from "../utils/debounce"
+import { useIsoMorphicEffect } from "@/hooks/useIsoMorphicEffect"
 
 const initialOffsets: Record<string, Partial<HeroOffset>> = {
   automedics: {
@@ -26,9 +25,7 @@ export function useOffset(cardIds: string[]) {
   const offsetsRef = useRef(initialOffsets)
   const [, force] = useReducer((x) => x + 1, 0) // cheap re-render trigger
 
-  useLayoutEffect(() => {
-    if (!isClient) return
-
+  useIsoMorphicEffect(() => {
     const calc = () => {
       const next: Record<string, Partial<HeroOffset>> = {}
       for (const id of cardIds) {
@@ -40,6 +37,7 @@ export function useOffset(cardIds: string[]) {
         next[id] = { x: h.left - g.left, y: h.top - g.top }
       }
       offsetsRef.current = next
+
       force() // tell React styles changed
     }
     const debouncedCalc = debounce(calc, 50)

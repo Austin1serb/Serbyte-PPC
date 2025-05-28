@@ -142,6 +142,10 @@ export function useTransitionRouter() {
             })
           })
       )
+      // Force a synthetic scroll so Framer-Motion measures immediately
+      transition.finished.then(() => {
+        document.dispatchEvent(new Event("scroll", { bubbles: true }))
+      })
 
       if (onTransitionReady) {
         transition.ready.then(onTransitionReady)

@@ -1,4 +1,4 @@
-import { isClient } from "./isClient"
+import { env } from "./env"
 
 type MediaQueryStore = {
   /** Latest match result (true / false) */
@@ -23,10 +23,10 @@ export function getMediaQueryStore(breakpoint: number): MediaQueryStore {
 
   // --- First-time setup ---
   const queryString = `(max-width: ${breakpoint - 0.1}px)`
-  const mqList = isClient ? window.matchMedia(queryString) : ({} as MediaQueryList)
+  const mqList = !env.isServer ? window.matchMedia(queryString) : ({} as MediaQueryList)
 
   const store: MediaQueryStore = {
-    isMatch: isClient ? mqList.matches : false,
+    isMatch: !env.isServer ? mqList.matches : false,
     mediaQueryList: mqList,
     subscribers: new Set(),
   }

@@ -1,1 +1,3 @@
-export const isClient = typeof window !== "undefined"
+import { env } from "./env"
+
+export const isClient = !env.isServer
