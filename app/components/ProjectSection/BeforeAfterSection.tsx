@@ -21,6 +21,7 @@ export const BeforeAfterSection: React.FC = () => {
           description="Use the slider to see the difference between the before and after."
         />
         <BeforeAfterSlider
+          initialPosition={70}
           before={
             <>
               <Image src={heroBefore} alt="Bespoke Hero Before" fill className="object-cover object-top rounded-xl lg:block hidden" />

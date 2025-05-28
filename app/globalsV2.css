@@ -31,6 +31,9 @@ html {
 
 :root {
   --gradient: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  --button-shadow:
+    0px 0.74px 0.74px -0.75px rgba(0, 0, 0, 0.33), 0px 2px 2px -1.5px rgba(0, 0, 0, 0.32), 0px 4.4px 4.4px -2.25px rgba(0, 0, 0, 0.3),
+    0px 9.8px 9.8px -3px rgba(0, 0, 0, 0.25), 0px 25px 25px -3.75px rgba(0, 0, 0, 0.11), 0px 0px 0px 1px rgb(130, 130, 130);
 }
 
 .bg-noise {
@@ -185,13 +188,7 @@ html {
       53px 25px 58.6px -3.75px #00000008;
   }
   .button-shadow {
-    box-shadow:
-      0px 0.74px 0.74px -0.75px rgba(0, 0, 0, 0.33),
-      0px 2px 2px -1.5px rgba(0, 0, 0, 0.32),
-      0px 4.4px 4.4px -2.25px rgba(0, 0, 0, 0.3),
-      0px 9.8px 9.8px -3px rgba(0, 0, 0, 0.25),
-      0px 25px 25px -3.75px rgba(0, 0, 0, 0.11),
-      0px 0px 0px 1px rgb(130, 130, 130);
+    box-shadow: var(--button-shadow);
     transition: all 0.3s ease-in-out;
   }
   .button-shadow:hover:active {

@@ -1,7 +1,7 @@
 "use client"
-import { useRef, useCallback, memo, useState } from "react"
+import { useRef, useCallback, memo, useState, useEffect } from "react"
 import * as motion from "motion/react-m"
-import { useMotionValue, useSpring, useTransform } from "motion/react"
+import { useMotionValue, useSpring, useTransform, useInView } from "motion/react"
 
 interface BeforeAfterProps {
   before: React.ReactNode
@@ -18,8 +18,9 @@ interface BeforeAfterProps {
 }
 
 export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
-  ({ before, after, initialPosition = 50, springConfig = { stiffness: 200, damping: 20 }, ariaLabel = "Before and after comparison slider" }) => {
+  ({ before, after, initialPosition = 50, springConfig = { stiffness: 500, damping: 40 }, ariaLabel = "Before and after comparison slider" }) => {
     const containerRef = useRef<HTMLDivElement>(null)
+    const isInView = useInView(containerRef, { once: true, amount: 0.9 })
     const isDragging = useRef(false)
     const [isDraggingState, setIsDraggingState] = useState(false)
 
@@ -30,8 +31,8 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
     // All transforms derive from the single spring value
     const clipPath = useTransform(springPosition, [0, 100], ["inset(0 100% 0 0)", "inset(0 0% 0 0)"])
     const sliderLeft = useTransform(springPosition, (value) => `${value}%`)
-    const afterLabelOpacity = useTransform(sliderPosition, [40, 60], [0, 1])
-    const beforeLabelOpacity = useTransform(sliderPosition, [60, 40], [0, 1])
+    const afterLabelOpacity = useTransform(sliderPosition, (value) => (value > 50 ? 1 : 0))
+    const beforeLabelOpacity = useTransform(sliderPosition, (value) => (value < 50 ? 1 : 0))
 
     const updatePosition = useCallback(
       (clientX: number) => {
@@ -113,9 +114,25 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
       [sliderPosition]
     )
 
+    useEffect(() => {
+      if (isInView) {
+        setTimeout(() => {
+          springPosition.set(initialPosition + 10)
+        }, 200)
+
+        setTimeout(() => {
+          springPosition.set(initialPosition)
+        }, 600)
+      }
+    }, [isInView])
+
     return (
       <div className="relative">
-        <div
+        <motion.div
+          initial={{ filter: "blur(5px)" }}
+          whileInView={{ filter: "blur(0px)" }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true, amount: 0.7 }}
           ref={containerRef}
           className="relative w-full min-h-[860px] max-h-[860px] shadow-xl rounded-xl border border-gray-200 select-none touch-none"
           onMouseMove={handleMouseMove}
@@ -154,31 +171,26 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
               </motion.div>
             </div>
           </motion.div>
-        </div>
+        </motion.div>
         {/* Labels */}
         <div className="absolute top-30 left-1/2 -translate-x-1/2 z-5 grid">
           <motion.div
             className="col-start-1 row-start-1 backdrop-blur-md bg-black/50 border border-white/30 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg"
-            initial={{ opacity: 0, y: -20, x: 0 }}
             style={{ opacity: afterLabelOpacity }}
-            animate={{ y: 0 }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
             aria-hidden="true"
           >
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 bg-green-400 rounded-full">
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-ping"></div>
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-ping" />
               </div>
               <span>After</span>
             </div>
           </motion.div>
 
           <motion.div
-            className="col-start-1 row-start-1 backdrop-blur-md bg-black/50 border border-white/20 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg"
-            initial={{ opacity: 0, y: -20 }}
+            className="col-start-1 row-start-1 backdrop-blur-md bg-black/50 border border-white/20 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg duration-200"
             style={{ opacity: beforeLabelOpacity }}
-            animate={{ y: 0 }}
-            transition={{ delay: 0.3, type: "spring", stiffness: 260, damping: 20 }}
             aria-hidden="true"
           >
             <div className="flex items-center space-x-2">
