@@ -25,7 +25,7 @@ export const TopBarV2: React.FC = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <ul className="hidden items-center gap-4 font-medium transition-all duration-300 ease-in-out  ">
+            <ul className="desktop-menu-container hidden items-center gap-4 font-medium transition-all duration-300 ease-in-out md:flex">
               {navItems.map((item) => (
                 <li key={item.name} className="flex">
                   <Link href={item.href} className="bubble-hover p-1 px-2">

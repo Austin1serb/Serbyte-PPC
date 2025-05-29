@@ -152,12 +152,20 @@ html {
   }
 
   @media (min-width: 768px) {
-    body[data-scrolled="up"] .dot-menu-icon-container {
+    body[data-scrolled="up"] .desktop-menu-container {
       opacity: 0;
+      max-width: 0;
     }
-    body[data-scrolled="down"] .dot-menu-icon-container {
-      opacity: 1;
-      animation-delay: 400ms;
+    body[data-scrolled="down"] {
+      .desktop-menu-container {
+        opacity: 1;
+        max-width: 24rem;
+      }
+      .dot-menu-icon-container {
+        opacity: 0;
+        animation-delay: 400ms;
+        pointer-events: none;
+      }
     }
   }
 
