@@ -51,5 +51,3 @@ class Env {
 
 // eslint-disable-next-line prefer-const
 export let env = new Env()
-export const isClient = env.isClient
-export const isServer = env.isServer

@@ -36,7 +36,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <ViewTransitions>
       <html lang="en">
-        <body className="relative bg-white">
+        <body className="relative bg-white" data-mobile-menu="closed" data-scrolled="up">
           <LazyMotion features={domAnimation}>
             <DesktopCursor />
             <SplashCursor />

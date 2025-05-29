@@ -1,7 +1,6 @@
 import { useEffect } from "react"
 import { useRAFstate } from "./useRAFstate"
-import { isClient } from "../utils/isClient"
-
+import { env } from "../utils/env"
 /**
  * A hook that returns the current window size.
  *
@@ -18,12 +17,12 @@ interface Options {
 export const useWindowSize = ({ initialWidth = 10000, initialHeight = 10000, onChange }: Options = {}) => {
   // Use the useRafState hook to maintain the current window size (width and height)
   const [state, setState] = useRAFstate<{ width: number; height: number }>({
-    width: isClient ? window.innerWidth : initialWidth,
-    height: isClient ? window.innerHeight : initialHeight,
+    width: env.isClient ? window.innerWidth : initialWidth,
+    height: env.isClient ? window.innerHeight : initialHeight,
   })
   useEffect((): (() => void) | void => {
     // Only run the effect on the browser (to avoid issues with SSR)
-    if (isClient) {
+    if (env.isClient) {
       const handler = () => {
         const width = window.innerWidth
         const height = window.innerHeight
