@@ -9,13 +9,13 @@ import { LikeWhatYouSeeCard } from "./LikeWhatYouSeeCard"
 
 const ProjectDisplay: React.FC = () => {
   return (
-    <main>
+    <main className="overflow-hidden">
       <ProjectHero {...bespoke.hero} />
       <BeforeAfterSection />
       <ResultsSection />
       <ApproachSection />
       <LargeReview />
-      <MoreProjectsSection />
+      <MoreProjectsSection href="/projects/bespoke" />
       <LikeWhatYouSeeCard />
     </main>
   )

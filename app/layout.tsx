@@ -44,7 +44,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             <div className="bg-noise custom:mx-auto pointer-events-none absolute inset-0 z-0 mx-3.5 max-w-6xl bg-repeat opacity-4 md:mx-5 lg:mx-8" />
 
             <div className={`${switzer.variable} font-switzer subpixel-antialiased`}>
-              <div className="custom:mx-auto pointer-events-none absolute inset-0 z-3 mx-3.5 max-w-6xl border-x border-gray-200 md:mx-5 lg:mx-8" />
+              <div className="custom:mx-auto pointer-events-none absolute inset-0 z-0 mx-3.5 max-w-6xl border-x border-gray-200 md:mx-5 lg:mx-8" />
               <BottomBlurOverlay />
               <TopBarV2 />
               {children}

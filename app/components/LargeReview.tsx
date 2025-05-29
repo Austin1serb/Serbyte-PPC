@@ -10,8 +10,9 @@ export function LargeReview() {
           {/* Quote */}
           <blockquote className="relative mt-12 max-w-3xl p-6 text-xl leading-6 tracking-tight text-balance text-slate-700 md:text-2xl">
             <p>
-              Working with Austin felt like having a seasoned design partner <strong>who truly understood our vision for Zazzle</strong> and brought it to life
-              in ways we hadn&apos;t even imagined.
+              Working with Austin felt like having a seasoned design partner{" "}
+              <strong className="font-semibold text-slate-900">who truly understood our vision for Zazzle</strong> and brought it to life in ways we hadn&apos;t
+              even imagined.
             </p>
           </blockquote>
 

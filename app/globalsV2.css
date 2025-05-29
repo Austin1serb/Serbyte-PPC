@@ -28,13 +28,15 @@ html {
   --color-gray-500: #828282;
   --color-gray-200: #dedede;
   --tw-border-style: 1px solid #fff;
+  /* TO fix Safari font weight */
+  --font-weight-semibold: 599;
 }
 
 :root {
   --gradient: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   --button-shadow:
     0px 2px 2px -1.5px rgba(0, 0, 0, 0.32), 0px 4.4px 4.4px -2.25px rgba(0, 0, 0, 0.3), 0px 9.8px 9.8px -3px rgba(0, 0, 0, 0.25),
-    0px 25px 25px -3.75px rgba(0, 0, 0, 0.11);
+    0px 25px 25px -3.75px rgba(0, 0, 0, 0.11), 0px -5px 5px -3.75px rgba(0, 0, 0, 0.11);
 }
 
 .bg-noise {

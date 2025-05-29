@@ -68,10 +68,10 @@ export const TopBarV2: React.FC = () => {
               type="button"
               aria-label="Toggle navigation"
               onMouseEnter={() => {
-                if (!env.isServer && window?.innerWidth > 768) setScrollDirection("up")
+                if (env.isClient && window?.innerWidth > 768) setScrollDirection("up")
               }}
               onClick={() => {
-                if (!env.isServer && window?.innerWidth <= 768) setOpen((prev) => !prev)
+                if (env.isClient && window?.innerWidth <= 768) setOpen((prev) => !prev)
               }}
               className={clsx(
                 "group right-3 h-6 w-6 text-sm duration-200 hover:cursor-pointer md:absolute",

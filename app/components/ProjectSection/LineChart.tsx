@@ -1,11 +1,14 @@
+"use client"
 import * as m from "motion/react-m"
+import { useState } from "react"
 
 export const LineChart: React.FC = () => {
+  const [isInView, setIsInView] = useState(false)
+
   // 6 points: 2 per phase (no side padding, scaled Y)
   const points = [
     { x: 10, y: 360 }, // Pre-launch 1 (120 * 3)
     { x: 90, y: 355 }, // Pre-launch 2 (125 * 3)
-    // { x: 150, y: 255 }, // Pre-launch 2 (125 * 3)
     { x: 180, y: 180 }, // Launch 1 (30 * 3)
     { x: 270, y: 165 }, // Launch 2 (55 * 3)
     { x: 360, y: 144 }, // Post-launch 1 (48 * 3)
@@ -19,70 +22,78 @@ export const LineChart: React.FC = () => {
   const fillPath = `${linePath} L 440 450 L 10 450 Z`
 
   return (
-    <m.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
-      <svg width="450" height="340" viewBox="0 100 450 300" className="w-full">
+    <div>
+      <m.svg
+        initial={{ opacity: 0, y: 30 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        onViewportEnter={() => setIsInView(true)}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        width="450"
+        height="340"
+        viewBox="0 100 450 300"
+        className="w-full"
+      >
         <defs>
-          {/* Gradient for fill under line */}
-          <linearGradient id="areaGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#0f172b" stopOpacity="0.3" />
-            <stop offset="100%" stopColor="#62748e" stopOpacity="0.05" />
+          {/* Gradient for fill under line - Safari fix */}
+          <linearGradient id="areaGradient" gradientUnits="userSpaceOnUse" x1="225" y1="100" x2="225" y2="450">
+            <stop offset="0%" style={{ stopColor: "#0f172b", stopOpacity: 0.3 }} />
+            <stop offset="100%" style={{ stopColor: "#62748e", stopOpacity: 0.05 }} />
           </linearGradient>
         </defs>
 
         {/* Gradient fill under line */}
         <m.path
-          viewport={{ once: true }}
           d={fillPath}
           fill="url(#areaGradient)"
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 1, delay: 1.5 }}
         />
 
         {/* Main line */}
         <m.path
-          viewport={{ once: true }}
           d={linePath}
           fill="none"
           stroke="#62748e"
           strokeWidth="5"
           strokeLinecap="round"
-          initial={{ pathLength: 0 }}
-          whileInView={{ pathLength: 1 }}
+          strokeDasharray="1000"
+          strokeDashoffset="1000"
+          animate={isInView ? { strokeDashoffset: 0 } : { strokeDashoffset: 1000 }}
           transition={{ duration: 1, delay: 0.5, ease: "easeInOut" }}
-          className="group"
         />
 
         {/* Points */}
         {points.map((point, i) => (
           <m.circle
-            viewport={{ once: true }}
             key={i}
             cx={point.x}
             cy={point.y}
             r="6"
             fill="#0f172b"
             initial={{ scale: 0, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
+            animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
             transition={{
               duration: 0.4,
               delay: 0.5 + i * 0.15,
               type: "spring",
               stiffness: 300,
             }}
+            style={{ transformOrigin: `${point.x}px ${point.y}px` }}
             className="hover:scale-150 transition-all duration-300"
           />
         ))}
 
         {/* Phase labels */}
-        <text x="70" y="470" textAnchor="middle" className="text-xl fill-slate-600 uppercase ">
+        <text x="70" y="470" textAnchor="middle" className="text-xl fill-slate-600 uppercase">
           Pre-Launch
         </text>
 
         <text x="375" y="470" textAnchor="middle" className="text-xl fill-slate-600 uppercase">
           Post-Launch
         </text>
-      </svg>
-    </m.div>
+      </m.svg>
+    </div>
   )
 }

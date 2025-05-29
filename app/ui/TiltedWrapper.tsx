@@ -1,8 +1,8 @@
 "use client"
 import type { SpringOptions } from "motion/react"
-import { useRef, useCallback, useEffect } from "react"
-import { motion, useMotionValue, useSpring } from "motion/react"
-import { useRAFstate } from "../hooks/useRAFstate"
+import { useRef, useCallback } from "react"
+import { useMotionValue, useSpring } from "motion/react"
+import * as motion from "motion/react-m"
 
 interface TiltedWrapperProps {
   children: React.ReactNode
@@ -10,7 +10,6 @@ interface TiltedWrapperProps {
   width?: React.CSSProperties["width"]
   scaleOnHover?: number
   rotateAmplitude?: number
-
   className?: string
   borderRadius?: string
 }
@@ -19,14 +18,6 @@ const springValues: SpringOptions = {
   damping: 30,
   stiffness: 100,
   mass: 2,
-}
-
-interface MousePosition {
-  x: number
-  y: number
-  rotateX: number
-  rotateY: number
-  velocityY: number
 }
 
 export default function TiltedWrapper({
@@ -38,38 +29,24 @@ export default function TiltedWrapper({
   className = "",
   borderRadius = "15px",
 }: TiltedWrapperProps) {
-  const ref = useRef<HTMLElement>(null)
+  const ref = useRef<HTMLDivElement>(null)
   const lastMousePositionRef = useRef({ x: 0, y: 0 })
   const lastUpdateTimeRef = useRef(0)
 
-  // Use RAF state for smooth mouse position updates
-  const [mousePosition, setMousePosition] = useRAFstate<MousePosition>({
-    x: 0,
-    y: 0,
-    rotateX: 0,
-    rotateY: 0,
-    velocityY: 0,
-  })
-
+  // Use motion values directly - no state!
   const x = useMotionValue(0)
   const y = useMotionValue(0)
-  const rotateX = useSpring(useMotionValue(0), springValues)
-  const rotateY = useSpring(useMotionValue(0), springValues)
+  const rotateX = useSpring(0, springValues)
+  const rotateY = useSpring(0, springValues)
   const scale = useSpring(1, springValues)
-  const [opacity, setOpacity] = useRAFstate(0)
-  const rotateFigcaption = useSpring(0, {
-    stiffness: 350,
-    damping: 30,
-    mass: 1,
-  })
 
-  // Throttled mouse handler to reduce calculations
+  // Update motion values directly without causing re-renders
   const handleMouse = useCallback(
-    (e: React.MouseEvent<HTMLElement>) => {
+    (e: React.MouseEvent<HTMLDivElement>) => {
       if (!ref.current) return
 
       const now = performance.now()
-      // Throttle to ~60fps manually for better control
+      // Throttle to ~60fps
       if (now - lastUpdateTimeRef.current < 16) return
       lastUpdateTimeRef.current = now
 
@@ -80,83 +57,51 @@ export default function TiltedWrapper({
       const rotationX = (offsetY / (rect.height / 2)) * -rotateAmplitude
       const rotationY = (offsetX / (rect.width / 2)) * rotateAmplitude
 
-      // Calculate velocity for figcaption rotation
-      const velocityY = offsetY - lastMousePositionRef.current.y
-      lastMousePositionRef.current = { x: offsetX, y: offsetY }
-
-      // Update RAF state - this will be applied on next animation frame
-      setMousePosition({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-        rotateX: rotationX,
-        rotateY: rotationY,
-        velocityY: velocityY * 0.6,
-      })
+      // Update motion values directly - no state updates!
+      x.set(e.clientX - rect.left)
+      y.set(e.clientY - rect.top)
+      rotateX.set(rotationX)
+      rotateY.set(rotationY)
     },
-    [rotateAmplitude, setMousePosition]
+    [rotateAmplitude, x, y, rotateX, rotateY]
   )
-
-  // Apply the RAF state updates to motion values
-  // This runs on animation frames for smooth updates
-  useEffect(() => {
-    x.set(mousePosition.x)
-    y.set(mousePosition.y)
-    rotateX.set(mousePosition.rotateX)
-    rotateY.set(mousePosition.rotateY)
-    rotateFigcaption.set(-mousePosition.velocityY)
-  }, [mousePosition, x, y, rotateX, rotateY, rotateFigcaption])
 
   const handleMouseEnter = useCallback(() => {
     scale.set(scaleOnHover)
-  }, [scale, scaleOnHover, setOpacity])
+  }, [scale, scaleOnHover])
 
   const handleMouseLeave = useCallback(() => {
-    setOpacity(0)
     scale.set(1)
     rotateX.set(0)
     rotateY.set(0)
-    rotateFigcaption.set(0)
-
-    // Reset RAF state
-    setMousePosition({
-      x: 0,
-      y: 0,
-      rotateX: 0,
-      rotateY: 0,
-      velocityY: 0,
-    })
-  }, [opacity, scale, rotateX, rotateY, rotateFigcaption, setMousePosition])
+    x.set(0)
+    y.set(0)
+  }, [scale, rotateX, rotateY, x, y])
 
   return (
-    <figure
+    <div
       ref={ref}
-      className={`relative w-full h-full [perspective:800px] flex flex-col items-center justify-center `}
-      style={{
-        height,
-        width,
-      }}
+      className={`relative w-full h-full [perspective:800px] flex flex-col items-center justify-center`}
+      style={{ height, width }}
       onMouseMove={handleMouse}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <motion.div
-        className={`relative h-full w-full [transform-style:preserve-3d] ${className}`}
+        className={`relative h-full w-full will-change-transform [transform-style:preserve-3d] ${className}`}
         style={{
           rotateX,
           rotateY,
           scale,
           borderRadius,
+          // Use GPU acceleration
+          transform: "translateZ(0)",
         }}
       >
-        <div
-          className="absolute top-0 left-0 w-full h-full will-change-transform [transform:translateZ(0)] overflow-hidden sm:p-5 p-2.5"
-          style={{
-            borderRadius,
-          }}
-        >
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden" style={{ borderRadius }}>
           {children}
         </div>
       </motion.div>
-    </figure>
+    </div>
   )
 }

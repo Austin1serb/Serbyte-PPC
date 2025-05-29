@@ -18,7 +18,7 @@ export const AnalyticCard: React.FC<AnalyticCardProps> = ({ title, description, 
       <div className="text-center mb-8">
         <H3 className="mb-2">{title}</H3>
         {percentageIncrease && (
-          <p className="text-4xl font-bold text-slate-700">
+          <p className="text-4xl font-semibold text-slate-700">
             +<CountUp to={percentageIncrease} margin="-100px" />%
           </p>
         )}

@@ -1,3 +1,3 @@
 import { env } from "./env"
-
-export const isClient = !env.isServer
+export const isClient = env.isClient
+export const isServer = env.isServer

@@ -29,13 +29,7 @@ export const BeforeAfterSection: React.FC = () => {
             </>
           }
           after={
-            <iframe
-              title="Bespoke Hero After"
-              src="/bespoke-hero.html"
-              className="w-full h-full border-0 bg-white pointer-events-none rounded-xl"
-              scrolling="no"
-              loading="lazy"
-            />
+            <iframe title="Bespoke Hero After" src="/bespoke-hero.html" className="w-full h-full border-0 bg-white rounded-xl" scrolling="no" loading="lazy" />
           }
         />
       </div>

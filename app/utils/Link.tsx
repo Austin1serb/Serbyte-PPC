@@ -1,3 +1,4 @@
+"use client"
 import NextLink from "next/link"
 import { useCallback } from "react"
 import { useTransitionRouter } from "../hooks/useTransitionRouter"

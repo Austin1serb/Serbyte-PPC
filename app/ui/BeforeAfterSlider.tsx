@@ -128,24 +128,20 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
 
     return (
       <div className="relative">
-        <motion.div
-          initial={{ filter: "blur(5px)" }}
-          whileInView={{ filter: "blur(0px)" }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true, amount: 0.7 }}
+        <div
           ref={containerRef}
-          className="relative w-full min-h-[860px] max-h-[860px] shadow-xl rounded-xl border border-gray-200 select-none touch-none"
+          className="relative w-full min-h-[860px] max-h-[860px] shadow-xl rounded-xl border border-gray-200 "
           onMouseMove={handleMouseMove}
           onMouseUp={handleEnd}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleEnd}
           role="img"
           aria-label={ariaLabel}
-          style={{ cursor: isDraggingState ? "grabbing" : "" }}
+          style={{ cursor: isDraggingState ? "grabbing" : "", touchAction: "pan-y pinch-zoom" }}
         >
           {before}
 
-          <motion.div className="absolute inset-0" style={{ clipPath }}>
+          <motion.div className="absolute inset-0 pointer-events-none" style={{ clipPath }}>
             {after}
           </motion.div>
 
@@ -157,12 +153,13 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
             <div className="h-full w-0.5 bg-white shadow-lg">
               <motion.div
                 whileTap={{ scale: 0.8, color: "#493BFF", cursor: "grabbing" }}
-                className="absolute top-1/2 left-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2 z-10 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:cursor-grab"
+                className="absolute top-1/2 left-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2 z-10 "
                 onMouseDown={handleMouseDown}
                 onTouchStart={handleTouchStart}
                 onKeyDown={handleKeyDown}
                 tabIndex={0}
                 role="button"
+                style={{ cursor: "grab" }}
                 aria-label="Drag to compare before and after"
               >
                 <svg className="w-6 h-6 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -171,7 +168,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
               </motion.div>
             </div>
           </motion.div>
-        </motion.div>
+        </div>
         {/* Labels */}
         <div className="absolute top-30 left-1/2 -translate-x-1/2 z-5 grid">
           <motion.div
