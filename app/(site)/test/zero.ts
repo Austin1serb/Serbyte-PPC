@@ -1,9 +1,16 @@
 import { useCallback, useEffect } from "react"
 
+// Overload for boolean type - returns toggle function
+export function useUI<T extends boolean>(initialValue: T, explicitKey: string): [T, (value: T) => void, () => void]
+
+// Overload for string/number types - no toggle function
+export function useUI<T extends string | number>(initialValue: T, explicitKey: string): [T, (value: T) => void]
+
+// Implementation
 export function useUI<T extends string | boolean | number>(
   initialValue: T,
   explicitKey: string
-): T extends boolean ? [T, (value: T) => void, () => void] : [T, (value: T) => void] {
+): [T, (value: T) => void] | [T, (value: T) => void, () => void] {
   const key = explicitKey
 
   const setValue = useCallback(
@@ -28,10 +35,8 @@ export function useUI<T extends string | boolean | number>(
 
   // Return toggle for booleans
   if (typeof initialValue === "boolean") {
-    return [initialValue, setValue, toggle] as any
+    return [initialValue, setValue, toggle]
   }
 
-  return [initialValue, setValue] as any
+  return [initialValue, setValue]
 }
-
-// Usage:
