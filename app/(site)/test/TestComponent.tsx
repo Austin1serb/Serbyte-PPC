@@ -9,6 +9,8 @@ export function TestComponent() {
 
   const [menuOpen, setMenuOpen, toggleMenuOpen] = useUI<boolean>(false, "menuOpen")
 
+  console.log("🔴 DeepComponent RE-RENDERED")
+
   return (
     <div className="p-8 space-y-4">
       <div className="space-x-2">
