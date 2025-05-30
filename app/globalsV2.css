@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@variant scrolled-up (body[data-scrolled="up"] &);
+@variant scrolled-down (body[data-scrolled="down"] &);
+
 /* *:not(:has(border-none)) {
   border: 1px dotted red;
 } */
@@ -28,7 +31,7 @@ html {
   --color-gray-500: #828282;
   --color-gray-200: #dedede;
   --tw-border-style: 1px solid #fff;
-  /* TO fix Safari font weight */
+  /* To fix Safari font weight bug */
   --font-weight-semibold: 599;
 }
 
@@ -151,7 +154,7 @@ html {
     transition-delay: 0s;
   }
 
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) {
     body[data-scrolled="up"] .desktop-menu-container {
       opacity: 0;
       max-width: 0;
@@ -167,7 +170,7 @@ html {
         pointer-events: none;
       }
     }
-  }
+  } */
 
   .bubble-hover {
     @apply relative inline-block overflow-hidden rounded-full text-nowrap;

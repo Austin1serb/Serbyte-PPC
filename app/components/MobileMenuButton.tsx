@@ -32,7 +32,9 @@ export const MobileMenuButton: React.FC = () => {
       onClick={() => {
         if (!isDesktop) toggle()
       }}
-      className={clsx("dot-menu-icon-container group right-3 h-6 w-6 text-sm duration-300 transition-all ease-in-out hover:cursor-pointer md:absolute")}
+      className={clsx(
+        "md:scrolled-down:opacity-0 md:scrolled-down:pointer-events-none group right-3 h-6 w-6 text-sm duration-300 transition-all ease-in-out hover:cursor-pointer md:absolute"
+      )}
     >
       <DotMenuIcon />
     </button>
