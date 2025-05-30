@@ -2,7 +2,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable prefer-const */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-
 import React, { useEffect, useRef } from "react"
 
 interface ColorRGB {
@@ -76,6 +75,7 @@ export default function SplashCursor({
 
   useEffect(() => {
     const canvas = canvasRef.current
+
     if (!canvas) return // Guard canvas early
 
     // Pointer and config setup
@@ -101,6 +101,14 @@ export default function SplashCursor({
       TRANSPARENT,
     }
 
+    const detectPerformance = () => {
+      const memory = (performance as any).memory
+      if (memory && memory.jsHeapSizeLimit < 1073741824) {
+        config.SIM_RESOLUTION = 64
+        config.DYE_RESOLUTION = 128
+      }
+    }
+    detectPerformance()
     // Get WebGL context (WebGL1 or WebGL2)
     const { gl, ext } = getWebGLContext(canvas)
     if (!gl || !ext) return
@@ -825,7 +833,6 @@ export default function SplashCursor({
 
     function updateFrame() {
       const dt = calcDeltaTime()
-      if (resizeCanvas()) initFramebuffers()
       updateColors(dt)
       applyInputs()
       step(dt)
@@ -841,16 +848,19 @@ export default function SplashCursor({
       return dt
     }
 
-    function resizeCanvas() {
-      const width = scaleByPixelRatio(canvas!.clientWidth)
-      const height = scaleByPixelRatio(canvas!.clientHeight)
-      if (canvas!.width !== width || canvas!.height !== height) {
-        canvas!.width = width
-        canvas!.height = height
-        return true
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const width = scaleByPixelRatio(entry.contentRect.width)
+        const height = scaleByPixelRatio(entry.contentRect.height)
+        if (canvas.width !== width || canvas.height !== height) {
+          canvas.width = width
+          canvas.height = height
+          initFramebuffers()
+        }
       }
-      return false
-    }
+    })
+
+    resizeObserver.observe(canvas)
 
     function updateColors(dt: number) {
       colorUpdateTimer += dt * config.COLOR_UPDATE_SPEED
@@ -863,6 +873,8 @@ export default function SplashCursor({
     }
 
     function applyInputs() {
+      if (!pointerDirty) return // Skip if no changes
+      pointerDirty = false
       for (const p of pointers) {
         if (p.moved) {
           p.moved = false
@@ -1171,7 +1183,6 @@ export default function SplashCursor({
     // -------------------- Event Listeners --------------------
     const active = { run: false } // controls render loop
     const firstMove = (e: PointerEvent) => {
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
       if (!active.run) {
         active.run = true
         updateFrame()
@@ -1190,19 +1201,42 @@ export default function SplashCursor({
       clickSplat(p)
     }
 
+    let pointerDirty = false
+
     function handlePointerMove(e: PointerEvent) {
       const p = pointers[0]
       updatePointerMoveData(p, scaleByPixelRatio(e.clientX), scaleByPixelRatio(e.clientY), p.color)
+      pointerDirty = true
     }
 
     function handlePointerUp() {
       updatePointerUpData(pointers[0])
     }
 
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        active.run = false
+      } else if (pointers[0].down || pointers[0].moved) {
+        active.run = true
+        updateFrame()
+      }
+    }
+
     window.addEventListener("pointerdown", handlePointerDown, { passive: true })
     window.addEventListener("pointermove", handlePointerMove, { passive: true })
     window.addEventListener("pointerup", handlePointerUp, { passive: true })
+    document.addEventListener("visibilitychange", handleVisibilityChange)
 
+    return () => {
+      if (gl && gl.getExtension("WEBGL_lose_context")) {
+        gl.getExtension("WEBGL_lose_context")!.loseContext()
+      }
+      window.removeEventListener("pointerdown", handlePointerDown)
+      window.removeEventListener("pointermove", handlePointerMove)
+      window.removeEventListener("pointerup", handlePointerUp)
+      document.removeEventListener("visibilitychange", handleVisibilityChange)
+      resizeObserver.disconnect()
+    }
     // ------------------------------------------------------------
   }, [
     SIM_RESOLUTION,
