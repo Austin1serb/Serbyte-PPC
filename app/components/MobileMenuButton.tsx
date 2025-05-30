@@ -4,22 +4,24 @@ import { useMotionValueEvent } from "motion/react"
 import { useScroll } from "motion/react"
 import { env } from "../utils/env"
 import { DotMenuIcon } from "./DotMenuIcon"
+import { useIsMobile } from "../hooks/useIsMobile"
 
 export const MobileMenuButton: React.FC = () => {
   const toggle = () => {
     if (env.isClient) {
       document.body.dataset.mobileMenu = document.body.dataset.mobileMenu === "open" ? "closed" : "open"
-      console.log(document.body.dataset)
     }
   }
 
   const { scrollY } = useScroll()
-  const isDesktop = env.isClient && window.innerWidth >= 768
+  const isDesktop = !useIsMobile(768, () => {
+    document.body.dataset.mobileMenu = "closed"
+  })
 
   useMotionValueEvent(scrollY, "change", (current) => {
     if (!isDesktop) return
     const diff = current - (scrollY.getPrevious() ?? 0)
-    document.body.dataset.scrolled = diff > 0 ? "down" : "up"
+    document.body.dataset.scrolled = diff > 0 ? "up" : "down"
   })
 
   return (

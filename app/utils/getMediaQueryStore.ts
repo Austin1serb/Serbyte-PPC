@@ -17,7 +17,7 @@ const mediaQueryStores: Record<string, MediaQueryStore> = {}
  * Returns a singleton store for that query,
  * creating it (and its listener) the first time.
  */
-export function getMediaQueryStore(breakpoint: number): MediaQueryStore {
+export function getMediaQueryStore(breakpoint: number, fn?: () => void): MediaQueryStore {
   // Already created? - just return it
   if (mediaQueryStores[breakpoint]) return mediaQueryStores[breakpoint]
 
@@ -33,6 +33,7 @@ export function getMediaQueryStore(breakpoint: number): MediaQueryStore {
   const update = () => {
     store.isMatch = mqList.matches
     store.subscribers.forEach((cb) => cb())
+    fn?.()
   }
 
   if (mqList.addEventListener) mqList.addEventListener("change", update)

@@ -21,7 +21,7 @@ export function AnimatedCard({
   color,
   type,
   "data-grid-id": gridId,
-  reveal,
+
   progress,
 }: {
   src: StaticImageData
@@ -31,7 +31,7 @@ export function AnimatedCard({
   "data-grid-id": string
   type: string
   isMobile: boolean
-  reveal: boolean
+
   progress: MotionValue<number>
 }) {
   const x = useTransform(progress, [0, 1], [0, offset.x])
@@ -40,11 +40,12 @@ export function AnimatedCard({
   const rotate = useTransform(progress, [0, 1], [0, offset.rot])
 
   return (
-    <Link href={`/projects/${gridId}`} data-grid-id={gridId}>
+    // TODO CHANGE LINK TO PROJECTS
+    <Link href={`/projects/bespoke`} data-grid-id={gridId} className="reveal-false:pointer-events-none">
       <m.div
         style={{ x, y, scale, rotate, willChange: "transform" }}
-        className={clsx("group relative h-full w-full", reveal && "hover-target [&_span]:opacity-0")}
-        // data-text={!reveal ? "View Project" : null}
+        className={clsx("group relative h-full w-full reveal-false:[&_span]:opacity-0 ")}
+        data-text={"View Project"}
       >
         <Card src={src} alt={alt} color={color} type={type} />
       </m.div>

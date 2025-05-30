@@ -16,7 +16,6 @@ export const ApproachSection: React.FC = () => {
     <section className="border-y border-gray-200">
       <div className="inside-container-projects">
         <HeaderText title="The Approach." titleHighlight="See how we did it." />
-
         <ApproachTabs />
       </div>
     </section>

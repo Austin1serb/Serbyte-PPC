@@ -9,9 +9,9 @@ import clsx from "clsx"
 // Memoized image component
 const TintImages = memo(({ opacity }: { opacity: number }) => {
   return (
-    <div className="relative h-[60vw] max-h-[400px] w-full rounded-4xl border border-neutral-300 lg:h-screen bg-white">
+    <div className="relative h-[60vw] max-h-[400px] w-full rounded-2xl border border-neutral-300 lg:h-screen bg-white">
       {/* No Tint Image (base) */}
-      <Image src={teslaNoTint} alt="No Window Tint" fill className="rounded-4xl object-contain" sizes="(max-width: 768px) 90vw, (max-width: 1023px) 80vw" />
+      <Image src={teslaNoTint} alt="No Window Tint" fill className="object-contain" sizes="(max-width: 768px) 90vw, (max-width: 1023px) 50vw" />
 
       {/* 5% Tint Image (opacity controlled by scaled slider) */}
       <motion.div initial={{ opacity: 0 }} animate={{ opacity }} transition={{ ease: "easeIn", delay: 0.2 }} className="absolute inset-0">
@@ -39,7 +39,7 @@ export const TintSimulator = ({ className }: { className?: string }) => {
   return (
     <div
       id="tesla-tint-simulator"
-      className={`flex w-full flex-col items-center ${className} px-5 lg:px-0   [--accent:oklch(0.54_0.2531_262.09)] [--accent-alt:oklch(0.37_0.232012_264.2049)]`}
+      className={`flex w-full flex-col items-center ${className} [--accent:oklch(0.54_0.2531_262.09)] [--accent-alt:oklch(0.37_0.232012_264.2049)]`}
     >
       <style jsx>{`
         input[type="range"]::-webkit-slider-runnable-track {

@@ -23,12 +23,7 @@ export const MobileMenu: React.FC<{ navItems: { name: string; href: string }[] }
           </Link>
         </li>
       ))}
-      <li
-        className={clsx(
-          "mobile-menu-item transform pt-3 transition-all duration-300 ease-in-out"
-          // open ? "translate-x-0 opacity-100 delay-400" : "-translate-x-5 opacity-0"
-        )}
-      >
+      <li className={clsx("mobile-menu-item transform pt-3 transition-all duration-300 ease-in-out")}>
         <Link
           href="/#contact"
           onClick={() => toggle()}

@@ -43,7 +43,7 @@ export const phases: Phase[] = [
   },
   {
     id: 2,
-    title: "High-Fidelity Assets",
+    title: "Quality Assets",
     subtitle: "Premium Visual Content",
     description:
       "Developed stunning HD videos and high-quality images with crystal-clear call-to-actions strategically placed throughout the entire user journey.",
@@ -67,7 +67,7 @@ export const phases: Phase[] = [
   },
   {
     id: 3,
-    title: "SEO & Competitor Analysis",
+    title: "Competitor Analysis",
     subtitle: "Traffic Generation Strategy",
     description: "Reverse-engineered competitor content and identified high-traffic keywords to build a content strategy that dominates local search results.",
     details: [
@@ -82,7 +82,7 @@ export const phases: Phase[] = [
   },
   {
     id: 4,
-    title: "Content Marketing & Blog",
+    title: "Content & Blog",
     subtitle: "Authority Building Through Education",
     description:
       "Created comprehensive blog content focusing on Washington State tint laws - the #1 traffic driver - with legal citations and expert insights.",

@@ -1,4 +1,3 @@
-import { AnimateSwitch } from "./components/AnimateSwitch"
 import { BottomBlurOverlay } from "./ui/BlurBottomOverlay"
 import { FooterV2 } from "./components/Footer/FooterV2"
 import localFont from "next/font/local"
@@ -8,8 +7,6 @@ import { SITE_CONFIG, SITE_SLUGS } from "@/config/siteConfig"
 import { TopBarV2 } from "./components/TopBarV2"
 import { LazyMotion, domAnimation } from "motion/react"
 import SplashCursor from "./components/SplashCursor"
-import ComponentRouter from "./components/DesktopCursor"
-import { DotCursor } from "./components/DotCursor"
 import DesktopCursor from "./components/DesktopCursor"
 import { Analytics } from "@vercel/analytics/next"
 import { ViewTransitions } from "./hooks/useTransitionRouter"
@@ -40,9 +37,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
           <LazyMotion features={domAnimation}>
             <DesktopCursor />
             <SplashCursor />
-
             <div className="bg-noise custom:mx-auto pointer-events-none absolute inset-0 z-0 mx-3.5 max-w-6xl bg-repeat opacity-4 md:mx-5 lg:mx-8" />
-
             <div className={`${switzer.variable} font-switzer subpixel-antialiased`}>
               <div className="custom:mx-auto pointer-events-none absolute inset-0 z-0 mx-3.5 max-w-6xl border-x border-gray-200 md:mx-5 lg:mx-8" />
               <BottomBlurOverlay />
@@ -51,7 +46,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               <FooterV2 />
             </div>
           </LazyMotion>
-          {/* {<Analytics />} */}
+          {<Analytics />}
         </body>
       </html>
     </ViewTransitions>

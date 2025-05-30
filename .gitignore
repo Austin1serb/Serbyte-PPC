@@ -10,6 +10,9 @@
 .vercel
 dist/
 
+
+
+ 
 # playwright
 # /playwright-report
 # /test-results

@@ -7,22 +7,20 @@ import entitledPreview from "@/app/images/entitled-preview-v2.webp"
 import clsx from "clsx"
 import { useOffset } from "../hooks/useOffset"
 import { useIsMobile } from "../hooks/useIsMobile"
-import { useMemo, useState } from "react"
+import { useMemo, useRef } from "react"
 import { useMotionValueEvent, useScroll, useSpring } from "motion/react"
-
+import * as motion from "motion/react-m"
 const ids = ["automedics", "entitled", "iao", "bespoke"]
 
 export function ProjectsGrid({ className }: { className?: string }) {
   const rawOffsets = useOffset(ids)
   const isMobile = useIsMobile()
-  const responsiveScale = isMobile ? 0.3 : 0.7
+  const responsiveScale = isMobile ? 0.27 : 0.7
 
   const { scrollYProgress } = useScroll({
     offset: isMobile ? ["13% end", "start start"] : ["18% end", "start start"],
   })
   const progress = useSpring(scrollYProgress, { stiffness: isMobile ? 120 : 220, damping: isMobile ? 40 : 90 })
-
-  const [reveal, setReveal] = useState(false)
 
   const OFFSET_TUNING: Record<string, Partial<HeroOffset>> = {
     entitled: { rot: 9, s: responsiveScale, dx: isMobile ? -200 : -30, dy: isMobile ? -120 : -40 },
@@ -49,19 +47,23 @@ export function ProjectsGrid({ className }: { className?: string }) {
     )
   }, [rawOffsets, isMobile])
 
-  useMotionValueEvent(scrollYProgress, "change", (v) => {
-    if (v >= 0.6 && !reveal) setReveal(true)
-    else if (v < 0.6 && reveal) setReveal(false)
-  })
+  const ref = useRef<HTMLDivElement>(null)
 
-  // useLayoutEffect(() => {
-  //   /** force Framer Motion to measure once on mount */
-  //   window.dispatchEvent(new Event("scroll"))
-  // }, [])
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    if (!ref.current) return
+    ref.current.dataset.reveal = v >= 0.6 ? "false" : "true"
+  })
 
   return (
     <section id="projects" className={clsx("relative", className)}>
-      <div className="relative z-4 grid grid-cols-1 grid-rows-1 gap-4 md:grid-cols-2 md:grid-rows-2">
+      <motion.div
+        initial={{ opacity: 0, filter: "blur(10px)" }}
+        animate={{ opacity: 1, filter: "blur(0px)" }}
+        transition={{ duration: 0.9 }}
+        className="relative z-4 grid grid-cols-1 grid-rows-1 gap-4 md:grid-cols-2 md:grid-rows-2"
+        ref={ref}
+        data-reveal="false"
+      >
         <AnimatedCard
           key={"Entitled"}
           src={entitledPreview}
@@ -72,7 +74,6 @@ export function ProjectsGrid({ className }: { className?: string }) {
           type="Event Management"
           isMobile={isMobile}
           progress={progress}
-          reveal={reveal}
         />
         <AnimatedCard
           key={"IAO"}
@@ -84,7 +85,6 @@ export function ProjectsGrid({ className }: { className?: string }) {
           type="Private Security"
           isMobile={isMobile}
           progress={progress}
-          reveal={reveal}
         />
         <AnimatedCard
           key="Automedics"
@@ -96,7 +96,6 @@ export function ProjectsGrid({ className }: { className?: string }) {
           type="Automotive Repair"
           isMobile={isMobile}
           progress={progress}
-          reveal={reveal}
         />
         <AnimatedCard
           key="Bespoke"
@@ -108,9 +107,8 @@ export function ProjectsGrid({ className }: { className?: string }) {
           type="Automotive Styling"
           isMobile={isMobile}
           progress={progress}
-          reveal={reveal}
         />
-      </div>
+      </motion.div>
     </section>
   )
 }

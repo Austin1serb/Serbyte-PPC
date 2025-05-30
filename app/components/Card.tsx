@@ -9,7 +9,6 @@ export const Card = ({ src, alt, color, type = "" }: { src: StaticImageData; alt
         className={clsx(
           "card-image absolute inset-0 overflow-hidden md:rounded-3xl rounded-2xl opacity-90 transition-opacity duration-500 will-change-transform group-hover:after:opacity-0"
         )}
-        data-text="View Project"
         style={{ "--color-gradient": color } as React.CSSProperties}
       >
         <span className="button-shadow absolute top-2 left-2 w-fit rounded-full bg-black px-4 py-2 text-xs text-white">{type}</span>

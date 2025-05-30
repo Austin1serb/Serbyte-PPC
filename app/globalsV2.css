@@ -2,6 +2,7 @@
 
 @variant scrolled-up (body[data-scrolled="up"] &);
 @variant scrolled-down (body[data-scrolled="down"] &);
+@variant reveal-false ([data-reveal="false"] &);
 
 /* *:not(:has(border-none)) {
   border: 1px dotted red;
@@ -454,3 +455,17 @@ html {
     clip-path: inset(0 0 0 0);
   }
 }
+
+/* styles.css */
+@custom-variant color-red (&:where([data-color="red"] *));
+@custom-variant color-blue (&:where([data-color="blue"] *));
+@custom-variant color-green (&:where([data-color="green"] *));
+
+/* Add these variants manually for now */
+@variant theme-light (body[data-theme="light"] &);
+@variant theme-dark (body[data-theme="dark"] &);
+@variant color-red (body[data-color="red"] &);
+@variant color-blue (body[data-color="blue"] &);
+@variant color-green (body[data-color="green"] &);
+@variant menu-open-true (body[data-menu-open="true"] &);
+@variant menu-open-false (body[data-menu-open="false"] &);
