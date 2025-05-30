@@ -1193,9 +1193,6 @@ export default function SplashCursor({
     document.addEventListener("pointermove", firstMove, { passive: true })
 
     function handlePointerDown(e: PointerEvent) {
-      // Don't kill vertical scroll - only intercept quick taps
-      if (e.pointerType === "touch" && e.pressure === 0) return
-
       const p = pointers[0]
       updatePointerDownData(p, e.pointerId, scaleByPixelRatio(e.clientX), scaleByPixelRatio(e.clientY))
       clickSplat(p)
@@ -1222,10 +1219,36 @@ export default function SplashCursor({
       }
     }
 
+    function handleTouchStart(e: TouchEvent) {
+      if (!active.run) {
+        active.run = true
+        updateFrame()
+      }
+
+      const touch = e.touches[0]
+      const p = pointers[0]
+      updatePointerDownData(p, 0, scaleByPixelRatio(touch.clientX), scaleByPixelRatio(touch.clientY))
+    }
+
+    function handleTouchMove(e: TouchEvent) {
+      const touch = e.touches[0]
+      const p = pointers[0]
+      updatePointerMoveData(p, scaleByPixelRatio(touch.clientX), scaleByPixelRatio(touch.clientY), p.color)
+      pointerDirty = true
+    }
+
+    function handleTouchEnd() {
+      updatePointerUpData(pointers[0])
+    }
+
+    window.addEventListener("touchstart", handleTouchStart, { passive: true })
+    window.addEventListener("touchmove", handleTouchMove, { passive: true })
+    window.addEventListener("touchend", handleTouchEnd, { passive: true })
+
     window.addEventListener("pointerdown", handlePointerDown, { passive: true })
     window.addEventListener("pointermove", handlePointerMove, { passive: true })
     window.addEventListener("pointerup", handlePointerUp, { passive: true })
-    document.addEventListener("visibilitychange", handleVisibilityChange)
+    document.addEventListener("visibilitychange", handleVisibilityChange, { passive: true })
 
     return () => {
       if (gl && gl.getExtension("WEBGL_lose_context")) {
@@ -1237,7 +1260,6 @@ export default function SplashCursor({
       document.removeEventListener("visibilitychange", handleVisibilityChange)
       resizeObserver.disconnect()
     }
-    // ------------------------------------------------------------
   }, [
     SIM_RESOLUTION,
     DYE_RESOLUTION,
