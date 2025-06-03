@@ -1,7 +1,8 @@
 // TestComponentWithState.tsx
 "use client"
 import { useState } from "react"
-import { useRenderTracker } from "./ReactTrackerContext"
+import { useRenderTracker } from "./ReactTracker"
+
 export function TestComponentWithState() {
   const ref = useRenderTracker("TestComponentWithState")
   const [theme, setTheme] = useState<"light" | "dark">("light")
@@ -9,14 +10,15 @@ export function TestComponentWithState() {
   const [menuOpen, toggleMenu] = useState<boolean>(false)
 
   return (
-    <div ref={ref} className={`transition-all duration-300 mx-auto ${theme === "light" ? "bg-white" : "bg-gray-900"}`}>
-      <div className="mx-auto p-8 space-y-8">
-        <Header theme={theme} />
-        <ThemeSwitcher theme={theme} setTheme={setTheme} />
-        <AccentPicker accent={accent} setAccent={setAccent} />
-        <InteractiveCard theme={theme} accent={accent} menuOpen={menuOpen} toggleMenu={toggleMenu} />
-        <StateDisplay theme={theme} accent={accent} menuOpen={menuOpen} />
-      </div>
+    <div
+      ref={ref}
+      className={`transition-all flex flex-col justify-between space-y-2 duration-300 w-full py-8 h-full ${theme === "light" ? "bg-white" : "bg-gray-900"}`}
+    >
+      <Header theme={theme} />
+      <ThemeSwitcher theme={theme} setTheme={setTheme} />
+      <AccentPicker accent={accent} setAccent={setAccent} />
+      <InteractiveCard theme={theme} accent={accent} menuOpen={menuOpen} toggleMenu={toggleMenu} />
+      <StateDisplay theme={theme} accent={accent} menuOpen={menuOpen} />
     </div>
   )
 }
@@ -71,7 +73,7 @@ function AccentPicker({ accent, setAccent }: { accent: "violet" | "emerald" | "a
   const ref = useRenderTracker("AccentPicker")
 
   return (
-    <div ref={ref} className="space-y-4">
+    <div ref={ref} className="space-y-2 pb-2">
       <h2 className="text-lg font-semibold text-center theme-light:text-gray-800 theme-dark:text-gray-200">Choose Accent</h2>
       <div className="flex justify-center gap-3">
         <button
@@ -120,7 +122,7 @@ function InteractiveCard({
         className={`rounded-2xl shadow-lg overflow-hidden transition-all
         ${theme === "light" ? "bg-gray-50 shadow-gray-200" : "bg-gray-800 shadow-black/50"}`}
       >
-        <div className="p-6 space-y-4">
+        <div className="p-6 space-y-2">
           <h3
             className={`text-xl font-semibold
             ${theme === "light" ? "text-gray-900" : "text-white"}`}

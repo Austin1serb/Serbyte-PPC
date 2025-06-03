@@ -8,7 +8,6 @@ import { TopBarV2 } from "./components/TopBarV2"
 import { LazyMotion, domAnimation } from "motion/react"
 import SplashCursor from "./components/SplashCursor"
 import DesktopCursor from "./components/DesktopCursor"
-import { Analytics } from "@vercel/analytics/next"
 import { ViewTransitions } from "./hooks/useTransitionRouter"
 
 const switzer = localFont({
