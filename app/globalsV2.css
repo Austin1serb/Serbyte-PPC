@@ -464,8 +464,11 @@ html {
 /* Add these variants manually for now */
 @variant theme-light (body[data-theme="light"] &);
 @variant theme-dark (body[data-theme="dark"] &);
-@variant color-red (body[data-color="red"] &);
-@variant color-blue (body[data-color="blue"] &);
-@variant color-green (body[data-color="green"] &);
+@variant accent-violet (body[data-accent="violet"] &);
+@variant accent-emerald (body[data-accent="emerald"] &);
+@variant accent-amber (body[data-accent="amber"] &);
 @variant menu-open-true (body[data-menu-open="true"] &);
 @variant menu-open-false (body[data-menu-open="false"] &);
+
+@variant active-zero (body[data-active="zero"] &);
+@variant active-react (body[data-active="react"] &);

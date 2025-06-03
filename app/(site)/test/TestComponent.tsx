@@ -3,48 +3,147 @@
 import { useUI } from "./zero"
 
 export function TestComponent() {
-  // production system would be a simple build-time that removes detect the second value without the user having to pass it in like this:
-  const [theme, setTheme] = useUI<"light" | "dark">("light", "theme")
-  const [color, setColor] = useUI<"red" | "blue" | "green">("red", "color")
-
-  const [menuOpen, setMenuOpen, toggleMenuOpen] = useUI<boolean>(false, "menuOpen")
-
-  console.log("🔴 DeepComponent RE-RENDERED")
+  const [, setTheme] = useUI<"light" | "dark">("light", "theme")
+  const [, setAccent] = useUI<"violet" | "emerald" | "amber">("violet", "accent")
+  const [, , toggleMenu] = useUI<boolean>(false, "menuOpen")
 
   return (
-    <div className="p-8 space-y-4">
-      <div className="space-x-2">
-        <button onClick={() => setTheme("dark")} className="px-4 py-2 bg-blue-500 text-white rounded">
-          Set Dark Theme
-        </button>
-        <button onClick={() => setTheme("light")} className="px-4 py-2 bg-blue-500 text-white rounded">
-          Set Light Theme
-        </button>
+    <div
+      className="transition-all duration-300
+      theme-light:bg-white theme-dark:bg-gray-900  mx-auto"
+    >
+      <div className=" mx-auto p-8 space-y-8">
+        {/* Header */}
+        <div className="text-center space-y-2">
+          <h1
+            className="text-3xl font-bold 
+            theme-light:text-gray-900 theme-dark:text-white"
+          >
+            "Pre-rendering" Demo
+          </h1>
+          <p className="theme-light:text-gray-600 theme-dark:text-gray-400">Reactive state management without re-rendering OR prop drilling</p>
+        </div>
+        {/* Theme Switcher */}
+        <div className="flex justify-center gap-2">
+          <button
+            aria-label="button"
+            onClick={() => setTheme("light")}
+            className={`px-6 py-3 rounded-full font-medium transition-all
+              theme-light:bg-gray-900 theme-light:text-white
+              theme-dark:bg-gray-700 theme-dark:text-gray-200
+              hover:scale-105 border border-gray-400`}
+          >
+            ☀️ Light
+          </button>
+          <button
+            aria-label="button"
+            onClick={() => setTheme("dark")}
+            className={`px-6 py-3 rounded-full font-medium transition-all
+              theme-dark:bg-white theme-dark:text-gray-900
+              theme-light:bg-gray-200 theme-light:text-gray-600
+              hover:scale-105 border border-gray-400`}
+          >
+            🌙 Dark
+          </button>
+        </div>
+        {/* Accent Color Picker */}
+        <div className="space-y-4">
+          <h2
+            className="text-lg font-semibold text-center
+            theme-light:text-gray-800 theme-dark:text-gray-200"
+          >
+            Choose Accent
+          </h2>
+          <div className="flex justify-center gap-3">
+            <button
+              aria-label="button"
+              onClick={() => setAccent("violet")}
+              className="w-12 h-12 rounded-full bg-violet-500/50 
+                accent-violet:ring-6 accent-violet:ring-violet-200
+                theme-dark:accent-violet:ring-violet-900
+                transition-all hover:scale-110 accent-violet:bg-violet-500"
+            />
+            <button
+              aria-label="button"
+              onClick={() => setAccent("emerald")}
+              className="w-12 h-12 rounded-full bg-emerald-500/50
+                accent-emerald:ring-6 accent-emerald:ring-emerald-200
+                theme-dark:accent-emerald:ring-emerald-900
+                transition-all hover:scale-110 accent-emerald:bg-emerald-500"
+            />
+            <button
+              aria-label="button"
+              onClick={() => setAccent("amber")}
+              className="w-12 h-12 rounded-full bg-amber-500/50
+                accent-amber:ring-6 accent-amber:ring-amber-200
+                theme-dark:accent-amber:ring-amber-900
+                transition-all hover:scale-110 accent-amber:bg-amber-500"
+            />
+          </div>
+        </div>
+        {/* Interactive Card */}
+        <div className="relative max-w-md mx-auto">
+          <div
+            className="rounded-2xl shadow-lg overflow-hidden transition-all
+            theme-light:bg-gray-50 theme-dark:bg-gray-700
+            theme-light:shadow-gray-200 theme-dark:shadow-black/50"
+          >
+            <div className="p-6 space-y-4">
+              <h3
+                className="text-xl font-semibold
+                theme-light:text-gray-900 theme-dark:text-white"
+              >
+                Open Menu Demo
+              </h3>
+
+              <button
+                aria-label="button"
+                onClick={toggleMenu}
+                className="w-full py-3 rounded-lg font-medium transition-all
+                  accent-violet:bg-violet-500 accent-violet:hover:bg-violet-600
+                  accent-emerald:bg-emerald-500 accent-emerald:hover:bg-emerald-600
+                  accent-amber:bg-amber-500 accent-amber:hover:bg-amber-600
+                  text-white hover:scale-[1.02]"
+              >
+                <span className="menu-open-true:hidden">Close Panel</span>
+                <span className="menu-open-false:hidden">Open Panel</span>
+              </button>
+            </div>
+
+            {/* Sliding Panel */}
+            <div
+              className="transition-all duration-300 overflow-hidden
+              menu-open-true:max-h-40 menu-open-false:max-h-0"
+            >
+              <div
+                className="p-6 border-t
+                theme-light:border-gray-200 theme-dark:border-gray-700
+                theme-light:bg-white theme-dark:bg-gray-700/50"
+              >
+                <p className="theme-light:text-gray-600 theme-dark:text-gray-300">✨ This panel slides open without re-rendering!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* State Display */}
+        <div className="text-center mt-5 text-sm font-mono theme-light:text-gray-500 theme-dark:text-gray-400 space-y-1 flex gap-4 justify-center capitalize ">
+          <div className="**:text-nowrap text-nowrap flex gap-1">
+            theme: <span className="theme-dark:hidden">Light</span>
+            <span className="theme-light:hidden">Dark</span>
+          </div>
+          <div className="**:text-nowrap text-nowrap flex gap-1">
+            accent:
+            <span className="accent-violet:block hidden">Violet</span>
+            <span className="accent-emerald:block hidden">Emerald</span>
+            <span className="accent-amber:block hidden">Amber</span>
+          </div>
+          <div className="**:text-nowrap text-nowrap flex gap-1">
+            menu:
+            <span className="menu-open-true:hidden">Open</span>
+            <span className="menu-open-false:hidden">Closed</span>
+          </div>
+        </div>
       </div>
-
-      <div className="space-x-2">
-        <button onClick={() => setColor("red")} className="px-4 py-2 bg-red-500 text-white rounded">
-          Red
-        </button>
-        <button onClick={() => setColor("blue")} className="px-4 py-2 bg-blue-500 text-white rounded">
-          Blue
-        </button>
-        <button onClick={() => setColor("green")} className="px-4 py-2 bg-green-500 text-white rounded">
-          Green
-        </button>
-      </div>
-
-      <button onClick={toggleMenuOpen} className="px-4 py-2 bg-purple-500 text-white rounded">
-        <span className="menu-open-true:hidden">Open Menu {`currently: closed`}</span>
-        <span className="menu-open-false:hidden">Close Menu {`currently: open`}</span>
-      </button>
-
-      {/* Test the variants */}
-      <div className="theme-dark:bg-gray-900 theme-light:bg-gray-100 p-4 rounded">Theme sensitive box</div>
-
-      <div className="color-red:bg-red-100 color-blue:bg-blue-100 color-green:bg-green-100 p-4 rounded">Color sensitive box</div>
-
-      <div className="menu-open-true:block menu-open-false:hidden bg-purple-100 p-4 rounded">Only visible when menu is open</div>
     </div>
   )
 }
