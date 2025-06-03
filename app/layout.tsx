@@ -36,7 +36,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <body className="relative bg-white" data-mobile-menu="closed" data-scrolled="up">
           <LazyMotion features={domAnimation}>
             <DesktopCursor />
-            {/* <SplashCursor /> */}
+            <SplashCursor />
             <div className="bg-noise custom:mx-auto pointer-events-none absolute inset-0 z-0 mx-3.5 max-w-6xl bg-repeat opacity-4 md:mx-5 lg:mx-8" />
             <div className={`${switzer.variable} font-switzer subpixel-antialiased`}>
               <div className="custom:mx-auto pointer-events-none absolute inset-0 z-0 mx-3.5 max-w-6xl border-x border-gray-200 md:mx-5 lg:mx-8" />
@@ -46,7 +46,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               <FooterV2 />
             </div>
           </LazyMotion>
-          {<Analytics />}
+          {/* {<Analytics />} */}
         </body>
       </html>
     </ViewTransitions>

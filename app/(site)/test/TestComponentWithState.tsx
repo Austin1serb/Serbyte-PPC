@@ -1,15 +1,15 @@
 // TestComponentWithState.tsx
 "use client"
 import { useState } from "react"
-import { useUI } from "./zero"
-
+import { useRenderTracker } from "./ReactTrackerContext"
 export function TestComponentWithState() {
+  const ref = useRenderTracker("TestComponentWithState")
   const [theme, setTheme] = useState<"light" | "dark">("light")
   const [accent, setAccent] = useState<"violet" | "emerald" | "amber">("violet")
   const [menuOpen, toggleMenu] = useState<boolean>(false)
 
   return (
-    <div className={`transition-all duration-300 mx-auto ${theme === "light" ? "bg-white" : "bg-gray-900"}`}>
+    <div ref={ref} className={`transition-all duration-300 mx-auto ${theme === "light" ? "bg-white" : "bg-gray-900"}`}>
       <div className="mx-auto p-8 space-y-8">
         <Header theme={theme} />
         <ThemeSwitcher theme={theme} setTheme={setTheme} />
@@ -23,8 +23,10 @@ export function TestComponentWithState() {
 
 // Header Component
 function Header({ theme }: { theme: "light" | "dark" }) {
+  const ref = useRenderTracker("Header")
+
   return (
-    <div className="text-center space-y-2">
+    <div ref={ref} className="text-center space-y-2">
       <h1
         className={`text-3xl font-bold \
           ${theme === "light" ? "text-gray-900" : "text-white"}`}
@@ -37,12 +39,11 @@ function Header({ theme }: { theme: "light" | "dark" }) {
 }
 
 // Theme Switcher Component
-function ThemeSwitcher({ theme, setTheme, zero }: { theme: "light" | "dark"; setTheme: (t: "light" | "dark") => void; zero?: boolean }) {
-  if (zero) {
-    const [, setTheme] = useUI<"light" | "dark">("light", "theme")
-  }
+function ThemeSwitcher({ theme, setTheme }: { theme: "light" | "dark"; setTheme: (t: "light" | "dark") => void }) {
+  const ref = useRenderTracker("ThemeSwitcher")
+
   return (
-    <div className="flex justify-center gap-2">
+    <div ref={ref} className="flex justify-center gap-2">
       <button
         aria-label="button"
         onClick={() => setTheme("light")}
@@ -67,8 +68,10 @@ function ThemeSwitcher({ theme, setTheme, zero }: { theme: "light" | "dark"; set
 
 // Accent Picker Component
 function AccentPicker({ accent, setAccent }: { accent: "violet" | "emerald" | "amber"; setAccent: (a: "violet" | "emerald" | "amber") => void }) {
+  const ref = useRenderTracker("AccentPicker")
+
   return (
-    <div className="space-y-4">
+    <div ref={ref} className="space-y-4">
       <h2 className="text-lg font-semibold text-center theme-light:text-gray-800 theme-dark:text-gray-200">Choose Accent</h2>
       <div className="flex justify-center gap-3">
         <button
@@ -109,8 +112,10 @@ function InteractiveCard({
   menuOpen: boolean
   toggleMenu: (open: boolean) => void
 }) {
+  const ref = useRenderTracker("InteractiveCard")
+
   return (
-    <div className="relative max-w-md mx-auto border border-gray-600 rounded-lg">
+    <div ref={ref} className="relative max-w-md mx-auto border border-gray-600 rounded-lg">
       <div
         className={`rounded-2xl shadow-lg overflow-hidden transition-all
         ${theme === "light" ? "bg-gray-50 shadow-gray-200" : "bg-gray-800 shadow-black/50"}`}
@@ -156,14 +161,16 @@ function InteractiveCard({
 
 // State Display Component
 function StateDisplay({ theme, accent, menuOpen }: { theme: "light" | "dark"; accent: "violet" | "emerald" | "amber"; menuOpen: boolean }) {
+  const ref = useRenderTracker("StateDisplay")
+
   return (
-    <>
+    <div ref={ref}>
       <span className="theme-light:text-gray-500 theme-dark:text-gray-400 "></span>
       <div className="text-center mt-5 text-sm font-mono theme-light:text-gray-500 theme-dark:text-gray-400 space-y-1 flex gap-4 justify-center capitalize ">
         <div className="**:text-nowrap text-nowrap flex gap-1">theme: {theme} </div>
         <div className="**:text-nowrap text-nowrap flex gap-1">accent: {accent}</div>
         <div className="**:text-nowrap text-nowrap flex gap-1">menu: {menuOpen ? "Open" : "Closed"}</div>
       </div>
-    </>
+    </div>
   )
 }

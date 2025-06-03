@@ -7,6 +7,8 @@ export function TestComponent() {
   const [, setAccent] = useUI<"violet" | "emerald" | "amber">("violet", "accent")
   const [, , toggleMenu] = useUI<boolean>(false, "menuOpen")
 
+  console.log("TestComponent has Rendered")
+
   return (
     <div
       className="transition-all duration-300
