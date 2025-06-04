@@ -12,8 +12,8 @@ export function TestComponent() {
   return (
     <div
       ref={ref}
-      className="transition-all duration-300 flex flex-col justify-between
-      theme-light:bg-white theme-dark:bg-gray-900 w-full h-full space-y-4 py-8"
+      className="flex flex-col justify-between  **:transition-all **:duration-00
+       w-full h-full space-y-4 py-8 theme-light:bg-white theme-dark:bg-gray-900 "
     >
       <Header />
       <ThemeSwitcher setTheme={setTheme} />
@@ -56,9 +56,11 @@ function ThemeSwitcher({ setTheme }: { setTheme: (t: "light" | "dark") => void }
       <button
         aria-label="button"
         onClick={() => setTheme("light")}
-        className={`px-6 py-3 rounded-full font-medium transition-all
+        className={`px-6 py-3 rounded-full font-medium
           theme-light:bg-gray-900 theme-light:text-white
+
           theme-dark:bg-gray-700 theme-dark:text-gray-200
+
           hover:scale-105 border border-gray-400`}
       >
         ☀️ Light
@@ -66,7 +68,7 @@ function ThemeSwitcher({ setTheme }: { setTheme: (t: "light" | "dark") => void }
       <button
         aria-label="button"
         onClick={() => setTheme("dark")}
-        className={`px-6 py-3 rounded-full font-medium transition-all
+        className={`px-6 py-3 rounded-full font-medium
           theme-dark:bg-white theme-dark:text-gray-900
           theme-light:bg-gray-200 theme-light:text-gray-600
           hover:scale-105 border border-gray-400`}
@@ -82,7 +84,7 @@ function AccentPicker({ setAccent }: { setAccent: (a: "violet" | "emerald" | "am
   const ref = useRenderTracker("Zero.AccentPicker")
 
   return (
-    <div ref={ref} className="space-y-4">
+    <div ref={ref} className="space-y-4 pb-2">
       <h2
         className="text-lg font-semibold text-center
         theme-light:text-gray-800 theme-dark:text-gray-200"
@@ -96,7 +98,7 @@ function AccentPicker({ setAccent }: { setAccent: (a: "violet" | "emerald" | "am
           className="w-12 h-12 rounded-full bg-violet-500/50 
             accent-violet:ring-6 accent-violet:ring-violet-200
             theme-dark:accent-violet:ring-violet-900
-            transition-all hover:scale-110 accent-violet:bg-violet-500"
+           hover:scale-110 accent-violet:bg-violet-500"
         />
         <button
           aria-label="button"
@@ -104,7 +106,7 @@ function AccentPicker({ setAccent }: { setAccent: (a: "violet" | "emerald" | "am
           className="w-12 h-12 rounded-full bg-emerald-500/50
             accent-emerald:ring-6 accent-emerald:ring-emerald-200
             theme-dark:accent-emerald:ring-emerald-900
-            transition-all hover:scale-110 accent-emerald:bg-emerald-500"
+           hover:scale-110 accent-emerald:bg-emerald-500"
         />
         <button
           aria-label="button"
@@ -112,7 +114,7 @@ function AccentPicker({ setAccent }: { setAccent: (a: "violet" | "emerald" | "am
           className="w-12 h-12 rounded-full bg-amber-500/50
             accent-amber:ring-6 accent-amber:ring-amber-200
             theme-dark:accent-amber:ring-amber-900
-            transition-all hover:scale-110 accent-amber:bg-amber-500"
+           hover:scale-110 accent-amber:bg-amber-500"
         />
       </div>
     </div>
@@ -124,46 +126,44 @@ function InteractiveCard({ toggleMenu }: { toggleMenu: () => void }) {
   const ref = useRenderTracker("Zero.InteractiveCard")
 
   return (
-    <div ref={ref} className="relative max-w-md mx-auto">
-      <div
-        className="rounded-2xl shadow-lg overflow-hidden transition-all
+    <div
+      ref={ref}
+      className="relative max-w-md mx-auto border border-gray-200 rounded-2xl shadow-lg overflow-hidden
         theme-light:bg-gray-50 theme-dark:bg-gray-700
         theme-light:shadow-gray-200 theme-dark:shadow-black/50"
-      >
-        <div className="p-6 space-y-4">
-          <h3
-            className="text-xl font-semibold
+    >
+      <div className="p-6 space-y-4">
+        <h3
+          className="text-xl font-semibold
             theme-light:text-gray-900 theme-dark:text-white"
-          >
-            Open Menu Demo
-          </h3>
+        >
+          Open Menu Demo
+        </h3>
 
-          <button
-            aria-label="button"
-            onClick={toggleMenu}
-            className="w-full py-3 rounded-lg font-medium transition-all
+        <button
+          aria-label="button"
+          onClick={toggleMenu}
+          className="w-full py-3 rounded-lg font-medium
               accent-violet:bg-violet-500 accent-violet:hover:bg-violet-600
               accent-emerald:bg-emerald-500 accent-emerald:hover:bg-emerald-600
               accent-amber:bg-amber-500 accent-amber:hover:bg-amber-600
               text-white hover:scale-[1.02]"
-          >
-            <span className="menu-open-true:hidden">Close Panel</span>
-            <span className="menu-open-false:hidden">Open Panel</span>
-          </button>
-        </div>
-
-        {/* Sliding Panel */}
-        <div
-          className="transition-all duration-300 overflow-hidden
-          menu-open-true:max-h-40 menu-open-false:max-h-0"
         >
-          <div
-            className="p-6 border-t
-            theme-light:border-gray-200 theme-dark:border-gray-700
+          <span className="menu-open-true:hidden">Close Panel</span>
+          <span className="menu-open-false:hidden">Open Panel</span>
+        </button>
+      </div>
+
+      {/* Sliding Panel */}
+      <div
+        className="overflow-hidden
+          menu-open-true:max-h-40 menu-open-false:max-h-0"
+      >
+        <div
+          className="p-6 border-t theme-light:border-gray-200 theme-dark:border-gray-700
             theme-light:bg-white theme-dark:bg-gray-700/50"
-          >
-            <p className="theme-light:text-gray-600 theme-dark:text-gray-300">✨ This panel slides open without re-rendering!</p>
-          </div>
+        >
+          <p className="theme-light:text-gray-600 theme-dark:text-gray-300">✨ This panel slides open without re-rendering!</p>
         </div>
       </div>
     </div>
