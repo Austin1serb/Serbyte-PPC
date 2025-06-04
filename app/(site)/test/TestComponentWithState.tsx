@@ -12,7 +12,7 @@ export function TestComponentWithState() {
   return (
     <div
       ref={ref}
-      className={`transition-all flex flex-col justify-between space-y-2 duration-300 w-full py-8 h-full ${theme === "light" ? "bg-white" : "bg-gray-900"}`}
+      className={`transition-all flex flex-col justify-between space-y-4 duration-300 w-full py-8 h-full ${theme === "light" ? "bg-white" : "bg-gray-900"}`}
     >
       <Header theme={theme} />
       <ThemeSwitcher theme={theme} setTheme={setTheme} />
