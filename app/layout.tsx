@@ -9,6 +9,7 @@ import { LazyMotion, domAnimation } from "motion/react"
 import SplashCursor from "./components/SplashCursor"
 import DesktopCursor from "./components/DesktopCursor"
 import { ViewTransitions } from "./hooks/useTransitionRouter"
+import { Analytics } from "@vercel/analytics/react"
 
 const switzer = localFont({
   src: "./fonts/Switzer-Variable.woff2",
@@ -45,7 +46,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               <FooterV2 />
             </div>
           </LazyMotion>
-          {/* {<Analytics />} */}
+          {<Analytics />}
         </body>
       </html>
     </ViewTransitions>
