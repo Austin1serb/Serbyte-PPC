@@ -1,5 +1,12 @@
 import { RenderTracker } from "./ReactTracker"
 
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "React vs Zero UI",
+  description: "React vs Zero UI - A comparison of React and Zero UI performance and re-rendering.",
+}
+
 const layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div className="relative">

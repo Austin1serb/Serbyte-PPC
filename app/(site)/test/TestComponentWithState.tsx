@@ -17,7 +17,7 @@ export function TestComponentWithState() {
       <Header theme={theme} />
       <ThemeSwitcher theme={theme} setTheme={setTheme} />
       <AccentPicker accent={accent} setAccent={setAccent} theme={theme} />
-      <InteractiveCard theme={theme} accent={accent} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <InteractiveCard theme={theme} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <StateDisplay theme={theme} accent={accent} menuOpen={menuOpen} />
     </div>
   )
@@ -106,17 +106,7 @@ function AccentPicker({
 }
 
 // Interactive Card Component
-function InteractiveCard({
-  theme,
-  accent,
-  menuOpen,
-  setMenuOpen,
-}: {
-  theme: "light" | "dark"
-  accent: "violet" | "emerald" | "amber"
-  menuOpen: boolean
-  setMenuOpen: (open: boolean) => void
-}) {
+function InteractiveCard({ theme, menuOpen, setMenuOpen }: { theme: "light" | "dark"; menuOpen: boolean; setMenuOpen: (open: boolean) => void }) {
   const ref = useRenderTracker("InteractiveCard")
 
   return (
@@ -169,11 +159,10 @@ function StateDisplay({ theme, accent, menuOpen }: { theme: "light" | "dark"; ac
 
   return (
     <div ref={ref}>
-      <span className="text-gray-500 text-gray-400 "></span>
-      <div className="text-center mt-5 text-sm font-mono   space-y-1 flex gap-4 justify-center capitalize ">
-        <div className="**:text-nowrap text-nowrap flex gap-1">theme: {theme} </div>
-        <div className="**:text-nowrap text-nowrap flex gap-1">accent: {accent}</div>
-        <div className="**:text-nowrap text-nowrap flex gap-1">menu: {menuOpen ? "Open" : "Closed"}</div>
+      <div className="text-center mt-5 text-sm font-mono space-y-1 flex gap-4 justify-center capitalize ">
+        <div className="flex gap-1">theme: {theme} </div>
+        <div className="flex gap-1">accent: {accent}</div>
+        <div className="flex gap-1">menu: {menuOpen ? "Open" : "Closed"}</div>
       </div>
     </div>
   )
