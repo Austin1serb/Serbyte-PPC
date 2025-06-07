@@ -13,7 +13,7 @@ export function TestComponent() {
     <div
       ref={ref}
       className="flex flex-col justify-between  **:transition-all **:duration-300
-       w-full h-full space-y-4 py-8 theme-light:bg-white theme-dark:bg-gray-900 "
+       w-full h-full space-y-4 py-8 theme-light:bg-gray-100 theme-dark:bg-gray-900 "
     >
       <Header />
       <ThemeSwitcher setTheme={setTheme} />
