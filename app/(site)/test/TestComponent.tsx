@@ -176,21 +176,23 @@ function StateDisplay() {
 
   return (
     <div ref={ref}>
-      <div className="text-center mt-5 text-sm font-mono theme-light:text-gray-500 theme-dark:text-gray-400 space-y-1 flex gap-4 justify-center capitalize">
-        <div className="**:text-nowrap text-nowrap flex gap-1">
-          theme: <span className="theme-dark:hidden">Light</span>
-          <span className="theme-light:hidden">Dark</span>
-        </div>
-        <div className="**:text-nowrap text-nowrap flex gap-1">
-          accent:
-          <span className="accent-violet:block hidden">Violet</span>
-          <span className="accent-emerald:block hidden">Emerald</span>
-          <span className="accent-amber:block hidden">Amber</span>
-        </div>
-        <div className="**:text-nowrap text-nowrap flex gap-1">
-          menu:
-          <span className="menu-open-true:hidden">Open</span>
-          <span className="menu-open-false:hidden">Closed</span>
+      <div>
+        <div className="theme-light:text-gray-500 theme-dark:text-gray-400 **:accent-violet:text-violet-500 **:accent-emerald:text-emerald-500 **:accent-amber:text-amber-500 mt-5 flex justify-center gap-4 space-y-1 text-center font-mono text-sm capitalize">
+          <div className="flex gap-1 text-nowrap **:text-nowrap">
+            theme: <span className="theme-dark:hidden">Light</span>
+            <span className="theme-light:hidden">Dark</span>
+          </div>
+          <div className="flex gap-1 text-nowrap **:text-nowrap">
+            accent:
+            <span className="accent-violet:block hidden">Violet</span>
+            <span className="accent-emerald:block hidden">Emerald</span>
+            <span className="accent-amber:block hidden">Amber</span>
+          </div>
+          <div className="flex gap-1 text-nowrap **:text-nowrap">
+            menu:
+            <span className="menu-open-true:hidden">Open</span>
+            <span className="menu-open-false:hidden">Closed</span>
+          </div>
         </div>
       </div>
     </div>

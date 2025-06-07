@@ -1,6 +1,7 @@
-// TestComponentWithState.tsx
 "use client"
+
 import { useState } from "react"
+
 import { useRenderTracker } from "./ReactTracker"
 
 export function TestComponentWithState() {
@@ -12,12 +13,12 @@ export function TestComponentWithState() {
   return (
     <div
       ref={ref}
-      className={`**:transition-all **:duration-300 flex flex-col justify-between space-y-4w-full py-8 h-full ${theme === "dark" ? "bg-gray-900" : "bg-gray-100"}`}
+      className={`space-y-4 w-full flex h-full flex-col justify-between py-8 **:transition-all **:duration-300 ${theme === "dark" ? "bg-gray-900" : "bg-gray-100"}`}
     >
       <Header theme={theme} />
       <ThemeSwitcher theme={theme} setTheme={setTheme} />
       <AccentPicker accent={accent} setAccent={setAccent} theme={theme} />
-      <InteractiveCard theme={theme} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <InteractiveCard theme={theme} menuOpen={menuOpen} setMenuOpen={setMenuOpen} accent={accent} />
       <StateDisplay theme={theme} accent={accent} menuOpen={menuOpen} />
     </div>
   )
@@ -28,13 +29,8 @@ function Header({ theme }: { theme: "light" | "dark" }) {
   const ref = useRenderTracker("Header")
 
   return (
-    <div ref={ref} className="text-center space-y-2">
-      <h1
-        className={`text-3xl font-bold \
-          ${theme === "light" ? "text-gray-900" : "text-white"}`}
-      >
-        React State Management
-      </h1>
+    <div ref={ref} className="space-y-2 text-center">
+      <h1 className={`\ text-3xl font-bold ${theme === "light" ? "text-gray-900" : "text-white"}`}>React State Management</h1>
       <p className={`text-gray-600 ${theme === "light" ? "text-gray-600" : "text-gray-400"}`}>Reactive state management with React</p>
     </div>
   )
@@ -49,18 +45,14 @@ function ThemeSwitcher({ theme, setTheme }: { theme: "light" | "dark"; setTheme:
       <button
         aria-label="button"
         onClick={() => setTheme("light")}
-        className={`px-6 py-3 rounded-full font-medium 
-          ${theme === "light" ? "bg-gray-900 text-white " : "bg-gray-700 text-gray-400"} hover:scale-105 border border-gray-400`}
+        className={`rounded-full px-6 py-3 font-medium ${theme === "light" ? "bg-gray-900 text-white" : "bg-gray-700 text-gray-400"} border border-gray-400 hover:scale-105`}
       >
         ☀️ Light
       </button>
       <button
         aria-label="button"
         onClick={() => setTheme("dark")}
-        className={`px-6 py-3 rounded-full font-medium hover:scale-105 border border-gray-400
-
-          ${theme === "dark" ? "bg-white text-gray-900" : "bg-gray-200 text-gray-600"}
-          `}
+        className={`rounded-full border border-gray-400 px-6 py-3 font-medium hover:scale-105 ${theme === "dark" ? "bg-white text-gray-900" : "bg-gray-200 text-gray-600"} `}
       >
         🌙 Dark
       </button>
@@ -82,23 +74,22 @@ function AccentPicker({
 
   return (
     <div ref={ref} className="space-y-4 pb-2">
-      <h2 className={`text-lg font-semibold text-center ${theme === "light" ? "text-gray-800" : "text-gray-200"}`}>Choose Accent</h2>
+      <h2 className={`text-center text-lg font-semibold ${theme === "light" ? "text-gray-800" : "text-gray-200"}`}>Choose Accent</h2>
       <div className="flex justify-center gap-3">
         <button
           aria-label="button"
           onClick={() => setAccent("violet")}
-          className={`w-12 h-12 hover:scale-110 rounded-full bg-violet-500 
-            ${accent === "violet" ? "ring-6 ring-violet-200" : "ring-violet-900 bg-violet-500/50"}`}
+          className={`h-12 w-12 rounded-full bg-violet-500 hover:scale-110 ${accent === "violet" ? "ring-6 ring-violet-200" : "bg-violet-500/50 ring-violet-900"}`}
         />
         <button
           aria-label="button"
           onClick={() => setAccent("emerald")}
-          className={`w-12 h-12 hover:scale-110 rounded-full bg-emerald-500 ${accent === "emerald" ? "ring-6 ring-emerald-200" : "ring-emerald-900 bg-emerald-500/50"}`}
+          className={`h-12 w-12 rounded-full bg-emerald-500 hover:scale-110 ${accent === "emerald" ? "ring-6 ring-emerald-200" : "bg-emerald-500/50 ring-emerald-900"}`}
         />
         <button
           aria-label="button"
           onClick={() => setAccent("amber")}
-          className={`w-12 h-12 rounded-full hover:scale-110 bg-amber-500 ${accent === "amber" ? "ring-6 ring-amber-200" : "ring-amber-900 bg-amber-500/50"}`}
+          className={`h-12 w-12 rounded-full bg-amber-500 hover:scale-110 ${accent === "amber" ? "ring-6 ring-amber-200" : "bg-amber-500/50 ring-amber-900"}`}
         />
       </div>
     </div>
@@ -106,45 +97,39 @@ function AccentPicker({
 }
 
 // Interactive Card Component
-function InteractiveCard({ theme, menuOpen, setMenuOpen }: { theme: "light" | "dark"; menuOpen: boolean; setMenuOpen: (open: boolean) => void }) {
+function InteractiveCard({
+  theme,
+  menuOpen,
+  setMenuOpen,
+  accent,
+}: {
+  theme: "light" | "dark"
+  menuOpen: boolean
+  setMenuOpen: (open: boolean) => void
+  accent: "violet" | "emerald" | "amber"
+}) {
   const ref = useRenderTracker("InteractiveCard")
 
   return (
-    <div ref={ref} className="relative max-w-md mx-auto rounded-lg">
+    <div ref={ref} className="relative mx-auto max-w-md rounded-lg">
       <div
-        className={`relative max-w-md mx-auto border border-gray-200 rounded-2xl shadow-lg overflow-hidden
-        ${theme === "light" ? "bg-gray-50 shadow-gray-200" : "bg-gray-700 shadow-black/50"}`}
+        className={`relative mx-auto max-w-md overflow-hidden rounded-2xl border border-gray-200 shadow-lg ${theme === "light" ? "bg-gray-50 shadow-gray-200" : "bg-gray-700 shadow-black/50"}`}
       >
-        <div className="p-6 space-y-2">
-          <h3
-            className={`text-xl font-semibold
-            ${theme === "light" ? "text-gray-900" : "text-white"}`}
-          >
-            Open Menu Demo
-          </h3>
+        <div className="space-y-2 p-6">
+          <h3 className={`text-xl font-semibold ${theme === "light" ? "text-gray-900" : "text-white"}`}>Open Menu Demo</h3>
 
           <button
             aria-label="button"
             onClick={() => setMenuOpen(!menuOpen)}
-            className="w-full py-3 rounded-lg font-medium 
-              accent-violet:bg-violet-500 accent-violet:hover:bg-violet-600
-              accent-emerald:bg-emerald-500 accent-emerald:hover:bg-emerald-600
-              accent-amber:bg-amber-500 accent-amber:hover:bg-amber-600
-              text-white hover:scale-[1.02]"
+            className={`w-full rounded-lg py-3 font-medium text-white hover:scale-[1.02] ${accent === "violet" ? "bg-violet-500 hover:bg-violet-600" : accent === "emerald" ? "bg-emerald-500 hover:bg-emerald-600" : "bg-amber-500 hover:bg-amber-600"}`}
           >
             {menuOpen ? "Close Menu" : "Open Menu"}
           </button>
         </div>
 
         {/* Sliding Menu */}
-        <div
-          className={`overflow-hidden
-          ${menuOpen ? "max-h-40" : "max-h-0"}`}
-        >
-          <div
-            className={`p-6 border-t
-            ${theme === "dark" ? "border-gray-700 bg-gray-800" : "border-gray-200 bg-white"}`}
-          >
+        <div className={`overflow-hidden ${menuOpen ? "max-h-40" : "max-h-0"}`}>
+          <div className={`border-t p-6 ${theme === "dark" ? "border-gray-700 bg-gray-800" : "border-gray-200 bg-white"}`}>
             <p className={`${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}>✨ This menu slides open and re-renders!</p>
           </div>
         </div>
@@ -159,7 +144,9 @@ function StateDisplay({ theme, accent, menuOpen }: { theme: "light" | "dark"; ac
 
   return (
     <div ref={ref}>
-      <div className="text-center mt-5 text-sm font-mono space-y-1 flex gap-4 justify-center capitalize ">
+      <div
+        className={`mt-5 flex justify-center gap-4 space-y-1 text-center font-mono text-sm capitalize ${accent === "violet" ? "text-violet-500" : accent === "emerald" ? "text-emerald-500" : "text-amber-500"}`}
+      >
         <div className="flex gap-1">theme: {theme} </div>
         <div className="flex gap-1">accent: {accent}</div>
         <div className="flex gap-1">menu: {menuOpen ? "Open" : "Closed"}</div>
