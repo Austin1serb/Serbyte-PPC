@@ -12,7 +12,7 @@ export function TestComponent() {
   return (
     <div
       ref={ref}
-      className="flex flex-col justify-between  **:transition-all **:duration-00
+      className="flex flex-col justify-between  **:transition-all **:duration-300
        w-full h-full space-y-4 py-8 theme-light:bg-white theme-dark:bg-gray-900 "
     >
       <Header />
