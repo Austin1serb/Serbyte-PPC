@@ -1,13 +1,13 @@
 "use client"
 import * as motion from "motion/react-m"
-import { phases } from "./projectData"
 import { useState } from "react"
 import Image from "next/image"
 import { AnimatePresence } from "motion/react"
 import { H3, Text } from "@/app/ui/Elements"
 import TiltedWrapper from "@/app/ui/TiltedWrapper"
+import { Phase } from "./ApproachSection"
 
-export const ApproachTabs: React.FC = () => {
+export const ApproachTabs: React.FC<{ phases: Phase[] }> = ({ phases }) => {
   const [activePhase, setActivePhase] = useState<number>(1)
   const currentPhase = phases.find((phase) => phase.id === activePhase) || phases[0]
 

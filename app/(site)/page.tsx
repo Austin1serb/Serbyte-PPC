@@ -1,5 +1,6 @@
 import { HeroV2 } from "../components/HeroV2"
 import { Projects } from "../components/Projects"
+import { reviewPlaceholder } from "../components/LargeReview"
 
 // Dynamic import These
 import dynamic from "next/dynamic"
@@ -38,7 +39,7 @@ const WebDesignPage: React.FC = () => {
       <HeroV2 />
       <LogoMarquee />
       <Projects />
-      <LargeReview />
+      <LargeReview {...reviewPlaceholder} />
       <ServicesSectionV2 />
       <AboutSectionV2 />
       <PricingSection />

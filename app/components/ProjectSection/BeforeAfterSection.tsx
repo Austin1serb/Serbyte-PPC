@@ -1,17 +1,22 @@
 "use client"
 import { BeforeAfterSliderSkeleton } from "@/app/skeletons/BeforeAfterSliderSkeleton"
-import heroBefore from "@/public/assets/bespoke-hero-before.png"
-import heroBeforeMobile from "@/public/assets/bespoke-hero-mobile.png"
+
 import dynamic from "next/dynamic"
 import Image from "next/image"
 import { HeaderText } from "@/app/ui/HeaderText"
+import { StaticImageData } from "next/image"
 
 const BeforeAfterSlider = dynamic(() => import("@/app/ui/BeforeAfterSlider").then((mod) => mod.BeforeAfterSlider), {
   ssr: false,
   loading: () => <BeforeAfterSliderSkeleton />,
 })
 
-export const BeforeAfterSection: React.FC = () => {
+export const BeforeAfterSection: React.FC<{ heroBefore: StaticImageData; heroBeforeMobile: StaticImageData; iframe?: string; heroAfter?: StaticImageData }> = ({
+  heroBefore,
+  heroBeforeMobile,
+  iframe,
+  heroAfter,
+}) => {
   return (
     <section className="border-y border-gray-200 relative">
       <div className="inside-container-projects pt-12 lg:pt-16 flex flex-col gap-12">
@@ -29,7 +34,11 @@ export const BeforeAfterSection: React.FC = () => {
             </>
           }
           after={
-            <iframe title="Bespoke Hero After" src="/bespoke-hero.html" className="w-full h-full border-0 bg-white rounded-xl" scrolling="no" loading="lazy" />
+            iframe ? (
+              <iframe title="Bespoke Hero After" src={iframe} className="w-full h-full border-0 bg-white rounded-xl" scrolling="no" loading="lazy" />
+            ) : (
+              heroAfter && <Image src={heroAfter} alt="Bespoke Hero After" fill className="object-cover object-top rounded-xl" />
+            )
           }
         />
       </div>

@@ -11,12 +11,12 @@ export interface Phase {
   feature: React.ReactNode
 }
 
-export const ApproachSection: React.FC = () => {
+export const ApproachSection: React.FC<{ phases: Phase[] }> = ({ phases }) => {
   return (
     <section className="border-y border-gray-200">
       <div className="inside-container-projects">
         <HeaderText title="The Approach." titleHighlight="See how we did it." />
-        <ApproachTabs />
+        <ApproachTabs phases={phases} />
       </div>
     </section>
   )

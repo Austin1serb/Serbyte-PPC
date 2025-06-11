@@ -41,7 +41,7 @@ export function AnimatedCard({
 
   return (
     // TODO CHANGE LINK TO PROJECTS
-    <Link href={`/projects/bespoke`} data-grid-id={gridId} className="reveal-false:pointer-events-none">
+    <Link href={`/projects/${gridId}`} data-grid-id={gridId} className="reveal-false:pointer-events-none">
       <m.div
         style={{ x, y, scale, rotate, willChange: "transform" }}
         className={clsx("group relative h-full w-full reveal-false:[&_span]:opacity-0 ")}
