@@ -3,6 +3,7 @@ import { Icon } from "./Icon"
 import { Text } from "../ui/Elements"
 import { AnimatedH2 } from "./AnimatedH2"
 import * as m from "motion/react-m"
+import type { Variants } from "motion"
 
 const tech = [
   { name: "React", src: "react" },
@@ -25,7 +26,7 @@ const services = [
   { name: "PPC Campaigns", src: "page" },
 ]
 
-const container = {
+const container: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -56,7 +57,7 @@ const element = {
   },
 }
 
-const element2 = {
+const element2: Variants = {
   hidden: {
     opacity: 0,
     scale: 0.5,

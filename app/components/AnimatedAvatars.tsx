@@ -1,10 +1,11 @@
 import * as m from "motion/react-m"
 import Image from "next/image"
 import profilePhoto from "@/public/assets/founder.jpg"
+import type { Variants } from "motion"
 
 const MEDALS = [profilePhoto, profilePhoto, profilePhoto, profilePhoto, profilePhoto]
 
-const container = {
+const container: Variants = {
   hidden: {
     x: -12,
     opacity: 0,
@@ -19,7 +20,7 @@ const container = {
   },
 }
 
-const avatar = {
+const avatar: Variants = {
   hidden: {
     opacity: 0,
     x: -12,

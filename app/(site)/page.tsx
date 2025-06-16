@@ -39,6 +39,7 @@ const WebDesignPage: React.FC = () => {
       <HeroV2 />
       <LogoMarquee />
       <Projects />
+      {/* <div className="min-h-[3000px]"></div> */}
       <LargeReview {...reviewPlaceholder} />
       <ServicesSectionV2 />
       <AboutSectionV2 />

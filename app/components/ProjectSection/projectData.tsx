@@ -39,6 +39,7 @@ export const bespoke: ProjectData = {
   beforeAfter: {
     heroBefore: heroBefore,
     heroBeforeMobile: heroBeforeMobile,
+    iframe: "/bespoke-hero.html",
   },
   results: [
     {

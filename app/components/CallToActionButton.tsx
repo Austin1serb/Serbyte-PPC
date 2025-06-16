@@ -2,9 +2,10 @@ import * as m from "motion/react-m"
 import Image from "next/image"
 import profilePhoto from "@/public/assets/founder.jpg"
 import clsx from "clsx"
+import type { Variants } from "motion"
 
 export const CallToActionButton = () => {
-  const buttonVariants = {
+  const buttonVariants: Variants = {
     initial: {
       opacity: 0,
       filter: `blur(5px)`,
@@ -27,7 +28,7 @@ export const CallToActionButton = () => {
     },
   }
 
-  const youVariants = {
+  const youVariants: Variants = {
     initial: {
       opacity: 0,
       x: -10,

@@ -8,7 +8,7 @@ export const Projects: React.FC = () => {
   return (
     <section className="inside-container bg-white">
       {/* overlay heading */}
-      <div className="pointer-events-none relative z-5 mix-blend-exclusion">
+      <div className="pointer-events-none relative z-5 mix-blend-exclusion ">
         <AnimatedText
           text="Latest Projects"
           margin={200}

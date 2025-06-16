@@ -10,6 +10,7 @@ import SplashCursor from "./components/SplashCursor"
 import DesktopCursor from "./components/DesktopCursor"
 import { ViewTransitions } from "./hooks/useTransitionRouter"
 import { Analytics } from "@vercel/analytics/react"
+import { bodyAttributes } from "@zero-ui/attributes"
 
 const switzer = localFont({
   src: "./fonts/Switzer-Variable.woff2",
@@ -33,20 +34,20 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <ViewTransitions>
       <html lang="en">
-        <body className="relative bg-white" data-mobile-menu="closed" data-scrolled="up">
+        <body {...bodyAttributes} className="relative bg-white" data-mobile-menu="closed" data-scrolled="up">
           <LazyMotion features={domAnimation}>
             {/* <DesktopCursor />
             <SplashCursor /> */}
             <div className="bg-noise custom:mx-auto pointer-events-none absolute inset-0 z-0 mx-3.5 max-w-6xl bg-repeat opacity-4 md:mx-5 lg:mx-8" />
             <div className={`${switzer.variable} font-switzer subpixel-antialiased`}>
               <div className="custom:mx-auto pointer-events-none absolute inset-0 z-0 mx-3.5 max-w-6xl border-x border-gray-200 md:mx-5 lg:mx-8" />
-              <BottomBlurOverlay />
+              {/* <BottomBlurOverlay /> */}
               <TopBarV2 />
               {children}
               <FooterV2 />
             </div>
           </LazyMotion>
-          {<Analytics />}
+          {process.env.NODE_ENV === "production" && <Analytics />}
         </body>
       </html>
     </ViewTransitions>

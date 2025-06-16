@@ -1,4 +1,7 @@
 const config = {
-  plugins: ["@tailwindcss/postcss"],
+  plugins: [
+    "@austinserb/react-zero-ui/postcss",
+    "@tailwindcss/postcss",
+  ],
 }
 export default config

@@ -1,8 +1,9 @@
 import { Children, isValidElement } from "react"
 import * as m from "motion/react-m"
 import clsx from "clsx"
+import type { Variants } from "motion"
 
-const container = {
+const container: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -10,7 +11,7 @@ const container = {
   },
 }
 
-const child = {
+const child: Variants = {
   hidden: { y: 20, opacity: 0, filter: "blur(4px)" },
   show: {
     y: 0,

@@ -1,5 +1,6 @@
 import clsx from "clsx"
 import * as m from "motion/react-m"
+import type { Variants } from "motion"
 
 interface Props {
   text: string
@@ -9,7 +10,7 @@ interface Props {
   margin?: number
 }
 
-const container = {
+const container: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -18,7 +19,7 @@ const container = {
   },
 }
 
-const letter = {
+const letter: Variants = {
   hidden: {
     opacity: 0,
     y: 20,

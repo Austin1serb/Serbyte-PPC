@@ -2,7 +2,8 @@ import * as m from "motion/react-m"
 import Link from "next/link"
 import { Icon } from "./Icon"
 import clsx from "clsx"
-const container = {
+import type { Variants } from "motion"
+const container: Variants = {
   hidden: {
     x: -12,
     opacity: 0,
@@ -17,7 +18,7 @@ const container = {
   },
 }
 
-const linkLogo = {
+const linkLogo: Variants = {
   hidden: {
     opacity: 0,
     x: -12,

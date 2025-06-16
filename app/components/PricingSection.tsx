@@ -6,6 +6,7 @@ import * as m from "motion/react-m"
 import { H2, H3, Text, Typography } from "../ui/Elements"
 import { CalIcon } from "../icons/Cal.icon"
 import { AnimatedH2 } from "./AnimatedH2"
+import type { Variants } from "motion"
 
 const listItems = [
   {
@@ -37,7 +38,7 @@ const features = [
   "Own your data",
   "No contract required",
 ]
-const parent = {
+const parent: Variants = {
   hidden: { opacity: 1, y: 0 },
   show: {
     transition: {
@@ -46,7 +47,7 @@ const parent = {
     },
   },
 }
-const child = {
+const child: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, type: "spring", stiffness: 100, damping: 10 } },
 }

@@ -332,7 +332,6 @@ html {
   .card-image::after {
     @apply absolute inset-0 z-4 rounded-2xl duration-200 content-[''];
     background: linear-gradient(to top, var(--color-gradient), #00000056 25%, transparent 50%);
-    filter: blur(5px);
   }
 
   .check-icon {
@@ -456,19 +455,25 @@ html {
   }
 }
 
-/* styles.css */
-@custom-variant color-red (&:where([data-color="red"] *));
-@custom-variant color-blue (&:where([data-color="blue"] *));
-@custom-variant color-green (&:where([data-color="green"] *));
+@layer base {
+  .card-slide {
+    animation-timeline: scroll(root block);
+    animation-name: slide;
+    animation-duration: auto;
+    animation-timing-function: cubic-bezier(0.16, -0.09, 0.86, 1.14);
+    animation-fill-mode: both;
+    animation-range: 0 10%;
 
-/* Add these variants manually for now */
-@variant theme-light (body[data-theme="light"] &);
-@variant theme-dark (body[data-theme="dark"] &);
-@variant accent-violet (body[data-accent="violet"] &);
-@variant accent-emerald (body[data-accent="emerald"] &);
-@variant accent-amber (body[data-accent="amber"] &);
-@variant menu-open-true (body[data-menu-open="true"] &);
-@variant menu-open-false (body[data-menu-open="false"] &);
+    will-change: transform;
+    contain: layout paint style;
+  }
 
-@variant active-zero (body[data-active="zero"] &);
-@variant active-react (body[data-active="react"] &);
+  @keyframes slide {
+    from {
+      transform: translate3d(var(--tx, 0), var(--ty, 0), 0) scale(var(--sc, 1)) rotate(var(--rot, 0));
+    }
+    to {
+      transform: translate3d(0, 0, 0) scale(1) rotate(0);
+    }
+  }
+}

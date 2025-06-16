@@ -14,7 +14,8 @@ const eslintConfig = [
   {
     rules: {
       "react/no-unescaped-entities": "warn",
-      "react/no-unused-imports": "warn",
+      "no-unused-imports": "warn",
+      "no-irregular-whitespace": "warn",
       "@typescript-eslint/no-unused-vars": ["warn"],
       "no-console": ["warn", { allow: ["warn", "error"] }],
     },
