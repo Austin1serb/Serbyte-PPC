@@ -48,7 +48,7 @@ const palette: Record<
     btnText: "text-white",
   },
   black: {
-    cardBg: "bg-gradient-to-tr from-slate-700 to-slate-900",
+    cardBg: "bg-gradient-to-tr from-gray-700 to-gray-900",
     cardText: "text-white",
     iconBg: "bg-slate-700",
     priceText: "text-white",

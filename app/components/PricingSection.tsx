@@ -133,7 +133,7 @@ export const PricingSection: React.FC = () => {
           <PricingCard
             plan="Essentials"
             tagline="For small businesses & individuals"
-            price="$2,000"
+            price="$3,000"
             description="High-performance business card site with basic SEO, fast load times, and professional design."
             features={["2-3 Page Website", "Branding & Custom UI", "Next.js + Instant Load", "Google Search Optimization", "Optimized Copywriting"]}
             icon={"circle"}
@@ -144,10 +144,10 @@ export const PricingSection: React.FC = () => {
           <PricingCard
             plan="Growth"
             tagline="For businesses needing more than a website"
-            price="$3,500"
+            price="$5,000"
             description="Fully optimized site with advanced SEO, strategic content, and level I integrated software."
             features={[
-              "Everything from Basic +",
+              "Everything from Essentials +",
               "Up to 10 Pages",
               "Advanced SEO",
               "Blog & Content Strategy",
@@ -165,7 +165,7 @@ export const PricingSection: React.FC = () => {
             price="$10,000"
             description="Scalable web & software solution for businesses needing automation, data management, workflows."
             features={[
-              "Everything from Pro +",
+              "Everything from Growth +",
               "Up to 50 Pages",
               "Complete Brand Package",
               "Full Admin Dashboard",
