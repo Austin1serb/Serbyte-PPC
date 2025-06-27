@@ -5,8 +5,11 @@ import { CalIcon } from "../../icons/Cal.icon"
 import { H3 } from "@/app/ui/Elements"
 import clsx from "clsx"
 import * as m from "motion/react-m"
+import { AnimatedAvatars } from "../AnimatedAvatars"
+import { AnimatedElement } from "../AnimatedElement"
+import { BlackButton } from "../BlackButton"
 
-export const NotSureCard: React.FC<{ className?: string }> = ({ className }) => {
+export const NotSureCard: React.FC<{ className?: string; projectsPage?: boolean }> = ({ className, projectsPage = false }) => {
   return (
     <m.div
       initial={{ opacity: 0, x: -40 }}
@@ -14,26 +17,38 @@ export const NotSureCard: React.FC<{ className?: string }> = ({ className }) => 
       transition={{ type: "spring", stiffness: 100, damping: 10 }}
       viewport={{ once: true, amount: 0.8 }}
       className={clsx(
-        "bottom-shadow relative flex flex-col gap-8 rounded-2xl border border-gray-300 bg-white p-8 max-lg:text-center lg:h-fit lg:w-fit",
-        className
+        "relative flex flex-col gap-8 rounded-2xl border border-gray-300 bg-white p-8 max-lg:text-center",
+        className,
+        projectsPage ? "w-full h-full justify-center items-center" : "lg:h-fit lg:w-fit"
       )}
     >
       <div className="flex flex-col gap-6 max-lg:items-center">
-        <Image src={profilePhoto} height={64} width={64} alt="Austin Serb" className="aspect-square rounded-full object-cover" sizes="200px" />
-        <H3 className="font-normal text-nowrap">
-          <span className="text-slate-500">Still not sure?</span> <br />
+        {projectsPage ? (
+          <div className="flex items-center gap-4 whitespace-nowrap">
+            <AnimatedAvatars />
+            <AnimatedElement element="div" fadeDirection="right" offsetPx={20} duration={0.4} delay={0.15} className="flex flex-col">
+              <div className="flex items-center gap-0.5 text-base text-gray-600">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <span key={i}>★</span>
+                ))}
+              </div>
+              <span className="text-sm font-medium text-slate-900">99+ Happy clients</span>
+            </AnimatedElement>
+          </div>
+        ) : (
+          <Image src={profilePhoto} height={64} width={64} alt="Austin Serb" className="aspect-square rounded-full object-cover" sizes="200px" />
+        )}
+        <H3 className={clsx("font-normal text-nowrap", projectsPage && "text-center")}>
+          <span className="text-slate-500">{projectsPage ? "Like what you see?" : "Still not sure?"}</span> <br />
           Book a free discovery call.
         </H3>
-        <p className="max-w-xs text-sm">Learn more about how I work and how I can help you and your business take the next step.</p>
+        {!projectsPage && <p className="max-w-xs text-sm">Learn more about how I work and how I can help you and your business take the next step.</p>}
       </div>
       <div className="flex items-center gap-4 max-lg:flex-col">
-        <button
-          type="button"
-          className="bubble-hover button-shadow flex w-fit items-center gap-1 rounded-full bg-black px-4 py-3 text-sm font-medium text-nowrap text-white transition hover:cursor-pointer"
-        >
+        <BlackButton>
           <Icon name="calendar" height={20} width={20} className="h-5 w-5 text-white" />
           Schedule Now
-        </button>
+        </BlackButton>
 
         <CalIcon className="h-auto w-20 text-gray-500" />
       </div>

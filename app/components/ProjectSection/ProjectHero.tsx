@@ -13,7 +13,7 @@ export interface ProjectHeroProps {
 
 export const ProjectHero: React.FC<ProjectHeroProps> = ({ title, client, year, description, categories, link }) => {
   return (
-    <section className="inside-container-projects flex flex-col gap-8 max-w-2xl">
+    <section className="inside-container-large flex flex-col gap-8 max-w-2xl">
       <H1 variant="medium" className="wrap-break-word">
         {title}
       </H1>

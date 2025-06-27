@@ -19,7 +19,7 @@ export const BeforeAfterSection: React.FC<{ heroBefore: StaticImageData; heroBef
 }) => {
   return (
     <section className="border-y border-gray-200 relative">
-      <div className="inside-container-projects pt-12 lg:pt-16 flex flex-col gap-12">
+      <div className="inside-container-large pt-12 lg:pt-16 flex flex-col gap-12">
         <HeaderText
           title="Before and after."
           titleHighlight="See the difference."
@@ -29,15 +29,15 @@ export const BeforeAfterSection: React.FC<{ heroBefore: StaticImageData; heroBef
           initialPosition={70}
           before={
             <>
-              <Image src={heroBefore} alt="Bespoke Hero Before" fill className="object-cover object-top rounded-xl lg:block hidden" />
-              <Image src={heroBeforeMobile} alt="Bespoke Hero Before Mobile" fill className="object-cover object-top rounded-xl lg:hidden block" />
+              <Image src={heroBefore} alt="Bespoke Hero Before" fill className="object-cover object-top rounded-xl lg:block hidden" priority />
+              <Image src={heroBeforeMobile} alt="Bespoke Hero Before Mobile" fill className="object-cover object-top rounded-xl lg:hidden block" priority />
             </>
           }
           after={
             iframe ? (
               <iframe title="Bespoke Hero After" src={iframe} className="w-full h-full border-0 bg-white rounded-xl" scrolling="no" loading="lazy" />
             ) : (
-              heroAfter && <Image src={heroAfter} alt="Bespoke Hero After" fill className="object-cover object-top rounded-xl" />
+              heroAfter && <Image src={heroAfter} alt="Bespoke Hero After" fill className="object-cover object-top rounded-xl" priority />
             )
           }
         />

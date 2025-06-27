@@ -1,24 +1,32 @@
 import Image, { StaticImageData } from "next/image"
-import { Icon } from "./Icon"
 import clsx from "clsx"
 
-export const Card = ({ src, alt, color, type = "" }: { src: StaticImageData; alt: string; color?: string; type?: string }) => {
+export const Card = ({ src, alt, color, type = "", reveal = true }: { src: StaticImageData; alt: string; color?: string; type?: string; reveal?: boolean }) => {
   return (
-    <>
-      <span
-        className={clsx(
-          "card-image absolute inset-0 overflow-hidden md:rounded-3xl rounded-2xl opacity-90 transition-opacity duration-500 group-hover:after:opacity-0 contain-strict"
-        )}
-        style={{ "--color-gradient": color } as React.CSSProperties}
-      >
-        <span className="shadow-md border-gray-700 border absolute top-2 left-2 w-fit rounded-full bg-black px-4 py-2 text-xs text-white">{type}</span>
-        <span className="absolute bottom-4 left-4 z-5 w-fit text-lg text-white">{alt.split(" ")[0]}</span>
-        <span className="absolute right-4 bottom-4 z-5 flex w-fit items-center gap-1 text-xs text-white">
-          <Icon name="arrow-right" className="h-4 w-4" />
-          View Project
+    <div
+      className={`rounded-2xl overflow-hidden h-full w-full [&_span]:transition-opacity [&_span]:duration-400 ${reveal ? "reveal-false:[&_span]:opacity-0" : "group relative"}`}
+    >
+      <div className="h-full w-full group-hover:scale-105 duration-400 text-white">
+        <span
+          className={clsx(
+            "after:absolute after:inset-0 after:z-4 after:rounded-2xl after:duration-200 after:content-[''] absolute inset-0 overflow-hidden opacity-90 rounded-2xl group-hover:opacity-0 contain-strict"
+          )}
+          style={
+            { "--color-gradient": color, background: "linear-gradient(to top, var(--color-gradient), #00000056 25%, transparent 50%)" } as React.CSSProperties
+          }
+        >
+          <span className="shadow-md border-gray-700 border absolute top-2 left-2 w-fit rounded-full bg-black px-4 py-2 text-xs">{type}</span>
+          <span className="absolute bottom-4 left-4 z-5 w-fit text-lg">{alt.split(" ")[0]}</span>
+          <span className="absolute right-4 bottom-4 z-5 flex w-fit items-center gap-1 text-xs">
+            {/* SVG inlined for performance */}
+            <svg className="h-4 w-4" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fillRule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z" />
+            </svg>
+            View Project
+          </span>
         </span>
-      </span>
-      <Image className="h-full w-full md:rounded-3xl rounded-2xl bg-gray-200" src={src} alt={alt} priority decoding="async" />
-    </>
+        <Image className="h-full w-full bg-gray-200" src={src} alt={alt} priority decoding="async" />
+      </div>
+    </div>
   )
 }

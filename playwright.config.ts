@@ -11,9 +11,6 @@ import { defineConfig, devices } from "@playwright/test"
  * See https://playwright.dev/docs/test-configuration.
  */
 
-// eslint-disable-next-line no-console
-console.log(`⚡ Playwright starting: ENV=${process.env.NODE_ENV}, BASE_URL=${process.env.NEXT_PUBLIC_URL}`)
-
 export default defineConfig({
   testDir: "./e2e",
   /* Run tests in files in parallel */

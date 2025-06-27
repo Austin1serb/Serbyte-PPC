@@ -92,10 +92,14 @@ html {
     }
   }
 
+  .inside-container-small {
+    @apply mx-auto flex w-full max-w-6xl flex-col gap-12 px-5.5 py-12 md:px-11 md:py-16;
+  }
+
   .inside-container {
     @apply mx-auto flex w-full max-w-6xl flex-col gap-12 px-5.5 py-12 md:gap-16 md:px-11 md:py-24 lg:py-32;
   }
-  .inside-container-projects {
+  .inside-container-large {
     @apply mx-auto flex w-full max-w-6xl flex-col gap-12 md:gap-16 px-5.5 md:px-11 pt-32 lg:pt-36 pb-12 lg:pb-16;
   }
 
@@ -327,11 +331,6 @@ html {
     50% {
       transform: rotate(5deg);
     }
-  }
-
-  .card-image::after {
-    @apply absolute inset-0 z-4 rounded-2xl duration-200 content-[''];
-    background: linear-gradient(to top, var(--color-gradient), #00000056 25%, transparent 50%);
   }
 
   .check-icon {

@@ -37,6 +37,11 @@ export const SITE_NAP = {
 
 export const SITE_SLUGS = {
   home: "/",
+  projects: "/projects",
+  // projectsEntitled: "/projects/entitled",
+  // projectsIao: "/projects/iao",
+  // projectsAutomedics: "/projects/automedics",
+  projectsBespoke: "/projects/bespoke",
 } as const
 
 const flattenSlugs = (obj: Record<string, string | Record<string, string>>): string[] => {

@@ -38,7 +38,7 @@ export function AnimatedCard({
   const ref = useRef<HTMLDivElement>(null)
   useCompositorSpring(ref, progress)
   return (
-    <Link href={`/projects/${gridId}`} data-grid-id={gridId} className="reveal-false:pointer-events-none will-change-transform">
+    <Link href={`/projects/${gridId}`} data-grid-id={gridId} className="reveal-false:pointer-events-none will-change-transform ">
       <div
         ref={ref}
         style={
@@ -49,7 +49,7 @@ export function AnimatedCard({
             "--sc": `${offset.s}`,
           } as React.CSSProperties
         }
-        className={clsx("group relative h-full w-full reveal-false:[&_span]:opacity-0 contain-content transform-gpu")}
+        className={clsx("group relative h-full w-full contain-content transform-gpu")}
         data-text={"View Project"}
       >
         <Card src={src} alt={alt} color={color} type={type} />

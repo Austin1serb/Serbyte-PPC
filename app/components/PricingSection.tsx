@@ -7,6 +7,7 @@ import { H2, H3, Text, Typography } from "../ui/Elements"
 import { CalIcon } from "../icons/Cal.icon"
 import { AnimatedH2 } from "./AnimatedH2"
 import type { Variants } from "motion"
+import { BlackButton } from "./BlackButton"
 
 const listItems = [
   {
@@ -111,12 +112,7 @@ export const PricingSection: React.FC = () => {
               ))}
             </ul>
             <div className="mt-6 flex items-center gap-6">
-              <button
-                type="button"
-                className="bubble-hover button-shadow w-fit rounded-full bg-black px-6 py-3 text-sm font-medium text-white hover:translate-y-0.5 hover:shadow-none"
-              >
-                Book a Discovery Call
-              </button>
+              <BlackButton>Book a Discovery Call</BlackButton>
               <CalIcon className="h-20 w-20 text-gray-500" />
             </div>
           </div>

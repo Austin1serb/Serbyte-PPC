@@ -13,6 +13,7 @@ import { useUI } from "@austinserb/react-zero-ui"
 const ids = ["automedics", "entitled", "iao", "bespoke"]
 
 export function ProjectsGrid({ className }: { className?: string }) {
+  const ref = useRef<HTMLDivElement>(null)
   const rawOffsets = useOffset(ids)
   const isMobile = useIsMobile()
   const responsiveScale = isMobile ? 0.27 : 0.7
@@ -48,7 +49,6 @@ export function ProjectsGrid({ className }: { className?: string }) {
     })
   )
 
-  const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
     const element = ref.current
     if (!element) return
@@ -59,7 +59,7 @@ export function ProjectsGrid({ className }: { className?: string }) {
         setReveal(inView)
       },
       {
-        threshold: 0.3,
+        threshold: 0.4,
       }
     )
     observer.observe(element)

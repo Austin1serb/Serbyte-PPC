@@ -4,7 +4,7 @@ import { MobileMenuButton } from "./MobileMenuButton"
 import { MobileMenu } from "./MobileMenu"
 
 const navItems = [
-  { name: "Work", href: "/#work" },
+  { name: "Work", href: "/projects" },
   { name: "Services", href: "/#services" },
   { name: "Pricing", href: "/#pricing" },
 ]
