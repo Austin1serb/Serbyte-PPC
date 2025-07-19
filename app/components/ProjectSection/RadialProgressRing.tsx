@@ -15,7 +15,7 @@ export const RadialProgressRing: React.FC<RadialProgressRingProps> = ({ percenta
 
   return (
     <div className="relative flex items-center justify-center pb-10">
-      <svg width={size} height={size} className="transform -rotate-90 " viewBox={`0 0 ${size} ${size}`}>
+      <svg width={size} height={size} className="-rotate-90 transform" viewBox={`0 0 ${size} ${size}`}>
         {/* Background Circle */}
         <circle cx={size / 2} cy={size / 2} r={radius} fill="none" stroke="#dedede" strokeWidth={strokeWidth} />
         <circle cx={size / 2} cy={size / 2} r={radius + 19} fill="none" stroke="#d1d5dc" strokeWidth={1} />
@@ -57,14 +57,15 @@ export const RadialProgressRing: React.FC<RadialProgressRingProps> = ({ percenta
       <m.div
         initial={{ opacity: 0, scale: 1.7 }}
         whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
         transition={{
           duration: 0.8,
           delay: 0.3,
           ease: [0.2, 0.65, 0.3, 0.9],
         }}
-        className="text-center absolute inset-0 flex flex-col items-center justify-center pb-8"
+        className="absolute inset-0 flex flex-col items-center justify-center pb-8 text-center"
       >
-        <div className="text-4xl font-semibold text-slate-800 mb-1">
+        <div className="mb-1 text-4xl font-semibold text-slate-800">
           +<CountUp to={percentage} margin="-100px" delay={0.3} />%
         </div>
       </m.div>

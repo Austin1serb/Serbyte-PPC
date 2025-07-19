@@ -11,11 +11,11 @@ export const MoreProjectsSection = ({ href }: { href: string }) => {
       <HeaderText title="More Projects" />
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div className="relative h-full w-full">
-          <div className="card-image absolute inset-0 overflow-hidden md:rounded-3xl rounded-2xl opacity-90 transition-opacity duration-500 will-change-transform group-hover:after:opacity-0 bg-white border border-gray-200 flex items-center justify-center flex-col">
-            <div className="p-5 bg-gray-300 rounded-lg">
-              <Icon name="plus" className="h-5 w-5  fill-white text-white" />
+          <div className="card-image absolute inset-0 flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-gray-200 bg-white opacity-90 transition-opacity duration-500 will-change-transform group-hover:after:opacity-0 md:rounded-3xl">
+            <div className="rounded-lg bg-gray-300 p-5">
+              <Icon name="plus" className="h-5 w-5 fill-white text-white" />
             </div>{" "}
-            <Typography className="max-w-xs text-center mt-5" as="p">
+            <Typography className="mt-5 max-w-xs text-center" as="p">
               Got a cool idea? This spot is waiting for your success story.
             </Typography>
           </div>

@@ -1,7 +1,7 @@
 import Image, { StaticImageData } from "next/image"
 
 export const ClientInfoCard: React.FC<{
-  img: StaticImageData
+  img: StaticImageData | string
   name: string
   title: string
 }> = ({ img, name, title }) => {

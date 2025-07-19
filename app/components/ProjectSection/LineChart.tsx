@@ -81,16 +81,16 @@ export const LineChart: React.FC = () => {
               stiffness: 300,
             }}
             style={{ transformOrigin: `${point.x}px ${point.y}px` }}
-            className="hover:scale-150 transition-all duration-300"
+            className="transition-all duration-300 hover:scale-150"
           />
         ))}
 
         {/* Phase labels */}
-        <text x="70" y="470" textAnchor="middle" className="text-xl fill-slate-600 uppercase">
+        <text x="70" y="470" textAnchor="middle" className="fill-slate-600 text-xl uppercase">
           Pre-Launch
         </text>
 
-        <text x="375" y="470" textAnchor="middle" className="text-xl fill-slate-600 uppercase">
+        <text x="375" y="470" textAnchor="middle" className="fill-slate-600 text-xl uppercase">
           Post-Launch
         </text>
       </m.svg>

@@ -13,11 +13,11 @@ export interface ProjectHeroProps {
 
 export const ProjectHero: React.FC<ProjectHeroProps> = ({ title, client, year, description, categories, link }) => {
   return (
-    <section className="inside-container-large flex flex-col gap-8 max-w-2xl">
+    <section className="inside-container-large flex max-w-2xl flex-col gap-8">
       <H1 variant="medium" className="wrap-break-word">
         {title}
       </H1>
-      <Typography as="div" size="xs" className="flex gap-4 text-sm ">
+      <Typography as="div" size="xs" className="flex gap-4 text-sm">
         <div className="flex gap-2">
           <span>Client</span>
           <span className="font-medium text-black!">{client}</span>
@@ -27,14 +27,14 @@ export const ProjectHero: React.FC<ProjectHeroProps> = ({ title, client, year, d
           <span className="font-medium text-black">{year}</span>
         </div>
       </Typography>
-      <Typography as="p" size="sm" className="text-black! leading-normal!">
+      <Typography as="p" size="sm" className="leading-normal! text-black!">
         {description}
       </Typography>
-      <Typography as="div" size="xs" className="text-black! leading-normal! flex flex-col gap-2">
+      <Typography as="div" size="xs" className="flex flex-col gap-2 leading-normal! text-black!">
         <p className="font-medium">Scope of Work</p>
         <ul className="flex flex-wrap gap-2 text-xs font-medium text-slate-800">
           {categories.map((item) => (
-            <li key={item} className="border border-gray-200 w-fit rounded-full bg-white px-4 py-1.5 z-0">
+            <li key={item} className="z-0 w-fit rounded-full border border-gray-200 bg-white px-4 py-1.5">
               {item}
             </li>
           ))}
@@ -44,7 +44,7 @@ export const ProjectHero: React.FC<ProjectHeroProps> = ({ title, client, year, d
         href={link}
         title={`View ${client} live site`}
         target="_blank"
-        className="flex text-nowrap gap-1 items-center underline-hover w-fit text-lg text-black"
+        className="underline-hover flex w-fit items-center gap-1 text-lg text-nowrap text-black"
       >
         View Live Site
         <Icon name="arrow-right" className="h-3 w-3" />

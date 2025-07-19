@@ -81,7 +81,7 @@ export default function TiltedWrapper({
   return (
     <div
       ref={ref}
-      className={`relative w-full h-full [perspective:800px] flex flex-col items-center justify-center`}
+      className={`relative flex h-full w-full flex-col items-center justify-center [perspective:800px]`}
       style={{ height, width }}
       onMouseMove={handleMouse}
       onMouseEnter={handleMouseEnter}
@@ -98,7 +98,7 @@ export default function TiltedWrapper({
           transform: "translateZ(0)",
         }}
       >
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden" style={{ borderRadius }}>
+        <div className="absolute top-0 left-0 h-full w-full overflow-hidden" style={{ borderRadius }}>
           {children}
         </div>
       </motion.div>

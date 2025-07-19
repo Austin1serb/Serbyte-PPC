@@ -5,24 +5,24 @@ interface TrafficData {
   value: number
   color: string
 }
-const data: TrafficData[] = [
-  {
-    label: "Pre-Launch",
-    value: 150,
-    color: "bg-gradient-to-br from-slate-600 to-slate-900",
-  },
-  {
-    label: "Post-Launch",
-    value: 1450,
-    color: "bg-gradient-to-br from-slate-500 to-slate-900",
-  },
-]
 
-const maxValue = Math.max(...data.map((d) => d.value))
+export const TrafficBarChart: React.FC<{ startValue: number; endValue: number }> = ({ startValue, endValue }) => {
+  const data: TrafficData[] = [
+    {
+      label: "Pre-Launch",
+      value: startValue,
+      color: "bg-gradient-to-br from-slate-600 to-slate-900",
+    },
+    {
+      label: "Post-Launch",
+      value: endValue,
+      color: "bg-gradient-to-br from-slate-500 to-slate-900",
+    },
+  ]
+  const maxValue = Math.max(...data.map((d) => d.value))
 
-export const TrafficBarChart: React.FC = () => {
   return (
-    <div className="relative h-fit w-full flex items-end justify-between gap-10 rounded-lg px-8 pb-10">
+    <div className="relative flex h-fit w-full items-end justify-between gap-10 rounded-lg px-8 pb-10">
       {data.map((item, index) => {
         const barHeight = (item.value / maxValue) * 100
 
@@ -44,7 +44,7 @@ export const TrafficBarChart: React.FC = () => {
             </m.div>
 
             {/* Animated Bar */}
-            <div className="relative w-20 h-66 bg-gray-200 rounded-lg border border-gray-300 shadow-lg">
+            <div className="relative h-66 w-20 rounded-lg border border-gray-300 bg-gray-200 shadow-lg">
               <m.div
                 initial={{ height: 0 }}
                 whileInView={{ height: `${barHeight - 5}%` }}
@@ -70,7 +70,7 @@ export const TrafficBarChart: React.FC = () => {
                 delay: 0.5 + index * 0.2,
                 ease: [0.2, 0.65, 0.3, 0.9],
               }}
-              className="mt-3 text-xs text-slate-600 text-center uppercase text-nowrap"
+              className="mt-3 text-center text-xs text-nowrap text-slate-600 uppercase"
             >
               {item.label}
             </m.div>

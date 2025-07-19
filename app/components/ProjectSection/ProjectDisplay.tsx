@@ -5,7 +5,7 @@ import { ApproachSection } from "./ApproachSection"
 import { LargeReview } from "../LargeReview"
 import { MoreProjectsSection } from "./MoreProjectsSection"
 import { LikeWhatYouSeeCard } from "./LikeWhatYouSeeCard"
-import { ProjectData } from "./projectData"
+import { ProjectData } from "../../data/project-data"
 
 const ProjectDisplay: React.FC<{ projectData: ProjectData }> = ({ projectData }) => {
   return (

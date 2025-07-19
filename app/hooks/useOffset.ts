@@ -5,20 +5,20 @@ import { useIsoMorphicEffect } from "@/hooks/useIsoMorphicEffect"
 
 const initialOffsets: Record<string, Partial<HeroOffset>> = {
   automedics: {
-    x: 533.46875,
-    y: -1239.96875,
+    x: 459.296875,
+    y: -980.328125,
   },
   entitled: {
-    x: 533.46875,
-    y: -858.375,
+    x: 459.296875,
+    y: -748,
   },
-  iao: {
-    x: -18.53125,
-    y: -858.375,
+  "iron-and-oak": {
+    x: 118.796875,
+    y: -748,
   },
   bespoke: {
-    x: -18.53125,
-    y: -1239.96875,
+    x: 118.796875,
+    y: -980.328125,
   },
 }
 export function useOffset(cardIds: string[]) {
@@ -37,6 +37,8 @@ export function useOffset(cardIds: string[]) {
         next[id] = { x: h.left - g.left, y: h.top - g.top }
       }
       offsetsRef.current = next
+
+      console.log(next)
 
       force() // tell React styles changed
     }

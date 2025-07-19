@@ -11,7 +11,6 @@ import DesktopCursor from "./components/DesktopCursor"
 import { ViewTransitions } from "./hooks/useTransitionRouter"
 import { Analytics } from "@vercel/analytics/react"
 import { bodyAttributes } from "@zero-ui/attributes"
-
 const switzer = localFont({
   src: "./fonts/Switzer-Variable.woff2",
   variable: "--font-switzer",
@@ -21,7 +20,6 @@ const switzer = localFont({
   fallback: ["helvetica", "sans-serif"],
   preload: true,
 })
-
 export const metadata: Metadata = {
   title: "Serbyte",
   description: "Serbyte",
@@ -29,7 +27,6 @@ export const metadata: Metadata = {
     canonical: SITE_CONFIG.url + SITE_SLUGS.home,
   },
 }
-
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <ViewTransitions>
@@ -37,7 +34,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <body {...bodyAttributes} className="relative bg-white" data-mobile-menu="closed" data-scrolled="up">
           <LazyMotion features={domAnimation}>
             {/* <DesktopCursor />
-            <SplashCursor /> */}
+             <SplashCursor /> */}
             <div className="bg-noise custom:mx-auto pointer-events-none absolute inset-0 z-0 mx-3.5 max-w-6xl bg-repeat opacity-4 md:mx-5 lg:mx-8" />
             <div className={`${switzer.variable} font-switzer subpixel-antialiased`}>
               <div className="custom:mx-auto pointer-events-none absolute inset-0 z-0 mx-3.5 max-w-6xl border-x border-gray-200 md:mx-5 lg:mx-8" />

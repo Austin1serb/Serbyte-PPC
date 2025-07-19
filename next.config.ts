@@ -4,6 +4,7 @@ import type { NextConfig } from "next"
 // const withAnalyzer = withBundleAnalyzer({ enabled: process.env.ANALYZE === "true" })
 const nextConfig: NextConfig = {
   experimental: { viewTransition: true },
+  allowedDevOrigins: ["localhost:3000"],
 
   /* config options here */
   images: {

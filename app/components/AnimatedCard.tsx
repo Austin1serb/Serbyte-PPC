@@ -5,7 +5,8 @@ import { Card } from "./Card"
 import clsx from "clsx"
 import { Link } from "../utils/Link"
 import { useRef } from "react"
-import { useCompositorSpring } from "../hooks/useLag"
+import { useCompositorSpring } from "../hooks/useCompositorSpring"
+import { SITE_SLUGS } from "@/config/siteConfig"
 
 export type HeroOffset = {
   x: number
@@ -22,7 +23,7 @@ export function AnimatedCard({
   offset,
   color,
   type,
-  "data-grid-id": gridId,
+  gridId,
 
   progress,
 }: {
@@ -30,15 +31,14 @@ export function AnimatedCard({
   alt: string
   offset: HeroOffset
   color: string
-  "data-grid-id": string
+  gridId: string
   type: string
-
   progress: MotionValue<number>
 }) {
   const ref = useRef<HTMLDivElement>(null)
   useCompositorSpring(ref, progress)
   return (
-    <Link href={`/projects/${gridId}`} data-grid-id={gridId} className="reveal-false:pointer-events-none will-change-transform ">
+    <Link href={`${SITE_SLUGS.projects}/${gridId}`} data-grid-id={gridId} className="reveal-false:pointer-events-none will-change-transform">
       <div
         ref={ref}
         style={
@@ -49,7 +49,7 @@ export function AnimatedCard({
             "--sc": `${offset.s}`,
           } as React.CSSProperties
         }
-        className={clsx("group relative h-full w-full contain-content transform-gpu")}
+        className={clsx("group relative h-full w-full transform-gpu opacity-1 contain-content")}
         data-text={"View Project"}
       >
         <Card src={src} alt={alt} color={color} type={type} />

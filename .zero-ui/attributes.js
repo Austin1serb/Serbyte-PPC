@@ -1,4 +1,5 @@
 /* AUTO-GENERATED - DO NOT EDIT */
 export const bodyAttributes = {
-  "data-reveal": "false"
-};
+  "data-phase": "1",
+  "data-reveal": "false",
+}

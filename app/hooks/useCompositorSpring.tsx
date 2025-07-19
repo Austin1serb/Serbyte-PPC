@@ -1,17 +1,19 @@
+import { useIsoMorphicEffect } from "@/hooks/useIsoMorphicEffect"
 import { MotionValue } from "motion/react"
-import { RefObject, useEffect } from "react"
+import { type RefObject } from "react"
 
 export function useCompositorSpring(ref: RefObject<HTMLElement | null>, progress: MotionValue<number>) {
-  useEffect(() => {
+  useIsoMorphicEffect(() => {
     const el = ref.current
     if (!el) return
+    el.style.opacity = "1"
     /* Create a paused compositor animation ------------------- */
     const anim = el.animate(
       [
         {
-          transform: `translate(var(--tx)) translateY(var(--ty)) scale(var(--sc)) rotate(var(--rot))`,
+          transform: `translate3d(var(--tx, 0), var(--ty, 0), 0) scale(var(--sc, 1)) rotate(var(--rot, 0))`,
         },
-        { transform: "translate(0) translateY(0) scale(1) rotate(0)" },
+        { transform: "translate3d(0, 0, 0) scale(1) rotate(0)" },
       ],
       { duration: 1000, fill: "both", easing: "linear" }
     )
@@ -19,7 +21,7 @@ export function useCompositorSpring(ref: RefObject<HTMLElement | null>, progress
     const total = anim.effect!.getComputedTiming().endTime // 1000 ms
 
     /* Spring drives only .currentTime ------------------------ */
-    const unsub = progress.on("change", (p) => (anim.currentTime = p * Number(total)))
-    return () => unsub()
+    const unsubscribe = progress.on("change", (p) => (anim.currentTime = p * Number(total)))
+    return () => unsubscribe()
   }, [progress])
 }

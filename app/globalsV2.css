@@ -32,6 +32,7 @@ html {
   --color-gray-500: #828282;
   --color-gray-200: #dedede;
   --tw-border-style: 1px solid #fff;
+  --animate-fade-in: fadeIn 0.4s ease forwards;
   /* To fix Safari font weight bug */
   --font-weight-semibold: 599;
 }
@@ -100,7 +101,7 @@ html {
     @apply mx-auto flex w-full max-w-6xl flex-col gap-12 px-5.5 py-12 md:gap-16 md:px-11 md:py-24 lg:py-32;
   }
   .inside-container-large {
-    @apply mx-auto flex w-full max-w-6xl flex-col gap-12 md:gap-16 px-5.5 md:px-11 pt-32 lg:pt-36 pb-12 lg:pb-16;
+    @apply mx-auto flex w-full max-w-6xl flex-col gap-12 px-5.5 pt-32 pb-12 md:gap-16 md:px-11 lg:pt-36 lg:pb-16;
   }
 
   body[data-mobile-menu="closed"] {
@@ -473,6 +474,16 @@ html {
     }
     to {
       transform: translate3d(0, 0, 0) scale(1) rotate(0);
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateX(var(--tx, 40px));
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 }

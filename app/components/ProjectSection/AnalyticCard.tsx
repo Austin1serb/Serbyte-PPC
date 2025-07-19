@@ -12,17 +12,17 @@ interface AnalyticCardProps {
 
 export const AnalyticCard: React.FC<AnalyticCardProps> = ({ title, description, percentageIncrease, chart, dataSource }) => {
   return (
-    <div className="flex-1 p-6 border border-gray-200 rounded-xl h-[500px] min-w-[300px] max-w-md relative flex flex-col justify-between hover:shadow-lg transition-all duration-300">
+    <div className="relative flex h-[500px] max-w-md min-w-[300px] flex-1 flex-col justify-between rounded-xl border border-gray-200 p-6 transition-all duration-300 hover:shadow-lg">
       {/* Title */}
 
-      <div className="text-center mb-8">
+      <div className="mb-8 text-center">
         <H3 className="mb-2">{title}</H3>
         {percentageIncrease && (
           <p className="text-4xl font-semibold text-slate-700">
             +<CountUp to={percentageIncrease} margin="-100px" />%
           </p>
         )}
-        {description && <p className="text-gray-600 text-xs leading-tight">{description}</p>}
+        {description && <p className="text-xs leading-tight text-gray-600">{description}</p>}
       </div>
 
       {/* Chart Container */}
@@ -36,7 +36,7 @@ export const AnalyticCard: React.FC<AnalyticCardProps> = ({ title, description, 
           delay: 1.5,
           ease: [0.2, 0.65, 0.3, 0.9],
         }}
-        className="text-center absolute -bottom-6 left-4 text-xs text-slate-500 "
+        className="absolute -bottom-6 left-4 text-center text-xs text-slate-500"
       >
         * {dataSource}
       </m.span>

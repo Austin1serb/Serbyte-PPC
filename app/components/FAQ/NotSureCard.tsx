@@ -19,7 +19,7 @@ export const NotSureCard: React.FC<{ className?: string; projectsPage?: boolean 
       className={clsx(
         "relative flex flex-col gap-8 rounded-2xl border border-gray-300 bg-white p-8 max-lg:text-center",
         className,
-        projectsPage ? "w-full h-full justify-center items-center" : "lg:h-fit lg:w-fit"
+        projectsPage ? "h-full w-full items-center justify-center" : "lg:h-fit lg:w-fit"
       )}
     >
       <div className="flex flex-col gap-6 max-lg:items-center">

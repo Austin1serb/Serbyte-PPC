@@ -74,15 +74,15 @@ export const PricingSection: React.FC = () => {
         className="flex flex-col items-center justify-between gap-12 sm:flex-row lg:gap-16"
       >
         {listItems.map((item, i) => (
-          <m.div key={item.title} variants={child}>
-            <Typography as="li" size="sm" className="relative flex max-w-3xs flex-col gap-2">
+          <m.li key={item.title} variants={child}>
+            <Typography as="div" size="sm" className="relative flex max-w-3xs flex-col gap-2">
               <h3 className="flex items-center gap-1 font-medium text-black">
                 <span>{item.icon}</span> {item.title}
               </h3>
               <p className="text-slate-700">{item.description}</p>
               <span className="absolute top-1/2 -right-16 -translate-x-1/2 -translate-y-1/2 text-9xl font-medium text-black opacity-10">{i + 1}</span>
             </Typography>
-          </m.div>
+          </m.li>
         ))}
       </m.ul>
       <div className="flex flex-col gap-2">

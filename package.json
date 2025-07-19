@@ -18,7 +18,7 @@
     "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
-    "@austinserb/react-zero-ui": "^1.0.18",
+    "@react-zero-ui/core": "^0.2.4",
     "@vercel/analytics": "^1.5.0",
     "clsx": "^2.1.1",
     "motion": "^12.10.5",
@@ -30,7 +30,7 @@
     "@eslint/eslintrc": "^3.3.1",
     "@next/bundle-analyzer": "^15.3.2",
     "@playwright/test": "^1.52.0",
-    "@tailwindcss/postcss": "^4.1.10",
+    "@tailwindcss/postcss": "^4.1.11",
     "@types/node": "^22.15.17",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
@@ -45,7 +45,7 @@
     "prettier-plugin-tailwindcss": "^0.6.11",
     "raw-loader": "^4.0.2",
     "schema-dts": "^1.1.5",
-    "tailwindcss": "^4.1.10",
+    "tailwindcss": "^4.1.11",
     "typescript": "^5.8.3"
   }
 }

@@ -9,15 +9,16 @@ import { useOffset } from "../hooks/useOffset"
 import { useIsMobile } from "../hooks/useIsMobile"
 import { useRef, useEffect } from "react"
 import { useScroll, useSpring } from "motion/react"
-import { useUI } from "@austinserb/react-zero-ui"
-const ids = ["automedics", "entitled", "iao", "bespoke"]
+import { useUI } from "@react-zero-ui/core"
+
+const ids = ["automedics", "entitled", "iron-and-oak", "bespoke"]
 
 export function ProjectsGrid({ className }: { className?: string }) {
   const ref = useRef<HTMLDivElement>(null)
   const rawOffsets = useOffset(ids)
   const isMobile = useIsMobile()
   const responsiveScale = isMobile ? 0.27 : 0.7
-  const [, setReveal] = useUI<boolean>("reveal", false)
+  const [, setReveal] = useUI<"true" | "false">("reveal", "false")
 
   const { scrollYProgress } = useScroll({
     offset: isMobile ? ["start start", "7% start"] : ["start start", "10% start"],
@@ -28,7 +29,7 @@ export function ProjectsGrid({ className }: { className?: string }) {
 
   const OFFSET_TUNING: Record<string, Partial<HeroOffset>> = {
     entitled: { rot: 9, s: responsiveScale, dx: isMobile ? -200 : -30, dy: isMobile ? -120 : -40 },
-    iao: { rot: -5, s: responsiveScale, dx: isMobile ? -210 : -60, dy: isMobile ? -130 : -40 },
+    "iron-and-oak": { rot: -5, s: responsiveScale, dx: isMobile ? -210 : -60, dy: isMobile ? -130 : -40 },
     automedics: { rot: 5, s: responsiveScale, dx: isMobile ? -205 : -45, dy: isMobile ? -130 : -25 },
     bespoke: { rot: 12, s: responsiveScale, dx: isMobile ? -210 : -50, dy: isMobile ? -110 : -10 },
   }
@@ -56,25 +57,26 @@ export function ProjectsGrid({ className }: { className?: string }) {
       (entries) => {
         const entry = entries[0]
         const inView = entry.isIntersecting
-        setReveal(inView)
+        setReveal(inView ? "true" : "false")
       },
       {
-        threshold: 0.4,
+        threshold: isMobile ? 0.4 : 0.8,
       }
     )
     observer.observe(element)
     return () => observer.disconnect()
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMobile])
 
   return (
-    <section className={clsx("relative ", className)}>
-      <div className="relative z-4 grid grid-cols-1 grid-rows-1 gap-4 md:grid-cols-2 md:grid-rows-2 " ref={ref}>
+    <section className={clsx("relative", className)}>
+      <div className="relative z-4 grid grid-cols-1 grid-rows-1 gap-4 md:grid-cols-2 md:grid-rows-2" ref={ref}>
         <AnimatedCard
           key={"Entitled"}
           src={entitledPreview}
           alt={"Entitled Preview"}
           offset={offsets["entitled"]}
-          data-grid-id="entitled"
+          gridId="entitled"
           color="#000000"
           type="Event Management"
           progress={progress}
@@ -83,8 +85,8 @@ export function ProjectsGrid({ className }: { className?: string }) {
           key={"IAO"}
           src={iaoPreview}
           alt={"IAO Preview"}
-          offset={offsets["iao"]}
-          data-grid-id="iao"
+          offset={offsets["iron-and-oak"]}
+          gridId="iron-and-oak"
           color="#13739C"
           type="Private Security"
           progress={progress}
@@ -94,7 +96,7 @@ export function ProjectsGrid({ className }: { className?: string }) {
           src={automedicsPreview}
           alt={"Automedics Preview"}
           offset={offsets["automedics"]}
-          data-grid-id="automedics"
+          gridId="automedics"
           color="#DA961A"
           type="Automotive Repair"
           progress={progress}
@@ -104,7 +106,7 @@ export function ProjectsGrid({ className }: { className?: string }) {
           src={bespokePreview}
           alt={"Bespoke Preview"}
           offset={offsets["bespoke"]}
-          data-grid-id="bespoke"
+          gridId="bespoke"
           color="#024EFC"
           type="Automotive Styling"
           progress={progress}

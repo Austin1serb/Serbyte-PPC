@@ -39,7 +39,7 @@ const avatar: Variants = {
 
 export function AnimatedAvatars() {
   return (
-    <m.div className="flex items-center gap-4 whitespace-nowrap relative z-0" initial="hidden" animate="visible" variants={container}>
+    <m.div className="relative z-0 flex items-center gap-4 whitespace-nowrap" initial="hidden" animate="visible" variants={container}>
       <div className="flex flex-row-reverse -space-x-3 space-x-reverse">
         {MEDALS.map((src, i) => (
           <m.div key={i} className="relative inline-block h-9 w-9 overflow-hidden rounded-full ring-3 ring-white" animate={{ zIndex: -i }} variants={avatar}>

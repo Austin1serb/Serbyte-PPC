@@ -130,7 +130,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
       <div className="relative">
         <div
           ref={containerRef}
-          className="relative w-full min-h-[860px] max-h-[860px] shadow-xl rounded-xl border border-gray-200 "
+          className="relative max-h-[860px] min-h-[860px] w-full rounded-xl border border-gray-200 shadow-xl"
           onMouseMove={handleMouseMove}
           onMouseUp={handleEnd}
           onTouchMove={handleTouchMove}
@@ -141,19 +141,19 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
         >
           {before}
 
-          <motion.div className="absolute inset-0 pointer-events-none" style={{ clipPath }}>
+          <motion.div className="pointer-events-none absolute inset-0" style={{ clipPath }}>
             {after}
           </motion.div>
 
           {/* Slider */}
           <motion.div
-            className="absolute top-0 bottom-0 bg-transparent flex items-center justify-center z-5"
+            className="absolute top-0 bottom-0 z-5 flex items-center justify-center bg-transparent"
             style={{ left: sliderLeft, transform: "translateX(-50%)" }}
           >
             <div className="h-full w-0.5 bg-white shadow-lg">
               <motion.div
                 whileTap={{ scale: 0.8, color: "#493BFF", cursor: "grabbing" }}
-                className="absolute top-1/2 left-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2 z-10 "
+                className="absolute top-1/2 left-1/2 z-10 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full bg-white shadow-lg"
                 onMouseDown={handleMouseDown}
                 onTouchStart={handleTouchStart}
                 onKeyDown={handleKeyDown}
@@ -162,7 +162,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
                 style={{ cursor: "grab" }}
                 aria-label="Drag to compare before and after"
               >
-                <svg className="w-6 h-6 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <svg className="h-6 w-6 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
                 </svg>
               </motion.div>
@@ -170,29 +170,29 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
           </motion.div>
         </div>
         {/* Labels */}
-        <div className="absolute top-30 left-1/2 -translate-x-1/2 z-5 grid">
+        <div className="absolute top-30 left-1/2 z-5 grid -translate-x-1/2">
           <motion.div
-            className="col-start-1 row-start-1 backdrop-blur-md bg-black/50 border border-white/30 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg"
+            className="col-start-1 row-start-1 rounded-full border border-white/30 bg-black/50 px-4 py-2 text-sm font-semibold text-white shadow-lg backdrop-blur-md"
             style={{ opacity: afterLabelOpacity }}
             transition={{ delay: 0.4, duration: 0.5 }}
             aria-hidden="true"
           >
             <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-green-400 rounded-full">
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-ping" />
+              <div className="h-2 w-2 rounded-full bg-green-400">
+                <div className="h-2 w-2 animate-ping rounded-full bg-green-400" />
               </div>
               <span>After</span>
             </div>
           </motion.div>
 
           <motion.div
-            className="col-start-1 row-start-1 backdrop-blur-md bg-black/50 border border-white/20 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg duration-200"
+            className="col-start-1 row-start-1 rounded-full border border-white/20 bg-black/50 px-4 py-2 text-sm font-semibold text-white shadow-lg backdrop-blur-md duration-200"
             style={{ opacity: beforeLabelOpacity }}
             aria-hidden="true"
           >
             <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-red-400 rounded-full ">
-                <div className="w-2 h-2 bg-red-400 rounded-full animate-ping"></div>
+              <div className="h-2 w-2 rounded-full bg-red-400">
+                <div className="h-2 w-2 animate-ping rounded-full bg-red-400"></div>
               </div>
               <span>Before</span>
             </div>

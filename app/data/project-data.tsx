@@ -1,16 +1,43 @@
 import Image, { StaticImageData } from "next/image"
-import { TintSimulator } from "../BespokeTint/TintSimulator"
-import { Phase } from "./ApproachSection"
-import { ProjectHeroProps } from "./ProjectHero"
+import { TintSimulator } from "../components/BespokeTint/TintSimulator"
+import { Phase } from "../components/ProjectSection/ApproachSection"
+import { ProjectHeroProps } from "../components/ProjectSection/ProjectHero"
 import heroBefore from "@/public/assets/bespoke-hero-before.png"
 import heroBeforeMobile from "@/public/assets/bespoke-hero-mobile.png"
 import heroBeforeAutomedics from "@/public/assets/automedics-before.png"
 import heroBeforeMobileAutomedics from "@/public/assets/automedics-mobile.png"
-import { AnalyticCardProps } from "./ResultsSection"
-import { TrafficBarChart } from "./TrafficBarChart"
-import { RadialProgressRing } from "./RadialProgressRing"
-import { LineChart } from "./LineChart"
-import { reviewPlaceholder, ReviewProps } from "../LargeReview"
+import { AnalyticCardProps } from "../components/ProjectSection/ResultsSection"
+import { TrafficBarChart } from "../components/ProjectSection/TrafficBarChart"
+import { RadialProgressRing } from "../components/ProjectSection/RadialProgressRing"
+import { LineChart } from "../components/ProjectSection/LineChart"
+import { reviewPlaceholder } from "../components/LargeReview"
+import { REVIEW_MAP, type ReviewProps } from "./review-data"
+
+//   interface ProjectData {
+//   hero: {
+//     title: string
+//     client: string
+//     year: string
+//     description: string | React.ReactNode
+//     categories: string[]
+//     link: string
+//   }
+//   beforeAfter: { heroBefore: StaticImageData; heroBeforeMobile: StaticImageData; iframe?: string; heroAfter?: StaticImageData }
+//   results: {
+//     title: string
+//     description: string
+//     percentageIncrease: number
+//     chart: React.ReactNode
+//     dataSource: string[]
+//     phases: { id: number; title: string; subtitle: string; description: string; details: string[]; icon: string; feature: React.ReactNode }[]
+//     review: {
+//       quote: React.ReactNode
+//       name: string
+//       title: string
+//       img: StaticImageData
+//     }
+//   }
+// }
 
 export type ProjectData = {
   hero: ProjectHeroProps
@@ -46,7 +73,7 @@ export const bespoke: ProjectData = {
       title: "Traffic Growth",
       description: "Increase post-launch from all channels",
       percentageIncrease: 966,
-      chart: <TrafficBarChart />,
+      chart: <TrafficBarChart startValue={150} endValue={1450} />,
       dataSource: "Based on 30 day traffic average",
     },
     {
@@ -76,7 +103,6 @@ export const bespoke: ProjectData = {
         "Implemented clip-path CSS for edgy, non-traditional section borders",
         "Designed around extensive customer reviews and testimonials",
         "Created a cohesive design system with rebel aesthetic touches",
-        "Focused on conversion-first design principles",
         "Incorporated angular elements instead of traditional straight lines",
       ],
       icon: "/assets/design-black.webp",
@@ -155,7 +181,7 @@ export const bespoke: ProjectData = {
         "Unique differentiator from competitors",
       ],
       icon: "/assets/tool-black.webp",
-      feature: <TintSimulator className="w-full h-full" />,
+      feature: <TintSimulator className="h-full w-full" />,
     },
   ],
   review: reviewPlaceholder,
@@ -163,12 +189,12 @@ export const bespoke: ProjectData = {
 
 export const automedicsKirkland: ProjectData = {
   hero: {
-    title: "Turning AutoMedics Kirkland's 20-Year Reputation into Booked Bays",
-    client: "AutoMedics Kirkland",
+    title: "Transforming Automedics Kirkland's Online Presence",
+    client: "Automedics Kirkland",
     year: "2025",
     description:
       "Serbyte replaced AutoMedics' dated brochure site with a conversion-focused, SEO-engineered platform that now channels local search traffic into booked service slots while showcasing 1,000-plus ★★★★★ reviews.",
-    categories: ["Brand Refresh", "Web Design", "Next.js 15 Development", "Local SEO", "Copywriting", "Google Business Profile Optimization"],
+    categories: ["Branding", "Web Design", "Local SEO", "Copywriting"],
     link: "https://www.automedicskirkland.com",
   },
   beforeAfter: {
@@ -176,65 +202,91 @@ export const automedicsKirkland: ProjectData = {
     heroBeforeMobile: heroBeforeMobileAutomedics,
     iframe: "https://www.automedicskirkland.com",
   },
-  results: [],
+  results: [
+    {
+      title: "Traffic Growth",
+      description: "Increase post-launch from all channels",
+      percentageIncrease: 960,
+      chart: <TrafficBarChart startValue={25} endValue={240} />,
+      dataSource: "Based on 30 day traffic average",
+    },
+    {
+      title: "Conversion Rate",
+      description: "Online visitor conversion improvement",
+      percentageIncrease: 85,
+      chart: <RadialProgressRing percentage={85} />,
+      dataSource: "Measured over a 60 day period",
+    },
+    {
+      title: "Revenue Growth",
+      description: "Increase post-launch",
+      percentageIncrease: 15,
+      chart: <LineChart />,
+      dataSource: "Measured over a 90 day period",
+    },
+  ],
 
-  // metrics: [
-  //   { label: "Years in Service", value: "20+", note: "established 2003" },
-  //   { label: "Happy Clients", value: "10 k+", note: "cumulative serviced vehicles" },
-  //   { label: "Customer Satisfaction", value: "99.9%", note: "avg. rating across Google/Yelp/Carfax" },
-  // ],
   phases: [
     {
       id: 1,
-      title: "Discovery",
-      subtitle: "Market & competitor audit to surface conversion gaps",
-      description: "Stakeholder interviews with owners Jeff & Keith",
-      details: ["Google Business Profile deep-dive & citation audit", "Baseline analytics & funnel mapping"],
+      title: "Brand Creation",
+      subtitle: "From Zero to Hero",
+      description: "Started from scratch to re-brand AutoMedics Kirkland, establishing them as the trusted automotive expert in their market.",
+      details: [
+        "Designed custom logo reflecting mechanical precision",
+        "Selected color palette balancing trust and energy",
+        "Created comprehensive brand guidelines document",
+        "Developed consistent visual language across all touchpoints",
+      ],
       icon: "/assets/design-black.webp",
-      feature: <Image src="/assets/discovery.png" alt="Discovery" fill className="object-contain" />,
+      feature: (
+        <div className="absolute inset-0 h-full w-full bg-white">
+          <Image src="/assets/automedics-brand-guide-example.webp" alt="AutoMedics Brand Identity" fill className="object-contain py-5" />
+        </div>
+      ),
     },
     {
       id: 2,
-      title: "Brand & Copy Refresh",
-      subtitle: "Modernized the visual identity and voice to convey trust & expertise",
-      description: "Updated logo lock-up & color palette",
-      details: ["Trust-badge copy highlighting ASE certification & 2-yr warranty", "Tone-of-voice guidelines for friendly authority"],
-      icon: "/assets/assets-black.webp",
-      feature: <Image src="/assets/brand.png" alt="Brand & Copy Refresh" fill className="object-contain" />,
+      title: "Performance",
+      subtitle: "Speed That Converts",
+      description:
+        "Leveraged Next.js to create an incredibly fast website that loads instantly, keeping potential customers engaged instead of bouncing to competitors.",
+      details: [
+        "Server-side rendering for instant page loads",
+        "Automatic code splitting for optimal performance",
+        "Progressive web app features for mobile users",
+      ],
+      icon: "/assets/tool-black.webp",
+      feature: <Image src="/assets/performance-metrics-automedics-web-development.webp" alt="Performance Metrics" fill className="object-contain" />,
     },
     {
       id: 3,
-      title: "Design & Build",
-      subtitle: "High-converting UI built on Next.js 15 + motion/react",
-      description: "Figma wireframes & Tailwind component library",
-      details: ["Schema-ready markup for every service type", "Animations that draw attention to CTAs without hurting LCP (< 1 s)"],
-      icon: "/assets/design-black.webp",
-      feature: <Image src="/assets/design.png" alt="Design & Build" fill className="object-contain" />,
+      title: "Visuals",
+      subtitle: "Trust Through Imagery",
+      description:
+        "Curated and optimized visuals that tell AutoMedics' story of expertise and reliability, turning skeptical visitors into confident customers.",
+      details: [
+        "Sourced authentic shop and service imagery",
+        "Implemented smart lazy loading for faster browsing",
+        "Optimized every asset for web without quality loss",
+      ],
+      icon: "/assets/assets-black.webp",
+      feature: <Image src="/assets/trust-badges-automedics-web-design.webp" alt="AutoMedics Visual Assets" fill className="object-contain" />,
     },
     {
       id: 4,
-      title: "SEO & Launch",
-      subtitle: "Captured 'auto repair kirkland' & allied keywords within 60 days",
-      description: "On-page optimization for 35 high-intent queries",
-      details: ["GBP sync, review aggregation widgets, FAQ rich snippets", "Performance hardening and live tracking dashboards"],
-      icon: "/assets/notepad-black.webp",
-      feature: <Image src="/assets/seo.png" alt="SEO & Launch" fill className="object-contain" />,
-    },
-    {
-      id: 5,
-      title: "Upkeep & Maintenance",
-      subtitle: "Regular updates and optimizations to keep the site performing at its best",
-      description: "Regular updates and optimizations to keep the site performing at its best",
+      title: "Social Proof",
+      subtitle: "Design That Drives Business",
+      description: "Engineered elements to showcase AutoMedics' 1,000-plus 5 star reviews.",
       details: [
-        "Regular content updates to keep the site fresh",
-        "Performance monitoring and optimization",
-        "Technical SEO improvements",
-        "User feedback and engagement tracking",
-        "Regular performance monitoring and optimization",
+        "Displayed 1,000+ reviews on the homepage",
+        "Showcased 100+ Google reviews on the services page",
+        "Added a Google Business Profile badge to the homepage",
+        "Added a Google Business Profile badge to the services page",
       ],
-      icon: "/assets/tool-black.webp",
-      feature: <TintSimulator className="w-full h-full" />,
+      icon: "/assets/notepad-black.webp",
+      feature: <Image src="/assets/review-showcase-automedics-website-design.webp" alt="Review Showcase" fill className="object-contain" />,
     },
   ],
-  review: reviewPlaceholder,
+  review: REVIEW_MAP.automedics,
 }

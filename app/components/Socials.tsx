@@ -50,7 +50,14 @@ export const Socials: React.FC<{
     >
       {socialLinks.map((link) => (
         <m.div variants={linkLogo} key={link.href}>
-          <Link rel="noopener noreferrer" target="_blank" className={clsx("footer-link", iconClassName)} href={link.href}>
+          <Link
+            rel="noopener noreferrer"
+            target="_blank"
+            className={clsx("footer-link", iconClassName)}
+            href={link.href}
+            aria-label={link.icon}
+            title={link.icon}
+          >
             <Icon name={link.icon} height={15} width={15} />
           </Link>
         </m.div>

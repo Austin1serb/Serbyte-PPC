@@ -4,15 +4,17 @@ import clsx from "clsx"
 import { Text } from "../ui/Elements"
 import { Variants } from "motion/react"
 import * as m from "motion/react-m"
+
 export type ReviewCard = {
-  img: StaticImageData
+  id?: string
+  img: StaticImageData | string
   name: string
   title: string
-  review: string
+  quote: React.ReactNode | string
   className?: string
   variants?: Variants
 }
-export const ReviewCard: React.FC<ReviewCard> = ({ img, name, title, review, className, variants }) => {
+export const ReviewCard: React.FC<ReviewCard> = ({ img, name, title, quote, className, variants }) => {
   return (
     <m.li
       variants={variants}
@@ -30,7 +32,7 @@ export const ReviewCard: React.FC<ReviewCard> = ({ img, name, title, review, cla
           </div>
           <span className="relative after:absolute after:-top-2 after:right-0 after:text-7xl after:text-slate-500 after:content-['”']" />
         </div>
-        <Text size="sm">&ldquo;{review}&rdquo;</Text>
+        <Text size="sm">&ldquo;{quote}&rdquo;</Text>
       </div>
 
       <ClientInfoCard img={img} name={name} title={title} />

@@ -1,9 +1,9 @@
 export const BeforeAfterSliderSkeleton: React.FC = () => {
   return (
-    <div className="relative w-full min-h-[860px] max-h-[860px] shadow-xl rounded-xl border border-gray-200 bg-gray-100">
-      <div className="absolute top-0 bottom-0 flex items-center justify-center z-5 w-0.5 bg-white -translate-x-1/2 left-[70%]">
-        <div className="absolute top-1/2 left-1/2 w-10 h-10 bg-white rounded-full shadow-lg cursor-col-resize flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2 z-10">
-          <div className="w-5 h-5 bg-gray-300 rounded-full animate-pulse" />
+    <div className="relative max-h-[860px] min-h-[860px] w-full rounded-xl border border-gray-200 bg-gray-100 shadow-xl">
+      <div className="absolute top-0 bottom-0 left-[70%] z-5 flex w-0.5 -translate-x-1/2 items-center justify-center bg-white">
+        <div className="absolute top-1/2 left-1/2 z-10 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 transform cursor-col-resize items-center justify-center rounded-full bg-white shadow-lg">
+          <div className="h-5 w-5 animate-pulse rounded-full bg-gray-300" />
         </div>
       </div>
     </div>

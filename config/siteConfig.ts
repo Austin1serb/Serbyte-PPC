@@ -38,9 +38,10 @@ export const SITE_NAP = {
 export const SITE_SLUGS = {
   home: "/",
   projects: "/projects",
-  // projectsEntitled: "/projects/entitled",
-  // projectsIao: "/projects/iao",
-  // projectsAutomedics: "/projects/automedics",
+  contact: "/contact",
+  projectsEntitled: "/projects/entitled",
+  projectsIao: "/projects/iron-and-oak",
+  projectsAutomedics: "/projects/automedics",
   projectsBespoke: "/projects/bespoke",
 } as const
 

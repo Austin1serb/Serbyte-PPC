@@ -11,7 +11,7 @@ const navItems = [
 
 export const TopBarV2: React.FC = () => {
   return (
-    <nav className="font-switzer fixed top-5 z-10 flex w-fit left-1/2 -translate-x-1/2 justify-center text-base md:text-sm">
+    <nav className="font-switzer fixed top-5 left-1/2 z-10 flex w-fit -translate-x-1/2 justify-center text-base md:text-sm">
       {/* Wrapper that grows/shrinks on mobile */}
       <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white/50 backdrop-blur-sm">
         <div className="relative flex flex-col">
@@ -24,7 +24,7 @@ export const TopBarV2: React.FC = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <ul className="desktop-menu-container hidden items-center gap-4 font-medium transition-all duration-300 ease-in-out md:flex md:scrolled-up:opacity-0 md:scrolled-up:max-w-0 md:scrolled-down:opacity-100 md:scrolled-down:max-w-96">
+            <ul className="desktop-menu-container md:scrolled-up:opacity-0 md:scrolled-up:max-w-0 md:scrolled-down:opacity-100 md:scrolled-down:max-w-96 hidden items-center gap-4 font-medium transition-all duration-300 ease-in-out md:flex">
               {navItems.map((item) => (
                 <li key={item.name} className="flex">
                   <Link href={item.href} className="bubble-hover p-1 px-2">

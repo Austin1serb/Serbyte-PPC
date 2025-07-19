@@ -1,14 +1,7 @@
 import profilePhoto from "@/public/assets/founder.jpg"
 import { AnimatedInView } from "./AnimatedInView"
 import { ClientInfoCard } from "./ClientInfoCard"
-import { StaticImageData } from "next/image"
-
-export interface ReviewProps {
-  quote: React.ReactNode
-  name: string
-  title: string
-  img: StaticImageData
-}
+import { type ReviewProps } from "../data/review-data"
 
 export const reviewPlaceholder: ReviewProps = {
   quote: (
