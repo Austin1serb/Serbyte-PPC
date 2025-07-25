@@ -1,5 +1,5 @@
-import { Icon } from "./Icon"
-import { Link } from "../utils/Link"
+import { Icon } from "../Icon"
+import { Link } from "../../utils/Link"
 import { MobileMenuButton } from "./MobileMenuButton"
 import { MobileMenu } from "./MobileMenu"
 
@@ -24,7 +24,10 @@ export const TopBarV2: React.FC = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <ul className="desktop-menu-container md:scrolled-up:opacity-0 md:scrolled-up:max-w-0 md:scrolled-down:opacity-100 md:scrolled-down:max-w-96 hidden items-center gap-4 font-medium transition-all duration-300 ease-in-out md:flex">
+            <ul
+              className="
+            md:scrolled-up:opacity-0 md:scrolled-up:max-w-0 md:scrolled-down:opacity-100 md:scrolled-down:max-w-96 hidden items-center gap-4 font-medium transition-all duration-300 ease-in-out md:flex"
+            >
               {navItems.map((item) => (
                 <li key={item.name} className="flex">
                   <Link href={item.href} className="bubble-hover p-1 px-2">

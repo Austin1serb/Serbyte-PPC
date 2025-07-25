@@ -2,13 +2,13 @@
 import clsx from "clsx"
 import { useMotionValueEvent } from "motion/react"
 import { useScroll } from "motion/react"
-import { env } from "../utils/env"
+import { isClient } from "../../utils/env"
+import { useIsMobile } from "../../hooks/useIsMobile"
 import { DotMenuIcon } from "./DotMenuIcon"
-import { useIsMobile } from "../hooks/useIsMobile"
 
 export const MobileMenuButton: React.FC = () => {
   const toggle = () => {
-    if (env.isClient) {
+    if (isClient) {
       document.body.dataset.mobileMenu = document.body.dataset.mobileMenu === "open" ? "closed" : "open"
     }
   }

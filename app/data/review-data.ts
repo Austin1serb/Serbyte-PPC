@@ -39,11 +39,12 @@ export const REVIEWS = [
     quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
   },
   {
-    id: "john-3",
-    img: profilePhoto,
-    name: "John Doe",
-    title: "Review 5",
-    quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+    id: "iao",
+    img: "/assets/iao-logo-optimized.png",
+    name: "Aleks Butokowitz",
+    title: "CEO, Iron & Oak",
+    quote:
+      "Working with Serbyte felt like working with an in-house team. They took the time to understand our mission and goals, delivering a site that perfectly blended branding and design with seamless functionality. Their expertise as a web design agency was evident in every detail, from performance to aesthetics.",
   },
 
   {

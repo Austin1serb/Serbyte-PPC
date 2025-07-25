@@ -1,4 +1,4 @@
-import Image, { StaticImageData } from "next/image"
+import { StaticImageData } from "next/image"
 import { TintSimulator } from "../components/BespokeTint/TintSimulator"
 import { Phase } from "../components/ProjectSection/ApproachSection"
 import { ProjectHeroProps } from "../components/ProjectSection/ProjectHero"
@@ -12,6 +12,9 @@ import { RadialProgressRing } from "../components/ProjectSection/RadialProgressR
 import { LineChart } from "../components/ProjectSection/LineChart"
 import { reviewPlaceholder } from "../components/LargeReview"
 import { REVIEW_MAP, type ReviewProps } from "./review-data"
+import heroBeforeIao from "@/public/assets/iron-and-oak-before-website-design.jpg"
+import heroBeforeMobileIao from "@/public/assets/iron-and-oak-before-website-design-mobile.jpg"
+import { ApproachTabsImage } from "../components/ProjectSection/ApproachTabsImage"
 
 //   interface ProjectData {
 //   hero: {
@@ -41,7 +44,15 @@ import { REVIEW_MAP, type ReviewProps } from "./review-data"
 
 export type ProjectData = {
   hero: ProjectHeroProps
-  beforeAfter: { heroBefore: StaticImageData; heroBeforeMobile: StaticImageData; iframe?: string; heroAfter?: StaticImageData }
+  beforeAfter: {
+    heroBefore: StaticImageData
+    heroBeforeMobile: StaticImageData
+    iframe?: string
+    heroAfter?: StaticImageData
+    beforeAltText: string
+    beforeMobileAltText: string
+    afterAltText: string
+  }
   results: AnalyticCardProps[]
   phases: Phase[]
   review: ReviewProps
@@ -65,8 +76,11 @@ export const bespoke: ProjectData = {
   },
   beforeAfter: {
     heroBefore: heroBefore,
+    beforeAltText: "Bespoke Tint & PPF Before",
+    beforeMobileAltText: "Bespoke Tint & PPF Before Mobile",
     heroBeforeMobile: heroBeforeMobile,
     iframe: "/bespoke-hero.html",
+    afterAltText: "Bespoke Tint & PPF After Website Design",
   },
   results: [
     {
@@ -106,11 +120,7 @@ export const bespoke: ProjectData = {
         "Incorporated angular elements instead of traditional straight lines",
       ],
       icon: "/assets/design-black.webp",
-      feature: (
-        <div className="absolute inset-0 h-full w-full bg-white">
-          <Image src="/assets/brand-images.jpg" alt="Competitor Analysis" fill className="object-contain py-5" />
-        </div>
-      ),
+      feature: <ApproachTabsImage src="/assets/brand-images.jpg" alt="Competitor Analysis" />,
     },
     {
       id: 2,
@@ -125,7 +135,7 @@ export const bespoke: ProjectData = {
         "Optimized media for fast loading times",
         "Created visual hierarchy to guide user attention",
       ],
-      icon: "/assets/assets-black.webp",
+      icon: "/assets/assets-black-camera.webp",
       feature: (
         <video className="hero-section absolute inset-0 h-full w-full object-cover saturate-200" muted loop preload="metadata" autoPlay playsInline>
           <source src="/videos/clip-450.mp4" type="video/mp4" media="(max-width: 450px)" />
@@ -150,7 +160,7 @@ export const bespoke: ProjectData = {
         "Implemented technical SEO best practices",
       ],
       icon: "/assets/search-black.webp",
-      feature: <Image src="/assets/competitor-analysis.png" alt="Competitor Analysis" fill className="object-contain" />,
+      feature: <ApproachTabsImage src="/assets/competitor-analysis.png" alt="Competitor Analysis" />,
     },
     {
       id: 4,
@@ -166,7 +176,7 @@ export const bespoke: ProjectData = {
         "Established the business as the local authority on tinting",
       ],
       icon: "/assets/notepad-black.webp",
-      feature: <Image src="/assets/washington-vehicle-tint-law-illustration.webp" alt="Tint Law Article" fill className="object-contain" />,
+      feature: <ApproachTabsImage src="/assets/washington-vehicle-tint-law-illustration.webp" alt="Tint Law Article" />,
     },
     {
       id: 5,
@@ -177,8 +187,7 @@ export const bespoke: ProjectData = {
         "Built custom slider-based tint percentage simulator",
         "Real-time visual feedback for different tint levels",
         "Interactive tool increases user engagement and time on site",
-        "Helps customers make informed decisions before visiting",
-        "Unique differentiator from competitors",
+        "Unique differentiator from competitors + SEO benefit",
       ],
       icon: "/assets/tool-black.webp",
       feature: <TintSimulator className="h-full w-full" />,
@@ -199,8 +208,11 @@ export const automedicsKirkland: ProjectData = {
   },
   beforeAfter: {
     heroBefore: heroBeforeAutomedics,
+    beforeAltText: "Automedics Kirkland Before",
+    beforeMobileAltText: "Automedics Kirkland Before Mobile",
     heroBeforeMobile: heroBeforeMobileAutomedics,
     iframe: "https://www.automedicskirkland.com",
+    afterAltText: "Automedics Kirkland After Website Design",
   },
   results: [
     {
@@ -239,11 +251,7 @@ export const automedicsKirkland: ProjectData = {
         "Developed consistent visual language across all touchpoints",
       ],
       icon: "/assets/design-black.webp",
-      feature: (
-        <div className="absolute inset-0 h-full w-full bg-white">
-          <Image src="/assets/automedics-brand-guide-example.webp" alt="AutoMedics Brand Identity" fill className="object-contain py-5" />
-        </div>
-      ),
+      feature: <ApproachTabsImage src="/assets/automedics-brand-guide-example.webp" alt="AutoMedics Brand Identity" />,
     },
     {
       id: 2,
@@ -257,7 +265,7 @@ export const automedicsKirkland: ProjectData = {
         "Progressive web app features for mobile users",
       ],
       icon: "/assets/tool-black.webp",
-      feature: <Image src="/assets/performance-metrics-automedics-web-development.webp" alt="Performance Metrics" fill className="object-contain" />,
+      feature: <ApproachTabsImage src="/assets/performance-metrics-automedics-web-development.webp" alt="Performance Metrics" />,
     },
     {
       id: 3,
@@ -270,8 +278,8 @@ export const automedicsKirkland: ProjectData = {
         "Implemented smart lazy loading for faster browsing",
         "Optimized every asset for web without quality loss",
       ],
-      icon: "/assets/assets-black.webp",
-      feature: <Image src="/assets/trust-badges-automedics-web-design.webp" alt="AutoMedics Visual Assets" fill className="object-contain" />,
+      icon: "/assets/assets-black-camera.webp",
+      feature: <ApproachTabsImage src="/assets/trust-badges-automedics-web-design.webp" alt="AutoMedics Visual Assets" />,
     },
     {
       id: 4,
@@ -285,8 +293,124 @@ export const automedicsKirkland: ProjectData = {
         "Added a Google Business Profile badge to the services page",
       ],
       icon: "/assets/notepad-black.webp",
-      feature: <Image src="/assets/review-showcase-automedics-website-design.webp" alt="Review Showcase" fill className="object-contain" />,
+      feature: <ApproachTabsImage src="/assets/review-showcase-automedics-website-design.webp" alt="Review Showcase" />,
     },
   ],
   review: REVIEW_MAP.automedics,
+}
+
+export const iao: ProjectData = {
+  hero: {
+    title: (
+      <>
+        Telling the Story <br /> of Iron & Oak
+      </>
+    ),
+    client: "Iron & Oak Seattle",
+    year: "2024",
+    description:
+      "We dug deep into the story of Iron & Oak Seattle, a Seattle-based private security company that was born in the craziness that was Covid-19. We created a brand new website that tells the story of the company and its history and scrapped the internet for media coverage articles and mentions, the goal was to increase online applicants, and it worked.",
+    categories: ["Branding", "Web Design", "Web Development", "Storytelling"],
+    link: "https://iao-seattle.vercel.app/",
+  },
+  beforeAfter: {
+    heroBefore: heroBeforeIao,
+    heroBeforeMobile: heroBeforeMobileIao,
+    iframe: "https://iao-seattle.vercel.app/",
+    beforeAltText: "Iron & Oak Seattle Before",
+    beforeMobileAltText: "Iron & Oak Seattle Before Mobile",
+    afterAltText: "Iron & Oak Seattle After Website Design",
+  },
+  results: [
+    {
+      title: "Traffic Increase",
+      description: "Increase in traffic from all channels",
+      percentageIncrease: 4100,
+      chart: <TrafficBarChart startValue={10} endValue={410} />,
+      dataSource: "Based on 30 day traffic average",
+    },
+    {
+      title: "Online Applicants",
+      description: "Increase in online job applicants",
+      percentageIncrease: 290,
+      chart: <RadialProgressRing percentage={290} />,
+      dataSource: "Measured over a 60 day period",
+    },
+    {
+      title: "Hires",
+      description: "Increase in new hires",
+      percentageIncrease: 65,
+      chart: <LineChart />,
+      dataSource: "Measured over a 30 day period",
+    },
+  ],
+
+  phases: [
+    {
+      id: 1,
+      title: "Brand Identity",
+      subtitle: "Creating a brand that tells the story of Iron & Oak",
+      description: "Started from scratch to re-brand Iron & Oak Seattle, establishing them as the trusted private security company in their market.",
+      details: [
+        "Designed custom logo reflecting the brand name and the company's history",
+        "Created a brand story that tells the story of Iron & Oak",
+        "Created a brand guidelines document",
+      ],
+      icon: "/assets/design-black.webp",
+      feature: <ApproachTabsImage src="/assets/iron-and-oak-brand-guide-web-design.png" alt="Iron & Oak Brand Identity" />,
+    },
+    {
+      id: 2,
+      title: "Live Incident Data",
+      subtitle: "Showing the world what Iron & Oak is all about",
+      description: "We created a live incident data dashboard that displays incidents in real-time, connected to a live incident data API.",
+      details: ["Airtable API integration for incident data", "Displays incidents in real-time"],
+      icon: "/assets/tool-black.webp",
+      feature: <ApproachTabsImage src="/assets/iron-and-oak-website-tool.png" alt="Iron & Oak Website Tool" className="bg-slate-800 px-2.5" />,
+    },
+    {
+      id: 3,
+      title: "Press Hub",
+      subtitle: "Verified press & community coverage.",
+      description: "Curated, verified media mentions centralizing third-party authority to boost trust & conversion.",
+      details: [
+        "Aggregated all credible third-party mentions",
+        "Verified sources; removed low-value noise",
+        "Structured data boosts authority signals",
+        "Trust hub: social proof near conversion.",
+      ],
+      icon: "/assets/assets-black-camera.webp",
+      feature: (
+        <ApproachTabsImage src="/assets/iron-and-oak-media-coverage-website-research.png" alt="Iron & Oak Media Coverage" className="bg-slate-200 px-2.5" />
+      ),
+    },
+    {
+      id: 4,
+      title: "Talent SEO",
+      subtitle: "A topical authority engine for security job seekers",
+      description: "Designed a content cluster targeting Washington security guard career keywords and established Iron & Oak as the regional authority.",
+      details: [
+        "37 intent-mapped articles building authority",
+        "Targeted WA security job & license keywords",
+        "Internal links (pillar/support) speed indexation",
+      ],
+      icon: "/assets/notepad-black.webp",
+      feature: <ApproachTabsImage src="/assets/iron-and-oak-content-cluster-seo.png" alt="Iron & Oak Content Cluster SEO" />,
+    },
+    {
+      id: 5,
+      title: "Applicant Portal",
+      subtitle: "Multi-step validated, resume auto-fill, and applicant tracking",
+      description: "Built a multi-step, validated application with autosave + resume, cutting friction and preserving in-progress candidates.",
+      details: [
+        "Stepper UI with clear stage + progress",
+        "Client + server validation prevents bad submits",
+        "Autosave each step (no data loss)",
+        "Resume later via stored progress state",
+      ],
+      icon: "/assets/search-black.webp",
+      feature: <ApproachTabsImage src="/assets/iron-and-oak-job-application-portal-web-design.png" alt="Iron & Oak Applicant Portal" />,
+    },
+  ],
+  review: REVIEW_MAP.iao,
 }

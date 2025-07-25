@@ -8,3 +8,4 @@ out
 *.mdx
 .husky
 bespoke-hero.html
+/playwright-report/

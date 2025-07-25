@@ -3,7 +3,7 @@ import Link from "next/link"
 import { Icon } from "../Icon"
 
 export interface ProjectHeroProps {
-  title: string
+  title: string | React.ReactNode
   client: string
   year: string
   description: string | React.ReactNode

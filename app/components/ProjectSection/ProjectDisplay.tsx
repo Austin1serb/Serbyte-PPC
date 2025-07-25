@@ -16,6 +16,9 @@ const ProjectDisplay: React.FC<{ projectData: ProjectData }> = ({ projectData })
         heroBeforeMobile={projectData.beforeAfter.heroBeforeMobile}
         iframe={projectData.beforeAfter.iframe}
         heroAfter={projectData.beforeAfter.heroAfter}
+        beforeAltText={projectData.beforeAfter.beforeAltText}
+        beforeMobileAltText={projectData.beforeAfter.beforeMobileAltText}
+        afterAltText={projectData.beforeAfter.afterAltText}
       />
       <ResultsSection analyticCards={projectData.results} />
       <ApproachSection phases={projectData.phases} />

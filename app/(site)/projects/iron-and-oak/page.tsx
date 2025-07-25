@@ -1,7 +1,8 @@
-import React from "react"
+import ProjectDisplay from "@/app/components/ProjectSection/ProjectDisplay"
+import { iao } from "@/app/data/project-data"
 
-const page = () => {
-  return <div>page</div>
+const IaoPage: React.FC = () => {
+  return <ProjectDisplay projectData={iao} />
 }
 
-export default page
+export default IaoPage

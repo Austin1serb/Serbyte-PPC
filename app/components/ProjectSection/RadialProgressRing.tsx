@@ -11,7 +11,7 @@ export const RadialProgressRing: React.FC<RadialProgressRingProps> = ({ percenta
   const radius = (size - strokeWidth) / 2
   const circumference = 2 * Math.PI * radius
   const strokeDasharray = circumference
-  const strokeDashoffset = circumference - (percentage / 100) * circumference
+  const strokeDashoffset = circumference - (90 / 100) * circumference
 
   return (
     <div className="relative flex items-center justify-center pb-10">

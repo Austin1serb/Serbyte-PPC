@@ -11,11 +11,24 @@ const BeforeAfterSlider = dynamic(() => import("@/app/ui/BeforeAfterSlider").the
   loading: () => <BeforeAfterSliderSkeleton />,
 })
 
-export const BeforeAfterSection: React.FC<{ heroBefore: StaticImageData; heroBeforeMobile: StaticImageData; iframe?: string; heroAfter?: StaticImageData }> = ({
+interface BeforeAfterSectionProps {
+  heroBefore: StaticImageData
+  beforeAltText: string
+  heroBeforeMobile: StaticImageData
+  beforeMobileAltText: string
+  iframe?: string
+  heroAfter?: StaticImageData
+  afterAltText: string
+}
+
+export const BeforeAfterSection: React.FC<BeforeAfterSectionProps> = ({
   heroBefore,
   heroBeforeMobile,
   iframe,
   heroAfter,
+  beforeAltText,
+  beforeMobileAltText,
+  afterAltText,
 }) => {
   return (
     <section className="relative border-y border-gray-200">
@@ -29,15 +42,15 @@ export const BeforeAfterSection: React.FC<{ heroBefore: StaticImageData; heroBef
           initialPosition={70}
           before={
             <>
-              <Image src={heroBefore} alt="Bespoke Hero Before" fill className="hidden rounded-xl object-cover object-top lg:block" priority />
-              <Image src={heroBeforeMobile} alt="Bespoke Hero Before Mobile" fill className="block rounded-xl object-cover object-top lg:hidden" priority />
+              <Image src={heroBefore} alt={beforeAltText} fill className="hidden rounded-xl object-cover object-top lg:block" priority />
+              <Image src={heroBeforeMobile} alt={beforeMobileAltText} fill className="block rounded-xl object-cover object-top lg:hidden" priority />
             </>
           }
           after={
             iframe ? (
               <iframe title="Bespoke Hero After" src={iframe} className="h-full w-full rounded-xl border-0 bg-white" scrolling="no" loading="lazy" />
             ) : (
-              heroAfter && <Image src={heroAfter} alt="Bespoke Hero After" fill className="rounded-xl object-cover object-top" priority />
+              heroAfter && <Image src={heroAfter} alt={afterAltText} fill className="rounded-xl object-cover object-top" priority />
             )
           }
         />

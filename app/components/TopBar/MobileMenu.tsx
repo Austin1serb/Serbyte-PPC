@@ -1,12 +1,12 @@
 "use client"
 import clsx from "clsx"
-import { Link } from "../utils/Link"
-import { env } from "../utils/env"
+import { Link } from "../../utils/Link"
+import { isClient } from "../../utils/env"
 import { useEffect, useRef } from "react"
 
 export const MobileMenu: React.FC<{ navItems: { name: string; href: string }[] }> = ({ navItems }) => {
   const toggle = () => {
-    if (env.isClient) {
+    if (isClient) {
       document.body.dataset.mobileMenu = document.body.dataset.mobileMenu === "open" ? "closed" : "open"
     }
   }
