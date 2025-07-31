@@ -3,13 +3,14 @@ import automedicsLogo from "../images/automedics-full.webp"
 import bespokeLogo from "../images/bespoke-full.webp"
 import iaoLogo from "../images/iao-full.webp"
 import entitledLogo from "../images/entitled-full.webp"
+import vetsChoiceLogo from "../images/vetschoice-full.png"
 import herbaLogo from "../images/herba-full.webp"
 import { AnimatedAvatars } from "./AnimatedAvatars"
 import { AnimatedElement } from "./AnimatedElement"
 import clsx from "clsx"
 import { Text } from "../ui/Elements"
 
-const LOGOS = [automedicsLogo, bespokeLogo, herbaLogo, iaoLogo, entitledLogo]
+const LOGOS = [automedicsLogo, bespokeLogo, herbaLogo, iaoLogo, entitledLogo, vetsChoiceLogo]
 
 export const LogoMarquee = ({ avatars = true }: { avatars?: boolean }) => {
   return (

@@ -51,8 +51,8 @@ export const FooterV2: React.FC = () => {
             </li>
             <li className="flex flex-col gap-1 md:gap-2">
               <span className="text-gray-500">Call or Text</span>
-              <Link href="tel:+12086164308" className="w-fit text-sm transition-colors duration-200 hover:text-gray-500">
-                +1 (208) 616-4308
+              <Link href={`tel:${SITE_NAP.phone}`} className="w-fit text-sm transition-colors duration-200 hover:text-gray-500">
+                {SITE_NAP.formattedPhone}
               </Link>
             </li>
             <li className="flex flex-col gap-2">
