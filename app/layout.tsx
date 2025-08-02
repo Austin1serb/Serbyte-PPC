@@ -11,6 +11,7 @@ import DesktopCursor from "./components/DesktopCursor"
 import { ViewTransitions } from "./hooks/useTransitionRouter"
 import { Analytics } from "@vercel/analytics/react"
 import { bodyAttributes } from "@zero-ui/attributes"
+import ReactLenis from "lenis/react"
 const switzer = localFont({
   src: "./fonts/Switzer-Variable.woff2",
   variable: "--font-switzer",
@@ -33,6 +34,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <html lang="en">
         <body {...bodyAttributes} className="relative bg-white" data-mobile-menu="closed" data-scrolled="up">
           <LazyMotion features={domAnimation}>
+            <ReactLenis root options={{ lerp: 0.07 }} />
             {/* <DesktopCursor />
              <SplashCursor /> */}
             <div className="bg-noise custom:mx-auto pointer-events-none absolute inset-0 z-0 mx-3.5 max-w-6xl bg-repeat opacity-4 md:mx-5 lg:mx-8" />

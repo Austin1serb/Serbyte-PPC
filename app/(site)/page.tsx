@@ -1,9 +1,11 @@
+"use client"
 import { HeroV2 } from "../components/HeroV2"
 import { Projects } from "../components/Projects"
 import { reviewPlaceholder } from "../components/LargeReview"
 
 // Dynamic import These
 import dynamic from "next/dynamic"
+import { useLenisSnap } from "../hooks/useLenisSnap"
 
 const LogoMarquee = dynamic(() => import("../components/LogoMarquee").then((mod) => mod.LogoMarquee), {
   ssr: true,
@@ -34,17 +36,19 @@ const FAQSection = dynamic(() => import("../components/FAQ/FAQSection").then((mo
 })
 
 const WebDesignPage: React.FC = () => {
+  useLenisSnap()
+
   return (
     <main className="overflow-hidden">
-      <HeroV2 />
-      <LogoMarquee />
-      <Projects />
-      <LargeReview {...reviewPlaceholder} />
-      <ServicesSectionV2 />
-      <AboutSectionV2 />
-      <PricingSection />
-      <ReviewSectionV2 />
-      <FAQSection />
+      <HeroV2 data-snap />
+      <LogoMarquee data-snap />
+      <Projects data-snap />
+      <LargeReview {...reviewPlaceholder} data-snap />
+      <ServicesSectionV2 data-snap />
+      <AboutSectionV2 data-snap />
+      <PricingSection data-snap />
+      <ReviewSectionV2 data-snap />
+      <FAQSection data-snap />
     </main>
   )
 }
