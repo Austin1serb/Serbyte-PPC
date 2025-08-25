@@ -5,11 +5,12 @@ interface HeaderTextProps {
   title: string | React.ReactNode
   titleHighlight?: string
   description?: string | React.ReactNode
+  className?: string
 }
 
-export const HeaderText: React.FC<HeaderTextProps> = ({ title, titleHighlight, description }) => {
+export const HeaderText: React.FC<HeaderTextProps> = ({ title, titleHighlight, description, className }) => {
   return (
-    <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-12">
+    <div className={"flex flex-col gap-6 md:flex-row md:items-center md:gap-12 " + className}>
       <AnimatedH2 className="[flex:1_0_0px]">
         {title}
         {titleHighlight && (

@@ -1,7 +1,6 @@
 import { StaticImageData } from "next/image"
 import { TintSimulator } from "../components/BespokeTint/TintSimulator"
 import { Phase } from "../components/ProjectSection/ApproachSection"
-import { ProjectHeroProps } from "../components/ProjectSection/ProjectHero"
 import heroBefore from "@/public/assets/bespoke-hero-before.png"
 import heroBeforeMobile from "@/public/assets/bespoke-hero-mobile.png"
 import heroBeforeAutomedics from "@/public/assets/automedics-before.png"
@@ -40,6 +39,14 @@ import { ApproachTabsImage } from "../components/ProjectSection/ApproachTabsImag
 //     }
 //   }
 // }
+export interface ProjectHeroProps {
+  title: string | React.ReactNode
+  client: string
+  year: string
+  description: string | React.ReactNode
+  categories: string[]
+  link: string
+}
 
 export type ProjectData = {
   hero: ProjectHeroProps
@@ -409,6 +416,162 @@ export const iao: ProjectData = {
       ],
       icon: "/assets/search-black.webp",
       feature: <ApproachTabsImage src="/assets/iron-and-oak-job-application-portal-web-design.png" alt="Iron & Oak Applicant Portal" />,
+    },
+  ],
+  review: REVIEW_MAP.iao,
+}
+
+export const reactZeroUIProject: Omit<ProjectData, "heroAfter"> = {
+  hero: {
+    title: "React Zero UI - The Fastest UI State Management Library",
+    client: "Open Source Project",
+    year: "2024",
+    description:
+      "A revolutionary React library that achieves 10x faster UI updates by eliminating re-renders entirely. Pre-renders all UI states at build time and uses simple data-* attribute flips for instantaneous Css driven UI updates.",
+    categories: ["React", "TypeScript", "Performance", "Open Source", "State Management"],
+    link: "https://github.com/react-zero-ui/core",
+  },
+  beforeAfter: {
+    heroBefore,
+    heroBeforeMobile,
+
+    // Optional live demo (leave out if you don't want an embed)
+    iframe: "https://zero-ui.dev",
+    beforeAltText: "Traditional React state/Context vs React Zero UI",
+    beforeMobileAltText: "Traditional React state/Context vs React Zero UI",
+    afterAltText: "React Zero UI data-* flips; instant theme/toggle updates with no React re-render cost.",
+  },
+
+  results: [
+    {
+      title: "Faster UI Updates",
+      description: "Compared to traditional React state management",
+      percentageIncrease: 10,
+      chart: <TrafficBarChart startValue={10} endValue={100} />,
+      dataSource: "Based on 30 day traffic average",
+    },
+    {
+      title: "GitHub Stars",
+      description: "Growing developer community adoption",
+      percentageIncrease: 271,
+      chart: <RadialProgressRing percentage={271} />,
+      dataSource: "Measured over a 60 day period",
+    },
+    {
+      title: "Runtime Overhead",
+      description: "Tiny footprint, zero runtime for CSS states",
+      percentageIncrease: -350,
+      chart: <LineChart />,
+      dataSource: "Measured over a 90 day period",
+    },
+    {
+      title: "Pure CSS-driven UI state changes",
+      description: "Pure CSS-driven UI state changes",
+      percentageIncrease: 0,
+      chart: <LineChart />,
+      dataSource: "Measured over a 90 day period",
+    },
+    {
+      title: "Build-Time Optimization",
+      description: "All UI states pre-rendered at build",
+      percentageIncrease: 100,
+      chart: <LineChart />,
+      dataSource: "Measured over a 90 day period",
+    },
+    {
+      title: "Production Apps",
+      description: "Developers using in real-world applications",
+      percentageIncrease: 15,
+      chart: <LineChart />,
+      dataSource: "Measured over a 90 day period",
+    },
+  ],
+
+  phases: [
+    {
+      id: 1,
+      title: "Design System",
+      subtitle: "Beautiful High-Converting Design",
+      description:
+        "Created a stunning design system that showcases amazing reviews while maintaining a slightly rebellious edge through strategic use of clip paths and angular elements.",
+      details: [
+        "Implemented clip-path CSS for edgy, non-traditional section borders",
+        "Designed around extensive customer reviews and testimonials",
+        "Created a cohesive design system with rebel aesthetic touches",
+        "Incorporated angular elements instead of traditional straight lines",
+      ],
+      icon: "/assets/design-black.webp",
+      feature: <ApproachTabsImage src="/assets/brand-images.jpg" alt="Competitor Analysis" />,
+    },
+    {
+      id: 2,
+      title: "Quality Assets",
+      subtitle: "Premium Visual Content",
+      description:
+        "Developed stunning HD videos and high-quality images with crystal-clear call-to-actions strategically placed throughout the entire user journey.",
+      details: [
+        "Professional HD video content showcasing services",
+        "High-resolution photography of completed work",
+        "Strategic placement of clear call-to-action buttons",
+        "Optimized media for fast loading times",
+        "Created visual hierarchy to guide user attention",
+      ],
+      icon: "/assets/assets-black-camera.webp",
+      feature: (
+        <video className="hero-section absolute inset-0 h-full w-full object-cover saturate-200" muted loop preload="metadata" autoPlay playsInline>
+          <source src="/videos/clip-450.mp4" type="video/mp4" media="(max-width: 450px)" />
+          <source src="/videos/clip-600.mp4" type="video/mp4" media="(max-width: 600px) and (min-width: 451px)" />
+          <source src="/videos/clip-1200.mp4" type="video/mp4" media="(min-width: 601px) and (max-width: 1023px)" />
+          <source src="/videos/clip.mp4" type="video/mp4" media="(min-width: 1024px)" />
+          Your browser does not support the video tag.
+        </video>
+      ),
+    },
+    {
+      id: 3,
+      title: "Competitor Analysis",
+      subtitle: "Traffic Generation Strategy",
+      description:
+        "Reverse-engineered competitor content and identified high-traffic keywords to build a content strategy that dominates local search results.",
+      details: [
+        "Analyzed top 5 competitors in the Bellevue area",
+        "Used advanced SEO tools to identify high-traffic keywords",
+        "Reverse-engineered successful competitor content strategies",
+        "Built site copy around proven keyword opportunities",
+        "Implemented technical SEO best practices",
+      ],
+      icon: "/assets/search-black.webp",
+      feature: <ApproachTabsImage src="/assets/competitor-analysis.png" alt="Competitor Analysis" />,
+    },
+    {
+      id: 4,
+      title: "Content & Blog",
+      subtitle: "Authority Building Through Education",
+      description:
+        "Created comprehensive blog content focusing on Washington State tint laws - the #1 traffic driver - with legal citations and expert insights.",
+      details: [
+        "Researched and wrote detailed tint law articles",
+        "Answered every possible question about WA state regulations",
+        "Used high-quality citations from legal websites",
+        "Created evergreen content that drives consistent traffic",
+        "Established the business as the local authority on tinting",
+      ],
+      icon: "/assets/notepad-black.webp",
+      feature: <ApproachTabsImage src="/assets/washington-vehicle-tint-law-illustration.webp" alt="Tint Law Article" />,
+    },
+    {
+      id: 5,
+      title: "Interactive Tools",
+      subtitle: "Window Tint Simulator",
+      description: "Developed a custom window tint simulator allowing users to visualize different tint percentages in real-time - a unique engagement tool.",
+      details: [
+        "Built custom slider-based tint percentage simulator",
+        "Real-time visual feedback for different tint levels",
+        "Interactive tool increases user engagement and time on site",
+        "Unique differentiator from competitors + SEO benefit",
+      ],
+      icon: "/assets/tool-black.webp",
+      feature: <TintSimulator className="h-full w-full" />,
     },
   ],
   review: REVIEW_MAP.iao,

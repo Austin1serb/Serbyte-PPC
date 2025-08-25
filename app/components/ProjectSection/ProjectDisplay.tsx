@@ -11,15 +11,17 @@ const ProjectDisplay: React.FC<{ projectData: ProjectData }> = ({ projectData })
   return (
     <main className="overflow-hidden">
       <ProjectHero {...projectData.hero} />
-      <BeforeAfterSection
-        heroBefore={projectData.beforeAfter.heroBefore}
-        heroBeforeMobile={projectData.beforeAfter.heroBeforeMobile}
-        iframe={projectData.beforeAfter.iframe}
-        heroAfter={projectData.beforeAfter.heroAfter}
-        beforeAltText={projectData.beforeAfter.beforeAltText}
-        beforeMobileAltText={projectData.beforeAfter.beforeMobileAltText}
-        afterAltText={projectData.beforeAfter.afterAltText}
-      />
+      {projectData.beforeAfter && (
+        <BeforeAfterSection
+          heroBefore={projectData.beforeAfter.heroBefore}
+          heroBeforeMobile={projectData.beforeAfter.heroBeforeMobile}
+          iframe={projectData.beforeAfter.iframe}
+          heroAfter={projectData.beforeAfter.heroAfter}
+          beforeAltText={projectData.beforeAfter.beforeAltText}
+          beforeMobileAltText={projectData.beforeAfter.beforeMobileAltText}
+          afterAltText={projectData.beforeAfter.afterAltText}
+        />
+      )}
       <ResultsSection analyticCards={projectData.results} />
       <ApproachSection phases={projectData.phases} />
       <LargeReview {...projectData.review} />

@@ -1,15 +1,7 @@
 import { H1, Typography } from "@/app/ui/Elements"
 import Link from "next/link"
 import { Icon } from "../Icon"
-
-export interface ProjectHeroProps {
-  title: string | React.ReactNode
-  client: string
-  year: string
-  description: string | React.ReactNode
-  categories: string[]
-  link: string
-}
+import { ProjectHeroProps } from "@/app/data/project-data"
 
 export const ProjectHero: React.FC<ProjectHeroProps> = ({ title, client, year, description, categories, link }) => {
   return (

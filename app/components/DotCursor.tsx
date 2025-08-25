@@ -1,6 +1,5 @@
 // app/_components/DotCursor.tsx
 "use client"
-
 import { useEffect, useRef } from "react"
 import { frame, useSpring } from "motion/react"
 import { MotionDiv, MotionSpan } from "../utils/lazy-ui"
@@ -24,10 +23,6 @@ export function DotCursor() {
   const labelOpacity = useSpring(0, { stiffness: 300, damping: 40 })
 
   useEffect(() => {
-    // turn off on touch devices
-    if (window.matchMedia("(pointer: coarse)").matches) return
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-
     const onMove = (ev: PointerEvent) => {
       const { clientX, clientY } = ev
       frame.read(() => {
@@ -42,7 +37,7 @@ export function DotCursor() {
       const text = el?.getAttribute("data-text") ?? ""
       const span = labelRef.current
 
-      if (!el || !text || reduce) {
+      if (!el || !text) {
         if (span) span.textContent = ""
         frame.read(() => {
           w.set(BASE_W)
