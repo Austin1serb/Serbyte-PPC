@@ -1,4 +1,4 @@
-import { AnimatedInView } from "./AnimatedInView"
+import { AnimatedInView } from "./ui/AnimatedInView"
 import { ClientInfoCard } from "./ClientInfoCard"
 import { type ReviewProps } from "../data/review-data"
 

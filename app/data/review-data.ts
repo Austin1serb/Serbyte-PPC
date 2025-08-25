@@ -1,5 +1,4 @@
 import { StaticImageData } from "next/image"
-import profilePhoto from "@/public/assets/founder.jpg"
 
 export interface ReviewProps {
   quote: React.ReactNode

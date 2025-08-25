@@ -5,9 +5,9 @@ import { CalIcon } from "../../icons/Cal.icon"
 import { H3 } from "@/app/ui/Elements"
 import clsx from "clsx"
 import * as m from "motion/react-m"
-import { AnimatedAvatars } from "../AnimatedAvatars"
-import { AnimatedElement } from "../AnimatedElement"
-import { BlackButton } from "../BlackButton"
+import { AnimatedAvatars } from "../ui/AnimatedAvatars"
+import { AnimatedElement } from "../ui/AnimatedElement"
+import { BlackButton } from "../ui/BlackButton"
 
 export const NotSureCard: React.FC<{ className?: string; projectsPage?: boolean }> = ({ className, projectsPage = false }) => {
   return (

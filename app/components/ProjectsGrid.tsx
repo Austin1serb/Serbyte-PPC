@@ -1,5 +1,5 @@
 "use client"
-import { AnimatedCard, HeroOffset } from "./AnimatedCard"
+import { AnimatedCard, HeroOffset } from "./ProjectCard/AnimatedCard"
 import iaoPreview from "@/app/images/iao-preview-v2.webp"
 import bespokePreview from "@/app/images/bespoke-preview-v2.webp"
 import automedicsPreview from "@/app/images/automedics-preview-v2.webp"

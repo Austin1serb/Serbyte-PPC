@@ -4,7 +4,6 @@ import { Projects } from "../components/Projects"
 
 // Dynamic import These
 import dynamic from "next/dynamic"
-import { useLenisSnap } from "../hooks/useLenisSnap"
 import { REVIEWS } from "../data/review-data"
 
 const LogoMarquee = dynamic(() => import("../components/LogoMarquee").then((mod) => mod.LogoMarquee), {
@@ -36,8 +35,6 @@ const FAQSection = dynamic(() => import("../components/FAQ/FAQSection").then((mo
 })
 
 const WebDesignPage: React.FC = () => {
-  useLenisSnap()
-
   return (
     <main className="overflow-hidden">
       <HeroV2 data-snap />

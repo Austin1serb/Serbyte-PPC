@@ -1,4 +1,4 @@
-import { Card } from "@/app/components/Card"
+import { Card } from "@/app/components/ProjectCard/Card"
 import iaoPreview from "@/app/images/iao-preview-v2.webp"
 import bespokePreview from "@/app/images/bespoke-preview-v2.webp"
 import automedicsPreview from "@/app/images/automedics-preview-v2.webp"

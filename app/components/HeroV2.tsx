@@ -1,6 +1,6 @@
-import { ActivityDot } from "./ActivityDot"
-import { AnimatedElement } from "./AnimatedElement"
-import { CallToActionButton } from "./CallToActionButton"
+import { ActivityDot } from "./ui/ActivityDot"
+import { AnimatedElement } from "./ui/AnimatedElement"
+import { CallToActionButton } from "./ui/CallToActionButton"
 import { CurrentDate } from "./ui/CurrentDate"
 
 export const HeroV2 = () => {

@@ -1,4 +1,4 @@
-import { AnimatedH2 } from "./AnimatedH2"
+import { AnimatedH2 } from "./ui/AnimatedH2"
 import { ReviewGridV2 } from "./ReviewGridV2"
 
 export const ReviewSectionV2: React.FC = () => {

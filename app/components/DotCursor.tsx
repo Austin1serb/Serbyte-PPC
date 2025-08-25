@@ -38,7 +38,7 @@ export function DotCursor() {
       if (target.getAttribute("data-text") === null) return
       setLabel(target.getAttribute("data-text") ?? "")
       frame.read(() => {
-        width.set(80)
+        width.set(120)
         height.set(30)
       })
       setHovering(true)

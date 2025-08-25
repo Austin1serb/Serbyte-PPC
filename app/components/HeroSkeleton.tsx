@@ -1,4 +1,4 @@
-import { ActivityDot } from "./ActivityDot"
+import { ActivityDot } from "./ui/ActivityDot"
 
 export const HeroSkeleton = () => {
   return (

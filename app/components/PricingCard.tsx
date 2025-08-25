@@ -1,6 +1,6 @@
 import clsx from "clsx"
 import { Icon } from "./Icon"
-import { AnimatedInViewProps } from "./AnimatedInView"
+import { AnimatedInViewProps } from "./ui/AnimatedInView"
 import * as m from "motion/react-m"
 import { Variants } from "motion/react"
 type Accent = "white" | "slate" | "black"

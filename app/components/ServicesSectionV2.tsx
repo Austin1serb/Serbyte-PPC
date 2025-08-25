@@ -1,7 +1,7 @@
 import clsx from "clsx"
 import { Icon } from "./Icon"
 import { Text } from "../ui/Elements"
-import { AnimatedH2 } from "./AnimatedH2"
+import { AnimatedH2 } from "./ui/AnimatedH2"
 import * as m from "motion/react-m"
 import type { Variants } from "motion"
 

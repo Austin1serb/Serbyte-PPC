@@ -3,9 +3,9 @@ import { MotionValue } from "motion/react"
 import { StaticImageData } from "next/image"
 import { Card } from "./Card"
 import clsx from "clsx"
-import { Link } from "../utils/Link"
+import { Link } from "../../utils/Link"
 import { useRef } from "react"
-import { useCompositorSpring } from "../hooks/useCompositorSpring"
+import { useCompositorSpring } from "../../hooks/useCompositorSpring"
 import { SITE_SLUGS } from "@/config/siteConfig"
 
 export type HeroOffset = {
@@ -17,24 +17,18 @@ export type HeroOffset = {
   dy?: number // fine-tune Y
 }
 
-export function AnimatedCard({
-  src,
-  alt,
-  offset,
-  color,
-  type,
-  gridId,
-
-  progress,
-}: {
+export interface AnimatedCardProps {
   src: StaticImageData
   alt: string
   offset: HeroOffset
   color: string
-  gridId: string
   type: string
+  gridId: string
   progress: MotionValue<number>
-}) {
+  dataText?: string
+}
+
+export function AnimatedCard({ src, alt, offset, color, type, gridId, progress, dataText = "View Website" }: AnimatedCardProps) {
   const ref = useRef<HTMLDivElement>(null)
   useCompositorSpring(ref, progress)
   return (
@@ -50,7 +44,6 @@ export function AnimatedCard({
           } as React.CSSProperties
         }
         className={clsx("group relative h-full w-full transform-gpu opacity-1 contain-content")}
-        data-text={"View Project"}
       >
         <Card src={src} alt={alt} color={color} type={type} />
       </div>

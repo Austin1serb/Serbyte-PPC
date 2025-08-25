@@ -1,13 +1,13 @@
 import { PricingCard } from "./PricingCard"
-import { ActivityDot } from "./ActivityDot"
+import { ActivityDot } from "./ui/ActivityDot"
 import { FinancingCard } from "./FinancingCard"
 import { Icon } from "./Icon"
 import * as m from "motion/react-m"
 import { H2, H3, Text, Typography } from "../ui/Elements"
 import { CalIcon } from "../icons/Cal.icon"
-import { AnimatedH2 } from "./AnimatedH2"
+import { AnimatedH2 } from "./ui/AnimatedH2"
 import type { Variants } from "motion"
-import { BlackButton } from "./BlackButton"
+import { BlackButton } from "./ui/BlackButton"
 
 const listItems = [
   {

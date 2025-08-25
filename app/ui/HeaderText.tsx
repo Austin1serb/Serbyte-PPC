@@ -1,4 +1,4 @@
-import { AnimatedH2 } from "../components/AnimatedH2"
+import { AnimatedH2 } from "../components/ui/AnimatedH2"
 import { Typography } from "./Elements"
 
 interface HeaderTextProps {

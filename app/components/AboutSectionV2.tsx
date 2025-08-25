@@ -3,7 +3,7 @@ import clsx from "clsx"
 import profilePhoto from "../images/profile.webp"
 import signature from "../images/signature.webp"
 import { Text, Typography } from "../ui/Elements"
-import { AnimatedH2 } from "./AnimatedH2"
+import { AnimatedH2 } from "./ui/AnimatedH2"
 import ImageReveal from "./ImageReveal"
 import * as m from "motion/react-m"
 

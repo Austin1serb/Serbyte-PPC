@@ -1,7 +1,7 @@
 import { H2 } from "@/app/ui/Elements"
 import { FAQTable } from "./FAQTable"
 import { NotSureCard } from "./NotSureCard"
-import { AnimatedH2 } from "../AnimatedH2"
+import { AnimatedH2 } from "../ui/AnimatedH2"
 export const FAQSection: React.FC = () => {
   return (
     <section className="inside-container flex-col border-t border-gray-200 md:gap-8 lg:flex-row">

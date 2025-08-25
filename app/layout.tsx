@@ -7,7 +7,7 @@ import { SITE_CONFIG, SITE_SLUGS } from "@/config/siteConfig"
 import { TopBarV2 } from "./components/TopBar/TopBarV2"
 import { LazyMotion, domAnimation } from "motion/react"
 import SplashCursor from "./components/SplashCursor"
-import DesktopCursor from "./components/DesktopCursor"
+import { DesktopCursor } from "./utils/lazy-ui"
 import { ViewTransitions } from "./hooks/useTransitionRouter"
 import { Analytics } from "@vercel/analytics/react"
 import { bodyAttributes } from "@zero-ui/attributes"
@@ -34,9 +34,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <html lang="en">
         <body {...bodyAttributes} className="relative bg-white" data-mobile-menu="closed" data-scrolled="up">
           <LazyMotion features={domAnimation}>
-            <ReactLenis root options={{ lerp: 0.07 }} />
-            {/* <DesktopCursor />
-             <SplashCursor /> */}
+            {/* <ReactLenis root options={{ lerp: 0.07 }} /> */}
+            <DesktopCursor />
+            {/* <SplashCursor /> */}
             <div className="bg-noise custom:mx-auto pointer-events-none absolute inset-0 z-0 mx-3.5 max-w-6xl bg-repeat opacity-4 md:mx-5 lg:mx-8" />
             <div className={`${switzer.variable} font-switzer subpixel-antialiased`}>
               <div className="custom:mx-auto pointer-events-none absolute inset-0 z-0 mx-3.5 max-w-6xl border-x border-gray-200 md:mx-5 lg:mx-8" />

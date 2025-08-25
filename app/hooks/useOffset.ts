@@ -1,5 +1,5 @@
 import { useReducer, useRef } from "react"
-import { HeroOffset } from "../components/AnimatedCard"
+import { HeroOffset } from "../components/ProjectCard/AnimatedCard"
 import { debounce } from "../utils/debounce"
 import { useIsoMorphicEffect } from "./useIsoMorphicEffect"
 

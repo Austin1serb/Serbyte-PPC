@@ -1,5 +1,5 @@
 import { HeaderText } from "@/app/ui/HeaderText"
-import { Card } from "../Card"
+import { Card } from "../ProjectCard/Card"
 import bespokePreview from "@/app/images/bespoke-preview-v2.webp"
 import { Typography } from "@/app/ui/Elements"
 import { Icon } from "../Icon"
@@ -20,8 +20,8 @@ export const MoreProjectsSection = ({ href }: { href: string }) => {
             </Typography>
           </div>
         </div>
-        <Link href={href} title="View Project" className="relative h-full w-full">
-          <Card src={bespokePreview} alt={"Bespoke Preview"} color="#024EFC" type="Automotive Styling" />
+        <Link href={href} aria-label="View Case Study" data-text="View Case Study" className="relative h-full w-full">
+          <Card src={bespokePreview} alt={"Bespoke Preview"} color="#024EFC" type="Automotive Styling" reveal={false} />
         </Link>
       </div>
     </section>
