@@ -1,7 +1,7 @@
 "use client"
 
 import { ReactNode } from "react"
-import { useIsMobile } from "../hooks/useIsMobile"
+import { useIsMobile } from "../hooks/useMediaQuery"
 import { useReducedMotion } from "motion/react"
 
 interface AnimateSwitchProps {

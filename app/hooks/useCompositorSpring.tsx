@@ -1,6 +1,6 @@
-import { useIsoMorphicEffect } from "@/hooks/useIsoMorphicEffect"
 import { MotionValue } from "motion/react"
 import { type RefObject } from "react"
+import { useIsoMorphicEffect } from "./useIsoMorphicEffect"
 
 export function useCompositorSpring(ref: RefObject<HTMLElement | null>, progress: MotionValue<number>) {
   useIsoMorphicEffect(() => {

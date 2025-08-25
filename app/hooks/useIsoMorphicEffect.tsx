@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useEffect, useLayoutEffect, type DependencyList, type EffectCallback } from "react"
-import { isServer } from "../app/utils/env"
+import { isServer } from "../utils/env"
 
 // eslint-disable-next-line prefer-const
 export let useIsoMorphicEffect = (effect: EffectCallback, deps?: DependencyList | undefined) => {

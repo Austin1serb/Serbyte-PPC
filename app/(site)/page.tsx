@@ -1,11 +1,11 @@
 "use client"
 import { HeroV2 } from "../components/HeroV2"
 import { Projects } from "../components/Projects"
-import { reviewPlaceholder } from "../components/LargeReview"
 
 // Dynamic import These
 import dynamic from "next/dynamic"
 import { useLenisSnap } from "../hooks/useLenisSnap"
+import { REVIEWS } from "../data/review-data"
 
 const LogoMarquee = dynamic(() => import("../components/LogoMarquee").then((mod) => mod.LogoMarquee), {
   ssr: true,
@@ -43,7 +43,7 @@ const WebDesignPage: React.FC = () => {
       <HeroV2 data-snap />
       <LogoMarquee data-snap />
       <Projects data-snap />
-      <LargeReview {...reviewPlaceholder} data-snap />
+      <LargeReview {...REVIEWS[3]} data-snap />
       <ServicesSectionV2 data-snap />
       <AboutSectionV2 data-snap />
       <PricingSection data-snap />

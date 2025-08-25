@@ -3,25 +3,55 @@ import clsx from "clsx"
 import { useMotionValueEvent } from "motion/react"
 import { useScroll } from "motion/react"
 import { isClient } from "../../utils/env"
-import { useIsMobile } from "../../hooks/useIsMobile"
+import { useIsMobile } from "../../hooks/useMediaQuery"
 import { DotMenuIcon } from "./DotMenuIcon"
+import { useUI } from "@react-zero-ui/core"
+import { useRef } from "react"
 
 export const MobileMenuButton: React.FC = () => {
+  const [, setScrolled] = useUI<"up" | "down">("scrolled", "up")
+  const [, setMobileMenu] = useUI<"open" | "closed">("mobile-menu", "closed")
+
   const toggle = () => {
     if (isClient) {
-      document.body.dataset.mobileMenu = document.body.dataset.mobileMenu === "open" ? "closed" : "open"
+      setMobileMenu((prev) => (prev === "open" ? "closed" : "open"))
     }
   }
 
   const { scrollY } = useScroll()
   const isDesktop = !useIsMobile(768, () => {
-    document.body.dataset.mobileMenu = "closed"
+    setMobileMenu("closed")
   })
+
+  // Hysteresis state: only flip direction after reversing by at least this many pixels
+  const HYSTERESIS_PX = 20
+  const committedDirectionRef = useRef<"up" | "down">("up")
+  const pivotYRef = useRef<number | null>(null)
 
   useMotionValueEvent(scrollY, "change", (current) => {
     if (!isDesktop) return
-    const diff = current - (scrollY.getPrevious() ?? 0)
-    document.body.dataset.scrolled = diff > 0 ? "up" : "down"
+    const previous = scrollY.getPrevious() ?? current
+    const diff = current - previous
+    const instantaneousDirection: "up" | "down" = diff > 0 ? "up" : "down"
+
+    // If continuing in the same committed direction, reset pivot and ensure UI reflects it
+    if (instantaneousDirection === committedDirectionRef.current) {
+      pivotYRef.current = current
+      setScrolled(committedDirectionRef.current)
+      return
+    }
+
+    // Direction reversed: establish pivot if needed
+    if (pivotYRef.current === null) {
+      pivotYRef.current = current
+    }
+
+    const distanceFromPivot = Math.abs(current - pivotYRef.current)
+    if (distanceFromPivot >= HYSTERESIS_PX) {
+      committedDirectionRef.current = instantaneousDirection
+      setScrolled(instantaneousDirection)
+      pivotYRef.current = current
+    }
   })
 
   return (
@@ -29,7 +59,7 @@ export const MobileMenuButton: React.FC = () => {
       type="button"
       aria-label="Toggle navigation"
       onMouseEnter={() => {
-        if (isDesktop) document.body.dataset.scrolled = "down"
+        if (isDesktop) setScrolled("down")
       }}
       onClick={() => {
         if (!isDesktop) toggle()

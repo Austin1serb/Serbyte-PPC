@@ -1,21 +1,6 @@
-import profilePhoto from "@/public/assets/founder.jpg"
 import { AnimatedInView } from "./AnimatedInView"
 import { ClientInfoCard } from "./ClientInfoCard"
 import { type ReviewProps } from "../data/review-data"
-
-export const reviewPlaceholder: ReviewProps = {
-  quote: (
-    <>
-      {" "}
-      Working with Austin felt like having a seasoned design partner{" "}
-      <strong className="font-semibold text-slate-900">who truly understood our vision for Zazzle</strong> and brought it to life in ways we hadn&apos;t even
-      imagined.
-    </>
-  ),
-  name: "Thomas Weber",
-  title: "Co-founder of Zazzle",
-  img: profilePhoto,
-}
 
 export function LargeReview({ quote, name, title, img }: ReviewProps) {
   return (

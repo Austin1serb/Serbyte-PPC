@@ -19,7 +19,7 @@ export const ReviewCard: React.FC<ReviewCard> = ({ img, name, title, quote, clas
     <m.li
       variants={variants}
       className={clsx(
-        "relative flex aspect-[4/3] flex-shrink-0 snap-center flex-col items-start justify-between rounded-2xl border border-gray-200 bg-white p-6 shadow-md shadow-gray-200",
+        "relative flex aspect-[4/3] flex-shrink-0 snap-center flex-col items-start justify-between rounded-2xl border border-gray-200 bg-white p-6 shadow-md shadow-gray-200 gap-4",
         className
       )}
     >

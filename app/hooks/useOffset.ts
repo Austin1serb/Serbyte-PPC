@@ -1,7 +1,7 @@
 import { useReducer, useRef } from "react"
 import { HeroOffset } from "../components/AnimatedCard"
 import { debounce } from "../utils/debounce"
-import { useIsoMorphicEffect } from "@/hooks/useIsoMorphicEffect"
+import { useIsoMorphicEffect } from "./useIsoMorphicEffect"
 
 const initialOffsets: Record<string, Partial<HeroOffset>> = {
   automedics: {
