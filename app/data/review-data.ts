@@ -11,36 +11,40 @@ export interface ReviewProps {
 
 export const REVIEWS = [
   {
-    id: "john-1",
-    img: profilePhoto,
-    name: "John Doe",
-    title: "Review 1",
-    quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+    id: "entitled",
+    img: "/client-photos/yassine-rhamani-profile-photo.jpeg",
+    name: "Yassine Ramani",
+    title: "CEO, Entitled",
+    quote:
+      "Serbyte didn't just build a website-they gave our brand a true digital identity. Their attention to detail and creativity brought our vision to life in ways we hadn't imagined. If you're looking for a website design company in Seattle that understands branding and design, they're the team to trust",
   },
   {
-    id: "jane-1",
-    img: profilePhoto,
-    name: "Jane Doe",
-    title: "Review 2",
-    quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+    id: "herba-naturals",
+    img: "/brands/herba-naturals-logo.png",
+    name: "Sami Raheem",
+    title: "Owner, Herba Naturals",
+    quote:
+      "At the time, Austin was working solo, yet he delivered an e-commerce website that exceeded all our expectations. It was fast, user-friendly, and packed with features like automated shipping labels and AI-powered product management. Finding a Seattle web design company that goes beyond the basics is rare-Serbyte delivered in every way.",
   },
   {
-    id: "john-2",
-    img: profilePhoto,
-    name: "John Doe",
-    title: "Review 3",
-    quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+    id: "vets-choice",
+    img: "/brands/vets-choice-insurance-logo.png",
+    name: "Rob Dow",
+    title: "Co-Founder, Vets Choice Insurance",
+    quote:
+      "The aftercare is unbeatable. Being an insurance company, we had to go through many rounds of revisions to comply with our legal requirements. Austin was always available to help and make sure we were happy with the final product. I highly recommend them for any web design needs.",
   },
   {
-    id: "jane-2",
-    img: profilePhoto,
-    name: "Jane Doe",
-    title: "Review 4",
-    quote: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.",
+    id: "bespoke",
+    img: "/client-photos/bespoke-tint-owner-kris-256.webp",
+    name: "Kris Meyer",
+    title: "Owner, Bespoke Tint",
+    quote:
+      "Serbyte took our vision and built a website that makes our business look as professional online as it is in person. We've already seen a huge increase in calls and bookings. Couldn't recommend Austin enough.",
   },
   {
     id: "iao",
-    img: "/assets/iao-logo-optimized.png",
+    img: "/client-photos/aleksandr-butowicz-iron-oak-profile-photo.jpg",
     name: "Aleks Butokowitz",
     title: "CEO, Iron & Oak",
     quote:

@@ -32,7 +32,7 @@ export const NotSureCard: React.FC<{ className?: string; projectsPage?: boolean 
                   <span key={i}>★</span>
                 ))}
               </div>
-              <span className="text-sm font-medium text-slate-900">99+ Happy clients</span>
+              <span className="text-sm font-medium text-slate-900">Many Happy clients</span>
             </AnimatedElement>
           </div>
         ) : (

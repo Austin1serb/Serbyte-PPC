@@ -1,6 +1,7 @@
 import { ActivityDot } from "./ActivityDot"
 import { AnimatedElement } from "./AnimatedElement"
 import { CallToActionButton } from "./CallToActionButton"
+import { CurrentDate } from "./ui/CurrentDate"
 
 export const HeroV2 = () => {
   return (
@@ -12,7 +13,7 @@ export const HeroV2 = () => {
             delay={0.6}
             className="inline-flex items-center gap-2 self-start rounded-full border border-gray-100 bg-white px-3 py-2 text-xs font-medium shadow-lg"
           >
-            <ActivityDot /> Available for April &apos;25
+            <ActivityDot /> Available for <CurrentDate weekOut />
           </AnimatedElement>
 
           <h1 className="xs:text-5xl relative z-5 text-4xl leading-[1] font-medium tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">

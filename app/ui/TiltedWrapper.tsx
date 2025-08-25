@@ -30,7 +30,6 @@ export default function TiltedWrapper({
   borderRadius = "15px",
 }: TiltedWrapperProps) {
   const ref = useRef<HTMLDivElement>(null)
-  const lastMousePositionRef = useRef({ x: 0, y: 0 })
   const lastUpdateTimeRef = useRef(0)
 
   // Use motion values directly - no state!
