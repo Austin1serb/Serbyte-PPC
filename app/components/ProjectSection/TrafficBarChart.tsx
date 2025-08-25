@@ -1,4 +1,4 @@
-import * as m from "motion/react-m"
+import { MotionDiv } from "@/app/utils/lazy-ui"
 
 interface TrafficData {
   label: string
@@ -29,7 +29,7 @@ export const TrafficBarChart: React.FC<{ startValue: number; endValue: number }>
         return (
           <div key={index} className="flex flex-col items-center">
             {/* Value Label */}
-            <m.div
+            <MotionDiv
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -41,11 +41,11 @@ export const TrafficBarChart: React.FC<{ startValue: number; endValue: number }>
               className="mb-2 text-lg font-medium text-slate-700"
             >
               {item.value.toLocaleString()}/mo
-            </m.div>
+            </MotionDiv>
 
             {/* Animated Bar */}
             <div className="relative h-66 w-20 rounded-lg border border-gray-300 bg-gray-200 shadow-lg">
-              <m.div
+              <MotionDiv
                 initial={{ height: 0 }}
                 whileInView={{ height: `${barHeight - 5}%` }}
                 viewport={{ once: true }}
@@ -61,7 +61,7 @@ export const TrafficBarChart: React.FC<{ startValue: number; endValue: number }>
             </div>
 
             {/* Bar Label */}
-            <m.div
+            <MotionDiv
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -73,7 +73,7 @@ export const TrafficBarChart: React.FC<{ startValue: number; endValue: number }>
               className="mt-3 text-center text-xs text-nowrap text-slate-600 uppercase"
             >
               {item.label}
-            </m.div>
+            </MotionDiv>
           </div>
         )
       })}

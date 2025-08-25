@@ -1,6 +1,6 @@
 import { REVIEWS } from "../data/review-data"
 import { ReviewCard } from "./ReviewCard"
-import * as m from "motion/react-m"
+import { MotionUl } from "../utils/lazy-ui"
 
 const container = {
   hidden: {},
@@ -26,7 +26,7 @@ const element = {
 export function ReviewGridV2() {
   return (
     <section id="review-grid" className="relative z-5">
-      <m.ul
+      <MotionUl
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "0px 0px -200px 0px" }}
@@ -38,7 +38,7 @@ export function ReviewGridV2() {
         {REVIEWS.map((card, i) => (
           <ReviewCard {...card} key={i} className="w-72 flex-shrink-0 max-md:snap-center md:w-auto" variants={element} />
         ))}
-      </m.ul>
+      </MotionUl>
     </section>
   )
 }

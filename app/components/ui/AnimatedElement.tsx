@@ -1,8 +1,6 @@
-import { useMemo } from "react"
-
 import { MotionProps } from "motion/react"
 import { ReactNode, ElementType } from "react"
-import * as m from "motion/react-m"
+import { MotionDiv, MotionH1, MotionH2, MotionP, MotionSpan } from "@/app/utils/lazy-ui"
 
 interface AnimatedElementProps<T extends ElementType> extends MotionProps {
   element: T
@@ -30,7 +28,13 @@ export const AnimatedElement = <T extends ElementType>({
   margin = "0px 0px 100px 0px",
   ...rest
 }: AnimatedElementProps<T>) => {
-  const MotionTag = m[element as keyof typeof m] as ElementType
+  const MotionTag = {
+    h1: MotionH1,
+    h2: MotionH2,
+    p: MotionP,
+    div: MotionDiv,
+    span: MotionSpan,
+  }[element as keyof typeof MotionTag] as ElementType
 
   const variants = {
     hidden: { opacity: 0, ...directionOffset(fadeDirection, offsetPx) },

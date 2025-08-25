@@ -3,7 +3,7 @@ import { ClientInfoCard } from "./ClientInfoCard"
 import clsx from "clsx"
 import { Text } from "../ui/Elements"
 import { Variants } from "motion/react"
-import * as m from "motion/react-m"
+import { MotionLi } from "../utils/lazy-ui"
 
 export type ReviewCard = {
   id?: string
@@ -16,7 +16,7 @@ export type ReviewCard = {
 }
 export const ReviewCard: React.FC<ReviewCard> = ({ img, name, title, quote, className, variants }) => {
   return (
-    <m.li
+    <MotionLi
       variants={variants}
       className={clsx(
         "relative flex aspect-[4/3] flex-shrink-0 snap-center flex-col items-start justify-between rounded-2xl border border-gray-200 bg-white p-6 shadow-md shadow-gray-200 gap-4",
@@ -36,6 +36,6 @@ export const ReviewCard: React.FC<ReviewCard> = ({ img, name, title, quote, clas
       </div>
 
       <ClientInfoCard img={img} name={name} title={title} />
-    </m.li>
+    </MotionLi>
   )
 }

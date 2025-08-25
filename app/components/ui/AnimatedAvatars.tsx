@@ -1,7 +1,7 @@
-import * as m from "motion/react-m"
 import Image from "next/image"
 import type { Variants } from "motion"
 import { REVIEW_MAP } from "@/app/data/review-data"
+import { MotionDiv } from "@/app/utils/lazy-ui"
 
 const MEDALS = Object.values(REVIEW_MAP).map((review) => review.img)
 
@@ -39,10 +39,10 @@ const avatar: Variants = {
 
 export function AnimatedAvatars() {
   return (
-    <m.div className="relative z-0 flex items-center gap-4 whitespace-nowrap" initial="hidden" animate="visible" variants={container}>
+    <MotionDiv className="relative z-0 flex items-center gap-4 whitespace-nowrap" initial="hidden" animate="visible" variants={container}>
       <div className="flex flex-row-reverse -space-x-3 space-x-reverse">
         {MEDALS.map((src, i) => (
-          <m.div key={i} className="relative inline-block h-9 w-9 overflow-hidden rounded-full" animate={{ zIndex: -i }} variants={avatar}>
+          <MotionDiv key={i} className="relative inline-block h-9 w-9 overflow-hidden rounded-full" animate={{ zIndex: -i }} variants={avatar}>
             <Image
               src={src}
               alt="Reviewer avatar"
@@ -51,9 +51,9 @@ export function AnimatedAvatars() {
               className="h-full w-full object-contain border-[1px] border-gray-300 bg-white rounded-full p-0.5"
               sizes="40px"
             />
-          </m.div>
+          </MotionDiv>
         ))}
       </div>
-    </m.div>
+    </MotionDiv>
   )
 }

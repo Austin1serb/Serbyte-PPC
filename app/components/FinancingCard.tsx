@@ -1,11 +1,11 @@
 import Image from "next/image"
 import lightningIcon from "../images/lightning.png"
 import { Typography } from "../ui/Elements"
-import * as m from "motion/react-m"
+import { MotionDiv } from "../utils/lazy-ui"
 
 export function FinancingCard() {
   return (
-    <m.div
+    <MotionDiv
       initial={{ opacity: 0, scale: 0.3, rotate: -20 }}
       whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
       transition={{ type: "spring", stiffness: 150, damping: 10 }}
@@ -39,6 +39,6 @@ export function FinancingCard() {
           />
         </div>
       </div>
-    </m.div>
+    </MotionDiv>
   )
 }

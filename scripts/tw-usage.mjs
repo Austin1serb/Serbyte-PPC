@@ -1,8 +1,8 @@
 // scripts/tw-single-use.mjs
 import { readFile } from "node:fs/promises"
-import { globby } from "globby"
+import fastGlob from "fast-glob"
 
-const files = await globby(["**/*.{js,jsx,ts,tsx,html,mdx}", "!**/node_modules/**", "!**/.next/**"], { gitignore: true })
+const files = await fastGlob(["**/*.{js,jsx,ts,tsx,mdx}", "!**/node_modules/**", "!**/.next/**"], { gitignore: true })
 
 const counts = new Map()
 

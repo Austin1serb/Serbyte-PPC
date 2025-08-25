@@ -1,5 +1,5 @@
 import CountUp from "@/app/ui/CountUp"
-import * as m from "motion/react-m"
+import { MotionCircle, MotionDiv } from "@/app/utils/lazy-ui"
 
 interface RadialProgressRingProps {
   percentage?: number
@@ -22,7 +22,7 @@ export const RadialProgressRing: React.FC<RadialProgressRingProps> = ({ percenta
         <circle cx={size / 2} cy={size / 2} r={radius - 19} fill="none" stroke="#d1d5dc" strokeWidth={1} />
 
         {/* Animated Progress Circle */}
-        <m.circle
+        <MotionCircle
           viewport={{ once: true }}
           cx={size / 2}
           cy={size / 2}
@@ -54,7 +54,7 @@ export const RadialProgressRing: React.FC<RadialProgressRingProps> = ({ percenta
 
       {/* Center Content */}
 
-      <m.div
+      <MotionDiv
         initial={{ opacity: 0, scale: 1.7 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
@@ -68,7 +68,7 @@ export const RadialProgressRing: React.FC<RadialProgressRingProps> = ({ percenta
         <div className="mb-1 text-4xl font-semibold text-slate-800">
           +<CountUp to={percentage} margin="-100px" delay={0.3} />%
         </div>
-      </m.div>
+      </MotionDiv>
     </div>
   )
 }

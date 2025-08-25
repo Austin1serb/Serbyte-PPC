@@ -5,13 +5,13 @@ import "./globalsV2.css"
 import { Metadata } from "next"
 import { SITE_CONFIG, SITE_SLUGS } from "@/config/siteConfig"
 import { TopBarV2 } from "./components/TopBar/TopBarV2"
-import { LazyMotion, domAnimation } from "motion/react"
 import SplashCursor from "./components/SplashCursor"
-import { DesktopCursor } from "./utils/lazy-ui"
+import { DesktopCursor, MotionWrapper } from "./utils/lazy-ui"
 import { ViewTransitions } from "./hooks/useTransitionRouter"
 import { Analytics } from "@vercel/analytics/react"
 import { bodyAttributes } from "@zero-ui/attributes"
 import ReactLenis from "lenis/react"
+
 const switzer = localFont({
   src: "./fonts/Switzer-Variable.woff2",
   variable: "--font-switzer",
@@ -33,7 +33,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <ViewTransitions>
       <html lang="en">
         <body {...bodyAttributes} className="relative bg-white" data-mobile-menu="closed" data-scrolled="up">
-          <LazyMotion features={domAnimation}>
+          <MotionWrapper>
             {/* <ReactLenis root options={{ lerp: 0.07 }} /> */}
             <DesktopCursor />
             {/* <SplashCursor /> */}
@@ -45,7 +45,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               {children}
               <FooterV2 />
             </div>
-          </LazyMotion>
+          </MotionWrapper>
           {process.env.NODE_ENV === "production" && <Analytics />}
         </body>
       </html>

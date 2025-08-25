@@ -1,6 +1,6 @@
 import CountUp from "@/app/ui/CountUp"
 import { H3 } from "@/app/ui/Elements"
-import * as m from "motion/react-m"
+import { MotionSpan } from "@/app/utils/lazy-ui"
 
 interface AnalyticCardProps {
   title: string
@@ -27,7 +27,7 @@ export const AnalyticCard: React.FC<AnalyticCardProps> = ({ title, description, 
 
       {/* Chart Container */}
       {chart}
-      <m.span
+      <MotionSpan
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -39,7 +39,7 @@ export const AnalyticCard: React.FC<AnalyticCardProps> = ({ title, description, 
         className="absolute -bottom-6 left-4 text-center text-xs text-slate-500"
       >
         * {dataSource}
-      </m.span>
+      </MotionSpan>
     </div>
   )
 }

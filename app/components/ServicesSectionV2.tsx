@@ -2,8 +2,8 @@ import clsx from "clsx"
 import { Icon } from "./Icon"
 import { Text } from "../ui/Elements"
 import { AnimatedH2 } from "./ui/AnimatedH2"
-import * as m from "motion/react-m"
 import type { Variants } from "motion"
+import { MotionUl, MotionLi } from "../utils/lazy-ui"
 
 const tech = [
   { name: "React", src: "react" },
@@ -94,7 +94,7 @@ export const ServicesSectionV2: React.FC = ({ className = "" }: { className?: st
             My tech stack
           </Text>
 
-          <m.ul
+          <MotionUl
             className="flex flex-wrap gap-8"
             variants={container}
             initial="hidden"
@@ -102,7 +102,7 @@ export const ServicesSectionV2: React.FC = ({ className = "" }: { className?: st
             viewport={{ once: true, margin: "0px 0px -100px 0px" }}
           >
             {tech.map(({ name, src }) => (
-              <m.li key={name} variants={element}>
+              <MotionLi key={name} variants={element}>
                 <div className="group relative">
                   <input placeholder={name} type="checkbox" className="peer hidden" id={name} />
 
@@ -117,14 +117,14 @@ export const ServicesSectionV2: React.FC = ({ className = "" }: { className?: st
                     {name}
                   </span>
                 </div>
-              </m.li>
+              </MotionLi>
             ))}
-          </m.ul>
+          </MotionUl>
         </div>
       </div>
 
       {/*  RIGHT COLUMN  */}
-      <m.ul
+      <MotionUl
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.8 }}
@@ -132,16 +132,16 @@ export const ServicesSectionV2: React.FC = ({ className = "" }: { className?: st
         className="grid [flex:1_0_0px] grid-cols-2 gap-12 md:grid-cols-1"
       >
         {services.map(({ name, src }) => (
-          <m.li key={name} variants={element2} className="flex items-center gap-3">
+          <MotionLi key={name} variants={element2} className="flex items-center gap-3">
             <span className="button-shadow flex aspect-square h-10 w-10 items-center justify-center rounded-full bg-black">
               <Icon name={src} width={25} height={30} className="object-contain invert" />
             </span>
             <Text as="span" size="sm">
               {name}
             </Text>
-          </m.li>
+          </MotionLi>
         ))}
-      </m.ul>
+      </MotionUl>
     </section>
   )
 }

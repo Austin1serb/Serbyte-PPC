@@ -1,8 +1,8 @@
-import * as m from "motion/react-m"
 import Image from "next/image"
 import profilePhoto from "@/public/assets/founder.jpg"
 import clsx from "clsx"
 import type { Variants } from "motion"
+import { MotionButton, MotionDiv } from "@/app/utils/lazy-ui"
 
 export const CallToActionButton = () => {
   const buttonVariants: Variants = {
@@ -58,7 +58,7 @@ export const CallToActionButton = () => {
   }
 
   return (
-    <m.button
+    <MotionButton
       initial="initial"
       animate="animate"
       whileHover="hover"
@@ -72,13 +72,13 @@ export const CallToActionButton = () => {
         </div>
 
         {/* + You entrance */}
-        <m.div variants={youVariants} className={clsx("hidden items-center gap-1 md:flex")}>
+        <MotionDiv variants={youVariants} className={clsx("hidden items-center gap-1 md:flex")}>
           <span className="text-xl">+</span>
           <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-sm font-semibold text-black ring-1 ring-black/50">You</span>
-        </m.div>
+        </MotionDiv>
       </div>
       Book a call with me
-    </m.button>
+    </MotionButton>
   )
 }
 

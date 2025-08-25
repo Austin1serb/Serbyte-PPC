@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@source not "../public/bespoke-hero.html";
 @variant reveal-false ([data-reveal="false"] &);
 
 /* *:not(:has(border-none)) {

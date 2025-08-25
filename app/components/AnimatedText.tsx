@@ -1,6 +1,6 @@
 import clsx from "clsx"
-import * as m from "motion/react-m"
 import type { Variants } from "motion"
+import { MotionH2, MotionSpan } from "../utils/lazy-ui"
 
 interface Props {
   text: string
@@ -34,7 +34,7 @@ const letter: Variants = {
 
 export const AnimatedText = ({ text, once = false, className = "", margin = 0, ...rest }: Props) => {
   return (
-    <m.h2
+    <MotionH2
       {...rest}
       className={clsx(className)}
       aria-label={text}
@@ -45,10 +45,10 @@ export const AnimatedText = ({ text, once = false, className = "", margin = 0, .
       viewport={{ once, margin: `0px 0px -${margin}px 0px` }}
     >
       {text.split("").map((char, i) => (
-        <m.span key={i} variants={letter} aria-hidden="true" className="inline-block">
+        <MotionSpan key={i} variants={letter} aria-hidden="true" className="inline-block">
           {char === " " ? "\u00A0" : char}
-        </m.span>
+        </MotionSpan>
       ))}
-    </m.h2>
+    </MotionH2>
   )
 }

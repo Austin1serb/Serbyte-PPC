@@ -4,14 +4,14 @@ import { Icon } from "../Icon"
 import { CalIcon } from "../../icons/Cal.icon"
 import { H3 } from "@/app/ui/Elements"
 import clsx from "clsx"
-import * as m from "motion/react-m"
 import { AnimatedAvatars } from "../ui/AnimatedAvatars"
 import { AnimatedElement } from "../ui/AnimatedElement"
 import { BlackButton } from "../ui/BlackButton"
+import { MotionDiv } from "@/app/utils/lazy-ui"
 
 export const NotSureCard: React.FC<{ className?: string; projectsPage?: boolean }> = ({ className, projectsPage = false }) => {
   return (
-    <m.div
+    <MotionDiv
       initial={{ opacity: 0, x: -40 }}
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ type: "spring", stiffness: 100, damping: 10 }}
@@ -52,6 +52,6 @@ export const NotSureCard: React.FC<{ className?: string; projectsPage?: boolean 
 
         <CalIcon className="h-auto w-20 text-gray-500" />
       </div>
-    </m.div>
+    </MotionDiv>
   )
 }

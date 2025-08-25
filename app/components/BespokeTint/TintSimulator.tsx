@@ -1,6 +1,6 @@
 "use client"
 import { useState, useMemo, memo } from "react"
-import * as motion from "motion/react-m"
+import { MotionDiv } from "@/app/utils/lazy-ui"
 import Image from "next/image"
 import teslaNoTint from "@/public/assets/tesla-no-tint.jpg"
 import tesla05 from "@/public/assets/tesla-05-tint.jpg"
@@ -14,9 +14,9 @@ const TintImages = memo(({ opacity }: { opacity: number }) => {
       <Image src={teslaNoTint} alt="No Window Tint" fill className="object-contain" sizes="(max-width: 768px) 90vw, (max-width: 1023px) 50vw" />
 
       {/* 5% Tint Image (opacity controlled by scaled slider) */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity }} transition={{ ease: "easeIn", delay: 0.2 }} className="absolute inset-0">
+      <MotionDiv initial={{ opacity: 0 }} animate={{ opacity }} transition={{ ease: "easeIn", delay: 0.2 }} className="absolute inset-0">
         <Image src={tesla05} alt="5% Window Tint" fill className="rounded-4xl object-contain" sizes="(max-width: 768px) 90vw, (max-width: 1023px) 80vw" />
-      </motion.div>
+      </MotionDiv>
     </div>
   )
 })

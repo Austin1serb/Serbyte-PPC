@@ -1,14 +1,14 @@
 "use client"
 import { usePathname } from "next/navigation"
 import { AnimatePresence } from "motion/react"
-import * as m from "motion/react-m"
+import { MotionDiv } from "../utils/lazy-ui"
 
 export default function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
 
   return (
     <AnimatePresence mode="wait">
-      <m.div
+      <MotionDiv
         key={pathname}
         className="fixed inset-0 z-50" // full-viewport layer
         initial={{ clipPath: "inset(0% 0% 0% 0%)", opacity: 1 }}
@@ -18,10 +18,10 @@ export default function PageTransition({ children }: { children: React.ReactNode
       >
         {/* Darken old page while we slide the mask */}
         <div className="absolute inset-0 bg-neutral-900/60" />
-      </m.div>
+      </MotionDiv>
 
       {/* NEW PAGE CONTENT */}
-      <m.div
+      <MotionDiv
         key={pathname + "-content"}
         initial={{ y: "100%" }}
         animate={{ y: "0%" }}
@@ -30,7 +30,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
         className="min-h-screen"
       >
         {children}
-      </m.div>
+      </MotionDiv>
     </AnimatePresence>
   )
 }

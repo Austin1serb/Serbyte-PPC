@@ -2,7 +2,7 @@
 import type { SpringOptions } from "motion/react"
 import { useRef, useCallback } from "react"
 import { useMotionValue, useSpring } from "motion/react"
-import * as motion from "motion/react-m"
+import { MotionDiv } from "../utils/lazy-ui"
 
 interface TiltedWrapperProps {
   children: React.ReactNode
@@ -86,7 +86,7 @@ export default function TiltedWrapper({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <motion.div
+      <MotionDiv
         className={`relative h-full w-full will-change-transform [transform-style:preserve-3d] ${className}`}
         style={{
           rotateX,
@@ -100,7 +100,7 @@ export default function TiltedWrapper({
         <div className="absolute top-0 left-0 h-full w-full overflow-hidden" style={{ borderRadius }}>
           {children}
         </div>
-      </motion.div>
+      </MotionDiv>
     </div>
   )
 }

@@ -1,8 +1,8 @@
-import * as m from "motion/react-m"
 import Image, { ImageProps } from "next/image"
 import { ReactElement } from "react"
 import { Socials } from "./Socials"
 import { socialLinks } from "./Footer/FooterV2"
+import { MotionDiv } from "../utils/lazy-ui"
 
 interface ImageRevealProps extends Omit<ImageProps, "placeholder"> {
   className?: string
@@ -11,7 +11,7 @@ interface ImageRevealProps extends Omit<ImageProps, "placeholder"> {
 export default function ImageReveal({ className = "", ...img }: ImageRevealProps): ReactElement {
   return (
     <div className={`relative overflow-hidden rounded-2xl ${className} `}>
-      <m.div
+      <MotionDiv
         initial={{ x: "100%" }}
         whileInView={{ x: 0 }}
         transition={{ duration: 0.3, type: "spring", bounce: 0 }}
@@ -23,7 +23,7 @@ export default function ImageReveal({ className = "", ...img }: ImageRevealProps
       />
 
       {/* IMAGE ------------------------------------------------------*/}
-      <m.div
+      <MotionDiv
         initial={{ x: "100%" }}
         whileInView={{ x: 0 }}
         transition={{ duration: 0.5, delay: 0.3, type: "spring", bounce: 0 }}
@@ -39,7 +39,7 @@ export default function ImageReveal({ className = "", ...img }: ImageRevealProps
           className={`rounded-2xl object-cover saturate-125`}
           sizes="(max-width: 560px) 300px, (max-width: 768px) 500px, 50vw"
         />
-      </m.div>
+      </MotionDiv>
     </div>
   )
 }

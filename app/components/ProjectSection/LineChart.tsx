@@ -1,6 +1,6 @@
 "use client"
-import * as m from "motion/react-m"
 import { useState } from "react"
+import { MotionCircle, MotionPath, MotionSvg } from "@/app/utils/lazy-ui"
 
 export const LineChart: React.FC = () => {
   const [isInView, setIsInView] = useState(false)
@@ -23,7 +23,7 @@ export const LineChart: React.FC = () => {
 
   return (
     <div>
-      <m.svg
+      <MotionSvg
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         onViewportEnter={() => setIsInView(true)}
@@ -43,7 +43,7 @@ export const LineChart: React.FC = () => {
         </defs>
 
         {/* Gradient fill under line */}
-        <m.path
+        <MotionPath
           d={fillPath}
           fill="url(#areaGradient)"
           initial={{ opacity: 0 }}
@@ -52,7 +52,7 @@ export const LineChart: React.FC = () => {
         />
 
         {/* Main line */}
-        <m.path
+        <MotionPath
           d={linePath}
           fill="none"
           stroke="#62748e"
@@ -66,7 +66,7 @@ export const LineChart: React.FC = () => {
 
         {/* Points */}
         {points.map((point, i) => (
-          <m.circle
+          <MotionCircle
             key={i}
             cx={point.x}
             cy={point.y}
@@ -93,7 +93,7 @@ export const LineChart: React.FC = () => {
         <text x="375" y="470" textAnchor="middle" className="fill-slate-600 text-xl uppercase">
           Post-Launch
         </text>
-      </m.svg>
+      </MotionSvg>
     </div>
   )
 }

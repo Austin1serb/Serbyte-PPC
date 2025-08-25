@@ -1,6 +1,6 @@
+import { MotionH1, MotionH2, MotionP, MotionDiv, MotionSpan, MotionArticle } from "@/app/utils/lazy-ui"
 import { MotionProps } from "motion/react"
 import { ElementType, ReactNode } from "react"
-import * as m from "motion/react-m"
 
 export interface AnimatedInViewProps<T extends ElementType> extends MotionProps {
   element: T
@@ -32,7 +32,14 @@ export const AnimatedInView: React.FC<AnimatedInViewProps<ElementType>> = ({
   stagger,
   ...rest
 }) => {
-  const MotionTag = m[element as keyof typeof m] as ElementType
+  const MotionTag = {
+    h1: MotionH1,
+    h2: MotionH2,
+    p: MotionP,
+    div: MotionDiv,
+    span: MotionSpan,
+    article: MotionArticle,
+  }[element as keyof typeof MotionTag] as ElementType
 
   const directions = {
     left: { x: -offsetPx },

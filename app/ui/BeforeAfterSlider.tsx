@@ -1,6 +1,6 @@
 "use client"
 import { useRef, useCallback, memo, useState, useEffect } from "react"
-import * as motion from "motion/react-m"
+import { MotionDiv } from "@/app/utils/lazy-ui"
 import { useMotionValue, useSpring, useTransform, useInView } from "motion/react"
 
 interface BeforeAfterProps {
@@ -141,17 +141,17 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
         >
           {before}
 
-          <motion.div className="pointer-events-none absolute inset-0" style={{ clipPath }}>
+          <MotionDiv className="pointer-events-none absolute inset-0" style={{ clipPath }}>
             {after}
-          </motion.div>
+          </MotionDiv>
 
           {/* Slider */}
-          <motion.div
+          <MotionDiv
             className="absolute top-0 bottom-0 z-5 flex items-center justify-center bg-transparent"
             style={{ left: sliderLeft, transform: "translateX(-50%)" }}
           >
             <div className="h-full w-0.5 bg-white shadow-lg">
-              <motion.div
+              <MotionDiv
                 whileTap={{ scale: 0.8, color: "#493BFF", cursor: "grabbing" }}
                 className="absolute top-1/2 left-1/2 z-10 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full bg-white shadow-lg"
                 onMouseDown={handleMouseDown}
@@ -165,13 +165,13 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
                 <svg className="h-6 w-6 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
                 </svg>
-              </motion.div>
+              </MotionDiv>
             </div>
-          </motion.div>
+          </MotionDiv>
         </div>
         {/* Labels */}
         <div className="absolute top-30 left-1/2 z-5 grid -translate-x-1/2">
-          <motion.div
+          <MotionDiv
             className="col-start-1 row-start-1 rounded-full border border-white/30 bg-black/50 px-4 py-2 text-sm font-semibold text-white shadow-lg backdrop-blur-md"
             style={{ opacity: afterLabelOpacity }}
             transition={{ delay: 0.4, duration: 0.5 }}
@@ -183,9 +183,9 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
               </div>
               <span>After</span>
             </div>
-          </motion.div>
+          </MotionDiv>
 
-          <motion.div
+          <MotionDiv
             className="col-start-1 row-start-1 rounded-full border border-white/20 bg-black/50 px-4 py-2 text-sm font-semibold text-white shadow-lg backdrop-blur-md duration-200"
             style={{ opacity: beforeLabelOpacity }}
             aria-hidden="true"
@@ -196,7 +196,7 @@ export const BeforeAfterSlider: React.FC<BeforeAfterProps> = memo(
               </div>
               <span>Before</span>
             </div>
-          </motion.div>
+          </MotionDiv>
         </div>
       </div>
     )

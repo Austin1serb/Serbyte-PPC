@@ -5,7 +5,7 @@ import signature from "../images/signature.webp"
 import { Text, Typography } from "../ui/Elements"
 import { AnimatedH2 } from "./ui/AnimatedH2"
 import ImageReveal from "./ImageReveal"
-import * as m from "motion/react-m"
+import { MotionDiv } from "../utils/lazy-ui"
 
 export const AboutSectionV2 = ({ className = "" }: { className?: string }) => {
   return (
@@ -26,7 +26,7 @@ export const AboutSectionV2 = ({ className = "" }: { className?: string }) => {
             <ImageReveal src={profilePhoto} alt="Austin Serb" className="custom-shadow aspect-[4/4.5]" />
 
             {/* name + role */}
-            <m.div
+            <MotionDiv
               initial={{ opacity: 0, filter: "blur(10px)" }}
               whileInView={{ opacity: 1, filter: "blur(0px)" }}
               viewport={{ once: true, margin: "0px 0px -100px 0px" }}
@@ -35,7 +35,7 @@ export const AboutSectionV2 = ({ className = "" }: { className?: string }) => {
                 Austin Serb
               </Text>
               <p className="text-sm text-gray-500">Owner Serbyte Development</p>
-            </m.div>
+            </MotionDiv>
           </div>
           {/* ---------------- right column ---------------- */}
           <Typography as="article" size="lg" className="[flex:1.5_0_0px] space-y-8 text-slate-500">

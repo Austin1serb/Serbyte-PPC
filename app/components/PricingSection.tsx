@@ -2,12 +2,12 @@ import { PricingCard } from "./PricingCard"
 import { ActivityDot } from "./ui/ActivityDot"
 import { FinancingCard } from "./FinancingCard"
 import { Icon } from "./Icon"
-import * as m from "motion/react-m"
 import { H2, H3, Text, Typography } from "../ui/Elements"
 import { CalIcon } from "../icons/Cal.icon"
 import { AnimatedH2 } from "./ui/AnimatedH2"
 import type { Variants } from "motion"
 import { BlackButton } from "./ui/BlackButton"
+import { MotionDiv, MotionLi, MotionUl } from "@/app/utils/lazy-ui"
 
 const listItems = [
   {
@@ -66,7 +66,7 @@ export const PricingSection: React.FC = () => {
         </Typography>
       </div>
 
-      <m.ul
+      <MotionUl
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-100px" }}
@@ -74,7 +74,7 @@ export const PricingSection: React.FC = () => {
         className="flex flex-col items-center justify-between gap-12 sm:flex-row lg:gap-16"
       >
         {listItems.map((item, i) => (
-          <m.li key={item.title} variants={child}>
+          <MotionLi key={item.title} variants={child}>
             <Typography as="div" size="sm" className="relative flex max-w-3xs flex-col gap-2">
               <h3 className="flex items-center gap-1 font-medium text-black">
                 <span>{item.icon}</span> {item.title}
@@ -82,9 +82,9 @@ export const PricingSection: React.FC = () => {
               <p className="text-slate-700">{item.description}</p>
               <span className="absolute top-1/2 -right-16 -translate-x-1/2 -translate-y-1/2 text-9xl font-medium text-black opacity-10">{i + 1}</span>
             </Typography>
-          </m.li>
+          </MotionLi>
         ))}
-      </m.ul>
+      </MotionUl>
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-2 md:flex-row">
           <div className="relative flex [flex:1_0_0px] flex-col justify-end gap-6 rounded-xl bg-white p-6 md:max-w-md md:p-8">
@@ -118,7 +118,7 @@ export const PricingSection: React.FC = () => {
           </div>
         </div>
         <H2 className="my-8 w-full border-b border-gray-200 pb-4 text-center">Packages</H2>
-        <m.div
+        <MotionDiv
           initial="hidden"
           whileInView="show"
           // TODO figure out margin
@@ -173,7 +173,7 @@ export const PricingSection: React.FC = () => {
             accent="black"
             variants={child}
           />
-        </m.div>
+        </MotionDiv>
       </div>
     </section>
   )

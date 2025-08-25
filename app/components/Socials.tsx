@@ -1,8 +1,8 @@
-import * as m from "motion/react-m"
 import Link from "next/link"
 import { Icon } from "./Icon"
 import clsx from "clsx"
 import type { Variants } from "motion"
+import { MotionDiv } from "../utils/lazy-ui"
 const container: Variants = {
   hidden: {
     x: -12,
@@ -41,7 +41,7 @@ export const Socials: React.FC<{
   iconClassName?: string
 }> = ({ socialLinks, className, iconClassName }) => {
   return (
-    <m.div
+    <MotionDiv
       className={clsx("flex gap-2", className)}
       variants={container}
       initial="hidden"
@@ -49,7 +49,7 @@ export const Socials: React.FC<{
       viewport={{ once: true, margin: "0px 0px -100px 0px" }}
     >
       {socialLinks.map((link) => (
-        <m.div variants={linkLogo} key={link.href}>
+        <MotionDiv variants={linkLogo} key={link.href}>
           <Link
             rel="noopener noreferrer"
             target="_blank"
@@ -60,8 +60,8 @@ export const Socials: React.FC<{
           >
             <Icon name={link.icon} height={15} width={15} />
           </Link>
-        </m.div>
+        </MotionDiv>
       ))}
-    </m.div>
+    </MotionDiv>
   )
 }

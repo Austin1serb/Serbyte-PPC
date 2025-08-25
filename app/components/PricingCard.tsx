@@ -1,8 +1,9 @@
 import clsx from "clsx"
 import { Icon } from "./Icon"
 import { AnimatedInViewProps } from "./ui/AnimatedInView"
-import * as m from "motion/react-m"
 import { Variants } from "motion/react"
+import { MotionArticle } from "../utils/lazy-ui"
+
 type Accent = "white" | "slate" | "black"
 
 export interface PricingCardProps extends Partial<AnimatedInViewProps<"article">> {
@@ -62,7 +63,7 @@ export function PricingCard({ plan, tagline, price, description, features, accen
   const c = palette[accent]
 
   return (
-    <m.article
+    <MotionArticle
       variants={variants}
       className={clsx("flex max-w-sm min-w-2xs [flex:1_0_0px] flex-col gap-4 rounded-3xl border border-slate-400 p-8 shadow-lg md:gap-6", c.cardBg, c.cardText)}
     >
@@ -116,6 +117,6 @@ export function PricingCard({ plan, tagline, price, description, features, accen
       >
         {ctaLabel}
       </button>
-    </m.article>
+    </MotionArticle>
   )
 }

@@ -1,6 +1,6 @@
 "use client"
 import { useMotionValue, useTransform, animate } from "motion/react"
-import * as motion from "motion/react-m"
+import { MotionSpan } from "../utils/lazy-ui"
 
 interface CountUpProps {
   to: number
@@ -49,7 +49,7 @@ export default function CountUp({
     return separator ? formattedNumber.replace(/,/g, separator) : formattedNumber
   })
   return (
-    <motion.span
+    <MotionSpan
       className={className}
       initial={{ opacity: 1 }}
       viewport={{ once, margin: `0px 0px ${margin} 0px` }}
@@ -68,6 +68,6 @@ export default function CountUp({
       }}
     >
       {rounded}
-    </motion.span>
+    </MotionSpan>
   )
 }

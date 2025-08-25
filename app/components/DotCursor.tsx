@@ -2,7 +2,7 @@
 import clsx from "clsx"
 import { frame, useSpring, AnimatePresence } from "motion/react"
 import { useEffect, useRef, useState } from "react"
-import * as m from "motion/react-m"
+import { MotionDiv, MotionSpan } from "../utils/lazy-ui"
 
 const WIDTH = 20
 const HEIGHT = 20
@@ -68,7 +68,7 @@ export function DotCursor() {
   }, [])
 
   return (
-    <m.div
+    <MotionDiv
       ref={ref}
       style={{ x, y, width, height }}
       className={clsx(
@@ -78,7 +78,7 @@ export function DotCursor() {
     >
       <AnimatePresence>
         {label && (
-          <m.span
+          <MotionSpan
             key={label}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1, transition: { opacity: { duration: 0.3, delay: 0.2 } } }}
@@ -86,9 +86,9 @@ export function DotCursor() {
             className="text-nowrap"
           >
             {label}
-          </m.span>
+          </MotionSpan>
         )}
       </AnimatePresence>
-    </m.div>
+    </MotionDiv>
   )
 }
