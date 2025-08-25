@@ -38,8 +38,6 @@ export function useOffset(cardIds: string[]) {
       }
       offsetsRef.current = next
 
-      console.log(next)
-
       force() // tell React styles changed
     }
     const debouncedCalc = debounce(calc, 50)

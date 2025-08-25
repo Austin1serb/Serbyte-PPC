@@ -432,6 +432,7 @@ html {
 /* entering snapshot: reveal from bottom */
 ::view-transition-new(root) {
   animation: 0.5s cubic-bezier(0.83, 0, 0.17, 1) newReveal forwards;
+  will-change: clip-path;
 }
 
 @keyframes oldUp {
@@ -441,7 +442,7 @@ html {
   }
   to {
     filter: blur(10px) brightness(0.5);
-    transform: translateY(-40px);
+    transform: translateY(-400px);
   }
 }
 @keyframes newReveal {

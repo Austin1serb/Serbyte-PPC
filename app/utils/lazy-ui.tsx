@@ -13,7 +13,6 @@ export const MotionWrapper = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
-
 export const MotionDiv = motion.div
 export const MotionSpan = motion.span
 export const MotionH2 = motion.h2
