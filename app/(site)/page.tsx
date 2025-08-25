@@ -2,7 +2,6 @@
 import { HeroV2 } from "../components/HeroV2"
 import { Projects } from "../components/Projects"
 
-// Dynamic import These
 import dynamic from "next/dynamic"
 import { REVIEWS } from "../data/review-data"
 

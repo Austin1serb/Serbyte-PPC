@@ -80,6 +80,7 @@ export function ProjectsGrid({ className }: { className?: string }) {
           color="#000000"
           type="Event Management"
           progress={progress}
+          href="https://be-entitled.com/"
         />
         <AnimatedCard
           key={"IAO"}
@@ -90,6 +91,7 @@ export function ProjectsGrid({ className }: { className?: string }) {
           color="#13739C"
           type="Private Security"
           progress={progress}
+          dataText="View Case Study"
         />
         <AnimatedCard
           key="Automedics"
@@ -100,6 +102,7 @@ export function ProjectsGrid({ className }: { className?: string }) {
           color="#DA961A"
           type="Automotive Repair"
           progress={progress}
+          dataText="View Case Study"
         />
         <AnimatedCard
           key="Bespoke"
@@ -110,6 +113,7 @@ export function ProjectsGrid({ className }: { className?: string }) {
           color="#024EFC"
           type="Automotive Styling"
           progress={progress}
+          dataText="View Case Study"
         />
       </div>
     </section>

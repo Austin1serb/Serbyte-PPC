@@ -26,13 +26,21 @@ export interface AnimatedCardProps {
   gridId: string
   progress: MotionValue<number>
   dataText?: string
+  href?: string
 }
 
-export function AnimatedCard({ src, alt, offset, color, type, gridId, progress, dataText = "View Website" }: AnimatedCardProps) {
+export function AnimatedCard({ src, alt, offset, color, type, gridId, progress, dataText = "View Website ↗", href }: AnimatedCardProps) {
   const ref = useRef<HTMLDivElement>(null)
   useCompositorSpring(ref, progress)
   return (
-    <Link href={`${SITE_SLUGS.projects}/${gridId}`} data-grid-id={gridId} className="reveal-false:pointer-events-none will-change-transform">
+    <Link
+      data-text={dataText}
+      aria-label={alt}
+      target={href ? "_blank" : undefined}
+      href={href ?? `${SITE_SLUGS.projects}/${gridId}`}
+      data-grid-id={gridId}
+      className="reveal-false:pointer-events-none will-change-transform"
+    >
       <div
         ref={ref}
         style={

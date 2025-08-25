@@ -1,9 +1,9 @@
 import * as m from "motion/react-m"
 import Image from "next/image"
-import profilePhoto from "@/public/assets/founder.jpg"
 import type { Variants } from "motion"
+import { REVIEW_MAP } from "@/app/data/review-data"
 
-const MEDALS = [profilePhoto, profilePhoto, profilePhoto, profilePhoto, profilePhoto]
+const MEDALS = Object.values(REVIEW_MAP).map((review) => review.img)
 
 const container: Variants = {
   hidden: {
@@ -42,8 +42,15 @@ export function AnimatedAvatars() {
     <m.div className="relative z-0 flex items-center gap-4 whitespace-nowrap" initial="hidden" animate="visible" variants={container}>
       <div className="flex flex-row-reverse -space-x-3 space-x-reverse">
         {MEDALS.map((src, i) => (
-          <m.div key={i} className="relative inline-block h-9 w-9 overflow-hidden rounded-full ring-3 ring-white" animate={{ zIndex: -i }} variants={avatar}>
-            <Image src={src} alt="Reviewer avatar" width={40} height={40} className="h-full w-full object-cover" sizes="40px" />
+          <m.div key={i} className="relative inline-block h-9 w-9 overflow-hidden rounded-full" animate={{ zIndex: -i }} variants={avatar}>
+            <Image
+              src={src}
+              alt="Reviewer avatar"
+              width={40}
+              height={40}
+              className="h-full w-full object-contain border-[1px] border-gray-300 bg-white rounded-full p-0.5"
+              sizes="40px"
+            />
           </m.div>
         ))}
       </div>
