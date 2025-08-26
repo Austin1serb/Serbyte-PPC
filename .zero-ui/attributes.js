@@ -6,6 +6,7 @@ export const bodyAttributes = {
   "data-scrolled": "up"
 };
 export const variantKeyMap = {
+  "data-faq": true,
   "data-mobile-menu": true,
   "data-phase": true,
   "data-reveal": true,

@@ -1,8 +1,9 @@
 "use client"
 import { MotionDiv, MotionSpan } from "@/app/utils/lazy-ui"
 import { useState } from "react"
+import { type FAQ } from "./FAQTable"
 
-export const SingleFAQ = ({ question, answer, index }: { question: string; answer: string; index: number }) => {
+export const SingleFAQ = ({ question, answer, index }: FAQ) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
