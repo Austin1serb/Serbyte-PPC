@@ -77,7 +77,7 @@ export const CallToActionButton = () => {
           <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-sm font-semibold text-black ring-1 ring-black/50">You</span>
         </MotionDiv>
       </div>
-      Book a call with me
+      Book a Strategy Call
     </MotionButton>
   )
 }

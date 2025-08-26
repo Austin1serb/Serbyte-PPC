@@ -53,7 +53,7 @@ export function AnimatedCard({ src, alt, offset, color, type, gridId, progress, 
         }
         className={clsx("group relative h-full w-full transform-gpu opacity-1 contain-content")}
       >
-        <Card src={src} alt={alt} color={color} type={type} />
+        <Card src={src} alt={alt} color={color} type={type} text={dataText} />
       </div>
     </Link>
   )

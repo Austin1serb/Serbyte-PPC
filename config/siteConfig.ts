@@ -39,10 +39,10 @@ export const SITE_SLUGS = {
   home: "/",
   projects: "/projects",
   contact: "/contact",
-  projectsEntitled: "/projects/entitled",
   projectsIao: "/projects/iron-and-oak",
   projectsAutomedics: "/projects/automedics",
   projectsBespoke: "/projects/bespoke",
+  projectsReactZeroUi: "/projects/react-zero-ui",
 } as const
 
 const flattenSlugs = (obj: Record<string, string | Record<string, string>>): string[] => {

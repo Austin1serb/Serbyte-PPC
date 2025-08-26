@@ -10,7 +10,6 @@ interface AnimatedElementProps<T extends ElementType> extends MotionProps {
   children?: ReactNode
   fadeDirection?: "left" | "right" | "bottom" | "top" | "none"
   offsetPx?: number
-  blur?: number
   style?: React.CSSProperties
   margin?: string
 }
@@ -24,7 +23,6 @@ export const AnimatedElement = <T extends ElementType>({
   duration = 0.5,
   fadeDirection = "none",
   offsetPx = 500,
-  blur = 5,
   margin = "0px 0px 100px 0px",
   ...rest
 }: AnimatedElementProps<T>) => {

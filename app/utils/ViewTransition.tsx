@@ -1,13 +1,13 @@
-// app/_components/ViewTransitions.tsx
 "use client"
 
-import { useEffect } from "react"
 import { useRouter } from "next/navigation"
+import { useIsoMorphicEffect } from "../hooks/useIsoMorphicEffect"
 
 type VTDoc = Document & {
   // Safari/Chromium: present when supported
   startViewTransition?: (cb: () => void) => { finished: Promise<void> }
 }
+
 function isHashOnlyChange(url: URL) {
   return url.origin === location.origin && url.pathname === location.pathname && url.search === location.search && url.hash !== "" && url.hash !== location.hash
 }
@@ -80,7 +80,7 @@ export default function ViewTransitions() {
     }
   }
 
-  useEffect(() => {
+  useIsoMorphicEffect(() => {
     document.addEventListener("click", onClick)
     return () => document.removeEventListener("click", onClick)
   }, [router])

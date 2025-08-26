@@ -1,7 +1,15 @@
 import Image, { StaticImageData } from "next/image"
 import clsx from "clsx"
 
-export const Card = ({ src, alt, color, type = "", reveal = true }: { src: StaticImageData; alt: string; color?: string; type?: string; reveal?: boolean }) => {
+interface StaticCardProps {
+  src: StaticImageData
+  alt: string
+  color?: string
+  type?: string
+  reveal?: boolean
+  text: string
+}
+export const Card: React.FC<StaticCardProps> = ({ src, alt, color, type = "", reveal = true, text = "View Project" }) => {
   return (
     <div
       className={`h-full w-full overflow-hidden rounded-2xl [&_span]:transition-opacity [&_span]:duration-400 ${reveal ? "reveal-false:[&_span]:opacity-0" : "group relative"}`}
@@ -22,7 +30,7 @@ export const Card = ({ src, alt, color, type = "", reveal = true }: { src: Stati
             <svg className="h-4 w-4" height="16" width="16" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path fillRule="evenodd" d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0z" />
             </svg>
-            View Project
+            {text}
           </span>
         </span>
         <Image className="h-full w-full bg-gray-200" src={src} alt={alt} priority decoding="async" />

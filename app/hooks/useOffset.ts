@@ -8,7 +8,7 @@ const initialOffsets: Record<string, Partial<HeroOffset>> = {
     x: 459.296875,
     y: -980.328125,
   },
-  entitled: {
+  "react-zero-ui": {
     x: 459.296875,
     y: -748,
   },

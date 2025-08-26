@@ -13,25 +13,26 @@ export const HeroV2 = () => {
             delay={0.6}
             className="inline-flex items-center gap-2 self-start rounded-full border border-gray-100 bg-white px-3 py-2 text-xs font-medium shadow-lg"
           >
-            <ActivityDot /> Available for <CurrentDate weekOut />
+            <ActivityDot /> Next Availability <CurrentDate weekOut />
           </AnimatedElement>
 
           <h1 className="xs:text-5xl relative z-5 text-4xl leading-[1] font-medium tracking-tight text-slate-900 sm:text-6xl lg:text-7xl">
             <AnimatedElement element="span" offsetPx={20} fadeDirection="left" className="inline-block">
-              Design
+              Your
             </AnimatedElement>{" "}
             <AnimatedElement element="span" offsetPx={40} delay={0.2} fadeDirection="top" className="inline-block">
-              that
+              Unfair
             </AnimatedElement>
             <br />
             <AnimatedElement element="span" delay={0.4} offsetPx={20} fadeDirection="left" className="inline-block text-slate-700">
-              delivers results.
+              Advantage.
             </AnimatedElement>
           </h1>
 
           <AnimatedElement element="p" delay={0.6} className="max-w-xs text-sm leading-tight tracking-tight text-slate-700 md:max-w-sm md:pr-4 md:text-base">
-            <strong className="font-semibold text-slate-900">Strategic design that drives growth, not just looks good.</strong> I create everything your brand
-            needs to attract customers and turn them into sales.
+            Our <strong className="font-semibold text-slate-900">Seattle web design agency</strong> delivers{" "}
+            <strong className="font-semibold text-slate-900">strategic website design</strong> with a measurable ROI. Our expert web developers engineer{" "}
+            <strong className="font-semibold text-slate-900">high-performance sites</strong> that turn visitors into customers.
           </AnimatedElement>
 
           <CallToActionButton />
