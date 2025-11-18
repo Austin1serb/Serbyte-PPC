@@ -27,6 +27,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_CONFIG.url + SITE_SLUGS.home,
   },
+  robots: {
+    index: false,
+    follow: false,
+  },
 }
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
