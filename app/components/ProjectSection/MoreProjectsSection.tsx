@@ -21,7 +21,7 @@ export const MoreProjectsSection = ({ href }: { href: string }) => {
           </div>
         </div>
         <Link href={href} aria-label="View Case Study" data-text="View Case Study" className="relative h-full w-full">
-          <Card src={bespokePreview} alt={"Bespoke Preview"} color="#024EFC" type="Automotive Styling" reveal={false} />
+          <Card src={bespokePreview} alt={"Bespoke Preview"} color="#024EFC" type="Automotive Styling" reveal={false} text="View Case Study" />
         </Link>
       </div>
     </section>

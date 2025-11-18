@@ -1,3 +1,5 @@
+export const DOMAIN_URL = process.env.NEXT_PUBLIC_URL || "http://localhost:3000"
+
 export const SITE_CONFIG = {
   title: "Serbyte Development",
   description: "A fully optimized Next.js 15 starter template.",
